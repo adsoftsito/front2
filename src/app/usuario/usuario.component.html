@@ -28,11 +28,9 @@
                                     Telefono
                                     </th>
                                   <th>
-                                      Eliminar
+                                      Acciones
                                   </th>
-                                  <th>
-                                      Editar
-                                   </th>
+                                  
                                   
                               </thead>
                               <tbody>
@@ -40,15 +38,22 @@
                                     <!-- <td>{{usuario.id}}</td> -->
                           
                                     <td>{{ usuario.name }}</td>
-                                    <!-- <td>{{ usuario.correo }}</td> -->
+                                   
                                     <td>{{ usuario.email }}</td>
                                     <td>{{usuario.phone_number}}</td>
                                     <td>
-                                        <i (click)="deleteUsuario(usuario.id)"  class="material-icons">
-                                                delete
-                                        </i>
+                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <button class="btn btn-danger" type ="button" (click)="deleteUsuario(usuario.id)">
+                                                        <i class="text-white fa fa-trash"></i>
+                                                    </button>
+                                                    <a [routerLink]="['/edit', usuario.id]">
+                                                        <button class="btn btn-outline-secondary">
+                                                            <i class="text-dark fa fa-pencil"></i>
+                                                        </button>
+                                                    </a>
+                                                </div>
                                     </td>
-                                        <td><a [routerLink]="['/edit', usuario.id]"><i class="material-icons">edit</i></a></td>
+                                       
 
                                         
                                    

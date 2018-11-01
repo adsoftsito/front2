@@ -18,12 +18,13 @@ const routes: Routes =[
         {
       path: '',
       loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
+  },
+  {
+    path:'edit/:id',
+    component: EditComponent
   }
-]},
-{
-  path:'edit/:id',
-  component: EditComponent
-}
+]}
+
     // { path: 'dashboard',      component: DashboardComponent },
     // { path: 'user-profile',   component: UserProfileComponent },
     // { path: 'table-list',     component: TableListComponent },

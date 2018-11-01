@@ -6,7 +6,7 @@
     <div class="panel-body">
       <form [formGroup]="angForm" novalidate>
         <div class="form-group">
-          <label class="col-md-4">User Name</label>
+          <label class="col-md-4">Nombre de usuario</label>
           <input type="text" class="form-control" formControlName="name" #name [(ngModel)] = "usuario.name"/>
         </div>
         <div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
@@ -24,7 +24,7 @@
           </div>
         </div>
           <div class="form-group">
-            <button (click)="updateUsuario(name.value, email.value)" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">Update</button>
+            <button (click)="updateUsuarios(name.value, email.value)" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">Actualizar</button>
           </div>
       </form>
     </div>

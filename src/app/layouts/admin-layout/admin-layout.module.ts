@@ -15,6 +15,7 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { TableListRutasComponent } from '../../table-list-rutas/table-list-rutas.component';
 import { UsuarioComponent } from '../../usuario/usuario.component';
 import { AdminComponent } from '../../admin/admin.component';
+// import { EditComponent } from '../../edit/edit.component';
 
 // import { CreateComponent } from '../../create/create.component';
 
@@ -48,6 +49,7 @@ import {
     TableListRutasComponent,
     UsuarioComponent,
     AdminComponent
+    // EditComponent
     // CreateComponent
   ]
 })

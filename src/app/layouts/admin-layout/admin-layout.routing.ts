@@ -11,6 +11,7 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { UsuarioComponent } from '../../usuario/usuario.component';
 // import { CreateComponent } from '../../create/create.component';
 import { AdminComponent } from '../../admin/admin.component';
+// import { EditComponent } from '../../edit/edit.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -65,7 +66,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
     { path: 'usuario',        component: UsuarioComponent },
-    { path: 'admin',            component: AdminComponent },
+    { path: 'admin',            component: AdminComponent }
+    // { path: 'edit',            component: EditComponent }
     // { path: 'create',        component: CreateComponent }
     
 ];

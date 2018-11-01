@@ -26,6 +26,10 @@ import {
 } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { UsuarioComponent } from './usuario/usuario.component';
+import { EditComponent } from './edit/edit.component';
+import { BusComponent } from './bus/bus.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminService } from './admin.service';
 // import { CreateComponent } from './create/create.component';
 
 @NgModule({
@@ -45,12 +49,15 @@ import { UsuarioComponent } from './usuario/usuario.component';
   declarations: [
     AppComponent,
     AdminLayoutComponent
+    // EditComponent,
+    // BusComponent,
+    // AdminComponent
     // CreateComponent,
     // UsuarioComponent
     // TableListRutasComponent,
 
   ],
-  providers: [UsuarioService],
+  providers: [UsuarioService,AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

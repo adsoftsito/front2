@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class UsuarioService {
+export class AdminService {
 
   result: any;
   constructor(private http: HttpClient) { }
@@ -27,9 +27,9 @@ export class UsuarioService {
 
 
 
-  getUsuarios() {
+  getAdmins() {
     //const uri = 'http://localhost:4000/coins';
-    const uri = 'https://ertourister.appspot.com/user';
+    const uri = 'https://ertourister.appspot.com/admin';
     return this
             .http
             .get(uri)
@@ -39,40 +39,18 @@ export class UsuarioService {
             });
   }
 
-  deleteUsuario(id) {
-    const uri = 'https://ertourister.appspot.com/user/' + id;
+  deleteAdmins(id) {
+    const uri = 'https://ertourister.appspot.com/admin/' + id;
 
         return this
             .http
             .delete(uri)
             .map(res => {
-              console.log("deleted bego");
               return res;
             });
   }
 
-  editUsuarios(id) {
-    const uri = 'https://ertourister.appspot.com/user/' + id;
-    return this
-            .http
-            .get(uri)
-            .map(res => {
-              return res;
-            });
-  }
-
-  updateUsuarios(name, email,id) {
-    const uri = 'https://ertourister.appspot.com/user/' + id;
-
-    const obj = {
-      name: name,
-      email: email,
-    };
-    this
-      .http
-      .put(uri, obj)
-      .subscribe(res => console.log('Done'));
-  }
+  
 
 
 }

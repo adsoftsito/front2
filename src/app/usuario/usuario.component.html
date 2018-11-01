@@ -28,8 +28,11 @@
                                     Telefono
                                     </th>
                                   <th>
-                                      Acciones
+                                      Eliminar
                                   </th>
+                                  <th>
+                                      Editar
+                                   </th>
                                   
                               </thead>
                               <tbody>
@@ -41,15 +44,14 @@
                                     <td>{{ usuario.email }}</td>
                                     <td>{{usuario.phone_number}}</td>
                                     <td>
-                                        
-
                                         <i (click)="deleteUsuario(usuario.id)"  class="material-icons">
                                                 delete
                                         </i>
-                                        <i class="material-icons">
-                                                edit
-                                        </i>
                                     </td>
+                                        <td><a [routerLink]="['/edit', usuario.id]"><i class="material-icons">edit</i></a></td>
+
+                                        
+                                   
                                     <!-- <td><a routerLink="create">
                                             Agregar usuario   
                                      </a></td> -->

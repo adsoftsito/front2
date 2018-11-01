@@ -14,6 +14,8 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 // import { TableListRutasComponet } from '../../upgrade/upgrade.component';
 import { TableListRutasComponent } from '../../table-list-rutas/table-list-rutas.component';
 import { UsuarioComponent } from '../../usuario/usuario.component';
+import { AdminComponent } from '../../admin/admin.component';
+
 // import { CreateComponent } from '../../create/create.component';
 
 
@@ -44,7 +46,8 @@ import {
     NotificationsComponent,
     UpgradeComponent,
     TableListRutasComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    AdminComponent
     // CreateComponent
   ]
 })

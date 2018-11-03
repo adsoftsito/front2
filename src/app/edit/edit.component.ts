@@ -45,7 +45,7 @@ export class EditComponent implements OnInit {
 
   updateUsuarios(name,email,phone_number) {
     this.route.params.subscribe(params => {
-    this.service.updateUsuarios(name, email, phone_number params['id']);
+    this.service.updateUsuarios(name, email, phone_number,params['id']);
     // regreso a usuario
     // this.router.navigate(['usuario']);
     

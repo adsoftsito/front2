@@ -16,7 +16,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { TableListComponent } from './table-list/table-list.component';
 import { TypographyComponent } from './typography/typography.component';
-import { IconsComponent } from './icons/icons.component';
+// import { IconsComponent } from './icons/icons.component';
 import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
@@ -31,6 +31,7 @@ import { EditComponent } from './edit/edit.component';
 import { BusComponent } from './bus/bus.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminService } from './admin.service';
+import { CreateUsuarioComponent } from './create-usuario/create-usuario.component';
 // import { CreateComponent } from './create/create.component';
 
 @NgModule({
@@ -52,7 +53,8 @@ import { AdminService } from './admin.service';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    EditComponent
+    EditComponent,
+    CreateUsuarioComponent
     // BusComponent,
     // AdminComponent
     // CreateComponent,

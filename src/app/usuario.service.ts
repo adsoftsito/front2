@@ -9,20 +9,21 @@ export class UsuarioService {
   result: any;
   constructor(private http: HttpClient) { }
 
-  // addUsuario(codigo, nombre) {
-  //   // aqui tendriamos que poner nuestro endpoint
-  //   const uri = 'https://ertourister.appspot.com/user';
-  //   // duda de para que es el objeto 
-  //   const obj = {
-  //     codigo: codigo,
-  //     nombre: nombre 
-  //   };
-  //   this
-  //     .http
-  //     .post(uri, obj)
-  //     .subscribe(res =>
-  //         console.log('Done'));
-  // }
+  addUsuario(name, email, phone_number) {
+    // aqui tendriamos que poner nuestro endpoint
+    const uri = 'https://ertourister.appspot.com/user';
+    // duda de para que es el objeto 
+    const obj = {
+      name: name,
+      email: email,
+      phone_number: phone_number
+    };
+    this
+      .http
+      .post(uri, obj)
+      .subscribe(res =>
+          console.log('Nuevo usuario creado'));
+  }
 
 
 

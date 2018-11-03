@@ -37,14 +37,15 @@ export class EditComponent implements OnInit {
     this.angForm = this.fb.group({
       // hace que el valor sea requerido
       name: ['', Validators.required ], //checar validators
-      email: ['', Validators.required ]
+      email: ['', Validators.required ],
+      phone_number:['']
       
    });
   }
 
-  updateUsuarios(name,email) {
+  updateUsuarios(name,email,phone_number) {
     this.route.params.subscribe(params => {
-    this.service.updateUsuarios(name, email, params['id']);
+    this.service.updateUsuarios(name, email, phone_number params['id']);
     // regreso a usuario
     // this.router.navigate(['usuario']);
     

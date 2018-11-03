@@ -16,6 +16,9 @@ export class UsuarioComponent implements OnInit {
   ngOnInit() {
     this.getUsuarios();
   }
+  ngOnChanges(){
+    this.getUsuarios();
+  }
   // ngOnChanges(){
   //   this.getUsuarios();
   // }

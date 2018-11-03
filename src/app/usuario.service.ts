@@ -61,12 +61,13 @@ export class UsuarioService {
             });
   }
 
-  updateUsuarios(name, email,id) {
+  updateUsuarios(name, email, phone_number,id) {
     const uri = 'https://ertourister.appspot.com/user/' + id;
 
     const obj = {
       name: name,
       email: email,
+      phone_number: phone_number
     };
     this
       .http

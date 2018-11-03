@@ -10,7 +10,7 @@ export class UsuarioService {
   constructor(private http: HttpClient) { }
 
   // metodo que agrega un nuevo usuario
-  addUsuario(name, email, phone_number,password) {
+  addUsuario(name, email, phone_number, password) {
     // aqui tendriamos que poner nuestro endpoint
     const uri = 'https://ertourister.appspot.com/user';
     // duda de para que es el objeto 

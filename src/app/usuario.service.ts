@@ -9,14 +9,16 @@ export class UsuarioService {
   result: any;
   constructor(private http: HttpClient) { }
 
-  addUsuario(name, email, phone_number) {
+  // metodo que agrega un nuevo usuario
+  addUsuario(name, email, phone_number,password) {
     // aqui tendriamos que poner nuestro endpoint
     const uri = 'https://ertourister.appspot.com/user';
     // duda de para que es el objeto 
     const obj = {
       name: name,
       email: email,
-      phone_number: phone_number
+      phone_number: phone_number,
+      password: password
     };
     this
       .http
@@ -25,11 +27,9 @@ export class UsuarioService {
           console.log('Nuevo usuario creado'));
   }
 
-
-
-
+  // metodo que obtiene usuarios
   getUsuarios() {
-    //const uri = 'http://localhost:4000/coins';
+    
     const uri = 'https://ertourister.appspot.com/user';
     return this
             .http
@@ -39,7 +39,7 @@ export class UsuarioService {
               return res;
             });
   }
-
+  // metodo que borra usuarios
   deleteUsuario(id) {
     const uri = 'https://ertourister.appspot.com/user/' + id;
 
@@ -51,7 +51,7 @@ export class UsuarioService {
               return res;
             });
   }
-
+  // metodo que edita usuarios
   editUsuarios(id) {
     const uri = 'https://ertourister.appspot.com/user/' + id;
     return this

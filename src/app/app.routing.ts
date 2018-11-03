@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { EditComponent } from './edit/edit.component';
+import { CreateUsuarioComponent } from './create-usuario/create-usuario.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 const routes: Routes =[
   {
@@ -22,6 +23,10 @@ const routes: Routes =[
   {
     path:'edit/:id',
     component: EditComponent
+  },
+  {
+    path:'create-usuario',
+    component: CreateUsuarioComponent
   }
 ]}
 

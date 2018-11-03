@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from '../usuario.service';
+// formbuiler para no pelear con formcontrols, que suelen ser muy molestos
+// validators para validar mis inputs
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
-
+// import { HttpClient } from '@angular/common/http';
 // viene por default al crear un componente ccon el cli de angular
 @Component({
   selector: 'app-edit',
@@ -29,9 +31,12 @@ export class EditComponent implements OnInit {
 
   createForm() {
     // schema que guarda los valores y validaciones
-
+    // uso de form builder, la estructura es diferente
+    // guarda a name y email en un solo grupo
+    // The value for each control name is an array containing the initial value as the first item in the array.
     this.angForm = this.fb.group({
-      name: ['', Validators.required ],
+      // hace que el valor sea requerido
+      name: ['', Validators.required ], //checar validators
       email: ['', Validators.required ]
       
    });
@@ -40,8 +45,9 @@ export class EditComponent implements OnInit {
   updateUsuarios(name,email) {
     this.route.params.subscribe(params => {
     this.service.updateUsuarios(name, email, params['id']);
-    this.router.navigate(['usuario']);
-    this.getUsuarios();
+    // regreso a usuario
+    // this.router.navigate(['usuario']);
+    
   });
 }
 
@@ -49,7 +55,7 @@ export class EditComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.usuario = this.service.editUsuarios(params['id']).subscribe(res => {
         this.usuario = res;
-        this.getUsuarios();
+        // this.getUsuarios();
       });
     });
   }

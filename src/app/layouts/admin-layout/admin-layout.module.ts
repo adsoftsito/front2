@@ -26,6 +26,8 @@ import {
   MatRippleModule,
   MatTooltipModule,
 } from '@angular/material';
+
+import {MatFormFieldModule} from '@angular/material/form-field';
 @NgModule({
   imports: [
     CommonModule,
@@ -35,7 +37,7 @@ import {
     MatRippleModule,
     MatInputModule,
     MatTooltipModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   declarations: [
     DashboardComponent,

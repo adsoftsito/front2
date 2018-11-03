@@ -8,9 +8,9 @@ import { UsuarioService } from './usuario.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
-
+import {MatFormFieldModule} from '@angular/material/form-field';
 import { AppComponent } from './app.component';
-
+import {MatInputModule} from '@angular/material/input';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
@@ -43,6 +43,8 @@ import { AdminService } from './admin.service';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     })

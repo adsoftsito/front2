@@ -46,7 +46,7 @@ export class UsuarioService {
             .http
             .delete(uri)
             .map(res => {
-              console.log("deleted bego");
+              console.log("deleted ");
               return res;
             });
   }
@@ -72,6 +72,7 @@ export class UsuarioService {
       .http
       .put(uri, obj)
       .subscribe(res => console.log('Done'));
+      
   }
 
 

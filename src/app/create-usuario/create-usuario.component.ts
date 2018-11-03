@@ -49,6 +49,8 @@ export class CreateUsuarioComponent implements OnInit {
   addUsuario(name, email, phone_number,password) {
     this.service.addUsuario(name, email, phone_number,password);
     // this.router.navigate(['index']);
+    this.router.navigate(['/usuario']);
+    this.getUsuarios();
 }
 
  

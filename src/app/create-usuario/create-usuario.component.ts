@@ -37,8 +37,14 @@ export class CreateUsuarioComponent implements OnInit {
     // The value for each control name is an array containing the initial value as the first item in the array.
     this.angForm = this.fb.group({
       // hace que el valor sea requerido
-      name: ['', Validators.required ], //checar validators
-      email: ['', Validators.required ],
+      name: ['', Validators.compose([
+        Validators.maxLength(25),
+        Validators.minLength(3),
+        Validators.required ])], //checar validators
+      email: ['', Validators.compose([
+        Validators.required,
+        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+      ])],
       phone_number:[''],
       password: ['', Validators.required ],
 
@@ -51,6 +57,19 @@ export class CreateUsuarioComponent implements OnInit {
     // this.router.navigate(['index']);
     this.router.navigate(['/usuario']);
     this.getUsuarios();
+}
+
+
+account_validation_messages = {
+  'name': [
+    { type: 'required', message: 'Tiene que agregar un nombre' },
+    { type: 'minlength', message: 'El nombre de usuario debe de tener por lo menos 3 caracteres' },
+    { type: 'maxlength', message: 'El nombre de usuario no debe de tener más de 25 caracters' }
+  ],
+  'email': [
+    { type: 'required', message: 'Tiene que agregar un correo' },
+    { type: 'pattern', message:'El correo debe de seguir el siguiente formato: ejemplo@correo.com'}
+  ]
 }
 
  

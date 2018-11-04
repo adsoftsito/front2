@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from '../usuario.service';
-// formbuiler para no pelear con formcontrols, que suelen ser muy molestos
+// formbuiler para no pelear con formcontrols, EmailValidator, que suelen ser muy molestos
 // validators para validar mis inputs
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 // import { HttpClient } from '@angular/common/http';
@@ -36,8 +36,11 @@ export class EditComponent implements OnInit {
     // The value for each control name is an array containing the initial value as the first item in the array.
     this.angForm = this.fb.group({
       // hace que el valor sea requerido
-      name: ['', Validators.required ], //checar validators
-      email: ['', Validators.required ],
+      name: ['', Validators.compose([
+        Validators.maxLength(25),
+        Validators.minLength(3),
+        Validators.required ])], //checar validators
+      email: ['', Validators.required],
       phone_number:['']
       
    });
@@ -61,4 +64,17 @@ export class EditComponent implements OnInit {
       });
     });
   }
+
+
+  account_validation_messages = {
+    'name': [
+      { type: 'required', message: 'Tiene que agregar un nombre' },
+      { type: 'minlength', message: 'El nombre de usuario debe de tener por lo menos 3 caracteres' },
+      { type: 'maxlength', message: 'El nombre de usuario no debe de tener más de 25 caracters' }
+    ],
+    'email': [
+      { type: 'required', message: 'Tiene que agregar un correo' }
+    ]
+  }
+    
 }

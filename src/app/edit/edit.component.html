@@ -15,25 +15,26 @@
                                   
                                   <div class="col-md-12">
                                       <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Nombre" type="text" formControlName="name" #name [(ngModel)] = "usuario.name">
+                                        <input matInput placeholder="Nombre" type="text" formControlName="name" #name [(ngModel)] = "usuario.name" >
                                       </mat-form-field>
-                                      <div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
-                                          <div *ngIf="angForm.controls['name'].errors.required">
-                                            Es necesario agregar un nombre
+                                      <div *ngFor="let validation of account_validation_messages.name">
+                                          <div *ngIf="angForm.controls['name'].hasError(validation.type) && angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
+                                            {{validation.message}}
                                           </div>
                                         </div>
                                   </div>
                               </div>
                               <div class="row">
                                   <div class="col-md-12">
-                                    <mat-form-field class="example-full-width">
-                                      <input matInput placeholder="Correo" type="email" formControlName="email" #email [(ngModel)] = "usuario.email" >
+                                    <mat-form-field class="example-full-width" required>
+                                        <!-- #email, crea una variable local sobre la cual trabajar -->
+                                      <input matInput placeholder="Correo" type="email" formControlName="email" #email [(ngModel)] = "usuario.email"  >
                                     </mat-form-field>
-                                    <div *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="alert alert-danger">
-                                        <div *ngIf="angForm.controls['email'].errors.required">
-                                          Es necesario agregar un email
-                                        </div>
-                                      </div>
+                                    <div *ngFor="let validation of account_validation_messages.email">
+                                        <div  *ngIf=" angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="alert alert-danger">
+                                            {{validation.message}}
+                                        </div> 
+                                    </div>
                                   </div>
                 
                               </div>

@@ -40,7 +40,10 @@ export class EditComponent implements OnInit {
         Validators.maxLength(25),
         Validators.minLength(3),
         Validators.required ])], //checar validators
-      email: ['', Validators.required],
+      email: ['', Validators.compose([
+        Validators.required,
+        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+      ])],
       phone_number:['']
       
    });
@@ -73,7 +76,8 @@ export class EditComponent implements OnInit {
       { type: 'maxlength', message: 'El nombre de usuario no debe de tener más de 25 caracters' }
     ],
     'email': [
-      { type: 'required', message: 'Tiene que agregar un correo' }
+      { type: 'required', message: 'Tiene que agregar un correo' },
+      { type: 'pattern', message:'El correo debe de seguir el siguiente formato: ejemplo@correo.com'}
     ]
   }
     

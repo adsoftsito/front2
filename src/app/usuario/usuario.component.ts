@@ -1,6 +1,5 @@
 import { UsuarioService } from '../usuario.service';
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-usuario',
@@ -9,31 +8,18 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UsuarioComponent implements OnInit {
 
-  usuarios: any;
-  // llamo el servicio 
-  constructor(private http: HttpClient, private service: UsuarioService) {}
+  public usuarios = [];
+
+  constructor(private _usuarioService: UsuarioService) {}
 
   ngOnInit() {
-    this.getUsuarios();
+    this._usuarioService.getUsuarios().subscribe(data => this.usuarios = data);
   }
   ngOnChanges(){
-    this.getUsuarios();
+    this._usuarioService.getUsuarios().subscribe(data => this.usuarios = data);
   }
-  // ngOnChanges(){
-  //   this.getUsuarios();
-  // }
-
-  getUsuarios() {
-    this.service.getUsuarios().subscribe(res => {
-       console.log(res);
-      this.usuarios = res;
-    });
-  }
-
   deleteUsuario(id) {
-    this.service.deleteUsuario(id).subscribe(res => {
-      console.log('Deleted');
-      this.getUsuarios(); 
+    this._usuarioService.deleteUsuarios(id).subscribe(data => {console.log('Deleted'); this.ngOnChanges(); 
     });
   }
 

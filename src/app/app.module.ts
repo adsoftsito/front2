@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UsuarioService } from './usuario.service';
+import { UsuarioService } from './services/usuario.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
@@ -30,7 +30,7 @@ import { UsuarioComponent } from './usuario/usuario.component';
 import { EditComponent } from './edit/edit.component';
 import { BusComponent } from './bus/bus.component';
 import { AdminComponent } from './admin/admin.component';
-import { AdminService } from './admin.service';
+import { AdminService } from './services/admin.service';
 import { CreateUsuarioComponent } from './create-usuario/create-usuario.component';
 // import { CreateComponent } from './create/create.component';
 

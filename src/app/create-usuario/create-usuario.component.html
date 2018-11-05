@@ -18,9 +18,9 @@
                                         <input matInput placeholder="Nombre" type="text" formControlName="name" #name >
                                       </mat-form-field>
                                       <div *ngFor="let validation of account_validation_messages.name">
-                                          <div *ngIf="angForm.controls['name'].hasError(validation.type) && angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
+                                          <!--<div *ngIf="angForm.controls['name'].hasError(validation.type) && angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
                                                 {{validation.message}}
-                                          </div>
+                                          </div>-->
                                         </div>
                                   </div>
                               </div>
@@ -30,9 +30,9 @@
                                       <input matInput placeholder="Correo" type="email" formControlName="email" #email >
                                     </mat-form-field>
                                     <div *ngFor="let validation of account_validation_messages.email">
-                                        <div *ngIf="angForm.controls['email'].hasError(validation.type) && angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="alert alert-danger">
+                                       <!-- <div *ngIf="angForm.controls['email'].hasError(validation.type) && angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="alert alert-danger">
                                                 {{validation.message}}
-                                        </div>
+                                        </div>-->
                                       </div>
                                   </div>
                 
@@ -42,11 +42,11 @@
                                     <mat-form-field class="example-full-width">
                                       <input matInput placeholder="Telefono" type="text" formControlName="phone_number" #phone_number >
                                     </mat-form-field>
-                                    <div *ngIf="angForm.controls['phone_number'].invalid && (angForm.controls['phone_number'].dirty || angForm.controls['phone_number'].touched)" class="alert alert-danger">
+                                    <!--<div *ngIf="angForm.controls['phone_number'].invalid && (angForm.controls['phone_number'].dirty || angForm.controls['phone_number'].touched)" class="alert alert-danger">
                                         <div *ngIf="angForm.controls['phone_number'].errors.required">
                                           Es necesario agregar un telefono
                                         </div>
-                                      </div>
+                                      </div>-->
                                   </div>
                               </div>
 
@@ -55,11 +55,11 @@
                                       <mat-form-field class="example-full-width">
                                         <input matInput placeholder="Contraseña" type="password" formControlName="password" #password >
                                       </mat-form-field>
-                                      <div *ngIf="angForm.controls['password'].invalid && (angForm.controls['password'].dirty || angForm.controls['password'].touched)" class="alert alert-danger">
+                                      <!--<div *ngIf="angForm.controls['password'].invalid && (angForm.controls['password'].dirty || angForm.controls['password'].touched)" class="alert alert-danger">
                                           <div *ngIf="angForm.controls['password'].errors.required">
                                             Es necesario agregar una contraseña
                                           </div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                 </div>
                               

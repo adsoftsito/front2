@@ -24,16 +24,10 @@ export class EditComponent implements OnInit {
     this.createForm();
    }
    getUsuarios() {
-    this.service.getUsuarios().subscribe(res => {
-      this.usuarios = res;
-    });
+    this.service.getUsuarios().subscribe(res => {this.usuarios = res;});
   }
 
   createForm() {
-    // schema que guarda los valores y validaciones
-    // uso de form builder, la estructura es diferente
-    // guarda a name y email en un solo grupo
-    // The value for each control name is an array containing the initial value as the first item in the array.
     this.angForm = this.fb.group({
       // hace que el valor sea requerido
       name: ['', Validators.compose([
@@ -49,23 +43,15 @@ export class EditComponent implements OnInit {
    });
   }
 
-  updateUsuarios(name,email,phone_number) {
-    this.route.params.subscribe(params => {
-    this.service.updateUsuarios(name, email, phone_number,params['id']);
-    // regreso a usuario
+  updateUsuario(name,email,phone_number) {
+    this.route.params.subscribe(params => {this.service.updateUsuarios(name, email, phone_number, params['id']).subscribe(data => {console.log('Updated');});
     this.router.navigate(['/usuario']);
     this.getUsuarios();
-    
   });
 }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.usuario = this.service.editUsuarios(params['id']).subscribe(res => {
-        this.usuario = res;
-        // this.getUsuarios();
-      });
-    });
+    this.route.params.subscribe(params => {this.usuario = this.service.getIDUsuarios(params['id']).subscribe(res => {this.usuario = res;});});
   }
 
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UsuarioService } from '../usuario.service';
+import { UsuarioService } from '../services/usuario.service';
 // formbuiler para no pelear con formcontrols, que suelen ser muy molestos
 // validators para validar mis inputs
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';

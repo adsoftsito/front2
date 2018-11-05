@@ -1,3 +1,5 @@
+// Import: Modules whose classes are needed by the components of this modules, which means
+// that are needed by the declarations
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -51,6 +53,7 @@ import { CreateUsuarioComponent } from './create-usuario/create-usuario.componen
     })
   ],
   declarations: [
+    //  classes that belong to this module and are related to views.
     AppComponent,
     AdminLayoutComponent,
     EditComponent,
@@ -62,7 +65,9 @@ import { CreateUsuarioComponent } from './create-usuario/create-usuario.componen
     // TableListRutasComponent,
 
   ],
+  // services
   providers: [UsuarioService,AdminService],
+  // The root component which is the main view of the application
   bootstrap: [AppComponent]
 })
 export class AppModule { }

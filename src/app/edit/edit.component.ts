@@ -24,16 +24,10 @@ export class EditComponent implements OnInit {
     this.createForm();
    }
    getUsuarios() {
-    this.service.getUsuarios().subscribe(res => {
-      this.usuarios = res;
-    });
+    this.service.getUsuarios().subscribe(res => {this.usuarios = res;});
   }
 
   createForm() {
-    // schema que guarda los valores y validaciones
-    // uso de form builder, la estructura es diferente
-    // guarda a name y email en un solo grupo
-    // The value for each control name is an array containing the initial value as the first item in the array.
     this.angForm = this.fb.group({
       // hace que el valor sea requerido
       name: ['', Validators.compose([

@@ -9,13 +9,13 @@ import 'rxjs/add/operator/map';
 export class UsuarioService {
 
   private _url: string = "https://ertourister.appspot.com/user";
-  private _body: object;
   private _id: number;
 
   constructor(private http: HttpClient) { }
 
   // metodo que agrega un nuevo usuario
-  /*addUsuario(name, email, phone_number, password) {
+  /*
+  addUsuario(name, email, phone_number, password) {
     this
       .http
       .post(uri, obj)
@@ -30,13 +30,29 @@ export class UsuarioService {
   deleteUsuarios(id: number): Observable<IUsuario[]> {
     return this.http.delete<IUsuario[]>(this._url+"/"+id);
   }
-  /*
-  addUsuarios(): Observable<IUsuario[]> {
-    return this.http.post<IUsuario[]>(this._url+"/add", this._body);
+
+  getIDUsuarios(id): Observable<IUsuario[]> {
+    return this.http.get<IUsuario[]>(this._url+"/"+id);
   }
-  updateUsuarios(): Observable<IUsuario[]> {
-    return this.http.put<IUsuario[]>(this._url+"/"+this._id, this._body);
-  }*/
+  
+  addUsuarios(name, email, phone_number, password): Observable<IUsuario[]> {
+    const obj = {
+      name: name,
+      email: email,
+      phone_number: phone_number,
+      password: password
+    };
+    return this.http.post<IUsuario[]>(this._url+"/add", obj);
+  }
+  
+  updateUsuarios(name, email, phone_number, id): Observable<IUsuario[]> {
+    const obj = {
+      name: name,
+      email: email,
+      phone_number: phone_number,
+    };
+    return this.http.put<IUsuario[]>(this._url+"/"+id, obj);
+  }
 
   // metodo que borra usuarios
   /*deleteUsuario(id) {
@@ -50,8 +66,10 @@ export class UsuarioService {
               return res;
             });
   }*/
+  
   // metodo que edita usuarios
-  /*editUsuarios(id) {
+  /*
+  editUsuarios(id) {
     const uri = 'https://ertourister.appspot.com/user/' + id;
     return this
             .http
@@ -60,8 +78,8 @@ export class UsuarioService {
               return res;
             });
   }*/
-
-  /*updateUsuarios(name, email, phone_number,id) {
+/*
+  updateUsuarios(name, email, phone_number,id) {
     const uri = 'https://ertourister.appspot.com/user/' + id;
 
     const obj = {

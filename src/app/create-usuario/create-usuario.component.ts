@@ -15,21 +15,18 @@ export class CreateUsuarioComponent implements OnInit {
   // variable que utiliza mi formGroup para tener reactiver forms
   angForm: FormGroup;
   title = 'Agregar usuario';
-
+  
   constructor(private route: ActivatedRoute, private router: Router, private service: UsuarioService, private fb: FormBuilder) { 
     this.createForm();
   }
-      
+  
   ngOnInit() {
-    
   }
-
+  
   getUsuarios() {
-    this.service.getUsuarios().subscribe(res => {
-      this.usuarios = res;
-    });
+    this.service.getUsuarios().subscribe(res => {this.usuarios = res;});
   }
-
+  
   createForm() {
     // schema que guarda los valores y validaciones
     // uso de form builder, la estructura es diferente
@@ -41,36 +38,33 @@ export class CreateUsuarioComponent implements OnInit {
         Validators.maxLength(25),
         Validators.minLength(3),
         Validators.required ])], //checar validators
-      email: ['', Validators.compose([
-        Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-      ])],
-      phone_number:[''],
-      password: ['', Validators.required ],
-
-      
-   });
+        email: ['', Validators.compose([
+          Validators.required,
+          Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+        ])],
+        phone_number:[''],
+        password: ['', Validators.required ],
+      });
+    }
+    addUsuario(name, email, phone_number,password) {
+      this.service.addUsuarios(name, email, phone_number,password).subscribe(data => this.usuarios = data);
+      this.router.navigate(['/usuario']);
+      this.getUsuarios();
+    }
+    
+    
+    account_validation_messages = {
+      'name': [
+        { type: 'required', message: 'Tiene que agregar un nombre' },
+        { type: 'minlength', message: 'El nombre de usuario debe de tener por lo menos 3 caracteres' },
+        { type: 'maxlength', message: 'El nombre de usuario no debe de tener más de 25 caracters' }
+      ],
+      'email': [
+        { type: 'required', message: 'Tiene que agregar un correo' },
+        { type: 'pattern', message:'El correo debe de seguir el siguiente formato: ejemplo@correo.com'}
+      ]
+    }
+    
+    
   }
-
-  addUsuario(name, email, phone_number,password) {
-    this.service.addUsuario(name, email, phone_number,password);
-    // this.router.navigate(['index']);
-    this.router.navigate(['/usuario']);
-    this.getUsuarios();
-}
-
-
-account_validation_messages = {
-  'name': [
-    { type: 'required', message: 'Tiene que agregar un nombre' },
-    { type: 'minlength', message: 'El nombre de usuario debe de tener por lo menos 3 caracteres' },
-    { type: 'maxlength', message: 'El nombre de usuario no debe de tener más de 25 caracters' }
-  ],
-  'email': [
-    { type: 'required', message: 'Tiene que agregar un correo' },
-    { type: 'pattern', message:'El correo debe de seguir el siguiente formato: ejemplo@correo.com'}
-  ]
-}
-
- 
-}
+  

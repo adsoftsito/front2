@@ -49,23 +49,15 @@ export class EditComponent implements OnInit {
    });
   }
 
-  updateUsuarios(name,email,phone_number) {
-    this.route.params.subscribe(params => {
-    this.service.updateUsuarios(name, email, phone_number,params['id']);
-    // regreso a usuario
+  updateUsuario(name,email,phone_number) {
+    this.route.params.subscribe(params => {this.service.updateUsuarios(name, email, phone_number, params['id']).subscribe(data => {console.log('Updated');});
     this.router.navigate(['/usuario']);
     this.getUsuarios();
-    
   });
 }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.usuario = this.service.editUsuarios(params['id']).subscribe(res => {
-        this.usuario = res;
-        // this.getUsuarios();
-      });
-    });
+    this.route.params.subscribe(params => {this.usuario = this.service.getIDUsuarios(params['id']).subscribe(res => {this.usuario = res;});});
   }
 
 

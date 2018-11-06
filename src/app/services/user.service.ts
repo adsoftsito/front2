@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IUsuario } from '../interfaces/usuario';
+import { IUser } from '../interfaces/user';
 import { Observable } from 'rxjs/Observable';
 import { environment } from 'environments/environment';
 // esto es para que sirva el map, si no no funciona
@@ -8,27 +8,27 @@ import 'rxjs/add/operator/map';
 //variable que guarda mi endpoint
 const API_URL = environment.apiUrl;
 @Injectable()
-export class UsuarioService {
+export class UserService {
   
   // private _url: string = "https://ertourister.appspot.com/user";
   private _id: number;
 
   constructor(private http: HttpClient) { }
 
-  getUsuarios(): Observable<IUsuario[]> {
-    return this.http.get<IUsuario[]>(API_URL + '/user');
+  getUsuarios(): Observable<IUser[]> {
+    return this.http.get<IUser[]>(API_URL + '/user');
   }
   
-  deleteUsuarios(id: number): Observable<IUsuario> {
-    return this.http.delete<IUsuario>(API_URL + '/user'+"/"+id);
+  deleteUsuarios(id: number): Observable<IUser> {
+    return this.http.delete<IUser>(API_URL + '/user'+"/"+id);
   }
 
   //returns a user searched by an id. this is used when you try to edit a user
-  getIDUsuarios(id): Observable<IUsuario> {
-    return this.http.get<IUsuario>(API_URL + '/user'+"/"+id);
+  getIDUsuarios(id): Observable<IUser> {
+    return this.http.get<IUser>(API_URL + '/user'+"/"+id);
   }
   
-  addUsuarios(name, email, phone_number, password): Observable<IUsuario> {
+  addUsuarios(name, email, phone_number, password): Observable<IUser> {
     const obj = {
       name: name,
       email: email,
@@ -36,16 +36,16 @@ export class UsuarioService {
       password: password
     };
     // duda de porque le agrego juanca o jesus el add en el url, segun yo funcionaba sin el
-    return this.http.post<IUsuario>(API_URL + '/user'+"/add", obj);
+    return this.http.post<IUser>(API_URL + '/user'+"/add", obj);
   }
   
-  updateUsuarios(name, email, phone_number, id): Observable<IUsuario> {
+  updateUsuarios(name, email, phone_number, id): Observable<IUser> {
     const obj = {
       name: name,
       email: email,
       phone_number: phone_number,
     };
-    return this.http.put<IUsuario>(API_URL + '/user'+"/"+id, obj);
+    return this.http.put<IUser>(API_URL + '/user'+"/"+id, obj);
   }
 
 

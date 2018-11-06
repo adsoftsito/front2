@@ -1,6 +1,8 @@
+
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UsuarioService } from '../services/usuario.service';
+//import { UsuarioService } from '../services/user.service';
 // formbuiler para no pelear con formcontrols, EmailValidator, que suelen ser muy molestos
 // validators para validar mis inputs
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
@@ -20,11 +22,11 @@ export class EditComponent implements OnInit {
   title = 'Editar Usuarios';
 
   // importo en el constructor el form builder service al igual que el servicio que estoy usando y el router
-  constructor(private route: ActivatedRoute, private router: Router, private service: UsuarioService, private fb: FormBuilder) {
+  constructor(private route: ActivatedRoute, private router: Router,/* private service: UsuarioService,*/ private fb: FormBuilder) {
     this.createForm();
    }
    getUsuarios() {
-    this.service.getUsuarios().subscribe(res => {this.usuarios = res;});
+    //this.service.getUsuarios().subscribe(res => {this.usuarios = res;});
   }
 
   createForm() {
@@ -42,17 +44,17 @@ export class EditComponent implements OnInit {
       
    });
   }
-
+/*
   updateUsuario(name,email,phone_number) {
     this.route.params.subscribe(params => {this.service.updateUsuarios(name, email, phone_number, params['id']).subscribe(data => {console.log('Updated');});
     this.router.navigate(['/usuario']);
     this.getUsuarios();
   });
-}
+}*/
 
   ngOnInit() {
     // new way is paramMap old way params to grab route parameters
-    this.route.params.subscribe(params => {this.usuario = this.service.getIDUsuarios(params['id']).subscribe(res => {this.usuario = res;});});
+   // this.route.params.subscribe(params => {this.usuario = this.service.getIDUsuarios(params['id']).subscribe(res => {this.usuario = res;});});
   }
 
 

@@ -6,9 +6,9 @@
               <div class="card">
                   <div class="card-header card-header-warning">
                       <h4 class="card-title text-dark">Usuarios ({{usuarios.length}})</h4>
-                      <button type="button" class="btn btn-success" >
+                      <!-- <button type="button" class="btn btn-success" >
                         Agregar
-                      </button>
+                      </button> -->
                     </div>
                   <div class="card-body">
                       <div class="table-responsive">
@@ -23,9 +23,9 @@
                                 <th>
                                     Telefono
                                 </th>
-                                <th>
+                                <!-- <th>
                                     Acciones
-                                </th>
+                                </th> -->
                               <tbody>
                                 <tr *ngIf="selectedUsuario != ''">
                                     <td>
@@ -57,7 +57,7 @@
                                     <td>{{ usuario.name | titlecase }}</td>
                                     <td>{{ usuario.email }}</td>
                                     <td>{{usuario.phone_number}}</td>
-                                    <td>
+                                    <!-- <td>
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             <button class="btn btn-danger" type ="button" (click)="deleteUsuario(usuario.id)">
                                                 <i class="text-white fa fa-trash"></i>
@@ -66,7 +66,7 @@
                                                 <i class="fa fa-pencil text-dark"></i>
                                             </button>
                                         </div>
-                                    </td>
+                                    </td> -->
                                 </tr>
                               </tbody>
                           </table>

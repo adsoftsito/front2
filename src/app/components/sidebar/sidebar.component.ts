@@ -11,7 +11,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/table-list-rutas', title: 'Rutas',  icon: 'map', class: '' },
     { path: '/user', title: 'Usuarios',  icon:'person', class: '' },
     { path: '/table-list', title: 'Paradas',  icon:'location_on', class: '' },
-    { path: '/typography', title: 'Camiones',  icon:'directions_bus', class: '' },
+    { path: '/bus', title: 'Camiones',  icon:'directions_bus', class: '' },
     { path: '/icons', title: 'Boletos',  icon:'confirmation_number', class: '' },
     { path: '/admin', title: 'Admin',  icon:'supervised_user_circle', class: '' }
     

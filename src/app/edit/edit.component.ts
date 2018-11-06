@@ -51,6 +51,7 @@ export class EditComponent implements OnInit {
 }
 
   ngOnInit() {
+    // new way is paramMap old way params to grab route parameters
     this.route.params.subscribe(params => {this.usuario = this.service.getIDUsuarios(params['id']).subscribe(res => {this.usuario = res;});});
   }
 

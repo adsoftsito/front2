@@ -19,6 +19,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AdminService } from './services/admin.service';
 import { UserService } from './services/user.service';
 import { BusService} from './services/bus.service';
+import { MuralService } from './services/mural.service';
 
 
 @NgModule({
@@ -43,7 +44,7 @@ import { BusService} from './services/bus.service';
     AdminLayoutComponent, //this one takes all the controllers within
   ],
   // services
-  providers: [UserService,AdminService,BusService],
+  providers: [UserService,AdminService,BusService,MuralService],
   // The root component which is the main view of the application
   bootstrap: [AppComponent]
 })

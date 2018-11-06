@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MuralService } from '../../services/mural.service';
 
 @Component({
   selector: 'app-mural',
@@ -6,10 +7,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mural.component.scss']
 })
 export class MuralComponent implements OnInit {
-
-  constructor() { }
+  public murales = [];
+  constructor(private service: MuralService) { }
 
   ngOnInit() {
+    this.service.getMurales()
+    .subscribe(data => this.murales = data);
+  }
+
+  ngOnChanges(){
+    this.service.getMurales()
+    .subscribe(data => this.murales = data);
+    // this.selectedUsuario = "";
+  }
+  deleteMural(id) {
+    if(confirm("Desea eliminar el mural?")){
+      this.service.deleteMural(id).subscribe(data => {
+        this.ngOnChanges(); 
+      });
+    }
   }
 
 }

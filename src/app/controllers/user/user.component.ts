@@ -1,20 +1,20 @@
-import { UsuarioService } from '../services/usuario.service';
+import { UserService } from '../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { throwToolbarMixedModesError } from '@angular/material';
 
 @Component({
-  selector: 'app-usuario',
-  templateUrl: './usuario.component.html',
-  styleUrls: ['./usuario.component.scss']
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.scss']
 })
 
-export class UsuarioComponent implements OnInit {
+export class UserComponent implements OnInit {
 
   public usuarios = [];
   selectedUsuario: any;
 
-  constructor(private _usuarioService: UsuarioService) {}
+  constructor(private _usuarioService: UserService) {}
 
   ngOnInit() {
     this._usuarioService.getUsuarios()

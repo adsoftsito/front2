@@ -2,10 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
-
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { EditComponent } from './edit/edit.component';
-import { CreateUsuarioComponent } from './create-usuario/create-usuario.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 const routes: Routes =[
   {
@@ -16,38 +13,22 @@ const routes: Routes =[
     path: '',
     component: AdminLayoutComponent,
     children: [
-        {
-      path: '',
-      loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
-  },
-  {
-    path:'edit/:id',
-    component: EditComponent
-  },
-  {
-    path:'create-usuario',
-    component: CreateUsuarioComponent
-  }
-]}
-
-    // { path: 'dashboard',      component: DashboardComponent },
-    // { path: 'user-profile',   component: UserProfileComponent },
-    // { path: 'table-list',     component: TableListComponent },
-    // { path: 'typography',     component: TypographyComponent },
-    // { path: 'icons',          component: IconsComponent },
-    // { path: 'maps',           component: MapsComponent },
-    // { path: 'notifications',  component: NotificationsComponent },
-    // { path: 'upgrade',        component: UpgradeComponent },
-    // { path: '',               redirectTo: 'dashboard', pathMatch: 'full' }
-];
-
-@NgModule({
-  imports: [
-    CommonModule,
-    BrowserModule,
-    RouterModule.forRoot(routes)
-  ],
-  exports: [
-  ],
-})
-export class AppRoutingModule { }
+      {
+        path: '',
+        loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule' //takes all the routes of admin-routes
+      },
+      
+    ]}
+  ];
+  
+  @NgModule({
+    imports: [
+      CommonModule,
+      BrowserModule,
+      RouterModule.forRoot(routes)
+    ],
+    exports: [
+    ],
+  })
+  export class AppRoutingModule { }
+  

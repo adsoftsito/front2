@@ -1,6 +1,8 @@
+
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UsuarioService } from '../services/usuario.service';
+//import { UsuarioService } from '../services/user.service';
 // formbuiler para no pelear con formcontrols, que suelen ser muy molestos
 // validators para validar mis inputs
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
@@ -16,7 +18,7 @@ export class CreateUsuarioComponent implements OnInit {
   angForm: FormGroup;
   title = 'Agregar usuario';
   
-  constructor(private route: ActivatedRoute, private router: Router, private service: UsuarioService, private fb: FormBuilder) { 
+  constructor(private route: ActivatedRoute, private router: Router, /*private service: UsuarioService,*/ private fb: FormBuilder) { 
     this.createForm();
   }
   
@@ -24,7 +26,7 @@ export class CreateUsuarioComponent implements OnInit {
   }
   
   getUsuarios() {
-    this.service.getUsuarios().subscribe(res => {this.usuarios = res;});
+    //this.service.getUsuarios().subscribe(res => {this.usuarios = res;});
   }
   
   createForm() {
@@ -45,12 +47,12 @@ export class CreateUsuarioComponent implements OnInit {
         phone_number:[''],
         password: ['', Validators.required ],
       });
-    }
+  }/*
     addUsuario(name, email, phone_number,password) {
       this.service.addUsuarios(name, email, phone_number,password).subscribe(data => this.usuarios = data);
       this.router.navigate(['/usuario']);
       this.getUsuarios();
-    }
+    }*/
     
     
     account_validation_messages = {

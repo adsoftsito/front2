@@ -35,7 +35,12 @@ export class AdminService {
             .get(uri)
             // duda de para que chihuahuas es el map 
             .map(res => {
+              // console.log(res[0].email);
+              // console.log(res);
+              // console.log(res[0].id);
+              // console.log(res.length());
               return res;
+             
             });
   }
 

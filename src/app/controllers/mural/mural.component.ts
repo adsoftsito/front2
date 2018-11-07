@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MuralService } from '../../services/mural.service';
-
+// import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 @Component({
   selector: 'app-mural',
   templateUrl: './mural.component.html',

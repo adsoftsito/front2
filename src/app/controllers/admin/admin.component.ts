@@ -18,8 +18,13 @@ export class AdminComponent implements OnInit {
 
   getAdmins() {
     this.service.getAdmins().subscribe(res => {
-       console.log(res);
       this.admins = res;
+      // for (let i = 0; i<this.admins.length;i++){
+      //   if(res[i].email == 'ana@gmail.com' && res[i].username == 'ana'){
+      //     alert(res[i].password);
+      //   }
+      // }
+      // console.log(res.email)
     });
   }
 

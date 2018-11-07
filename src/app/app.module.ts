@@ -12,6 +12,8 @@ import { ComponentsModule } from './components/components.module';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { AppComponent } from './app.component';
 import {MatInputModule} from '@angular/material/input';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import {MatDialogModule} from "@angular/material";
 import {
   AgmCoreModule
 } from '@agm/core';
@@ -20,7 +22,9 @@ import { AdminService } from './services/admin.service';
 import { UserService } from './services/user.service';
 import { BusService} from './services/bus.service';
 import { MuralService } from './services/mural.service';
-
+import { LoginComponent } from './controllers/login/login.component';
+// import {CreateUsuarioComponent} from './create-usuario/create-usuario.component';
+// import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   imports: [
@@ -34,6 +38,9 @@ import { MuralService } from './services/mural.service';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatDialogModule,
+    // EditComponent,
+    // CreateUsuarioComponent,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     })
@@ -41,7 +48,9 @@ import { MuralService } from './services/mural.service';
   declarations: [
     //  classes that belong to this module and are related to views.
     AppComponent,
-    AdminLayoutComponent, //this one takes all the controllers within
+    AdminLayoutComponent,
+    LoginComponent,
+    // EditComponent//this one takes all the controllers within
   ],
   // services
   providers: [UserService,AdminService,BusService,MuralService],

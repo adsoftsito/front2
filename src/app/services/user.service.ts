@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IUser } from '../interfaces/user';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { environment } from 'environments/environment';
-// esto es para que sirva el map, si no no funciona
 import 'rxjs/add/operator/map';
-//variable que guarda mi endpoint
 const API_URL = environment.apiUrl;
 @Injectable()
 export class UserService {
   
-  // private _url: string = "https://ertourister.appspot.com/user";
   private _id: number;
 
   constructor(private http: HttpClient) { }
@@ -35,7 +32,6 @@ export class UserService {
       phone_number: phone_number,
       password: password
     };
-    // duda de porque le agrego juanca o jesus el add en el url, segun yo funcionaba sin el
     return this.http.post<IUser>(API_URL + '/user'+"/add", obj);
   }
   

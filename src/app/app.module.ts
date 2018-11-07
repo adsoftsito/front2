@@ -18,6 +18,9 @@ import {
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AdminService } from './services/admin.service';
 import { UserService } from './services/user.service';
+import { ModalComponent } from './modals/modal.component';
+import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbdModalAddAdmin } from './controllers/admin/admin.component';
 
 
 @NgModule({
@@ -34,16 +37,25 @@ import { UserService } from './services/user.service';
     MatInputModule,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-    })
+    }),
+    NgbModule.forRoot()
   ],
   declarations: [
     //  classes that belong to this module and are related to views.
     AppComponent,
-    AdminLayoutComponent, //this one takes all the controllers within
+    AdminLayoutComponent,
+    NgbdModalAddAdmin, //this one takes all the controllers within
   ],
   // services
-  providers: [UserService,AdminService],
+  providers: [
+    UserService,
+    AdminService,
+    NgbActiveModal
+  ],
   // The root component which is the main view of the application
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    NgbdModalAddAdmin
+  ]
 })
 export class AppModule { }

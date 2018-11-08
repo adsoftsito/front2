@@ -3,8 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { IBus } from '../interfaces/bus';
 import { Observable } from 'rxjs/Observable';
 import { environment } from 'environments/environment';
-// esto es para que sirva el map, si no no funciona
-import 'rxjs/add/operator/map';
+
 const API_URL = environment.apiUrl;
 
 @Injectable()

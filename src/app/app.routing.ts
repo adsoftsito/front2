@@ -4,7 +4,7 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
-// import {CreateComponent} from 
+import {CreateComponent} from  './controllers/dateinformation/create/create.component';
 const routes: Routes =[
   {
     path: '',
@@ -17,11 +17,11 @@ const routes: Routes =[
       {
         path: '',
         loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule' //takes all the routes of admin-routes
+      },
+      {
+        path: 'create',
+        loadChildren: 'CreateComponent' //takes all the routes of admin-routes
       }
-      // {
-      //   path: 'create',
-      //   loadChildren: 'CreateComponent' //takes all the routes of admin-routes
-      // },
       
     ]}
   ];

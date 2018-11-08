@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DateinformationService } from '../../services/dateinformation.service';
 
+
 @Component({
   selector: 'app-dateinformation',
   templateUrl: './dateinformation.component.html',

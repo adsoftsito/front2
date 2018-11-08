@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DateinformationService } from '../../services/dateinformation.service';
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dateinformation',
@@ -9,7 +10,7 @@ import { DateinformationService } from '../../services/dateinformation.service';
 })
 export class DateinformationComponent implements OnInit {
   public dates = [];
-  constructor(private service: DateinformationService) { }
+  constructor(private service: DateinformationService, private route: ActivatedRoute, private router: Router,private fb: FormBuilder) { }
 
   ngOnInit() {
     this.service.getDates()

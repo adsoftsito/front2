@@ -28,7 +28,6 @@ import { LoginComponent } from './controllers/login/login.component';
 import { ModalComponent } from './modals/modal.component';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdModalAddAdmin } from './controllers/admin/admin.component';
-import { CreateComponent } from './controllers/dateinformation/create/create.component';
 
 
 @NgModule({
@@ -44,8 +43,7 @@ import { CreateComponent } from './controllers/dateinformation/create/create.com
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
-    // EditComponent,
-    // CreateUsuarioComponent,
+    
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     }),
@@ -57,7 +55,7 @@ import { CreateComponent } from './controllers/dateinformation/create/create.com
     AdminLayoutComponent,
     LoginComponent,
     NgbdModalAddAdmin,
-    CreateComponent, //this one takes all the controllers within
+   
     // EditComponent//this one takes all the controllers within
   ],
   // services

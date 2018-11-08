@@ -16,7 +16,7 @@ import { PlaceComponent } from '../../controllers/place/place.component';
 import { PurchaseComponent } from '../../controllers/purchase/purchase.component';
 import { TourComponent } from '../../controllers/tour/tour.component';
 import { PriceComponent } from '../../controllers/price/price.component';
-
+import {CreateComponent} from '../../controllers/dateinformation/create/create.component';
 export const AdminLayoutRoutes: Routes = [
     // {
     //   path: '',
@@ -77,5 +77,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'price',          component: PriceComponent},
     { path: 'purchase',          component: PurchaseComponent},
     { path: 'tour',          component: TourComponent},
+    { path: 'create',          component: CreateComponent},
     
 ];

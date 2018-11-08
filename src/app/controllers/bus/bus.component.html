@@ -58,7 +58,7 @@
                                   <tr *ngFor="let bus of buses"
                                   class="list-group-item-action">
                                       <td>{{ bus.numBus }}</td>
-                                      <td>{{ bus.availability }}</td>
+                                      <td>{{ bus.availability == true?"Disponible":"No Disponible" }}</td>
                                       <td>{{bus.tour_id.name}}</td>
                                       <td>{{bus.mural_id.title}}</td>
                                       <td>

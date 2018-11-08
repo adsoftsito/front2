@@ -12,7 +12,7 @@ import { ComponentsModule } from './components/components.module';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { AppComponent } from './app.component';
 import {MatInputModule} from '@angular/material/input';
-import {ToastModule} from 'ng2-toastr/ng2-toastr';
+//import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import {MatDialogModule} from "@angular/material";
 import {
   AgmCoreModule

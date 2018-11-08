@@ -30,6 +30,7 @@ import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdModalAddAdmin } from './controllers/admin/admin.component';
 
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -55,6 +56,7 @@ import { NgbdModalAddAdmin } from './controllers/admin/admin.component';
     AdminLayoutComponent,
     LoginComponent,
     NgbdModalAddAdmin,
+    
    
     // EditComponent//this one takes all the controllers within
   ],

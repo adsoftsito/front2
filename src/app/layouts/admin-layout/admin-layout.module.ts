@@ -22,7 +22,7 @@ import { PurchaseComponent } from '../../controllers/purchase/purchase.component
 import { TourComponent } from '../../controllers/tour/tour.component';
 import { PriceComponent } from '../../controllers/price/price.component';
 import { CreateComponent } from '../../controllers/dateinformation/create/create.component';
-
+import { EditComponent } from '../../controllers/dateinformation/edit/edit.component';
 
 import {
   MatButtonModule,
@@ -61,7 +61,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     PriceComponent,
     PurchaseComponent,
     TourComponent,
-    CreateComponent
+    CreateComponent,
+    EditComponent
   ]
 })
 

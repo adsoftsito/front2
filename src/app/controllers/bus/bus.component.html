@@ -24,9 +24,6 @@
                                       Tour asociado
                                   </th>
                                   <th>
-                                      Mural asociado
-                                  </th>
-                                  <th>
                                       Acciones
                                   </th>
                                 <tbody>
@@ -60,7 +57,6 @@
                                       <td>{{ bus.numBus }}</td>
                                       <td>{{ bus.availability == true?"Disponible":"No Disponible" }}</td>
                                       <td>{{bus.tour_id.name}}</td>
-                                      <td>{{bus.mural_id.title}}</td>
                                       <td>
                                           <div class="btn-group" role="group" aria-label="Basic example">
                                               <button class="btn btn-danger" type ="button" (click)="deleteBus(bus.id)">

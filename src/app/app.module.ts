@@ -20,7 +20,8 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AdminService } from './services/admin.service';
 import { UserService } from './services/user.service';
 import { BusService} from './services/bus.service';
-import {PlaceService} from './services/place.service';
+import { PlaceService} from './services/place.service';
+import {DateinformationService} from './services/dateinformation.service';
 import { MuralService } from './services/mural.service';
 import { LoginComponent } from './controllers/login/login.component';
 
@@ -58,7 +59,7 @@ import { NgbdModalAddAdmin } from './controllers/admin/admin.component';
     // EditComponent//this one takes all the controllers within
   ],
   // services
-  providers: [UserService,AdminService,BusService,MuralService, NgbActiveModal,PlaceService],
+  providers: [UserService,AdminService,DateinformationService,BusService,MuralService, NgbActiveModal,PlaceService],
 
   // The root component which is the main view of the application
   bootstrap: [AppComponent],

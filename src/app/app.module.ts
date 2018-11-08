@@ -23,8 +23,11 @@ import { UserService } from './services/user.service';
 import { BusService} from './services/bus.service';
 import { MuralService } from './services/mural.service';
 import { LoginComponent } from './controllers/login/login.component';
-// import {CreateUsuarioComponent} from './create-usuario/create-usuario.component';
-// import { EditComponent } from './edit/edit.component';
+
+import { ModalComponent } from './modals/modal.component';
+import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbdModalAddAdmin } from './controllers/admin/admin.component';
+
 
 @NgModule({
   imports: [
@@ -43,18 +46,24 @@ import { LoginComponent } from './controllers/login/login.component';
     // CreateUsuarioComponent,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-    })
+    }),
+    NgbModule.forRoot()
   ],
   declarations: [
     //  classes that belong to this module and are related to views.
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
+    NgbdModalAddAdmin, //this one takes all the controllers within
     // EditComponent//this one takes all the controllers within
   ],
   // services
-  providers: [UserService,AdminService,BusService,MuralService],
+  providers: [UserService,AdminService,BusService,MuralService, NgbActiveModal],
+
   // The root component which is the main view of the application
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    NgbdModalAddAdmin
+  ]
 })
 export class AppModule { }

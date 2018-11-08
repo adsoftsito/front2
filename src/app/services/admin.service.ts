@@ -1,61 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-// esto es para que sirva el map, si no no funciona
-import 'rxjs/add/operator/map';
+import { environment } from 'environments/environment';
+import { Observable } from 'rxjs';
+import { IAdmin } from '../interfaces/admin';
 
+const API_URL = environment.apiUrl;
 @Injectable()
 export class AdminService {
-
-  result: any;
   constructor(private http: HttpClient) { }
 
-  // addUsuario(codigo, nombre) {
-  //   // aqui tendriamos que poner nuestro endpoint
-  //   const uri = 'https://ertourister.appspot.com/user';
-  //   // duda de para que es el objeto 
-  //   const obj = {
-  //     codigo: codigo,
-  //     nombre: nombre 
-  //   };
-  //   this
-  //     .http
-  //     .post(uri, obj)
-  //     .subscribe(res =>
-  //         console.log('Done'));
-  // }
 
-
-
-
-  getAdmins() {
-    //const uri = 'http://localhost:4000/coins';
-    const uri = 'https://ertourister.appspot.com/admin';
-    return this
-            .http
-            .get(uri)
-            // duda de para que chihuahuas es el map 
-            .map(res => {
-              // console.log(res[0].email);
-              // console.log(res);
-              // console.log(res[0].id);
-              // console.log(res.length());
-              return res;
-             
-            });
+  getAdmins(): Observable<IAdmin[]> {
+    return this.http.get<IAdmin[]>(API_URL + '/admin');
   }
 
-  deleteAdmins(id) {
-    const uri = 'https://ertourister.appspot.com/admin/' + id;
-
-        return this
-            .http
-            .delete(uri)
-            .map(res => {
-              return res;
-            });
+  deleteAdmin(id): Observable<IAdmin>{
+    if(confirm("¿Eliminar admin?")){
+      return this.http.delete<IAdmin>(API_URL+'/admin'+'/'+id);
+    }
   }
 
-  
-
+  addAdmin(username, email, password): Observable<IAdmin>{
+    let obj = {
+      username: username,
+      email: email,
+      password: password
+    }
+    return this.http.post<IAdmin>(API_URL + '/admin', obj);
+  }
 
 }

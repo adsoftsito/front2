@@ -26,4 +26,14 @@ export class DateinformationService {
   getIDDate(id): Observable<IDate> {
     return this.http.get<IDate>(API_URL + '/dateinformation'+"/"+id);
   }
+
+  addDate(start_date,end_date,start_time,end_time,frequency):Observable<IDate>{
+    const obj={
+      start_date: start_date,
+      end_date : end_date,
+      start_time : start_time,
+      end_time : end_time,
+    };
+    return this.http.post<IDate>(API_URL + '/dateinformation'+"/add",obj);
+  }
 }

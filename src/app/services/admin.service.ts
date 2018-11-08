@@ -9,6 +9,7 @@ const API_URL = environment.apiUrl;
 export class AdminService {
   constructor(private http: HttpClient) { }
 
+
   getAdmins(): Observable<IAdmin[]> {
     return this.http.get<IAdmin[]>(API_URL + '/admin');
   }

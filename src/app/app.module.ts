@@ -12,12 +12,18 @@ import { ComponentsModule } from './components/components.module';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { AppComponent } from './app.component';
 import {MatInputModule} from '@angular/material/input';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import {MatDialogModule} from "@angular/material";
 import {
   AgmCoreModule
 } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AdminService } from './services/admin.service';
 import { UserService } from './services/user.service';
+import { BusService} from './services/bus.service';
+import { MuralService } from './services/mural.service';
+import { LoginComponent } from './controllers/login/login.component';
+
 import { ModalComponent } from './modals/modal.component';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdModalAddAdmin } from './controllers/admin/admin.component';
@@ -35,6 +41,9 @@ import { NgbdModalAddAdmin } from './controllers/admin/admin.component';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatDialogModule,
+    // EditComponent,
+    // CreateUsuarioComponent,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     }),
@@ -44,14 +53,13 @@ import { NgbdModalAddAdmin } from './controllers/admin/admin.component';
     //  classes that belong to this module and are related to views.
     AppComponent,
     AdminLayoutComponent,
+    LoginComponent,
     NgbdModalAddAdmin, //this one takes all the controllers within
+    // EditComponent//this one takes all the controllers within
   ],
   // services
-  providers: [
-    UserService,
-    AdminService,
-    NgbActiveModal
-  ],
+  providers: [UserService,AdminService,BusService,MuralService, NgbActiveModal],
+
   // The root component which is the main view of the application
   bootstrap: [AppComponent],
   entryComponents: [

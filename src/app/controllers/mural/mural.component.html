@@ -1,3 +1,85 @@
-<p>
-  mural works!
-</p>
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-warning">
+                        <h4 class="card-title text-dark">Murales ({{murales.length}})</h4>
+                        <button type="button" class="btn btn-success" >
+                          Agregar
+                        </button>
+                      </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="text-primary">
+                                  <th>
+                                      Título
+                                  </th>
+                                  <th>
+                                      Autor
+                                  </th>
+                                  <th>
+                                      Descripcion
+                                  </th>
+                                  <th>
+                                      Imagen
+                                  </th>
+                                  <th>
+                                      Acciones
+                                  </th>
+                                <tbody>
+                                  <!-- <tr *ngIf="selectedUsuario != ''">
+                                      <td>
+                                          <input type="text" [(ngModel)]="selectedUsuario.name" class="form-control">
+                                      </td>
+                                      <td>
+                                          <input type="text" [(ngModel)]="selectedUsuario.email" class="form-control">
+                                      </td>
+                                      <td>
+                                          <input type="text" [(ngModel)]="selectedUsuario.phone_number" class="form-control">
+                                      </td>
+                                      <td>
+                                          <div class="btn-group"  role="group" >
+                                              <button type="button"
+                                              class="btn btn-success"
+                                              (click)="editUsuario(selectedUsuario)">
+                                                  <i class="fa fa-check text-white"></i>
+                                              </button>
+                                              <button type="button" 
+                                              class="btn btn-outline-secondary"
+                                              (click)="ngOnInit()">
+                                                  <i class="fa fa-times text-dark"></i>
+                                              </button>
+                                          </div>
+                                      </td>
+                                  </tr> -->
+                                  <tr *ngFor="let mural of murales"
+                                  class="list-group-item-action">
+                                      <td>{{ mural.title }}</td>
+                                      <td>{{ mural.author }}</td>
+                                      <td>{{mural.description}}</td>
+                                      <td>{{mural.imageMural}}</td>
+                                      <!-- <td>{{mural.bud_id.numBus}}</td> -->
+                                      <td>
+                                          <div class="btn-group" role="group" aria-label="Basic example">
+                                              <button class="btn btn-danger" type ="button" (click)="deleteMural(mural.id)"  >
+                                                  <i class="text-white fa fa-trash"></i>
+                                              </button>
+                                              <button class="btn btn-outline-secondary" type="button" (click)="readyForEdition(usuario)">
+                                                  <i class="fa fa-pencil text-dark"></i>
+                                              </button>
+                                          </div>
+                                      </td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </div>
+    </div>
+    </div>
+    

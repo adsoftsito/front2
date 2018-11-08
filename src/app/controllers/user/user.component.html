@@ -6,9 +6,9 @@
               <div class="card">
                   <div class="card-header card-header-warning">
                       <h4 class="card-title text-dark">Usuarios ({{usuarios.length}})</h4>
-                      <button type="button" class="btn btn-success" >
+                      <!-- <button type="button" class="btn btn-success" >
                         Agregar
-                      </button>
+                      </button> -->
                     </div>
                   <div class="card-body">
                       <div class="table-responsive">
@@ -23,9 +23,9 @@
                                 <th>
                                     Telefono
                                 </th>
-                                <th>
+                                <!-- <th>
                                     Acciones
-                                </th>
+                                </th> -->
                               <tbody>
                                 <tr *ngIf="selectedUsuario != ''">
                                     <td>
@@ -38,7 +38,7 @@
                                         <input type="text" [(ngModel)]="selectedUsuario.phone_number" class="form-control" >
                                     </td>
                                     <td>
-                                        <div class="btn-group"  role="group" *ngIf="selectedUsuario != ''">
+                                        <div class="btn-group"  role="group" >
                                             <button type="button"
                                             class="btn btn-success"
                                             (click)="editUsuario(selectedUsuario)">

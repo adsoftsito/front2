@@ -17,8 +17,11 @@ export class UserComponent implements OnInit {
   constructor(private _usuarioService: UserService) {}
 
   ngOnInit() {
+    // console.log(this._usuarioService.getUsuarios()[0].email);
     this._usuarioService.getUsuarios()
-    .subscribe(data => this.usuarios = data);
+    .subscribe(data => this.usuarios = data
+    );
+    // console.log(this.usuarios.length);
     this.selectedUsuario = "";
   }
   ngOnChanges(){
@@ -41,6 +44,7 @@ export class UserComponent implements OnInit {
   editUsuario(usuario){
     this._usuarioService.updateUsuarios(usuario.name, usuario.email, usuario.phone_number, usuario.id)
     .subscribe((res)=>{
+      // console.log(usuario.email);
       this.ngOnChanges();
     });
   }

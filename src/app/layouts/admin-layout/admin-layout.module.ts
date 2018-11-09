@@ -23,11 +23,13 @@ import { TourComponent } from '../../controllers/tour/tour.component';
 import { PriceComponent } from '../../controllers/price/price.component';
 import { CreateComponent } from '../../controllers/dateinformation/create/create.component';
 import { EditComponent } from '../../controllers/dateinformation/edit/edit.component';
-// para el datepicker
+// para el datepicker y timepicker
 import { MatDatepickerModule} from '@angular/material';
 import { MatNativeDateModule} from '@angular/material';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+
 
 import {
   MatButtonModule,
@@ -50,7 +52,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    NgxMaterialTimepickerModule.forRoot(),
+
   ],
   declarations: [
     DashboardComponent,

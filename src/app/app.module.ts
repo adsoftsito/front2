@@ -28,8 +28,8 @@ import { LoginComponent } from './controllers/login/login.component';
 import { ModalComponent } from './modals/modal.component';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdModalAddAdmin } from './controllers/admin/admin.component';
-
-
+import {NgModule} from '@angular/core';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 
 
@@ -47,7 +47,7 @@ import { NgbdModalAddAdmin } from './controllers/admin/admin.component';
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
-    
+
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     }),

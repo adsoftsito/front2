@@ -23,6 +23,9 @@ import { TourComponent } from '../../controllers/tour/tour.component';
 import { PriceComponent } from '../../controllers/price/price.component';
 import { CreateComponent } from '../../controllers/dateinformation/create/create.component';
 import { EditComponent } from '../../controllers/dateinformation/edit/edit.component';
+// para el datepicker
+import { MatDatepickerModule} from '@angular/material';
+import { MatNativeDateModule} from '@angular/material';
 
 import {
   MatButtonModule,
@@ -42,6 +45,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatInputModule,
     MatTooltipModule,
     ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   declarations: [
     DashboardComponent,

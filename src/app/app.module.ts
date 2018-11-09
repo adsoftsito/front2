@@ -31,6 +31,9 @@ import { NgbdModalAddAdmin } from './controllers/admin/admin.component';
 
 
 
+
+
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -43,7 +46,7 @@ import { NgbdModalAddAdmin } from './controllers/admin/admin.component';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDialogModule,
+    MatDialogModule
     
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'

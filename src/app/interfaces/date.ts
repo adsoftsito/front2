@@ -5,4 +5,5 @@ export interface IDate {
     start_time: string;
     end_time: string;
     frequency: string;
+    servicio: boolean;
 }

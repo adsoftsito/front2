@@ -26,6 +26,8 @@ import { EditComponent } from '../../controllers/dateinformation/edit/edit.compo
 // para el datepicker
 import { MatDatepickerModule} from '@angular/material';
 import { MatNativeDateModule} from '@angular/material';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio';
 
 import {
   MatButtonModule,
@@ -46,7 +48,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatTooltipModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatCheckboxModule,
+    MatRadioModule
   ],
   declarations: [
     DashboardComponent,

@@ -30,14 +30,15 @@ export class CreateComponent implements OnInit {
     this.angForm = this.fb.group({
       // hace que el valor sea requerido
       start_date: [''], //checar validators
-      end_date: [''] 
+      end_date: [''] ,
+      servicio: [''] 
    });
   }
 
-  addDate(start_date,end_date){
-    this.service.addDate(start_date,end_date).subscribe(data => this.dates = data);
+  addDate(start_date,end_date,service){
+    this.service.addDate(start_date,end_date,service).subscribe(data => this.dates = data);
     this.router.navigate(['/dateinformation']);
-    // console.log(start_date.type);
+    console.log(service);
     this.getDates();
   }
 

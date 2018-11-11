@@ -9,26 +9,64 @@
         <div class="container" novalidate>
             
             <div class="form-group">
-                <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Username" type="text" class="form-control" formControlName="username" #name >
-                </mat-form-field>
+                <label for="username" [ngClass]="myForm.controls['username'].invalid ? 'text-danger' : ''">Username</label>
+                <input id="username" formControlName="username" type="text" class="form-control" [ngClass]="myForm.controls['username'].invalid ? 'is-invalid' : ''" #usernmame>
+                <label class="text-danger" *ngIf="myForm.controls['username'].hasError('required')">
+                    Username is Required!
+                </label>
+                
             </div>
             
             <div class="form-group">
-                <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Email" type="text" class="form-control" formControlName="email" #email >
-                </mat-form-field>
+                <label for="email" [ngClass]="myForm.controls['email'].invalid ? 'text-danger' : ''">Email Address</label>
+                <input id="email" formControlName="email" type="email" class="form-control" [ngClass]="myForm.controls['email'].invalid ? 'is-invalid' : ''" #email>
+                <label class="text-danger" *ngIf="myForm.controls['email'].hasError('required')">
+                    Email is Required!
+                </label>
+                <label class="text-danger" *ngIf="myForm.controls['email'].hasError('email')">
+                    Enter a valid email address!
+                </label>
             </div>
             
             <div class="form-group">
-                <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Password" type="password" class="form-control" formControlName="password" #password >
-                </mat-form-field>
+                <label for="password" [ngClass]="myForm.controls['password'].invalid ? 'text-danger' : ''">Password:</label>
+                <input id="password" formControlName="password" type="password" class="form-control" [ngClass]="myForm.controls['password'].invalid ? 'is-invalid' : ''" #password>
+                <label class="col" [ngClass]="myForm.controls['password'].hasError('required') || myForm.controls['password'].hasError('hasNumber')  ? 'text-danger' : 'text-success'">
+                    <i class="material-icons">{{ myForm.controls['password'].hasError('required') ||
+                      myForm.controls['password'].hasError('hasNumber') ? 'cancel' :
+                      'check_circle' }}</i>
+                    Must contain at least 1 number!
+                  </label>
+
+                <label class="col" [ngClass]="myForm.controls['password'].hasError('required') || myForm.controls['password'].hasError('minlength')  ? 'text-danger' : 'text-success'">
+                    <i class="material-icons">{{ myForm.controls['password'].hasError('required') ||
+                        myForm.controls['password'].hasError('minlength') ? 'cancel' :
+                        'check_circle' }}</i>
+                        Must be at least 6 characters!
+                    </label>
+
+                    <label class="col" [ngClass]="myForm.controls['password'].hasError('required') || myForm.controls['password'].hasError('hasSmallCase')  ? 'text-danger' : 'text-success'">
+                        <i class="material-icons">
+                            {{ myForm.controls['password'].hasError('required') || myForm.controls['password'].hasError('hasCase') ? 'cancel' : 'check_circle' }}
+                        </i> 
+                        Must contain at least 1 Letter!
+                    </label>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmPassword" [ngClass]="myForm.controls['confirmPassword'].invalid ? 'text-danger' : ''">Confirm Password:</label>
+                    <input id="confirmPassword" formControlName="confirmPassword" type="password" class="form-control" [ngClass]="myForm.controls['confirmPassword'].invalid ? 'is-invalid' : ''" #confirmPassword>
+                    <label class="text-danger" *ngIf="myForm.controls['confirmPassword'].hasError('required')">
+                        Password is Required!
+                    </label>
+                    <label class="text-danger" *ngIf="myForm.controls['confirmPassword'].hasError('NoPassswordMatch')">
+                        Password do not match
+                    </label>
+                </div>
+                
             </div>
-            
         </div>
-    </div>
-    <div class="modal-footer">
-        <button mat-raised-button  type="button"  (click)="addAdmin(name.value, email.value, password.value)"  [disabled]="myForm.pristine || myForm.invalid"  class="btn btn-danger pull-right">Agregar</button>      
-    </div>
-</form>
+        <div class="modal-footer">
+            <button type="button"  (click)="addAdmin(username.value, email.value, password.value, confirmPassword.value)"  [disabled]="myForm.pristine || myForm.invalid"  class="btn btn-danger pull-right">Agregar</button> 
+        </div>
+    </form>

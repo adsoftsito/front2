@@ -13,7 +13,7 @@ export class DateinformationComponent implements OnInit {
   constructor(private service: DateinformationService, private route: ActivatedRoute, private router: Router,private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.service.getDates()
+    this.service.getInformation()
     .subscribe(data => this.dates = data);
     
   }

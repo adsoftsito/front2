@@ -24,6 +24,7 @@ export class NgbdModalAddAdmin{
         addAdmin(username, email, password){
             this._adminService.addAdmin(username, email, password).subscribe();
             this.closeModal();
+            
         }    
         
         private createForm() {

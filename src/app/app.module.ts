@@ -27,8 +27,8 @@ import { LoginComponent } from './controllers/login/login.component';
 
 import { ModalComponent } from './modals/modal.component';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { NgbdModalAddAdmin } from './controllers/admin/adminmodal.component';
-import { NgbdModalEditAdmin} from './controllers/admin/admineditmodal.component'
+import { NgbdModalAddAdmin } from './controllers/admin/modals/AdminAddModal.component';
+import { NgbdModalEditAdmin} from './controllers/admin/modals/AdminEditModal.component'
 
 
 

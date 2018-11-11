@@ -1,8 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { NgbdModalAddAdmin } from './adminmodal.component';
-import { NgbdModalEditAdmin} from './admineditmodal.component';
+import { NgbdModalAddAdmin } from './modals/AdminAddModal.component';
+import { NgbdModalEditAdmin} from './modals/AdminEditModal.component';
 
 @Component({
   selector: 'app-admin',

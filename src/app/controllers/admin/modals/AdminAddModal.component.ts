@@ -1,20 +1,15 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
-import { AdminService } from '../../services/admin.service';
+import { AdminService } from '../../../services/admin.service';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
-
 @Component({
-    templateUrl: './admineditmodal.component.html',
-    styleUrls: ['./admin.component.scss']
+    templateUrl: './AdminAddModal.component.html',
 })
- 
-export class NgbdModalEditAdmin{ 
+
+export class NgbdModalAddAdmin{ 
     
     myForm: FormGroup;
-    @Input() id: number;
-
-    public currentAdmin;
 
     constructor(
         private _adminService: AdminService,
@@ -25,20 +20,11 @@ export class NgbdModalEditAdmin{
             window.location.reload();
             this.activeModal.close('Modal Closed');
         }
-
-        updateAdmin(name,email,password) {
-            this._adminService.updateAdmin(name, email, password, this.id).subscribe();
+        
+        addAdmin(username, email, password){
+            this._adminService.addAdmin(username, email, password).subscribe();
             this.closeModal();
-        }
-
-        ngOnInit() {
-            this.getByIdAdmin();
-        }
-
-        getByIdAdmin(){
-            this._adminService.getByIDAdmin(this.id)
-            .subscribe(data => this.currentAdmin = data);
-        }
+        }    
         
         private createForm() {
             this.myForm = this.formBuilder.group({

@@ -67,7 +67,7 @@ export class DateinformationService {
       hour_id :hour_id
     };
 
-    return this.http.post<IDate>(API_URL+ '/informationdate'+ "/add",obj);
+    return this.http.post<IDate>(API_URL+ '/dateinformation'+ "/add",obj);
   }
 
   

@@ -12,6 +12,8 @@ export class CreateComponent implements OnInit {
   date: any;
   dates: any;
   hours: any;
+  dateInformation:any;
+  hour: any;
   angForm: FormGroup;
   myForm : FormGroup;
   myInfo :FormGroup;
@@ -29,12 +31,22 @@ export class CreateComponent implements OnInit {
     this.information =false;
   }
 
+  ngOnchanges(){
+    this.getInformation();
+  }
+
   getDates() {
     this.service.getDates().subscribe(res => {this.dates = res;});
   }
 
   getHours() {
     this.service.getHours().subscribe(res => {this.hours = res;});
+  }
+
+  getInformation(){
+    this.service.getInformation().subscribe(res =>{
+        this.dateInformation =res;
+    });
   }
   createForm() {
     // schema que guarda los valores y validaciones
@@ -85,9 +97,15 @@ export class CreateComponent implements OnInit {
     
   }
 
-  addInformationDate(date,hour){
-    this.service.addInformationDate(date,hour).subscribe(data=>this.dates=data);
+  addInformationDate(date_id,hour_id){
+    this.service.addInformationDate(date_id,hour_id).subscribe(data=>{
+      this.dateInformation = data;
+      console.log(data);
+    });
+   
     this.router.navigate(['/dateinformation']);
+    this.getInformation();
+    
   }
 
   // goBack(start_date,end_date,service,start_time, end_time,frequency){

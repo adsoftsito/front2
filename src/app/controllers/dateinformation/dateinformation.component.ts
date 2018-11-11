@@ -15,6 +15,7 @@ export class DateinformationComponent implements OnInit {
   ngOnInit() {
     this.service.getDates()
     .subscribe(data => this.dates = data);
+    
   }
 
   ngOnChanges(){

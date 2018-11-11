@@ -12,11 +12,20 @@ export class CreateComponent implements OnInit {
   date: any;
   dates: any;
   angForm: FormGroup;
+  myForm : FormGroup;
+  myInfo :FormGroup;
+  show: boolean;
+  information:boolean;
 
   constructor(private service: DateinformationService, private route: ActivatedRoute, private router: Router,private fb: FormBuilder) {
     this.createForm();
+    this.createDate();
+    this.createInfo();
+    
    }
   ngOnInit() {
+    this.show = false;
+    this.information =false;
   }
 
   getDates() {
@@ -31,15 +40,51 @@ export class CreateComponent implements OnInit {
       // hace que el valor sea requerido
       start_date: [''], //checar validators
       end_date: [''] ,
-      servicio: [''] 
+      servicio: ['']
+    
    });
+  }
+
+  createDate(){
+    this.myForm = this.fb.group({
+      start_time:[''],
+      end_time:[''],
+      frequency:['']
+    })
+  }
+
+  createInfo(){
+    this.myInfo =this.fb.group({
+      hour:[''],
+      date:['']
+    })
   }
 
   addDate(start_date,end_date,service){
     this.service.addDate(start_date,end_date,service).subscribe(data => this.dates = data);
-    this.router.navigate(['/dateinformation']);
+    // this.router.navigate(['/dateinformation']);
     console.log(service);
-    this.getDates();
+    // this.getDates();
+    this.createDate();
+    this.show =true;
   }
+
+  addHour(start_time, end_time,frequency){
+    this.service.addHour(start_time,end_time,frequency).subscribe(data => this.dates =data);
+    this.information = true;
+    
+  }
+
+  addInformationDate(date,hour){
+    this.service.addInformationDate(date,hour).subscribe(data=>this.dates=data);
+    this.router.navigate(['/dateinformation']);
+  }
+
+  // goBack(start_date,end_date,service,start_time, end_time,frequency){
+  //   this.addDate(start_date,end_date,service);
+  //   this.addHour(start_time, end_time,frequency);
+  //   console.log(end_time);
+  //   this.router.navigate(['/dateinformation']);
+  // }
 
 }

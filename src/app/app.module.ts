@@ -1,7 +1,7 @@
 // Import: Modules whose classes are needed by the components of this modules, which means
 // that are needed by the declarations
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+// import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
@@ -30,6 +30,10 @@ import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdModalAddAdmin } from './controllers/admin/admin.component';
 import {NgModule} from '@angular/core';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { NgbdModalAddAdmin } from './controllers/admin/modals/AdminAddModal.component';
+import { NgbdModalEditAdmin} from './controllers/admin/modals/AdminEditModal.component'
+
+
 
 
 
@@ -48,6 +52,10 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
     MatInputModule,
     MatDialogModule,
 
+    // NgbModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
+    
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     }),
@@ -59,6 +67,7 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
     AdminLayoutComponent,
     LoginComponent,
     NgbdModalAddAdmin,
+    NgbdModalEditAdmin
     
    
     // EditComponent//this one takes all the controllers within
@@ -69,7 +78,8 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
   // The root component which is the main view of the application
   bootstrap: [AppComponent],
   entryComponents: [
-    NgbdModalAddAdmin
+    NgbdModalAddAdmin,
+    NgbdModalEditAdmin
   ]
 })
 export class AppModule { }

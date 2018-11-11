@@ -51,7 +51,9 @@ export class AdminComponent implements OnInit {
       this._adminService.getAdmins()
       .subscribe(res => {
         this.arrayOfAdmins = res;
+        
       });
+     
     }
     
     deleteAdmin(id){

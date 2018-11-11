@@ -29,6 +29,7 @@ import { MatNativeDateModule} from '@angular/material';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import {MatSelectModule} from '@angular/material/select';
 
 
 import {
@@ -52,6 +53,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
+    MatSelectModule,
     MatRadioModule,
     NgxMaterialTimepickerModule.forRoot(),
 

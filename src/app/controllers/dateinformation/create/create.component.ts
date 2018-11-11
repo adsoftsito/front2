@@ -11,6 +11,7 @@ import { DateinformationService } from '../../../services/dateinformation.servic
 export class CreateComponent implements OnInit {
   date: any;
   dates: any;
+  hours: any;
   angForm: FormGroup;
   myForm : FormGroup;
   myInfo :FormGroup;
@@ -30,6 +31,10 @@ export class CreateComponent implements OnInit {
 
   getDates() {
     this.service.getDates().subscribe(res => {this.dates = res;});
+  }
+
+  getHours() {
+    this.service.getHours().subscribe(res => {this.hours = res;});
   }
   createForm() {
     // schema que guarda los valores y validaciones
@@ -62,16 +67,21 @@ export class CreateComponent implements OnInit {
 
   addDate(start_date,end_date,service){
     this.service.addDate(start_date,end_date,service).subscribe(data => this.dates = data);
-    // this.router.navigate(['/dateinformation']);
-    console.log(service);
     // this.getDates();
     this.createDate();
     this.show =true;
   }
 
-  addHour(start_time, end_time,frequency){
-    this.service.addHour(start_time,end_time,frequency).subscribe(data => this.dates =data);
+  addHour(start_time, end_time, frequency){
+    this.service.addHour(start_time,end_time,frequency).subscribe(data => {
+      this.hours = data
+      console.log(data);
+    });
     this.information = true;
+    this.getDates();
+    this.getHours();
+
+    
     
   }
 
@@ -85,6 +95,10 @@ export class CreateComponent implements OnInit {
   //   this.addHour(start_time, end_time,frequency);
   //   console.log(end_time);
   //   this.router.navigate(['/dateinformation']);
+  // }
+
+  // borrarTodo(){
+  //   this.service.borrarTodo().subscribe(res => {this.dates = res;});
   // }
 
 }

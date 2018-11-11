@@ -7,6 +7,7 @@
                           <h4 class="card-title">Agregar una nueva fecha</h4>
                           <p class="card-category">Completa todos los campos</p>
                       </div>
+                      
                       <div class="card-body">
                           <form [formGroup]="angForm" novalidate >
                               <div class="row">
@@ -33,6 +34,7 @@
                                    </div>
 
                                    <button mat-raised-button  type="submit"    class="btn btn-danger pull-left" (click)="addDate(start_date.value, end_date.value,servicio.value) " >Agregar nueva fecha</button>
+                                   <!-- <button mat-raised-button  type="submit"    class="btn btn-danger pull-left" (click)="borrarTodo()">Borrar toodo</button> -->
                               <div class="clearfix"></div>
                           </form>
                       </div>
@@ -81,6 +83,7 @@
                                    </div>
 
                                    <button mat-raised-button  type="submit"    class="btn btn-danger pull-left" (click)="addHour(start_time.value, end_time.value,frequency.value)" >Agregar nuevo horario</button>
+                                   
                               <div class="clearfix"></div>
                           </form>
                       </div>
@@ -92,7 +95,7 @@
           <!-- Formulario para seleccionar el horario  y la fecha -->
 
 
-            <!-- <div class="row" *ngIf=information> 
+             <div class="row" *ngIf=information>  
               <div class="col-md-12">
                   <div class="card">
                       <div class="card-header card-header-danger">
@@ -104,9 +107,9 @@
                               <div class="row">
                                   <div class="col-md-12">
                                       <mat-form-field>
-                                          <mat-select placeholder=Fecha [(ngModel)]="selectedValue" name="food" formControlName="date" #date>
-                                            <mat-option *ngFor="let food of foods" [value]="food.value">
-                                              {{food.viewValue}}
+                                          <mat-select placeholder="Selecciona una fecha" formControlName="date" #date>
+                                            <mat-option *ngFor="let date of dates" [value]="date.id">
+                                              {{date.start_date}} - {{date.end_date}}
                                             </mat-option>
                                           </mat-select>
                                         </mat-form-field>
@@ -114,8 +117,14 @@
                               </div>
 
                                   <div class="row">
-                                  
                                       <div class="col-md-12">
+                                          <!-- <mat-form-field>
+                                              <mat-select placeholder="Selecciona un horario" formControlName="hour" #hour>
+                                                <mat-option *ngFor="let hour of hours" [value]="hour.start_time">
+                                                  {{hour.start_time}} - {{hour.end_time}}
+                                                </mat-option>
+                                              </mat-select>
+                                            </mat-form-field> -->
                                           
                                         
                                          
@@ -123,13 +132,13 @@
                                    </div>
                                   
 
-                                   <button mat-raised-button  type="submit"    class="btn btn-danger pull-left" (click)="addHour(start_time.value, end_time.value,frequency.value)" >Agregar nueva informacion de fecha y horario</button>
+                                   <button mat-raised-button  type="submit"    class="btn btn-danger pull-left" (click)="addInformationDate(date.value, hour.value)" >Agregar nueva informacion de fecha y horario</button>
                               <div class="clearfix"></div>
                           </form>
                       </div>
                   </div>
               </div>  
-          </div>  -->
+          </div>  
       </div>
     </div>
   

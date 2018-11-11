@@ -1,7 +1,7 @@
 // Import: Modules whose classes are needed by the components of this modules, which means
 // that are needed by the declarations
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
@@ -27,8 +27,6 @@ import { LoginComponent } from './controllers/login/login.component';
 
 import { ModalComponent } from './modals/modal.component';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { NgbdModalAddAdmin } from './controllers/admin/admin.component';
-import {NgModule} from '@angular/core';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { NgbdModalAddAdmin } from './controllers/admin/modals/AdminAddModal.component';
 import { NgbdModalEditAdmin} from './controllers/admin/modals/AdminEditModal.component'
@@ -51,11 +49,6 @@ import { NgbdModalEditAdmin} from './controllers/admin/modals/AdminEditModal.com
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
-
-    // NgbModule.forRoot(),
-    FormsModule,
-    ReactiveFormsModule,
-    
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     }),

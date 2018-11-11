@@ -5,7 +5,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { CustomValidators } from '../../../custom-validators'
 
 @Component({
-    templateUrl: './AdminAddModal.component.html',
+    templateUrl: './AdminAddmodal.component.html',
 })
 
 export class NgbdModalAddAdmin{ 

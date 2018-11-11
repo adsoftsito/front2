@@ -10,7 +10,7 @@
             
             <div class="form-group">
                 <label for="username" [ngClass]="myForm.controls['username'].invalid ? 'text-danger' : ''">Username</label>
-                <input id="username" formControlName="username" type="text" class="form-control" [ngClass]="myForm.controls['username'].invalid ? 'is-invalid' : ''" #usernmame>
+                <input id="username" [(ngModel)]='currentAdmin[0]' formControlName="username" type="text" class="form-control" [ngClass]="myForm.controls['username'].invalid ? 'is-invalid' : ''" #usernmame>
                 <label class="text-danger" *ngIf="myForm.controls['username'].hasError('required')">
                     Username is Required!
                 </label>
@@ -19,7 +19,7 @@
             
             <div class="form-group">
                 <label for="email" [ngClass]="myForm.controls['email'].invalid ? 'text-danger' : ''">Email Address</label>
-                <input id="email" formControlName="email" type="email" class="form-control" [ngClass]="myForm.controls['email'].invalid ? 'is-invalid' : ''" #email>
+                <input id="email" [(ngModel)]='currentAdmin[1]' formControlName="email" type="email" class="form-control" [ngClass]="myForm.controls['email'].invalid ? 'is-invalid' : ''" #email>
                 <label class="text-danger" *ngIf="myForm.controls['email'].hasError('required')">
                     Email is Required!
                 </label>
@@ -30,7 +30,7 @@
             
             <div class="form-group">
                 <label for="password" [ngClass]="myForm.controls['password'].invalid ? 'text-danger' : ''">Password:</label>
-                <input id="password" formControlName="password" type="password" class="form-control" [ngClass]="myForm.controls['password'].invalid ? 'is-invalid' : ''" #password>
+                <input id="password" [(ngModel)]='currentAdmin[2]' formControlName="password" type="password" class="form-control" [ngClass]="myForm.controls['password'].invalid ? 'is-invalid' : ''" #password>
                 <label class="col" [ngClass]="myForm.controls['password'].hasError('required') || myForm.controls['password'].hasError('hasNumber')  ? 'text-danger' : 'text-success'">
                     <i class="material-icons">{{ myForm.controls['password'].hasError('required') ||
                       myForm.controls['password'].hasError('hasNumber') ? 'cancel' :
@@ -67,6 +67,6 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button"  (click)="addAdmin(username.value, email.value, password.value, confirmPassword.value)"  [disabled]="myForm.pristine || myForm.invalid"  class="btn btn-danger pull-right">Agregar</button> 
+            <button type="button"  (click)="addAdmin(currentAdmin)"  [disabled]="myForm.pristine || myForm.invalid"  class="btn btn-danger pull-right">Agregar</button> 
         </div>
     </form>

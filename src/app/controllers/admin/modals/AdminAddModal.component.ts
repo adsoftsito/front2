@@ -4,6 +4,8 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { CustomValidators } from '../../../custom-validators'
 
+declare const $: any;
+
 @Component({
     templateUrl: './AdminAddmodal.component.html',
 })
@@ -11,20 +13,53 @@ import { CustomValidators } from '../../../custom-validators'
 export class NgbdModalAddAdmin{ 
     
     myForm: FormGroup;
+    currentAdmin: any[] = ["", "", ""];
 
     constructor(
         private _adminService: AdminService,
         public activeModal: NgbActiveModal,
-        private formBuilder: FormBuilder) {this.createForm();}
+        private formBuilder: FormBuilder) {
+            this.createForm();
+        }
+
+        showNotification(data, from, align){
+            $.notify({
+                message:data.info
+            },{
+                type: data.color,
+                timer: 1000,
+                placement: {
+                    from: from,
+                    align: align
+                },
+                template: `<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">
+                                <button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>
+                                <span data-notify="icon"></span>
+                                <span data-notify="message">{2}</span>
+                                <div class="progress" data-notify="progressbar">
+                                    <div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+                                </div>
+                            </div>`,
+                onShow: ()=>{
+                    this.closeModal();
+                },
+                onClose: ()=>{
+                    window.location.reload();
+                }
+            });
+        }
         
         closeModal() {
             //window.location.reload();
             this.activeModal.close('Modal Closed');
         }
         
-        addAdmin(username, email, password){
-            this._adminService.addAdmin(username, email, password).subscribe();
-            this.closeModal();
+        addAdmin(newAdmin){
+            this._adminService.addAdmin(newAdmin[0], newAdmin[1], newAdmin[2])
+            .subscribe(res => {
+                this.showNotification(res, 'top', 'right');
+            });
+            
         }    
         
         private createForm() {

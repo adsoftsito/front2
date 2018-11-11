@@ -4,7 +4,7 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
-    templateUrl: './AdminAddModal.component.html',
+    templateUrl: './AdminAddmodal.component.html',
 })
 
 export class NgbdModalAddAdmin{ 

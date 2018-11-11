@@ -29,11 +29,12 @@ export class NgbdModalAddAdmin{
         private createForm() {
             this.myForm = this.formBuilder.group({
                 username: ['', Validators.compose([
-                    Validators.maxLength(25),
+                    Validators.maxLength(30),
                     Validators.minLength(3),
                     Validators.required ])], 
                     email: ['', Validators.compose([
                         Validators.required,
+                        Validators.email
                     ])],
                     password: ['', Validators.compose([
                         Validators.minLength(6),

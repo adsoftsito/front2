@@ -27,7 +27,8 @@ import { LoginComponent } from './controllers/login/login.component';
 
 import { ModalComponent } from './modals/modal.component';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { NgbdModalAddAdmin } from './controllers/admin/admin.component';
+import { NgbdModalAddAdmin } from './controllers/admin/adminmodal.component';
+import { NgbdModalEditAdmin} from './controllers/admin/admineditmodal.component'
 
 
 
@@ -47,6 +48,9 @@ import { NgbdModalAddAdmin } from './controllers/admin/admin.component';
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
+    NgbModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
     
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
@@ -59,6 +63,7 @@ import { NgbdModalAddAdmin } from './controllers/admin/admin.component';
     AdminLayoutComponent,
     LoginComponent,
     NgbdModalAddAdmin,
+    NgbdModalEditAdmin
     
    
     // EditComponent//this one takes all the controllers within
@@ -69,7 +74,8 @@ import { NgbdModalAddAdmin } from './controllers/admin/admin.component';
   // The root component which is the main view of the application
   bootstrap: [AppComponent],
   entryComponents: [
-    NgbdModalAddAdmin
+    NgbdModalAddAdmin,
+    NgbdModalEditAdmin
   ]
 })
 export class AppModule { }

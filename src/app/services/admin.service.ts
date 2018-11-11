@@ -26,7 +26,20 @@ export class AdminService {
       email: email,
       password: password
     }
-    return this.http.post<IAdmin>(API_URL + '/admin', obj);
+    return this.http.post<IAdmin>(API_URL + '/admin/create', obj);
+  }
+
+  getByIDAdmin(id): Observable<IAdmin> {
+    return this.http.get<IAdmin>(API_URL + '/admin'+"/"+id);
+  }
+
+  updateAdmin(username, email, password, id): Observable<IAdmin> {
+    let obj = {
+      username: username,
+      email: email,
+      password: password,
+    };
+    return this.http.put<IAdmin>(API_URL + '/admin'+"/"+id, obj);
   }
 
 }

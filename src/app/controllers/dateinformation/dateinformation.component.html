@@ -38,31 +38,6 @@
                                   </th>
                                   
                                 <tbody>
-                                  <!-- <tr *ngIf="selectedUsuario != ''">
-                                      <td>
-                                          <input type="text" [(ngModel)]="selectedUsuario.name" class="form-control">
-                                      </td>
-                                      <td>
-                                          <input type="text" [(ngModel)]="selectedUsuario.email" class="form-control">
-                                      </td>
-                                      <td>
-                                          <input type="text" [(ngModel)]="selectedUsuario.phone_number" class="form-control">
-                                      </td>
-                                      <td>
-                                          <div class="btn-group"  role="group" >
-                                              <button type="button"
-                                              class="btn btn-success"
-                                              (click)="editUsuario(selectedUsuario)">
-                                                  <i class="fa fa-check text-white"></i>
-                                              </button>
-                                              <button type="button" 
-                                              class="btn btn-outline-secondary"
-                                              (click)="ngOnInit()">
-                                                  <i class="fa fa-times text-dark"></i>
-                                              </button>
-                                          </div>
-                                      </td>
-                                  </tr> -->
                                   <tr *ngFor="let date of dates"
                                   class="list-group-item-action">
                                       <td>{{date.date_id.start_date}}</td>
@@ -72,10 +47,7 @@
                                       <td>{{date.hour_id.end_time}}</td>
                                       <td>{{date.hour_id.frequency}}</td>
                                       
-                                      <!-- <td>{{date.hour_id.start_time}}</td>
-                                      <td>{{date.hour_id.end_time}}</td>
-                                      <td>{{date.hour_id.frequency}}</td> -->
-                                      <!-- <td>{{mural.bud_id.numBus}}</td> -->
+                                    
                                       <td>
                                           <div class="btn-group" role="group" aria-label="Basic example">
                                               <button class="btn btn-danger" type ="button" (click)="deleteDate(date.id)"  >

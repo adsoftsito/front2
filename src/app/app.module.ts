@@ -38,6 +38,7 @@ import { NgbdModalAddCompany } from './controllers/company/modals/CompanyAddModa
 
 
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -65,6 +66,7 @@ import { NgbdModalAddCompany } from './controllers/company/modals/CompanyAddModa
     NgbdModalEditAdmin,
     NgbdModalAddCompany,
     NgbdModalEditCompany
+
     
    
     // EditComponent//this one takes all the controllers within

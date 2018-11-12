@@ -36,10 +36,6 @@ import { NgbdModalAddBus} from './controllers/bus/modals/BusAddModal.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
-
-
-
-
 @NgModule({
   imports: [
     BrowserAnimationsModule,

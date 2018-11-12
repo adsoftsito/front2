@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AdminService } from '../../services/admin.service';
+import { LoginService } from '../../services/login.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -8,7 +11,11 @@ import { AdminService } from '../../services/admin.service';
 })
 export class LoginComponent implements OnInit {
   admins: any;
-  constructor(private http: HttpClient, private service: AdminService) { }
+  constructor(
+    private http: HttpClient, 
+    private service: AdminService,
+    private _loginService: LoginService,
+    private router: Router) { }
 
   ngOnInit() {
   }
@@ -21,10 +28,22 @@ export class LoginComponent implements OnInit {
           alert(res[i].password);
         }
       }
-       
-     
-      
     });
   }
+
+  loginAdmin(email, password){
+    this._loginService.login(email, password).subscribe(res=>{
+
+      if(res.id!=undefined){
+        console.log(res);
+        this._loginService.setLoggedIn(res.id);
+        this.router.navigateByUrl('/dashboard');
+      }
+      else
+        this._loginService.setLoggedIn(null);
+    });
+  }
+
+  //NOTA: verificar que se haga logout para que se elimine el adminID del storage
 
 }

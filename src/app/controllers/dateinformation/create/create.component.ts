@@ -28,11 +28,15 @@ export class CreateComponent implements OnInit {
    }
 
    getDates() {
-    this.service.getDates().subscribe(res => {this.dates = res;});
+    this.service.getDates().subscribe(res => {this.dates = res;
+      console.log(res);
+    });
   }
 
   getHours() {
-    this.service.getHours().subscribe(res => {this.hours = res;});
+    this.service.getHours().subscribe(res => {this.hours = res;
+      console.log(res);
+    });
   }
 
   ngOnInit() {
@@ -40,12 +44,11 @@ export class CreateComponent implements OnInit {
     this.information =false;
     this.getDates();
     this.getHours();
+    this.getInformation();
   }
 
   ngOnchanges(){
     this.getInformation();
-    this.getDates();
-    this.getHours();
   }
 
   
@@ -55,14 +58,9 @@ export class CreateComponent implements OnInit {
         this.dateInformation =res;
     });
   }
-  createForm() {
-    // schema que guarda los valores y validaciones
-    // uso de form builder, la estructura es diferente
-    // guarda a name y email en un solo grupo
-    // The value for each control name is an array containing the initial value as the first item in the array.
+  createForm() {  
     this.angForm = this.fb.group({
-      // hace que el valor sea requerido
-      start_date: [''], //checar validators
+      start_date: [''], 
       end_date: [''] ,
       servicio: ['']
     
@@ -97,11 +95,10 @@ export class CreateComponent implements OnInit {
     });
     this.information = true;
     this.getDates();
-    this.getHours();
-    this.getDates();
-    this.getHours();
-    
+    this.getHours();  
+    this.router.navigate(['/selectdate']);
   }
+  
   
 
   addInformationDate(date_id,hour_id){
@@ -114,7 +111,7 @@ export class CreateComponent implements OnInit {
     this.getInformation();
     
   }
-
+  
  
 
 }

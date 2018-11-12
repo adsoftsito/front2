@@ -16,7 +16,10 @@ export class DateinformationComponent implements OnInit {
 
   ngOnInit() {
     this.service.getInformation()
-    .subscribe(data => this.dates = data);
+    .subscribe(data => {
+      this.dates = data;
+      console.log(data);
+    });
     
   }
 

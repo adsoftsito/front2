@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BusService } from '../../services/bus.service';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdModalAddBus} from './modals/BusAddModal.component';
-import { NgbdModalEditBus} from './modals/BusEditModal.component';
+
 @Component({
   selector: 'app-bus',
   templateUrl: './bus.component.html',
@@ -26,16 +26,7 @@ export class BusComponent implements OnInit {
     });
   }
 
-  openFormModalEdit(id) {
-    const modalRef = this._modalService.open(NgbdModalEditBus);
-    modalRef.componentInstance.id = id;
-
-    modalRef.result.then((result) => {
-      console.log(result);
-    }).catch((error) => {
-      console.log(error);
-    });
-  }
+  
   getBuses() {
     this.service.getBuses()
     .subscribe(res => {

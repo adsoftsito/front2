@@ -26,22 +26,29 @@ export class CreateComponent implements OnInit {
     this.createInfo();
     
    }
-  ngOnInit() {
-    this.show = false;
-    this.information =false;
-  }
 
-  ngOnchanges(){
-    this.getInformation();
-  }
-
-  getDates() {
+   getDates() {
     this.service.getDates().subscribe(res => {this.dates = res;});
   }
 
   getHours() {
     this.service.getHours().subscribe(res => {this.hours = res;});
   }
+
+  ngOnInit() {
+    this.show = false;
+    this.information =false;
+    this.getDates();
+    this.getHours();
+  }
+
+  ngOnchanges(){
+    this.getInformation();
+    this.getDates();
+    this.getHours();
+  }
+
+  
 
   getInformation(){
     this.service.getInformation().subscribe(res =>{
@@ -79,9 +86,8 @@ export class CreateComponent implements OnInit {
 
   addDate(start_date,end_date,service){
     this.service.addDate(start_date,end_date,service).subscribe(data => this.dates = data);
-    // this.getDates();
-    this.createDate();
     this.show =true;
+    
   }
 
   addHour(start_time, end_time, frequency){
@@ -92,10 +98,11 @@ export class CreateComponent implements OnInit {
     this.information = true;
     this.getDates();
     this.getHours();
-
-    
+    this.getDates();
+    this.getHours();
     
   }
+  
 
   addInformationDate(date_id,hour_id){
     this.service.addInformationDate(date_id,hour_id).subscribe(data=>{
@@ -108,15 +115,6 @@ export class CreateComponent implements OnInit {
     
   }
 
-  // goBack(start_date,end_date,service,start_time, end_time,frequency){
-  //   this.addDate(start_date,end_date,service);
-  //   this.addHour(start_time, end_time,frequency);
-  //   console.log(end_time);
-  //   this.router.navigate(['/dateinformation']);
-  // }
-
-  // borrarTodo(){
-  //   this.service.borrarTodo().subscribe(res => {this.dates = res;});
-  // }
+ 
 
 }

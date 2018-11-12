@@ -1,3 +1,68 @@
-<p>
-  company works!
-</p>
+
+
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title">Compañias ({{arrayOfCompanies.length}})</h4>
+                      <button class="btn btn-success" (click)="openFormModal()">Agregar</button>
+                    </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table table-hover">
+                              <thead class="">
+                                <th>
+                                    Nombre
+                                </th>
+                                <th>
+                                    Número Telefonico
+                                </th>
+                                <th>
+                                    Dirección y CP
+                                </th>
+                                <th>
+                                  Datos Fiscales
+                                </th>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let company of arrayOfCompanies" class="list-group-item-action">
+                                    <td> {{ company.full_name | titlecase }} / {{ company.name | titlecase }} </td>
+                                    <td> {{ company.number?(company.number):"Número no disponible" }} </td>
+                                    <td> {{ company.address?(company.address?):"N/A" }} - {{ company.postal_code?(company.postal_code):"N/A" }} </td>
+                                    <td> 
+                                      <ul>
+                                        <li>
+                                            RFC: {{ company.rfc?(company.rfc):"No disponible" }} 
+                                        </li>
+                                        <li>
+                                            IEPS: {{ company.ieps }} 
+                                        </li>
+                                        <li>
+                                            IVA: {{ company.iva }} 
+                                        </li>
+                                      </ul>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button class="btn btn-danger" type="button" (click)="deleteCompany(company.id)">
+                                                <i class="fa fa-trash text-white"></i>
+                                            </button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button class="btn btn-info" type="button" (click)="openFormModalEdit(company.id)">
+                                                <i class="fa fa-pencil text-white"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>  
+      </div>
+  </div>
+  </div>

@@ -21,10 +21,10 @@ export class CompanyService {
     }
   }
 
-  addCompany(name, fullname, phone_number, address, postal_code, rfc, ieps, iva): Observable<ICompany>{
+  addCompany(name, full_name, phone_number, address, postal_code, rfc, ieps, iva): Observable<ICompany>{
     let obj = {
       name: name,
-      fullname: fullname,
+      full_name: full_name,
       phone_number: phone_number,
       address: address,
       postal_code: postal_code,
@@ -35,14 +35,16 @@ export class CompanyService {
     return this.http.post<ICompany>(API_URL + '/company/add', obj);
   }
 
+  
+
   getByIdCompany(id): Observable<ICompany> {
     return this.http.get<ICompany>(API_URL + '/company/'+id);
   }
 
-  updateCompany(name, fullname, phone_number, address, postal_code, rfc, ieps, iva, id): Observable<ICompany> {
+  updateCompany(name, full_name, phone_number, address, postal_code, rfc, ieps, iva, id): Observable<ICompany> {
     let obj = {
       name: name,
-      fullname: fullname,
+      full_name: full_name,
       phone_number: phone_number,
       address: address,
       postal_code: postal_code,

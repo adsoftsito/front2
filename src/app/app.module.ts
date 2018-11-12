@@ -30,6 +30,8 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { NgbdModalAddAdmin } from './controllers/admin/modals/AdminAddModal.component';
 import { NgbdModalEditAdmin} from './controllers/admin/modals/AdminEditModal.component'
 import { CompanyService } from './services/company.service';
+import { NgbdModalEditCompany } from './controllers/company/modals/CompanyEditModal.component';
+import { NgbdModalAddCompany } from './controllers/company/modals/CompanyAddModal.component';
 
 
 
@@ -60,7 +62,9 @@ import { CompanyService } from './services/company.service';
     AdminLayoutComponent,
     LoginComponent,
     NgbdModalAddAdmin,
-    NgbdModalEditAdmin
+    NgbdModalEditAdmin,
+    NgbdModalAddCompany,
+    NgbdModalEditCompany
     
    
     // EditComponent//this one takes all the controllers within
@@ -72,7 +76,9 @@ import { CompanyService } from './services/company.service';
   bootstrap: [AppComponent],
   entryComponents: [
     NgbdModalAddAdmin,
-    NgbdModalEditAdmin
+    NgbdModalEditAdmin,
+    NgbdModalAddCompany,
+    NgbdModalEditCompany,
   ]
 })
 export class AppModule { }

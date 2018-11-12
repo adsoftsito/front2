@@ -1,0 +1,77 @@
+<div class="modal-header">
+    <h4 class="modal-title">Agregar Compañia</h4>
+    <button type="button" class="close" aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')">
+</button>
+</div>
+<form [formGroup]="myForm">
+    <div class="modal-boy">
+        <div class="container" novalidate>
+            
+            <div class="form-group">
+                <label for="name" [ngClass]="myForm.controls['name'].invalid ? 'text-danger' : ''">Nombre abreviado:</label>
+                <input id="name" [(ngModel)]='currentCompany[0]' formControlName="name" type="text" class="form-control" [ngClass]="myForm.controls['name'].invalid ? 'is-invalid' : ''" #name>
+                <label class="text-danger" *ngIf="myForm.controls['name'].hasError('required')">
+                    El nombre abreviado de la compañia es requerido.
+                </label>
+                
+            </div>
+            
+            <div class="form-group">
+                <label for="full_name" [ngClass]="myForm.controls['full_name'].invalid ? 'text-danger' : ''">Nombre Completo:</label>
+                <input id="full_name" [(ngModel)]='currentCompany[1]' formControlName="full_name" type="full_name" class="form-control" [ngClass]="myForm.controls['full_name'].invalid ? 'is-invalid' : ''" #full_name>
+                <label class="text-danger" *ngIf="myForm.controls['full_name'].hasError('required')">
+                    El nombre es requerido.
+                </label>
+            </div>
+            
+            
+            <div class="form-group">
+                <label for="phone_number" [ngClass]="myForm.controls['phone_number'].invalid ? 'text-danger' : ''">Número Telefonico:</label>
+                <input id="phone_number" [(ngModel)]='currentCompany[2]' formControlName="phone_number" type="text" class="form-control" [ngClass]="myForm.controls['phone_number'].invalid ? 'is-invalid' : ''" #phone_number>
+            </div>
+
+             
+            <div class="form-group">
+                    <label for="address" [ngClass]="myForm.controls['address'].invalid ? 'text-danger' : ''">Dirección:</label>
+                    <input id="address" [(ngModel)]='currentCompany[3]' formControlName="address" type="text" class="form-control" [ngClass]="myForm.controls['address'].invalid ? 'is-invalid' : ''" #address>
+             </div> 
+
+             
+            <div class="form-group">
+                    <label for="postal_code" [ngClass]="myForm.controls['postal_code'].invalid ? 'text-danger' : ''">Codigo Postal:</label>
+                    <input id="postal_code" [(ngModel)]='currentCompany[4]' formControlName="postal_code" type="text" class="form-control" [ngClass]="myForm.controls['postal_code'].invalid ? 'is-invalid' : ''" #postal_code>
+             </div> 
+
+             
+            <div class="form-group">
+                    <label for="rfc" [ngClass]="myForm.controls['rfc'].invalid ? 'text-danger' : ''">RFC:</label>
+                    <input id="rfc" [(ngModel)]='currentCompany[5]' formControlName="rfc" type="text" class="form-control" [ngClass]="myForm.controls['rfc'].invalid ? 'is-invalid' : ''" #rfc>
+             </div> 
+
+             
+            <div class="form-group">
+                    <label for="ieps" [ngClass]="myForm.controls['ieps'].invalid ? 'text-danger' : ''">IEPS:</label>
+                    <input id="ieps" [(ngModel)]='currentCompany[6]' formControlName="ieps" type="text" class="form-control" [ngClass]="myForm.controls['ieps'].invalid ? 'is-invalid' : ''" #ieps>
+                    <label class="text-danger" *ngIf="myForm.controls['ieps'].hasError('required')">
+                            El ieps es requerido.
+                        </label>
+                    
+             </div> 
+
+             
+            <div class="form-group">
+                    <label for="iva" [ngClass]="myForm.controls['iva'].invalid ? 'text-danger' : ''">IVA:</label>
+                    <input id="iva" [(ngModel)]='currentCompany[7]' formControlName="iva" type="text" class="form-control" [ngClass]="myForm.controls['iva'].invalid ? 'is-invalid' : ''" #iva>
+                    <label class="text-danger" *ngIf="myForm.controls['iva'].hasError('required')">
+                            El iva es requerido.
+                        </label>
+                    
+             </div> 
+            
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button"  (click)="addCompany(currentCompany)"  [disabled]="myForm.pristine || myForm.invalid"  class="btn btn-danger pull-right">Agregar</button> 
+    </div>
+</form>

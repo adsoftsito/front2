@@ -10,6 +10,8 @@ import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 })
 export class DateinformationComponent implements OnInit {
   public dates = [];
+  // public hours = [];
+  public dateInformation =[];
   constructor(private service: DateinformationService, private route: ActivatedRoute, private router: Router,private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -19,7 +21,7 @@ export class DateinformationComponent implements OnInit {
   }
 
   ngOnChanges(){
-    this.service.getDates()
+    this.service.getInformation()
     .subscribe(data => this.dates = data);
     // this.selectedUsuario = "";
   }

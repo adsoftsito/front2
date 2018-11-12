@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
+    console.log(localStorage.getItem('adminID'));
   }
 
   getAdmins() {

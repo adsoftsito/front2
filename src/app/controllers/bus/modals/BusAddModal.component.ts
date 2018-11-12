@@ -54,10 +54,10 @@ export class NgbdModalAddBus{
         }
         
         addBus(newBus){
-            console.log(newBus);
             this.service.addBus(newBus[0], newBus[1])
             .subscribe(res => {
                 this.showNotification(res, 'top', 'right');
+                console.log(newBus[0]);
             });
             
         }

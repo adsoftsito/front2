@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-warning">
-                        <h4 class="card-title text-dark">Autobuses ({{buses.length}})</h4>
+                        <h4 class="card-title text-dark">Autobuses ({{arrayOfBuses.length}})</h4>
                         <button type="button" class="btn btn-success" (click)="openFormModal()">
                           Agregar
                         </button>
@@ -27,11 +27,11 @@
                                       Acciones
                                   </th>
                                 <tbody>
-                                  <tr *ngFor="let bus of buses"
+                                  <tr *ngFor="let bus of arrayOfBuses"
                                   class="list-group-item-action">
-                                      <td>{{ bus.numBus }}</td>
-                                      <td>{{ bus.availability == true?"Disponible":"No Disponible" }}</td>
-                                      <td>{{bus.tour_id.name}}</td>
+                                      <td>{{bus.numBus}}</td>
+                                      <td>{{bus.availability == true?"Disponible":"No Disponible"}}</td>
+                                      <td>{{bus.tour_id?(bus.tour_id.name):"N/A"}}</td>
                                       <td>
                                           <div class="btn-group" role="group" aria-label="Basic example">
                                               <button class="btn btn-danger" type ="button" (click)="deleteBus(bus.id)">

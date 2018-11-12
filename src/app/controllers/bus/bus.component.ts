@@ -10,8 +10,8 @@ import { NgbdModalAddBus} from './modals/BusAddModal.component';
 })
 export class BusComponent implements OnInit {
 
-  public buses = [];
-  // selectedUsuario: any;
+  public arrayOfBuses = [];
+  
   constructor(
     private service: BusService, 
     private _modalService: NgbModal) { }
@@ -30,7 +30,8 @@ export class BusComponent implements OnInit {
   getBuses() {
     this.service.getBuses()
     .subscribe(res => {
-      this.buses = res;
+      this.arrayOfBuses = res;
+      console.log(res); 
       
     });
    
@@ -38,15 +39,15 @@ export class BusComponent implements OnInit {
 
   ngOnInit() {
     this.getBuses();
-   
   }
+  
   ngOnChanges(){
    this.getBuses();
   }
   deleteBus(id) {
-    if(confirm("Desea eliminar autobus?")){
+    if(confirm("Desea eliminar el autobus?")){
       this.service.deleteBus(id).subscribe(data => {
-        this.ngOnChanges(); 
+        this.getBuses();
       });
     }
   }

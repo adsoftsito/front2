@@ -1,6 +1,10 @@
 export interface ITour{
     id: number,
     name: string,
+    image: string,
     description: string,
-    prices: any[] //not sure if i want this
+    bracelets: any[],
+    buses: any[],
+    dateinformations: any[],
+    places: any[]
 }

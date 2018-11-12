@@ -21,11 +21,16 @@ export class CompanyService {
     }
   }
 
-  addCompany(username, email, password): Observable<ICompany>{
+  addCompany(name, fullname, number, address, postal_code, rfc, ieps, iva): Observable<ICompany>{
     let obj = {
-      username: username,
-      email: email,
-      password: password
+      name: name,
+      fullname: fullname,
+      number: number,
+      address: address,
+      postal_code: postal_code,
+      rfc:  rfc,
+      ieps: ieps, 
+      iva: iva
     }
     return this.http.post<ICompany>(API_URL + '/company/add', obj);
   }
@@ -34,11 +39,16 @@ export class CompanyService {
     return this.http.get<ICompany>(API_URL + '/company/'+id);
   }
 
-  updateCompany(username, email, password, id): Observable<ICompany> {
+  updateCompany(name, fullname, number, address, postal_code, rfc, ieps, iva, id): Observable<ICompany> {
     let obj = {
-      username: username,
-      email: email,
-      password: password,
+      name: name,
+      fullname: fullname,
+      number: number,
+      address: address,
+      postal_code: postal_code,
+      rfc:  rfc,
+      ieps: ieps, 
+      iva: iva
     };
     return this.http.put<ICompany>(API_URL + '/company/edit/'+id, obj);
   }

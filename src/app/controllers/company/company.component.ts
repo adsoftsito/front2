@@ -10,7 +10,7 @@ import { NgbdModalEditCompany} from './modals/CompanyEditModal.component';
   templateUrl: './company.component.html',
   styleUrls: ['./company.component.scss']
 })
-export class AdminComponent implements OnInit {
+export class CompanyComponent implements OnInit {
   
   public arrayOfCompanies = [];
   

@@ -39,7 +39,7 @@ export class AdminService {
       email: email,
       password: password,
     };
-    return this.http.put<IAdmin>(API_URL + '/admin'+"/"+id, obj);
+    return this.http.put<IAdmin>(API_URL + '/admin/edit/'+id, obj);
   }
 
 }

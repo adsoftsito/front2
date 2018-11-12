@@ -1,34 +1,33 @@
 <div class="modal-header">
-        <h4 class="modal-title">Editar Admin</h4>
-        <button type="button" class="close" aria-label="Close"
-        (click)="activeModal.dismiss('Cross click')">
-    </button>
-    </div>
-    <form [formGroup]="myForm">
-        <div class="modal-boy">
-            <div class="container" novalidate>
-                
-                <div class="form-group">
-                    <mat-form-field class="example-full-width">
-                        <input value='{{currentAdmin.username}}' matInput placeholder="Username" type="text" class="form-control" formControlName="username" #name >
-                    </mat-form-field>
-                </div>
-                
-                <div class="form-group">
-                    <mat-form-field class="example-full-width">
-                        <input value='{{currentAdmin.email}}' matInput placeholder="Email" type="text" class="form-control" formControlName="email" #email >
-                    </mat-form-field>
-                </div>
-                
-                <div class="form-group">
-                    <mat-form-field class="example-full-width">
-                        <input  matInput placeholder="Password" type="password" class="form-control" formControlName="password" #password >
-                    </mat-form-field>
-                </div>
-                
+    <h4 class="modal-title">Editar Admin</h4>
+    <button type="button" class="close" aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')">
+</button>
+</div>
+<form [formGroup]="myForm">
+    <div class="modal-boy">
+        <div class="container" novalidate>
+            <div class="form-group">
+                <label for="username" [ngClass]="myForm.controls['username'].invalid ? 'text-danger' : ''">Username</label>
+                <input id="username" [(ngModel)]='currentAdmin[0]' formControlName="username" type="text" class="form-control" [ngClass]="myForm.controls['username'].invalid ? 'is-invalid' : ''" #usernmame>             
+                <label class="text-danger" *ngIf="myForm.controls['username'].hasError('required')">
+                    Username is Required!
+                </label>
+            </div>
+            
+            <div class="form-group">
+                <label for="email" [ngClass]="myForm.controls['email'].invalid ? 'text-danger' : ''">Email Address</label>
+                <input id="email" [(ngModel)]='currentAdmin[1]' formControlName="email" type="email" class="form-control" [ngClass]="myForm.controls['email'].invalid ? 'is-invalid' : ''" #email>
+                <label class="text-danger" *ngIf="myForm.controls['email'].hasError('email')">
+                    Enter a valid email address!
+                </label>
+                <label class="text-danger" *ngIf="myForm.controls['email'].hasError('required')">
+                    Email is Required!
+                </label>
             </div>
         </div>
-        <div class="modal-footer">
-            <button mat-raised-button  type="button"  (click)="updateAdmin(name.value, email.value, password.value)"  [disabled]="myForm.pristine || myForm.invalid"  class="btn btn-danger pull-right">Editar</button>      
-        </div>
-    </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button"  (click)="updateAdmin()"  [disabled]="myForm.pristine || myForm.invalid"  class="btn btn-danger pull-right">Editar</button> 
+    </div>
+</form>

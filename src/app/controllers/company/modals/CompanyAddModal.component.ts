@@ -65,7 +65,7 @@ export class NgbdModalAddCompany{
         private createForm() {
             this.myForm = this.formBuilder.group({
                 name: [null, Validators.compose([
-                    Validators.minLength(3),
+                    Validators.minLength(1),
                     Validators.maxLength(30),
                     CustomValidators.patternValidator(/[A-Z]||[a-z]/, { hasCase: true }),
                     Validators.required 

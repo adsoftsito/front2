@@ -2,6 +2,7 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { CompanyService } from '../../../services/company.service';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { CustomValidators } from '../../../custom-validators'
 
 declare const $: any;
 @Component({
@@ -79,16 +80,49 @@ export class NgbdModalEditCompany{
             
             private createForm() {
                 this.myForm = this.formBuilder.group({
-                    /*username: ['', Validators.compose([
-                        Validators.required,
+                    name: [null, Validators.compose([
+                        Validators.minLength(1),
                         Validators.maxLength(30),
-                        Validators.minLength(3)])], 
-                        email: ['', Validators.compose([
-                            Validators.required,
-                            Validators.email
-                        ])],*/
-                    });
-                }
+                        CustomValidators.patternValidator(/[A-Z]||[a-z]/, { hasCase: true }),
+                        Validators.required 
+                    ])], 
+                    full_name: [null, Validators.compose([
+                        Validators.required,
+                        CustomValidators.patternValidator(/[A-Z]||[a-z]/, { hasCase: true }),
+                        Validators.minLength(3),
+                        Validators.maxLength(30),
+                    ])],
+                    phone_number: [null, Validators.compose([
+                        Validators.minLength(10),
+                        Validators.maxLength(10),
+                        CustomValidators.patternValidator(/\d/, { hasNumber: true }),
+                    ])],
+                    ieps: [null, Validators.compose([
+                        Validators.required,
+                        CustomValidators.patternValidator(/\d/, { hasNumber: true })
+                    ])],
+                    iva: [null, Validators.compose([
+                        Validators.required,
+                        CustomValidators.patternValidator(/\d/, { hasNumber: true })
+                    ])],
+                    rfc: [null, Validators.compose([
+                        Validators.required,
+                        CustomValidators.patternValidator(/[A-Z]||[a-z]/, { hasCase: true }),
+                        Validators.minLength(12),
+                        Validators.maxLength(12),
+                    ])],
+                    address: [null, Validators.compose([
+                        CustomValidators.patternValidator(/[A-Z]||[a-z]/, { hasCase: true }),
+                        Validators.minLength(5),
+                        Validators.maxLength(50),
+                    ])],
+                    postal_code: [null, Validators.compose([
+                        Validators.minLength(5),
+                        Validators.maxLength(5),
+                        CustomValidators.patternValidator(/\d/, { hasNumber: true })
+                    ])],
+                });
+            }
                 
                 
                 

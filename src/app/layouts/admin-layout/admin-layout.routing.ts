@@ -11,7 +11,6 @@ import { BraceletComponent } from '../../controllers/bracelet/bracelet.component
 import { BusComponent } from '../../controllers/bus/bus.component';
 import { CompanyComponent } from '../../controllers/company/company.component';
 import { DateinformationComponent } from '../../controllers/dateinformation/dateinformation.component';
-import { MuralComponent } from '../../controllers/mural/mural.component';
 import { PlaceComponent } from '../../controllers/place/place.component';
 import { PurchaseComponent } from '../../controllers/purchase/purchase.component';
 import { TourComponent } from '../../controllers/tour/tour.component';
@@ -74,7 +73,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'bus',          component: BusComponent},
     { path: 'company',          component: CompanyComponent},
     { path: 'dateinformation',    component: DateinformationComponent},
-    { path: 'mural',          component: MuralComponent},
     { path: 'place',          component: PlaceComponent},
     { path: 'price',          component: PriceComponent},
     { path: 'purchase',          component: PurchaseComponent},
@@ -82,4 +80,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'create',          component: CreateComponent},
     { path: 'edit',          component: EditComponent},
     { path: 'selectdate',          component: SelectdateComponent},
+
 ];

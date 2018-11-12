@@ -22,14 +22,16 @@ import { UserService } from './services/user.service';
 import { BusService} from './services/bus.service';
 import { PlaceService} from './services/place.service';
 import {DateinformationService} from './services/dateinformation.service';
-import { MuralService } from './services/mural.service';
 import { LoginComponent } from './controllers/login/login.component';
 
 import { ModalComponent } from './modals/modal.component';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { NgbdModalAddAdmin } from './controllers/admin/modals/AdminAddModal.component';
-import { NgbdModalEditAdmin} from './controllers/admin/modals/AdminEditModal.component';
+import { NgbdModalEditAdmin} from './controllers/admin/modals/AdminEditModal.component'
+import { CompanyService } from './services/company.service';
+import { NgbdModalEditCompany } from './controllers/company/modals/CompanyEditModal.component';
+import { NgbdModalAddCompany } from './controllers/company/modals/CompanyAddModal.component';
 
 
 
@@ -61,20 +63,24 @@ import { NgbdModalEditAdmin} from './controllers/admin/modals/AdminEditModal.com
     AdminLayoutComponent,
     LoginComponent,
     NgbdModalAddAdmin,
-    NgbdModalEditAdmin
-   
+    NgbdModalEditAdmin,
+    NgbdModalAddCompany,
+    NgbdModalEditCompany
+
     
    
     // EditComponent//this one takes all the controllers within
   ],
   // services
-  providers: [UserService,AdminService,DateinformationService,BusService,MuralService, NgbActiveModal,PlaceService],
+  providers: [UserService,AdminService,DateinformationService,BusService, CompanyService, NgbActiveModal,PlaceService],
 
   // The root component which is the main view of the application
   bootstrap: [AppComponent],
   entryComponents: [
     NgbdModalAddAdmin,
-    NgbdModalEditAdmin
+    NgbdModalEditAdmin,
+    NgbdModalAddCompany,
+    NgbdModalEditCompany,
   ]
 })
 export class AppModule { }

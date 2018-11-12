@@ -9,47 +9,47 @@
         <div class="container" novalidate>
             
             <div class="form-group">
-                <label for="username" [ngClass]="myForm.controls['username'].invalid ? 'text-danger' : ''">Username</label>
-                <input id="username" [(ngModel)]='currentAdmin[0]' formControlName="username" type="text" class="form-control" [ngClass]="myForm.controls['username'].invalid ? 'is-invalid' : ''" #usernmame>
+                <label for="username" [ngClass]="myForm.controls['username'].invalid ? 'text-danger' : ''">Nombre de Usuario:</label>
+                <input id="username" [(ngModel)]='currentAdmin[0]' formControlName="username" type="text" class="form-control" [ngClass]="myForm.controls['username'].invalid ? 'is-invalid' : ''" #username>
                 <label class="text-danger" *ngIf="myForm.controls['username'].hasError('required')">
-                    Username is Required!
+                        El Nombre de Usuario es Requerido!
                 </label>
                 
             </div>
             
             <div class="form-group">
-                <label for="email" [ngClass]="myForm.controls['email'].invalid ? 'text-danger' : ''">Email Address</label>
+                <label for="email" [ngClass]="myForm.controls['email'].invalid ? 'text-danger' : ''">Correo Electronico:</label>
                 <input id="email" [(ngModel)]='currentAdmin[1]' formControlName="email" type="email" class="form-control" [ngClass]="myForm.controls['email'].invalid ? 'is-invalid' : ''" #email>
                 <label class="text-danger" *ngIf="myForm.controls['email'].hasError('required')">
-                    Email is Required!
+                    Email es Requerido!
                 </label>
                 <label class="text-danger" *ngIf="myForm.controls['email'].hasError('email')">
-                    Enter a valid email address!
+                    Ingresa un correo electronico valido!
                 </label>
             </div>
             
             <div class="form-group">
-                <label for="password" [ngClass]="myForm.controls['password'].invalid ? 'text-danger' : ''">Password:</label>
+                <label for="password" [ngClass]="myForm.controls['password'].invalid ? 'text-danger' : ''">Contraseña:</label>
                 <input id="password" [(ngModel)]='currentAdmin[2]' formControlName="password" type="password" class="form-control" [ngClass]="myForm.controls['password'].invalid ? 'is-invalid' : ''" #password>
                 <label class="col" [ngClass]="myForm.controls['password'].hasError('required') || myForm.controls['password'].hasError('hasNumber')  ? 'text-danger' : 'text-success'">
                     <i class="material-icons">{{ myForm.controls['password'].hasError('required') ||
                       myForm.controls['password'].hasError('hasNumber') ? 'cancel' :
                       'check_circle' }}</i>
-                    Must contain at least 1 number!
+                    La contraseña tiene que contener al menos un número.
                   </label>
 
                 <label class="col" [ngClass]="myForm.controls['password'].hasError('required') || myForm.controls['password'].hasError('minlength')  ? 'text-danger' : 'text-success'">
                     <i class="material-icons">{{ myForm.controls['password'].hasError('required') ||
                         myForm.controls['password'].hasError('minlength') ? 'cancel' :
                         'check_circle' }}</i>
-                        Must be at least 6 characters!
+                        La contraseña debe tener al menos 6 caracteres.
                     </label>
 
                     <label class="col" [ngClass]="myForm.controls['password'].hasError('required') || myForm.controls['password'].hasError('hasSmallCase')  ? 'text-danger' : 'text-success'">
                         <i class="material-icons">
                             {{ myForm.controls['password'].hasError('required') || myForm.controls['password'].hasError('hasCase') ? 'cancel' : 'check_circle' }}
                         </i> 
-                        Must contain at least 1 Letter!
+                        La contraseña tiene que contener al menos una letra
                     </label>
                 </div>
                 
@@ -57,10 +57,10 @@
                     <label for="confirmPassword" [ngClass]="myForm.controls['confirmPassword'].invalid ? 'text-danger' : ''">Confirm Password:</label>
                     <input id="confirmPassword" formControlName="confirmPassword" type="password" class="form-control" [ngClass]="myForm.controls['confirmPassword'].invalid ? 'is-invalid' : ''" #confirmPassword>
                     <label class="text-danger" *ngIf="myForm.controls['confirmPassword'].hasError('required')">
-                        Password is Required!
+                        Contraseña Requerida!
                     </label>
                     <label class="text-danger" *ngIf="myForm.controls['confirmPassword'].hasError('NoPassswordMatch')">
-                        Password do not match
+                        Las contraseñas no coinciden.
                     </label>
                 </div>
                 

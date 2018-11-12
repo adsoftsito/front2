@@ -69,7 +69,7 @@ export class NgbdModalEditCompany{
                 this._CompanyService.getByIdCompany(this.id)
                 .subscribe(data => {this.currentCompany[0] = data.name,
                     this.currentCompany[1] = data.full_name,
-                    this.currentCompany[2] = data.number,
+                    this.currentCompany[2] = data.phone_number,
                     this.currentCompany[3] = data.address,
                     this.currentCompany[4] = data.postal_code,
                     this.currentCompany[5] = data.rfc,

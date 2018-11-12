@@ -29,8 +29,8 @@
                               <tbody>
                                 <tr *ngFor="let company of arrayOfCompanies" class="list-group-item-action">
                                     <td> {{ company.full_name | titlecase }} / {{ company.name | titlecase }} </td>
-                                    <td> {{ company.number?(company.number):"Número no disponible" }} </td>
-                                    <td> {{ company.address?(company.address?):"N/A" }} - {{ company.postal_code?(company.postal_code):"N/A" }} </td>
+                                    <td> {{ company.phone_number?(company.phone_number):"Número no disponible" }} </td>
+                                    <td> {{ company.address?(company.address):"N/A" }} - {{ company.postal_code?(company.postal_code):"N/A" }} </td>
                                     <td> 
                                       <ul>
                                         <li>

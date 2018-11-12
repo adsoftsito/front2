@@ -13,17 +13,15 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUsuarios(): Observable<IUser[]> {
-    
     return this.http.get<IUser[]>(API_URL + '/user');
   }
   
   deleteUsuarios(id: number): Observable<IUser> {
-    return this.http.delete<IUser>(API_URL + '/user'+"/"+id);
+    return this.http.delete<IUser>(API_URL + '/user'+'/'+id);
   }
 
-  //returns a user searched by an id. this is used when you try to edit a user
   getIDUsuarios(id): Observable<IUser> {
-    return this.http.get<IUser>(API_URL + '/user'+"/"+id);
+    return this.http.get<IUser>(API_URL + '/user'+'/'+id);
   }
   
   addUsuarios(name, email, phone_number, password): Observable<IUser> {

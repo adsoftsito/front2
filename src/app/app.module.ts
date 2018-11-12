@@ -36,10 +36,6 @@ import { NgbdModalAddBus} from './controllers/bus/modals/BusAddModal.component'
 import { NgbdModalEditBus} from './controllers/bus/modals/BusEditModal.component'
 
 
-
-
-
-
 @NgModule({
   imports: [
     BrowserAnimationsModule,

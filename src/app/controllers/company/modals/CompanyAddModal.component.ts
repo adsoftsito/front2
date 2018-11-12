@@ -13,7 +13,7 @@ declare const $: any;
 export class NgbdModalAddCompany{ 
     
     myForm: FormGroup;
-    public currentCompany: any[] = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
+    public currentCompany: any[] = [undefined];
     
     constructor(
         private _CompanyService: CompanyService,

@@ -13,7 +13,7 @@ export class NgbdModalEditAdmin{
     myForm: FormGroup;
     @Input() id: number;
     
-    public currentAdmin: any[] = [undefined, undefined, undefined];
+    public currentAdmin: any[] = [undefined];
     
     
     constructor(

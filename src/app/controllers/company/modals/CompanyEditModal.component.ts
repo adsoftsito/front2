@@ -14,7 +14,7 @@ export class NgbdModalEditCompany{
     myForm: FormGroup;
     @Input() id: number;
     
-    public currentCompany: any[] = [undefined, undefined, undefined];
+    public currentCompany: any[] = [undefined];
     
     
     constructor(

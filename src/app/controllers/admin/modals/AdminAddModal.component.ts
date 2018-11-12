@@ -13,7 +13,7 @@ declare const $: any;
 export class NgbdModalAddAdmin{ 
     
     myForm: FormGroup;
-    public currentAdmin: any[] = [undefined, undefined, undefined];
+    public currentAdmin: any[] = [undefined];
 
     constructor(
         private _adminService: AdminService,

@@ -23,6 +23,7 @@ import { BusService} from './services/bus.service';
 import { PlaceService} from './services/place.service';
 import {DateinformationService} from './services/dateinformation.service';
 import { LoginComponent } from './controllers/login/login.component';
+import {NeedAuthGuard} from './NeedAuthGuard.component';
 
 import { ModalComponent } from './modals/modal.component';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -74,7 +75,17 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     // EditComponent//this one takes all the controllers within
   ],
   // services
-  providers: [UserService,AdminService,DateinformationService,BusService, CompanyService, NgbActiveModal,PlaceService],
+  providers: [
+    UserService,
+    AdminService,
+    DateinformationService,
+    BusService, 
+    CompanyService, 
+    NgbActiveModal,
+    PlaceService,
+    NeedAuthGuard,
+  ],
+    
 
   // The root component which is the main view of the application
   bootstrap: [AppComponent],

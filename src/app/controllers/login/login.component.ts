@@ -23,11 +23,6 @@ export class LoginComponent implements OnInit {
   getAdmins() {
     this.service.getAdmins().subscribe(res => {
       this.admins = res;
-      for (let i = 0; i<this.admins.length;i++){
-        if(res[i].email == 'ana@gmail.com' && res[i].username == 'ana'){
-          alert(res[i].password);
-        }
-      }
     });
   }
 
@@ -35,8 +30,9 @@ export class LoginComponent implements OnInit {
     this._loginService.login(email, password).subscribe(res=>{
 
       if(res.id!=undefined){
-        console.log(res);
+        console.log(this._loginService.isLoggedIn());
         this._loginService.setLoggedIn(res.id);
+        console.log(this._loginService.isLoggedIn());
         this.router.navigateByUrl('/dashboard');
       }
       else

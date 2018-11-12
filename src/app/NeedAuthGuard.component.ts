@@ -7,7 +7,7 @@ import {ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router/src/r
 @Injectable()
 export class NeedAuthGuard implements CanActivate {
 
-  constructor(private loginService: LoginService, private router: Router) {
+  constructor(private loginService: LoginService, private router: Router) {;
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {

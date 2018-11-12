@@ -53,7 +53,7 @@ export class NgbdModalAddBus{
             this.activeModal.close('Modal Closed');
         }
         
-        addCompany(newBus){
+        addBus(newBus){
             console.log(newBus);
             this.service.addBus(newBus[0], newBus[1])
             .subscribe(res => {
@@ -64,8 +64,8 @@ export class NgbdModalAddBus{
 
         private createForm() {
             this.myForm = this.formBuilder.group({
-                numBus: [null, Validators.required], 
-                availability:[null, Validators.required]
+                numBus: ['', Validators.required], 
+                availability:['', Validators.required]
             });
         }
          

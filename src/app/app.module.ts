@@ -32,8 +32,9 @@ import { NgbdModalEditAdmin} from './controllers/admin/modals/AdminEditModal.com
 import { CompanyService } from './services/company.service';
 import { NgbdModalEditCompany } from './controllers/company/modals/CompanyEditModal.component';
 import { NgbdModalAddCompany } from './controllers/company/modals/CompanyAddModal.component';
-import { NgbdModalAddBus} from './controllers/bus/modals/BusAddModal.component'
-import { NgbdModalEditBus} from './controllers/bus/modals/BusEditModal.component'
+import { NgbdModalAddBus} from './controllers/bus/modals/BusAddModal.component';
+import { NgbdModalEditBus} from './controllers/bus/modals/BusEditModal.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -51,6 +52,7 @@ import { NgbdModalEditBus} from './controllers/bus/modals/BusEditModal.component
     HttpClientModule,
     ReactiveFormsModule,
     MatFormFieldModule,
+    MatCheckboxModule,
     MatInputModule,
     MatDialogModule,
     AgmCoreModule.forRoot({

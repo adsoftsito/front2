@@ -29,7 +29,8 @@ import { ModalComponent } from './modals/modal.component';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { NgbdModalAddAdmin } from './controllers/admin/modals/AdminAddModal.component';
-import { NgbdModalEditAdmin} from './controllers/admin/modals/AdminEditModal.component'
+import { NgbdModalEditAdmin} from './controllers/admin/modals/AdminEditModal.component';
+
 
 
 
@@ -61,6 +62,7 @@ import { NgbdModalEditAdmin} from './controllers/admin/modals/AdminEditModal.com
     LoginComponent,
     NgbdModalAddAdmin,
     NgbdModalEditAdmin
+   
     
    
     // EditComponent//this one takes all the controllers within

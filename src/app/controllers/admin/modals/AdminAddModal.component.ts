@@ -13,7 +13,7 @@ declare const $: any;
 export class NgbdModalAddAdmin{ 
     
     myForm: FormGroup;
-    currentAdmin: any[] = ["", "", ""];
+    public currentAdmin: any[] = [undefined, undefined, undefined];
 
     constructor(
         private _adminService: AdminService,
@@ -50,7 +50,6 @@ export class NgbdModalAddAdmin{
         }
         
         closeModal() {
-            //window.location.reload();
             this.activeModal.close('Modal Closed');
         }
         

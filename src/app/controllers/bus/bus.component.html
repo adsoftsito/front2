@@ -6,7 +6,7 @@
                 <div class="card">
                     <div class="card-header card-header-warning">
                         <h4 class="card-title text-dark">Autobuses ({{buses.length}})</h4>
-                        <button type="button" class="btn btn-success" >
+                        <button type="button" class="btn btn-success" (click)="openFormModal()">
                           Agregar
                         </button>
                       </div>
@@ -27,31 +27,6 @@
                                       Acciones
                                   </th>
                                 <tbody>
-                                  <!-- <tr *ngIf="selectedUsuario != ''">
-                                      <td>
-                                          <input type="text" [(ngModel)]="selectedUsuario.name" class="form-control">
-                                      </td>
-                                      <td>
-                                          <input type="text" [(ngModel)]="selectedUsuario.email" class="form-control">
-                                      </td>
-                                      <td>
-                                          <input type="text" [(ngModel)]="selectedUsuario.phone_number" class="form-control">
-                                      </td>
-                                      <td>
-                                          <div class="btn-group"  role="group" >
-                                              <button type="button"
-                                              class="btn btn-success"
-                                              (click)="editUsuario(selectedUsuario)">
-                                                  <i class="fa fa-check text-white"></i>
-                                              </button>
-                                              <button type="button" 
-                                              class="btn btn-outline-secondary"
-                                              (click)="ngOnInit()">
-                                                  <i class="fa fa-times text-dark"></i>
-                                              </button>
-                                          </div>
-                                      </td>
-                                  </tr> -->
                                   <tr *ngFor="let bus of buses"
                                   class="list-group-item-action">
                                       <td>{{ bus.numBus }}</td>

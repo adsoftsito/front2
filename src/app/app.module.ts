@@ -32,7 +32,8 @@ import { NgbdModalEditAdmin} from './controllers/admin/modals/AdminEditModal.com
 import { CompanyService } from './services/company.service';
 import { NgbdModalEditCompany } from './controllers/company/modals/CompanyEditModal.component';
 import { NgbdModalAddCompany } from './controllers/company/modals/CompanyAddModal.component';
-
+import { NgbdModalAddBus} from './controllers/bus/modals/BusAddModal.component'
+import { NgbdModalEditBus} from './controllers/bus/modals/BusEditModal.component'
 
 
 
@@ -65,7 +66,9 @@ import { NgbdModalAddCompany } from './controllers/company/modals/CompanyAddModa
     NgbdModalAddAdmin,
     NgbdModalEditAdmin,
     NgbdModalAddCompany,
-    NgbdModalEditCompany
+    NgbdModalEditCompany,
+    NgbdModalAddBus,
+    NgbdModalEditBus
 
     
    
@@ -81,6 +84,8 @@ import { NgbdModalAddCompany } from './controllers/company/modals/CompanyAddModa
     NgbdModalEditAdmin,
     NgbdModalAddCompany,
     NgbdModalEditCompany,
+    NgbdModalAddBus,
+    NgbdModalEditBus,
   ]
 })
 export class AppModule { }

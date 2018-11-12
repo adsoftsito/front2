@@ -23,17 +23,15 @@ export class BusService {
   getIDBus(id): Observable<IBus> {
     return this.http.get<IBus>(API_URL + '/bus'+"/"+id);
   }
-  
-  // addUsuarios(name, email, phone_number, password): Observable<IUser> {
-  //   const obj = {
-  //     name: name,
-  //     email: email,
-  //     phone_number: phone_number,
-  //     password: password
-  //   };
-    // duda de porque le agrego juanca o jesus el add en el url, segun yo funcionaba sin el
-  //   return this.http.post<IUser>(API_URL + '/user'+"/add", obj);
-  // }
+ 
+
+  addBus(numBus,availability): Observable<IBus>{
+    let obj = {
+      numBus: numBus,
+      availability: availability
+    }
+    return this.http.post<IBus>(API_URL + '/bus/add', obj);
+  }
   
   // updateUsuarios(name, email, phone_number, id): Observable<IUser> {
   //   const obj = {

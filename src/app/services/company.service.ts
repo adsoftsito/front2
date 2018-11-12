@@ -35,7 +35,7 @@ export class CompanyService {
     return this.http.post<ICompany>(API_URL + '/company/add', obj);
   }
 
-  getByIDAdmin(id): Observable<ICompany> {
+  getByIdCompany(id): Observable<ICompany> {
     return this.http.get<ICompany>(API_URL + '/company/'+id);
   }
 

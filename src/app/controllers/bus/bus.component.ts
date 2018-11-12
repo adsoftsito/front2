@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BusService } from '../../services/bus.service';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdModalAddBus} from './modals/BusAddModal.component';
+import { NgbdModalEditBus} from './modals/BusEditModal.component';
 
 @Component({
   selector: 'app-bus',
@@ -19,6 +20,17 @@ export class BusComponent implements OnInit {
   openFormModal() {
     const modalRef = this._modalService.open(NgbdModalAddBus);
     
+    modalRef.result.then((result) => {
+      console.log(result);
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
+  openFormModalEdit(id) {
+    const modalRef = this._modalService.open(NgbdModalEditBus);
+    modalRef.componentInstance.id = id;
+
     modalRef.result.then((result) => {
       console.log(result);
     }).catch((error) => {

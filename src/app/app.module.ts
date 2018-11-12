@@ -33,6 +33,7 @@ import { CompanyService } from './services/company.service';
 import { NgbdModalEditCompany } from './controllers/company/modals/CompanyEditModal.component';
 import { NgbdModalAddCompany } from './controllers/company/modals/CompanyAddModal.component';
 import { NgbdModalAddBus} from './controllers/bus/modals/BusAddModal.component';
+import { NgbdModalEditBus} from './controllers/bus/modals/BusEditModal.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
@@ -64,7 +65,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     NgbdModalEditAdmin,
     NgbdModalAddCompany,
     NgbdModalEditCompany,
-    NgbdModalAddBus
+    NgbdModalAddBus,
+    NgbdModalEditBus
    
 
     
@@ -82,6 +84,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     NgbdModalAddCompany,
     NgbdModalEditCompany,
     NgbdModalAddBus,
+    NgbdModalEditBus,
     
   ]
 })

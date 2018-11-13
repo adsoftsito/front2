@@ -23,7 +23,7 @@ import { BusService} from './services/bus.service';
 import { PlaceService} from './services/place.service';
 import {DateinformationService} from './services/dateinformation.service';
 import { LoginComponent } from './controllers/login/login.component';
-import {NeedAuthGuard} from './NeedAuthGuard.component';
+import { NeedAuthGuard } from './NeedAuthGuard.component';
 
 import { ModalComponent } from './modals/modal.component';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -38,6 +38,7 @@ import { NgbdModalEditPrice } from './controllers/price/modals/PriceEditModal.co
 import { NgbdModalAddPrice } from './controllers/price/modals/PriceAddModal.component';
 import { TicketTypeService } from './services/tickettype.service';
 import { TourService } from './services/tour.service';
+import { PurchaseService } from './services/purchase.service';
 import { NgbdModalAddBus} from './controllers/bus/modals/BusAddModal.component';
 import { NgbdModalEditBus} from './controllers/bus/modals/BusEditModal.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -75,7 +76,6 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     NgbdModalEditPrice,
     NgbdModalAddBus,
     NgbdModalEditBus
-   
 
     
    
@@ -93,7 +93,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
               PriceService, 
               TicketTypeService, 
               TourService,  
-              NeedAuthGuard],
+              NeedAuthGuard,
+              PurchaseService,],
 
 
   // The root component which is the main view of the application

@@ -7,7 +7,7 @@ import { CustomValidators } from '../../../custom-validators'
 declare const $: any;
 
 @Component({
-    templateUrl: './AdminAddModal.component.html',
+    templateUrl: './AdminAddmodal.component.html',
 })
 
 export class NgbdModalAddAdmin{ 

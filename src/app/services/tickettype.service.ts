@@ -14,7 +14,7 @@ export class TicketTypeService {
   getTicketTypes(): Observable<ITicketType[]> {
     return this.http.get<ITicketType[]>(API_URL + '/tickettype');
   }
- 
+ /* RIGHT NOW WE ARE NOT USING THIS
   deleteTicketType(id): Observable<ITicketType>{
     if(confirm("¿Eliminar ticket type?")){
       return this.http.delete<ITicketType>(API_URL+'/tickettype'+'/'+id);
@@ -41,6 +41,6 @@ export class TicketTypeService {
       description: description, 
     };
     return this.http.put<ITicketType>(API_URL + '/tickettype/edit/'+id, obj);
-  }
+  }*/
 
 }

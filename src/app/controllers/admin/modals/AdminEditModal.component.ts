@@ -19,7 +19,12 @@ export class NgbdModalEditAdmin{
     constructor(
         private _adminService: AdminService,
         public activeModal: NgbActiveModal,
-        private formBuilder: FormBuilder) {this.createForm();}
+        private formBuilder: FormBuilder) {}
+
+        ngOnInit(){
+            this.getByIdAdmin();
+            this.createForm();
+        }
        
         showNotification(data, from, align){
             $.notify({
@@ -62,9 +67,6 @@ export class NgbdModalEditAdmin{
                 //this.closeModal();
             }
             
-            ngOnInit() {
-                this.getByIdAdmin();
-            }
             
             getByIdAdmin(){
                 this._adminService.getByIDAdmin(this.id)

@@ -1,6 +1,7 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Component, Output, EventEmitter, Input} from '@angular/core';
 import { PriceService } from '../../../services/price.service';
 import { TourService } from '../../../services/tour.service';
+import { TicketTypeService } from '../../../services/tickettype.service';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { CustomValidators } from '../../../custom-validators'
@@ -16,13 +17,18 @@ export class NgbdModalAddPrice{
     myForm: FormGroup;
     public currentPrice: any[] = [undefined];
     public allTours: any[];
+    public allTypeOfTickets: any[];
     
     constructor(
         private _PriceService: PriceService,
         private _TourService: TourService,
+        private _TicketTypeService: TicketTypeService,
         public activeModal: NgbActiveModal,
-        private formBuilder: FormBuilder) {
+        private formBuilder: FormBuilder) {}
+
+        ngOnInit(){
             this.getTours();
+            this.getTicketTypes();
             this.createForm();
         }
         
@@ -68,6 +74,10 @@ export class NgbdModalAddPrice{
 
         getTours(){
             this._TourService.getTours().subscribe(res =>{this.allTours = res});
+        }
+
+        getTicketTypes(){
+            this._TicketTypeService.getTicketTypes().subscribe(res =>{this.allTypeOfTickets = res});
         }
 
         private createForm() {

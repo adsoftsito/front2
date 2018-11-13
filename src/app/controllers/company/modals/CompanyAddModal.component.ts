@@ -18,7 +18,9 @@ export class NgbdModalAddCompany{
     constructor(
         private _CompanyService: CompanyService,
         public activeModal: NgbActiveModal,
-        private formBuilder: FormBuilder) {
+        private formBuilder: FormBuilder) {}
+
+        ngOnInit(){
             this.createForm();
         }
         

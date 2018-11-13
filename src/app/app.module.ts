@@ -39,6 +39,7 @@ import { NgbdModalEditPrice } from './controllers/price/modals/PriceEditModal.co
 import { NgbdModalAddPrice } from './controllers/price/modals/PriceAddModal.component';
 import { TicketTypeService } from './services/tickettype.service';
 import { TourService } from './services/tour.service';
+import { PurchaseService } from './services/purchase.service';
 import { NgbdModalAddBus} from './controllers/bus/modals/BusAddModal.component';
 import { NgbdModalEditBus} from './controllers/bus/modals/BusEditModal.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -77,7 +78,6 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     NgbdModalEditPrice,
     NgbdModalAddBus,
     NgbdModalEditBus
-   
 
     
    
@@ -95,7 +95,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
               PriceService, 
               TicketTypeService, 
               TourService,  
-              NeedAuthGuard],
+              NeedAuthGuard,
+              PurchaseService,],
 
 
   // The root component which is the main view of the application

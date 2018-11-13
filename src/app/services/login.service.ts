@@ -24,7 +24,7 @@ export class LoginService {
   }
 
   isLoggedIn(){
-    return (localStorage.getItem(this.adminID) != null);
+    return (localStorage.getItem(this.adminID) !== null);
   }
 
   login(email, password): Observable<IAdmin> {

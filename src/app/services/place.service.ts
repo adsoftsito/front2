@@ -19,7 +19,53 @@ export class PlaceService {
   getPlaces(): Observable<IPlace[]> {
     return this.http.get<IPlace[]>(API_URL + '/place');
   }
+
+  getPlaceType():Observable<IPlace[]>{
+    return this.http.get<IPlace[]>(API_URL + '/placetype');  
+  }
   
+  addPlace(name,description,location,placeType,narrative):Observable<IPlace>{
+
+    const obj ={
+      name:name,
+      description:description,
+      location:location,
+      placeType:placeType,
+      narrative
+    };
+
+    return this.http.post<IPlace>(API_URL+ '/place'+ "/add",obj);
+  }
+
+  addPlaceType(name):Observable<IPlace>{
+    const obj ={
+      name:name
+    };
+    return this.http.post<IPlace>(API_URL+ '/placetype'+ "/add",obj);
+  }
+
+  addNarrative(audio):Observable<IPlace>{
+    const obj ={
+      audio: audio
+    }
+    return this.http.post<IPlace>(API_URL+ '/narrative'+ "/add",obj);
+  }
+
+  addImage(url):Observable<IPlace>{
+    const obj ={
+    url: url
+    }
+    return this.http.post<IPlace>(API_URL+ '/imageofplace'+ "/add",obj);
+  }
+  
+  addLocation(longitud,latitud):Observable<IPlace>{
+    const obj ={
+      longitud: longitud,
+      latitud: latitud
+    }
+    return this.http.post<IPlace>(API_URL+ '/location'+ "/add",obj);
+  }
+
   deletePlace(id: number): Observable<IPlace> {
     return this.http.delete<IPlace>(API_URL + '/place'+"/"+id);
   }

@@ -94,8 +94,8 @@ export class CreateComponent implements OnInit {
       console.log(data);
     });
     this.information = true;
-    this.getDates();
-    this.getHours();  
+    // this.getDates();
+    // this.getHours();  
     this.router.navigate(['/selectdate']);
   }
   

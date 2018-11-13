@@ -35,6 +35,7 @@ import { NgbdModalAddCompany } from './controllers/company/modals/CompanyAddModa
 import { NgbdModalAddBus} from './controllers/bus/modals/BusAddModal.component';
 import { NgbdModalEditBus} from './controllers/bus/modals/BusEditModal.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MapComponent } from './controllers/map/map.component';
 
 
 @NgModule({
@@ -52,7 +53,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatInputModule,
     MatDialogModule,
     AgmCoreModule.forRoot({
-      apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
+      apiKey: 'AIzaSyA4rm9L8UDG_OdmRFzLSlzz-lCUfz_zxpQ'
     }),
     NgbModule.forRoot()
   ],
@@ -66,7 +67,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     NgbdModalAddCompany,
     NgbdModalEditCompany,
     NgbdModalAddBus,
-    NgbdModalEditBus
+    NgbdModalEditBus,
+    MapComponent
    
 
     

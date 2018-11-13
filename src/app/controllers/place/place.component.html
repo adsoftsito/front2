@@ -6,7 +6,7 @@
           <div class="col-md-12">
               <div class="card">
                   <div class="card-header card-header-warning">
-                      <h4 class="card-title text-dark">Lugares ()</h4>
+                      <h4 class="card-title text-dark">Lugares ({{places.length}})</h4>
                       <button type="button" class="btn btn-success" >
                         Agregar
                       </button>
@@ -38,6 +38,8 @@
                                 class="list-group-item-action">
                                     <td>{{place.name}}</td>
                                     <td>{{place.description}}</td>
+                                    <td>{{place.place_type_id.name}}</td>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <!-- <td>{{mural.bud_id.numBus}}</td> -->

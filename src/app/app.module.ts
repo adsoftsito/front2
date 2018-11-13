@@ -23,6 +23,7 @@ import { BusService} from './services/bus.service';
 import { PlaceService} from './services/place.service';
 import {DateinformationService} from './services/dateinformation.service';
 import { LoginComponent } from './controllers/login/login.component';
+import {NeedAuthGuard} from './NeedAuthGuard.component';
 
 import { ModalComponent } from './modals/modal.component';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -37,11 +38,9 @@ import { NgbdModalEditPrice } from './controllers/price/modals/PriceEditModal.co
 import { NgbdModalAddPrice } from './controllers/price/modals/PriceAddModal.component';
 import { TicketTypeService } from './services/tickettype.service';
 import { TourService } from './services/tour.service';
-
-
-
-
-
+import { NgbdModalAddBus} from './controllers/bus/modals/BusAddModal.component';
+import { NgbdModalEditBus} from './controllers/bus/modals/BusEditModal.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -55,6 +54,7 @@ import { TourService } from './services/tour.service';
     HttpClientModule,
     ReactiveFormsModule,
     MatFormFieldModule,
+    MatCheckboxModule,
     MatInputModule,
     MatDialogModule,
     AgmCoreModule.forRoot({
@@ -73,13 +73,28 @@ import { TourService } from './services/tour.service';
     NgbdModalEditCompany,
     NgbdModalAddPrice,
     NgbdModalEditPrice
+    NgbdModalAddBus,
+    NgbdModalEditBus
+   
 
     
    
     // EditComponent//this one takes all the controllers within
   ],
   // services
-  providers: [UserService,AdminService,DateinformationService,BusService, CompanyService, NgbActiveModal,PlaceService, PriceService, TicketTypeService, TourService],
+
+  providers: [UserService,
+              AdminService,
+              DateinformationService,
+              BusService,
+              CompanyService, 
+              NgbActiveModal,
+              PlaceService, 
+              PriceService, 
+              TicketTypeService, 
+              TourService,  
+              NeedAuthGuard],
+
 
   // The root component which is the main view of the application
   bootstrap: [AppComponent],
@@ -90,6 +105,9 @@ import { TourService } from './services/tour.service';
     NgbdModalEditCompany,
     NgbdModalAddPrice,
     NgbdModalEditPrice,
+    NgbdModalAddBus,
+    NgbdModalEditBus,
+    
   ]
 })
 export class AppModule { }

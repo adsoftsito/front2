@@ -17,7 +17,11 @@
                                           <input matInput [matDatepicker]="picker" placeholder="Elige una fecha de inicio" formControlName="start_date" #start_date>
                                           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                           <mat-datepicker #picker></mat-datepicker>
+                                          
                                       </mat-form-field>
+                                      <label class="text-danger" *ngIf="angForm.controls['start_date'].hasError('required')">
+                                        La fecha de inicio es requerida
+                                       </label>
                                   </div>
                               </div>
 
@@ -29,12 +33,27 @@
                                               <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                                               <mat-datepicker #picker2></mat-datepicker>
                                           </mat-form-field>
-                                          <mat-checkbox class="example-margin" value="true" formControlName="servicio" #servicio>Servicio</mat-checkbox>
+                                          <label class="text-danger" *ngIf="angForm.controls['end_date'].hasError('required')">
+                                            La fecha de final es requerida
+                                           </label>
                                       </div>
                                    </div>
+                                   <div class="row">
+                                       <div class="col-md-12">
+                                        <mat-checkbox class="example-margin" value="true" formControlName="servicio" #servicio>Servicio</mat-checkbox>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label class="text-danger" *ngIf="angForm.controls['servicio'].hasError('required')">
+                                                    Es necesario añadir si el servicio está disponible 
+                                                </label>
+                                            </div>
+                                        </div>
+                                       </div>
+                                   </div>
 
-                                   <button mat-raised-button  type="submit"    class="btn btn-danger pull-left" (click)="addDate(start_date.value, end_date.value,servicio.value) " >Agregar nueva fecha</button>
-                                   <!-- <button mat-raised-button  type="submit"    class="btn btn-danger pull-left" (click)="borrarTodo()">Borrar toodo</button> -->
+
+                                   <button mat-raised-button  type="submit" [disabled]="angForm.pristine || angForm.invalid"   class="btn btn-danger pull-left" (click)="addDate(start_date.value, end_date.value,servicio.value) " >Agregar nueva fecha</button>
+                                  
                               <div class="clearfix"></div>
                           </form>
                       </div>
@@ -57,22 +76,22 @@
                                   <div class="col-md-12">
                                       <mat-form-field>
                                             <input matInput placeholder="Escribe la hora inicial" formControlName=start_time #start_time>
-
                                       </mat-form-field>
+                                      <label class="text-danger" *ngIf="myForm.controls['start_time'].hasError('required')">
+                                        La hora de inicio es requerida
+                                       </label>
                                   </div>
                               </div>
 
                                   <div class="row">
                                   
                                       <div class="col-md-12">
-                                          
-                                              <!-- <input matInput [matDatepicker]="picker4" placeholder="Elige una fecha de final">
-                                              <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
-                                              <mat-datepicker #picker4></mat-datepicker> -->
                                                 <mat-form-field>
                                                         <input matInput placeholder="Escribe la hora final" formControlName=end_time #end_time>
                                                 </mat-form-field>
-                                         
+                                                <label class="text-danger" *ngIf="myForm.controls['end_time'].hasError('required')">
+                                                    La hora final es requerida
+                                                </label>
                                       </div>
                                    </div>
                                    <div class="row">
@@ -80,10 +99,13 @@
                                         <mat-form-field>
                                             <input matInput  placeholder="Anota una perido de frecuencia" formControlName=frequency #frequency>
                                          </mat-form-field>
+                                         <label class="text-danger" *ngIf="myForm.controls['frequency'].hasError('required')">
+                                            La frecuencia es requerida
+                                        </label>
                                      </div>
                                    </div>
 
-                                   <button mat-raised-button  type="submit"    class="btn btn-danger pull-left" (click)="addHour(start_time.value, end_time.value,frequency.value)" >Agregar nuevo horario</button>
+                                   <button mat-raised-button  type="submit"  [disabled]="myForm.pristine || myForm.invalid"  class="btn btn-danger pull-left" (click)="addHour(start_time.value, end_time.value,frequency.value)" >Agregar nuevo horario</button>
                                    
                               <div class="clearfix"></div>
                           </form>

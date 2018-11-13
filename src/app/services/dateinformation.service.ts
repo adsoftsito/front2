@@ -27,12 +27,7 @@ export class DateinformationService {
   deleteDate(id: number): Observable<IDate> {
     return this.http.delete<IDate>(API_URL + '/dateinformation'+"/"+id);
   }
-  // borrarTodo():Observable<IDate>{
-  //   for(let i=1;i<60;i++){
-  //     return this.http.delete<IDate>(API_URL + '/dateinterval'+"/"+i);
-  //   }
-  // }
-
+ 
   // //returns a user searched by an id. this is used when you try to edit a user
   // getIDDate(id): Observable<IDate> {
   //   return this.http.get<IDate>(API_URL + '/dateinformation'+"/"+id);

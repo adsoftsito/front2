@@ -40,12 +40,12 @@
                                 <tbody>
                                   <tr *ngFor="let date of dates"
                                   class="list-group-item-action">
-                                      <td>{{date.date_id.start_date}}</td>
-                                      <td>{{date.date_id.end_date}}</td>
-                                      <td>{{date.date_id.service}}</td>
-                                      <td>{{date.hour_id.start_time}}</td>
-                                      <td>{{date.hour_id.end_time}}</td>
-                                      <td>{{date.hour_id.frequency}}</td>
+                                      <td>{{date.date_id?(date.date_id.start_date):"N/A"}}</td>
+                                      <td>{{date.date_id?(date.date_id.end_date):"N/A"}}</td>
+                                      <td>{{date.date_id?(date.date_id.service):"N/A"}}</td>
+                                      <td>{{date.hour_id?(date.hour_id.start_time):"N/A"}}</td>
+                                      <td>{{date.hour_id?(date.hour_id.end_time):"N/A"}}</td>
+                                      <td>{{date.hour_id?(date.hour_id.frequency):"N/A"}}</td>
                                       
                                     
                                       <td>

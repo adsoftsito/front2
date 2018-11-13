@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IBus } from '../interfaces/bus';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { environment } from 'environments/environment';
 
 const API_URL = environment.apiUrl;
@@ -20,29 +20,26 @@ export class BusService {
   }
 
   //returns a user searched by an id. this is used when you try to edit a user
-  getIDBus(id): Observable<IBus> {
+  getByIDBus(id): Observable<IBus> {
     return this.http.get<IBus>(API_URL + '/bus'+"/"+id);
   }
-  
-  // addUsuarios(name, email, phone_number, password): Observable<IUser> {
-  //   const obj = {
-  //     name: name,
-  //     email: email,
-  //     phone_number: phone_number,
-  //     password: password
-  //   };
-    // duda de porque le agrego juanca o jesus el add en el url, segun yo funcionaba sin el
-  //   return this.http.post<IUser>(API_URL + '/user'+"/add", obj);
-  // }
-  
-  // updateUsuarios(name, email, phone_number, id): Observable<IUser> {
-  //   const obj = {
-  //     name: name,
-  //     email: email,
-  //     phone_number: phone_number,
-  //   };
-  //   return this.http.put<IUser>(API_URL + '/user'+"/"+id, obj);
-  // }
+ 
+
+  addBus(numBus,availability): Observable<IBus>{
+    let obj = {
+      numBus: numBus,
+      availability: availability
+    }
+    return this.http.post<IBus>(API_URL + '/bus/add', obj);
+  }
+
+  updateBus(numBus,availability, id): Observable<IBus> {
+    let obj = {
+      numBus: numBus,
+      availability: availability
+    };
+    return this.http.put<IBus>(API_URL + '/bus/edit/'+id, obj);
+  }
 
 
 

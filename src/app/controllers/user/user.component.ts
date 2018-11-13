@@ -30,6 +30,7 @@ export class UserComponent implements OnInit {
     .subscribe(data => this.usuarios = data);
     this.selectedUsuario = "";
   }
+  
   deleteUsuario(id) {
     if(confirm("Desea eliminar usuario?")){
       this._usuarioService.deleteUsuarios(id).subscribe(data => {

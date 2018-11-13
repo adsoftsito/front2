@@ -72,7 +72,10 @@ export class NgbdModalEditBus{
             
             private createForm() {
                 this.myForm = this.formBuilder.group({
-                    numBus: ['', Validators.required], 
+                    numBus: ['', Validators.compose([
+                        Validators.required,
+                        Validators.minLength(3)
+                    ])], 
                     availability:['', Validators.required]
                 });
             }

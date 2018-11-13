@@ -11,7 +11,7 @@
                             <label for="numBus" [ngClass]="myForm.controls['numBus'].invalid ? 'text-danger' : ''">Número de autobús:</label>
                             <input id="numBus" [(ngModel)]='currentBus[0]' formControlName="numBus" type="text" class="form-control" [ngClass]="myForm.controls['numBus'].invalid ? 'is-invalid' : ''" #numBus>
                             <label class="text-danger" *ngIf="myForm.controls['numBus'].hasError('required')">
-                                    ¡El Número de autobús es Requerido!
+                                    ¡El Número de autobús es Requerido! Debe de estar compuesto por lo menos por 3 dígitos
                             </label>
                             
                         </div>

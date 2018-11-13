@@ -17,7 +17,13 @@ export class NavbarComponent implements OnInit {
 
     constructor(location: Location,  private element: ElementRef, private router: Router) {
       this.location = location;
-          this.sidebarVisible = false;
+        this.sidebarVisible = false;
+        console.log(localStorage.getItem('adminID'));
+    }
+
+    logoutAdmin(){
+        localStorage.removeItem('adminID');
+        this.router.navigateByUrl('/login');
     }
 
     ngOnInit(){

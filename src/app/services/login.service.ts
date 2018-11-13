@@ -24,14 +24,10 @@ export class LoginService {
   }
 
   isLoggedIn(){
-    return localStorage.getItem(this.adminID)!= null;
+    return (localStorage.getItem(this.adminID) != null);
   }
 
   login(email, password): Observable<IAdmin> {
-    let obj = {
-      email: email,
-      password: password
-    }
-    return this.http.post<IAdmin>(API_URL+'/admin'+'/login', obj);
+    return this.http.post<IAdmin>(API_URL+'/admin'+'/login', {email: email, password: password});
   }
 }

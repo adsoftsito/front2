@@ -11,7 +11,7 @@ export class TicketTypeService {
   constructor(private http: HttpClient) { }
 
 
-  getTicketType(): Observable<ITicketType[]> {
+  getTicketTypes(): Observable<ITicketType[]> {
     return this.http.get<ITicketType[]>(API_URL + '/tickettype');
   }
  

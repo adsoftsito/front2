@@ -1,0 +1,27 @@
+<div class="modal-header">
+    <h4 class="modal-title">Agregar Precio</h4>
+    <button type="button" class="close" aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')">
+</button>
+</div>
+<form [formGroup]="myForm">
+    <div class="modal-boy">
+        <div class="container" novalidate>
+            
+            <div class="form-group">
+                <label for="priceAmount" [ngClass]="myForm.controls['priceAmount'].invalid ? 'text-danger' : ''">Cantidad:</label>
+                <input id="priceAmount" [(ngModel)]='currentPrice[0]' formControlName="priceAmount" type="text" class="form-control" [ngClass]="myForm.controls['priceAmount'].invalid ? 'is-invalid' : ''" #priceAmount>
+                <label class="text-danger" *ngIf="myForm.controls['priceAmount'].hasError('required')">
+                    La cantidad es requerida.
+                </label>
+                
+            </div>
+            
+            
+            
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button"  (click)="addPrice(currentPrice)"  [disabled]="myForm.pristine || myForm.invalid"  class="btn btn-danger pull-right">Agregar</button> 
+    </div>
+</form>

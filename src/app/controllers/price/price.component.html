@@ -25,11 +25,11 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let price of arrayOfPrices" class="list-group-item-action">
-                    <td>{{ company.priceAmount | titlecase }</td>
+                    <td>${{ price.priceAmount }}</td>
                     
-                    <td>{{ company.priceAmount | titlecase }}</td>
+                    <td>{{ price.tour_id.name | titlecase }}</td>
                     
-                    <td>  </td>
+                    <td>{{ price.ticket_type_id.name | titlecase }}</td>
                     
                     <td>
                       <div class="btn-group">

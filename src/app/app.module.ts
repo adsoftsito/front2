@@ -32,6 +32,9 @@ import { NgbdModalEditAdmin} from './controllers/admin/modals/AdminEditModal.com
 import { CompanyService } from './services/company.service';
 import { NgbdModalEditCompany } from './controllers/company/modals/CompanyEditModal.component';
 import { NgbdModalAddCompany } from './controllers/company/modals/CompanyAddModal.component';
+import { PriceService } from './services/price.service';
+import { NgbdModalEditPrice } from './controllers/price/modals/PriceEditModal.component';
+import { NgbdModalAddPrice } from './controllers/price/modals/PriceAddModal.component';
 
 
 
@@ -65,14 +68,16 @@ import { NgbdModalAddCompany } from './controllers/company/modals/CompanyAddModa
     NgbdModalAddAdmin,
     NgbdModalEditAdmin,
     NgbdModalAddCompany,
-    NgbdModalEditCompany
+    NgbdModalEditCompany,
+    NgbdModalAddPrice,
+    NgbdModalEditPrice
 
     
    
     // EditComponent//this one takes all the controllers within
   ],
   // services
-  providers: [UserService,AdminService,DateinformationService,BusService, CompanyService, NgbActiveModal,PlaceService],
+  providers: [UserService,AdminService,DateinformationService,BusService, CompanyService, NgbActiveModal,PlaceService, PriceService],
 
   // The root component which is the main view of the application
   bootstrap: [AppComponent],
@@ -81,6 +86,8 @@ import { NgbdModalAddCompany } from './controllers/company/modals/CompanyAddModa
     NgbdModalEditAdmin,
     NgbdModalAddCompany,
     NgbdModalEditCompany,
+    NgbdModalAddPrice,
+    NgbdModalEditPrice,
   ]
 })
 export class AppModule { }

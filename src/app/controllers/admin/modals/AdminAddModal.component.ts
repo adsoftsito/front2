@@ -7,18 +7,20 @@ import { CustomValidators } from '../../../custom-validators'
 declare const $: any;
 
 @Component({
-    templateUrl: './AdminAddmodal.component.html',
+    templateUrl: './AdminAddModal.component.html',
 })
 
 export class NgbdModalAddAdmin{ 
     
     myForm: FormGroup;
-    public currentAdmin: any[] = [undefined, undefined, undefined];
+    public currentAdmin: any[] = [undefined];
 
     constructor(
         private _adminService: AdminService,
         public activeModal: NgbActiveModal,
-        private formBuilder: FormBuilder) {
+        private formBuilder: FormBuilder) {}
+
+        ngOnInit(){
             this.createForm();
         }
 

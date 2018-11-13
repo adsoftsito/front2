@@ -1,0 +1,47 @@
+<div class="modal-header">
+    <h4 class="modal-title">Agregar Precio</h4>
+    <button type="button" class="close" aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')">
+</button>
+</div>
+<form [formGroup]="myForm">
+    <div class="modal-boy">
+        <div class="container" novalidate>
+            
+            <div class="form-group">
+                <label for="priceAmount" [ngClass]="myForm.controls['priceAmount'].invalid ? 'text-danger' : ''">Cantidad:</label>
+                <input id="priceAmount" [(ngModel)]='currentPrice[0]' formControlName="priceAmount" type="text" class="form-control" [ngClass]="myForm.controls['priceAmount'].invalid ? 'is-invalid' : ''" #priceAmount>
+                <label class="text-danger" *ngIf="myForm.controls['priceAmount'].hasError('required')">
+                    La cantidad es requerida.
+                </label> 
+            </div>
+            
+            <div class="form-group">
+                <label for="tour_id" [ngClass]="myForm.controls['tour_id'].invalid ? 'text-danger' : ''">Tour:</label>
+                <select class="form-control" type="text" formControlName="tour_id" id="tour_id" class="form-control" [(ngModel)]='currentPrice[1]' [ngClass]="myForm.controls['tour_id'].invalid ? 'is-invalid' : ''" #tour_id>
+                    <option [ngValue]="undefined" selected></option>
+                    <option *ngFor="let tour of allTours" [value]="tour.id">{{tour.name}}</option>
+                </select>
+                <label class="text-danger" *ngIf="myForm.controls['tour_id'].hasError('required')">
+                    El Tour es requerido, si quieres agregar uno hacer click aqui.
+                </label> 
+            </div>
+            
+            <div class="form-group">
+                <label for="ticket_type_id" [ngClass]="myForm.controls['ticket_type_id'].invalid ? 'text-danger' : ''">Tipo de Ticket:</label>
+                <div class="radio" *ngFor="let type of allTypeOfTickets">
+                    <label>
+                        <input id="ticket_type_id" type="radio" [value]="type.id" [(ngModel)]='currentPrice[2]' formControlName="ticket_type_id" [ngClass]="myForm.controls['ticket_type_id'].invalid ? 'is-invalid' : ''" #ticket_type_id>
+                        {{type.name}}
+                    </label>
+                </div>
+                <label class="text-danger" *ngIf="myForm.controls['ticket_type_id'].hasError('required')">
+                    El Tipo de Ticket es requerido.
+                </label> 
+            </div>   
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button"  (click)="addPrice(currentPrice)"  [disabled]="myForm.pristine || myForm.invalid"  class="btn btn-danger pull-right">Agregar</button> 
+    </div>
+</form>

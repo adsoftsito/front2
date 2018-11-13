@@ -72,7 +72,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     NgbdModalAddCompany,
     NgbdModalEditCompany,
     NgbdModalAddPrice,
-    NgbdModalEditPrice
+    NgbdModalEditPrice,
     NgbdModalAddBus,
     NgbdModalEditBus
    

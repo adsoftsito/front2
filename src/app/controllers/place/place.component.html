@@ -24,24 +24,25 @@
                                 <th>
                                     Tipo de lugar
                                 </th>
-                                <th>
-                                    Imagen
-                                </th>
-                                <th>
-                                    Narrativa
-                                </th>
+                                
                                 <th>
                                   Tour asociado
+                                </th>
+                                <th>
+                                    Mapa
+                                </th>
+                                <th>
+                                    Acciones
                                 </th>
                               <tbody>
                                 <tr *ngFor="let place of places"
                                 class="list-group-item-action">
                                     <td>{{place.name}}</td>
                                     <td>{{place.description}}</td>
-                                    <td>{{place.place_type_id.name}}</td>
+                                    <td>{{place.place_type_id.name | titlecase}}</td>
+                                    
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td><a [routerLink]="['/maps']">Mapa</a></td>
                                     <!-- <td>{{mural.bud_id.numBus}}</td> -->
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Basic example">

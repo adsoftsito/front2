@@ -4,12 +4,11 @@ import { TourService } from '../../../services/tour.service';
 import { TicketTypeService } from '../../../services/tickettype.service';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { CustomValidators } from '../../../custom-validators'
 
 declare const $: any;
 
 @Component({
-    templateUrl: './PriceAddmodal.component.html',
+    templateUrl: './PriceAddModal.component.html',
 })
 
 export class NgbdModalAddPrice{ 
@@ -34,7 +33,7 @@ export class NgbdModalAddPrice{
         
         showNotification(data, from, align){
             $.notify({
-                message: "Precio agregada"
+                message: "Precio agregado."
             },{
                 type: data.color,
                 timer: 1000,

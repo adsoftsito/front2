@@ -7,7 +7,7 @@ import { CustomValidators } from '../../../custom-validators'
 declare const $: any;
 
 @Component({
-    templateUrl: './CompanyAddmodal.component.html',
+    templateUrl: './CompanyAddModal.component.html',
 })
 
 export class NgbdModalAddCompany{ 
@@ -26,7 +26,7 @@ export class NgbdModalAddCompany{
         
         showNotification(data, from, align){
             $.notify({
-                message: "Compañia agregada"
+                message: "Compañia agregada."
             },{
                 type: data.color,
                 timer: 1000,

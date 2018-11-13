@@ -54,7 +54,7 @@ export class NgbdModalAddPrice{
                     this.closeModal();
                 },
                 onClose: ()=>{
-                    //window.location.reload();
+                    window.location.reload();
                 }
             });
         }
@@ -65,6 +65,7 @@ export class NgbdModalAddPrice{
         
         addPrice(newPrice){
             console.log(newPrice);
+
             this._PriceService.addPrice(newPrice[0], newPrice[1], newPrice[2])
             .subscribe(res => {
                 this.showNotification(res, 'top', 'right');
@@ -91,9 +92,7 @@ export class NgbdModalAddPrice{
                     Validators.required,
                 ])],
                 ticket_type_id: [null, Validators.compose([
-                    Validators.min(1),
                     Validators.required,
-                    CustomValidators.patternValidator(/\d/, { hasNumber: true }),
                 ])],
                
             });

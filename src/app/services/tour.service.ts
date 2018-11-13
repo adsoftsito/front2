@@ -7,7 +7,7 @@ import { ITour } from '../interfaces/tour';
 const API_URL = environment.apiUrl;
 
 @Injectable()
-export class tourService {
+export class TourService {
   constructor(private http: HttpClient) { }
 
 

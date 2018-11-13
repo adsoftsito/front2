@@ -13,9 +13,27 @@
                 <input id="priceAmount" [(ngModel)]='currentPrice[0]' formControlName="priceAmount" type="text" class="form-control" [ngClass]="myForm.controls['priceAmount'].invalid ? 'is-invalid' : ''" #priceAmount>
                 <label class="text-danger" *ngIf="myForm.controls['priceAmount'].hasError('required')">
                     La cantidad es requerida.
-                </label>
-                
+                </label> 
             </div>
+            
+            <div class="form-group">
+                <label for="tour_id" [ngClass]="myForm.controls['tour_id'].invalid ? 'text-danger' : ''">Tour:</label>
+                
+                
+                <select class="form-control" type="text" formControlName="tour_id" id="tour_id" class="form-control" [(ngModel)]='currentPrice[1]' [ngClass]="myForm.controls['tour_id'].invalid ? 'is-invalid' : ''" #tour_id>
+                    <option [ngValue]="undefined" selected></option>
+                    <option *ngFor="let tour of allTours" [value]="tour.value">{{tour.name}}</option>
+                </select>
+                
+                
+                
+                
+                <label class="text-danger" *ngIf="myForm.controls['tour_id'].hasError('required')">
+                    El Tour es requerido.
+                </label> 
+            </div>
+            
+            
             
             
             

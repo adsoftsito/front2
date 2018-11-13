@@ -36,6 +36,7 @@ import { PriceService } from './services/price.service';
 import { NgbdModalEditPrice } from './controllers/price/modals/PriceEditModal.component';
 import { NgbdModalAddPrice } from './controllers/price/modals/PriceAddModal.component';
 import { TicketTypeService } from './services/tickettype.service';
+import { TourService } from './services/tour.service';
 
 
 
@@ -78,7 +79,7 @@ import { TicketTypeService } from './services/tickettype.service';
     // EditComponent//this one takes all the controllers within
   ],
   // services
-  providers: [UserService,AdminService,DateinformationService,BusService, CompanyService, NgbActiveModal,PlaceService, PriceService, TicketTypeService],
+  providers: [UserService,AdminService,DateinformationService,BusService, CompanyService, NgbActiveModal,PlaceService, PriceService, TicketTypeService, TourService],
 
   // The root component which is the main view of the application
   bootstrap: [AppComponent],

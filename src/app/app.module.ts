@@ -26,7 +26,9 @@ import { LoginComponent } from './controllers/login/login.component';
 import {NeedAuthGuard} from './NeedAuthGuard.component';
 import {MatSelectModule} from '@angular/material/select';
 
-import { ModalComponent } from './modals/modal.component';
+import { ModalComponent } from './modals/modal/modal.component';
+import { AboutComponent } from './modals/about/about.component';
+
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { NgbdModalAddAdmin } from './controllers/admin/modals/AdminAddModal.component';
@@ -40,6 +42,7 @@ import { NgbdModalAddPrice } from './controllers/price/modals/PriceAddModal.comp
 import { TicketTypeService } from './services/tickettype.service';
 import { TourService } from './services/tour.service';
 import { PurchaseService } from './services/purchase.service';
+import { PurchaseInfoComponent } from './controllers/purchase/purchase.component';
 import { NgbdModalAddBus} from './controllers/bus/modals/BusAddModal.component';
 import { NgbdModalEditBus} from './controllers/bus/modals/BusEditModal.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -77,14 +80,13 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     NgbdModalAddPrice,
     NgbdModalEditPrice,
     NgbdModalAddBus,
-    NgbdModalEditBus
+    NgbdModalEditBus,
+    AboutComponent,
+    ModalComponent,
+    PurchaseInfoComponent
 
-    
-   
-    // EditComponent//this one takes all the controllers within
   ],
   // services
-
   providers: [UserService,
               AdminService,
               DateinformationService,
@@ -110,7 +112,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     NgbdModalEditPrice,
     NgbdModalAddBus,
     NgbdModalEditBus,
-    
+    PurchaseInfoComponent,
   ]
 })
 export class AppModule { }

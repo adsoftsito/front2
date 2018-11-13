@@ -1,8 +1,10 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { BusService } from '../../../services/bus.service';
+import { TourService } from '../../../services/tour.service';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { CustomValidators } from '../../../custom-validators'
+import { unescapeIdentifier } from '@angular/compiler';
 
 declare const $: any;
 
@@ -13,13 +15,20 @@ declare const $: any;
 export class NgbdModalAddBus{ 
     
     myForm: FormGroup;
-    public currentBus: any[] = [undefined, undefined];
+    public currentBus: any[] = [undefined, undefined, undefined];
+    public allTours: any[];
     
     constructor(
         private service: BusService,
+        private _TourService: TourService,
         public activeModal: NgbActiveModal,
         private formBuilder: FormBuilder) {
             this.createForm();
+        }
+        ngOnInit(){
+            this.createForm();
+            this.getTours();
+           
         }
         
         showNotification(data, from, align){
@@ -54,12 +63,20 @@ export class NgbdModalAddBus{
         }
         
         addBus(newBus){
-            this.service.addBus(newBus[0], newBus[1])
+            this.service.addBus(newBus[0], newBus[1], newBus[2])
             .subscribe(res => {
                 this.showNotification(res, 'top', 'right');
                 console.log(newBus[0]);
+                
             });
             
+        }
+        getTours(){
+            this._TourService.getTours().subscribe(res =>{
+                this.allTours = res;
+                console.log(res);
+                
+            });
         }
 
         private createForm() {
@@ -68,7 +85,8 @@ export class NgbdModalAddBus{
                     Validators.required,
                     Validators.minLength(3)
                 ])],  
-                availability:['', Validators.required]
+                availability:['', Validators.required],
+                tour_id:['',Validators.required]
             });
         }
          

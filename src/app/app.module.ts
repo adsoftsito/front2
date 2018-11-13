@@ -24,6 +24,7 @@ import { PlaceService} from './services/place.service';
 import {DateinformationService} from './services/dateinformation.service';
 import { LoginComponent } from './controllers/login/login.component';
 import {NeedAuthGuard} from './NeedAuthGuard.component';
+import {MatSelectModule} from '@angular/material/select';
 
 import { ModalComponent } from './modals/modal.component';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -57,6 +58,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatCheckboxModule,
     MatInputModule,
     MatDialogModule,
+    MatSelectModule,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     }),

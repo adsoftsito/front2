@@ -14,4 +14,8 @@ export class PurchaseService {
   getPurchases(): Observable<IPurchase[]>{
     return this.http.get<IPurchase[]>(API_URL+'/purchase');
   }
+
+  getPurchaseById(id): Observable<IPurchase>{
+    return this.http.get<IPurchase>(API_URL+'/purchase'+'/'+id);
+  }
 }

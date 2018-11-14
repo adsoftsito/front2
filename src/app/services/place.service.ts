@@ -24,14 +24,15 @@ export class PlaceService {
     return this.http.get<IPlace[]>(API_URL + '/placetype');  
   }
   
-  addPlace(name,description,location,placeType,narrative):Observable<IPlace>{
+  addPlace(name,description,longitude,latitude,placeType,narrative):Observable<IPlace>{
 
     const obj ={
       name:name,
       description:description,
-      location:location,
+      longitude:longitude,
+      latitude:latitude,
       placeType:placeType,
-      narrative
+      narrative:narrative
     };
 
     return this.http.post<IPlace>(API_URL+ '/place'+ "/add",obj);
@@ -44,13 +45,6 @@ export class PlaceService {
     return this.http.post<IPlace>(API_URL+ '/placetype'+ "/add",obj);
   }
 
-  addNarrative(audio):Observable<IPlace>{
-    const obj ={
-      audio: audio
-    }
-    return this.http.post<IPlace>(API_URL+ '/narrative'+ "/add",obj);
-  }
-
   addImage(url):Observable<IPlace>{
     const obj ={
     url: url
@@ -58,14 +52,6 @@ export class PlaceService {
     return this.http.post<IPlace>(API_URL+ '/imageofplace'+ "/add",obj);
   }
   
-  addLocation(longitud,latitud):Observable<IPlace>{
-    const obj ={
-      longitud: longitud,
-      latitud: latitud
-    }
-    return this.http.post<IPlace>(API_URL+ '/location'+ "/add",obj);
-  }
-
   deletePlace(id: number): Observable<IPlace> {
     return this.http.delete<IPlace>(API_URL + '/place'+"/"+id);
   }

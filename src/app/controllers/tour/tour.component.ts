@@ -3,6 +3,7 @@ import { TourService } from '../../services/tour.service';
 import {NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { TourInfoComponent } from './showModals/tourInfo.component';
 
+
 @Component({
   selector: 'app-about',
   templateUrl: './tour.component.html',

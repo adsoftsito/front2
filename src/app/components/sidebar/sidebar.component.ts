@@ -18,6 +18,8 @@ export const ROUTES: RouteInfo[] = [
     { path: '/price', title: 'Gestor de Precios',  icon: 'attach_money', class: '' },
     { path: '/company', title: 'Compañias',  icon: 'business', class: '' },
     { path: '/admin', title: 'Admin',  icon:'supervised_user_circle', class: '' },
+    { path: '/tour', title: 'Gestor de Tours',  icon:'map', class: '' },
+
 ];
 
 @Component({

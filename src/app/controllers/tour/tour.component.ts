@@ -1,35 +1,35 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PurchaseService } from '../../services/purchase.service';
+import { TourService } from '../../services/tour.service';
 import {NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { AboutComponent } from '../../modals/about/about.component';
+import { TourInfoComponent } from './showModals/tourInfo.component';
 
 @Component({
   selector: 'app-about',
-  templateUrl: './purchase.component.html',
-  styleUrls: ['./purchase.component.scss']
+  templateUrl: './tour.component.html',
+  styleUrls: ['./tour.component.scss']
 })
 export class TourComponent implements OnInit {
 
-  arrayOfPurchases=[];
+  arrayOfTours=[];
 
   constructor(
-    private _purchaseService: PurchaseService,
+    private _TourService: TourService,
     private _modalService: NgbModal) { }
 
   ngOnInit() {
-    this.getPurchases();
+    this.getTours();
   }
 
-  getPurchases(){
-    this._purchaseService.getPurchases()
+  getTours(){
+    this._TourService.getTours()
     .subscribe(res=>{
-      this.arrayOfPurchases = res;
+      this.arrayOfTours = res;
     });
   }
 
-  displayTicketsInfo(id){
-    let modalRef = this._modalService.open(PurchaseInfoComponent);
-    modalRef.componentInstance.purchaseId = id;
+  displayTourInfo(id){
+    let modalRef = this._modalService.open(TourInfoComponent);
+    modalRef.componentInstance.tourId = id;
   }
 
 }

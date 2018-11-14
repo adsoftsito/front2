@@ -46,6 +46,10 @@ import { PurchaseInfoComponent } from './controllers/purchase/purchase.component
 import { NgbdModalAddBus} from './controllers/bus/modals/BusAddModal.component';
 import { NgbdModalEditBus} from './controllers/bus/modals/BusEditModal.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { TourInfoComponent } from './controllers/tour/showModals/tourInfo.component';
+import { BusInfoComponent } from './controllers/tour/showModals/busInfo.component';
+import { TimeInfoComponent } from './controllers/tour/showModals/timeInfo.component';
+import { PlaceInfoComponent } from './controllers/tour/showModals/placeInfo.component';
 
 
 @NgModule({
@@ -83,6 +87,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     NgbdModalEditBus,
     AboutComponent,
     ModalComponent,
+    TourInfoComponent,
+    BusInfoComponent,
+    TimeInfoComponent,
+    PlaceInfoComponent,
     PurchaseInfoComponent
 
   ],
@@ -113,6 +121,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     NgbdModalAddBus,
     NgbdModalEditBus,
     PurchaseInfoComponent,
+    TourInfoComponent,
+    BusInfoComponent,
+    TimeInfoComponent,
+    PlaceInfoComponent,
   ]
 })
 export class AppModule { }

@@ -46,6 +46,7 @@ import { PurchaseInfoComponent } from './controllers/purchase/purchase.component
 import { NgbdModalAddBus} from './controllers/bus/modals/BusAddModal.component';
 import { NgbdModalEditBus} from './controllers/bus/modals/BusEditModal.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MapComponent } from './controllers/map/map.component';
 
 
 @NgModule({
@@ -64,7 +65,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatDialogModule,
     MatSelectModule,
     AgmCoreModule.forRoot({
-      apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
+      apiKey: 'AIzaSyA4rm9L8UDG_OdmRFzLSlzz-lCUfz_zxpQ'
     }),
     NgbModule.forRoot()
   ],
@@ -81,9 +82,13 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     NgbdModalEditPrice,
     NgbdModalAddBus,
     NgbdModalEditBus,
+
+    MapComponent,
+  
     AboutComponent,
     ModalComponent,
     PurchaseInfoComponent
+
 
   ],
   // services

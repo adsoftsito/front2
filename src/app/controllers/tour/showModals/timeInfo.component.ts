@@ -1,6 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Pipe } from '@angular/core';
+import { TourService } from '../../../services/tour.service';
 import { DateinformationService } from '../../../services/dateinformation.service';
 import {NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
+
 @Component({
     selector: 'app-abouttime',
     templateUrl: './timeInfo.component.html'
@@ -9,28 +12,40 @@ import {NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class TimeInfoComponent implements OnInit{
     
     
-    @Input() idDateInfos: any[];
-    public dateInformations: any[] =  [undefined];
+    @Input() idTour: any[];
+
+    public tour: any;
+    public dateIntervals = [];
+    public hourIntervals = [];
+    public dateInfo = [];
     
     
     
     constructor(
-        private _dateService: DateinformationService,
-        private activeModal: NgbActiveModal){ }
+        private _tourService: TourService,
+        private activeModal: NgbActiveModal,
+        private _dateinfoService:  DateinformationService){ }
         
         ngOnInit(){
-            
+            this._tourService.getByIdTour(this.idTour)
+            .subscribe(res => {
+              this.tour = res;
+              this.getGeneralDateInfo(this.tour.dateinformations);
+            });
         }
-        
 
-        getByIdDateInfo(id){
-                this._dateService.getByIdDateInfo(id)
-                .subscribe(data => {
-                   this.dateInformations[0] = data.date_id.start_date;
-                   this.dateInformations[1] = data.date_id.end_date;
-                   this.dateInformations[2] = data.hour_id.start_time;
-                   this.dateInformations[3] = data.hour_id.end_time;
+        getGeneralDateInfo(dateinformations){
+            for(let dateinf of dateinformations){
+                this._dateinfoService.getByIdDateInfo(dateinf.id)
+                .subscribe(res => {
+                  this.hourIntervals.push(res.hour_id);
+                  this.dateIntervals.push(res.date_id);
                 });
+              }
+              console.log(this.hourIntervals);
+              console.log(this.dateIntervals);
+
         }
+
+  
     }
-    

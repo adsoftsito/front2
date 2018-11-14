@@ -13,12 +13,14 @@ declare const $: any;
 export class NgbdModalAddAdmin{ 
     
     myForm: FormGroup;
-    public currentAdmin: any[] = [undefined, undefined, undefined];
+    public currentAdmin: any[] = [undefined];
 
     constructor(
         private _adminService: AdminService,
         public activeModal: NgbActiveModal,
-        private formBuilder: FormBuilder) {
+        private formBuilder: FormBuilder) {}
+
+        ngOnInit(){
             this.createForm();
         }
 
@@ -44,7 +46,7 @@ export class NgbdModalAddAdmin{
                     this.closeModal();
                 },
                 onClose: ()=>{
-                    window.location.reload();
+                    
                 }
             });
         }
@@ -57,6 +59,9 @@ export class NgbdModalAddAdmin{
             this._adminService.addAdmin(newAdmin[0], newAdmin[1], newAdmin[2])
             .subscribe(res => {
                 this.showNotification(res, 'top', 'right');
+                window.location.reload();
+            }, err=>{
+                this.showNotification(err.error, 'top', 'right');
             });
             
         }    

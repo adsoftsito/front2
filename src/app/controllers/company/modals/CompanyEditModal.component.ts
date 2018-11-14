@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Component, Output, EventEmitter, Input} from '@angular/core';
 import { CompanyService } from '../../../services/company.service';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
@@ -14,13 +14,18 @@ export class NgbdModalEditCompany{
     myForm: FormGroup;
     @Input() id: number;
     
-    public currentCompany: any[] = [undefined, undefined, undefined];
+    public currentCompany: any[] = [undefined];
     
     
     constructor(
         private _CompanyService: CompanyService,
         public activeModal: NgbActiveModal,
-        private formBuilder: FormBuilder) {this.createForm();}
+        private formBuilder: FormBuilder) {}
+
+        ngOnInit() {
+            this.createForm();
+            this.getByIdCompany();
+        }
        
         showNotification(data, from, align){
             $.notify({
@@ -62,9 +67,6 @@ export class NgbdModalEditCompany{
                 //this.closeModal();
             }
             
-            ngOnInit() {
-                this.getByIdCompany();
-            }
             
             getByIdCompany(){
                 this._CompanyService.getByIdCompany(this.id)

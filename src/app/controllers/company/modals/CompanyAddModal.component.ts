@@ -7,24 +7,26 @@ import { CustomValidators } from '../../../custom-validators'
 declare const $: any;
 
 @Component({
-    templateUrl: './CompanyAddmodal.component.html',
+    templateUrl: './CompanyAddModal.component.html',
 })
 
 export class NgbdModalAddCompany{ 
     
     myForm: FormGroup;
-    public currentCompany: any[] = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
+    public currentCompany: any[] = [undefined];
     
     constructor(
         private _CompanyService: CompanyService,
         public activeModal: NgbActiveModal,
-        private formBuilder: FormBuilder) {
+        private formBuilder: FormBuilder) {}
+
+        ngOnInit(){
             this.createForm();
         }
         
         showNotification(data, from, align){
             $.notify({
-                message: "Compañia agregada"
+                message: "Compañia agregada."
             },{
                 type: data.color,
                 timer: 1000,

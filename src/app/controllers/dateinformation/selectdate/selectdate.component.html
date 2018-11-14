@@ -4,7 +4,7 @@
           <div class="col-md-12">
               <div class="card">
                   <div class="card-header card-header-danger">
-                      <h4 class="card-title"> Pasp 3 de 3. Selecciona tu horario y fecha</h4>
+                      <h4 class="card-title"> Pasp 3 de 3. Selecciona un rango de fecha y hora</h4>
                       <p class="card-category">Completa todos los campos</p>
                   </div>
                   <div class="card-body">
@@ -19,6 +19,9 @@
                                         </mat-option>
                                       </mat-select>
                                     </mat-form-field>
+                                    <label class="text-danger" *ngIf="myInfo.controls['date'].hasError('required')">
+                                        El rango de fechas es requerido
+                                    </label>
                               </div>
                           </div>
       
@@ -31,13 +34,16 @@
                                             </mat-option>
                                           </mat-select>
                                         </mat-form-field>
+                                        <label class="text-danger" *ngIf="myInfo.controls['hour'].hasError('required')">
+                                            El rango de horarios es requerido
+                                        </label>
                                         
                                         
                                   </div>
                                </div>
                               
       
-                               <button mat-raised-button  type="submit"    class="btn btn-danger pull-left" (click)="addInformationDate(date.value, hour.value)" >Agregar nueva informacion de fecha y horario</button>
+                               <button mat-raised-button  type="submit"  [disabled]="myInfo.pristine || myInfo.invalid"   class="btn btn-danger pull-left" (click)="addInformationDate(date.value, hour.value)" >Agregar nueva informacion de fecha y horario</button>
                           <div class="clearfix"></div>
                       </form>
                   </div>

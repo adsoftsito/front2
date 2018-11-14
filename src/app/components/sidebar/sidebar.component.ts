@@ -13,9 +13,11 @@ export const ROUTES: RouteInfo[] = [
     { path: '/place', title: 'Lugares',  icon:'location_on', class: '' },
     { path: '/bus', title: 'Autobuses',  icon:'directions_bus', class: '' },
     { path: '/icons', title: 'Boletos',  icon:'confirmation_number', class: '' },
-    { path: '/admin', title: 'Admin',  icon:'supervised_user_circle', class: '' },
+    { path: '/purchase', title: 'Compras',  icon:'shopping_cart', class: '' },
     { path: '/dateinformation', title: 'Horarios',  icon:'access_time', class: '' },
-    { path: '/company', title: 'Compañias',  icon: 'business', class: '' }
+    { path: '/price', title: 'Gestor de Precios',  icon: 'attach_money', class: '' },
+    { path: '/company', title: 'Compañias',  icon: 'business', class: '' },
+    { path: '/admin', title: 'Admin',  icon:'supervised_user_circle', class: '' },
 ];
 
 @Component({

@@ -1,28 +1,26 @@
-<div class="container">
+<div class="cotainer">
 	<div class="d-flex justify-content-center">
 		<div class="card">
 			<div class="card-header">
         <div class="d-flex justify-content-end img_logo">
-          <span><img src="../assets/logo.png" alt=""></span>
+          <span><img src="../../../assets/img/logo.png" alt=""></span>
         </div>
         <h3>Inicio de sesión</h3>
       </div>
 			<div class="card-body">
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fa fa-user"></i></span>
-						</div>
-						<input type="text" [(ngModel)]="email" class="form-control" placeholder="email">
-					</div>
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fa fa-lock"></i></span>
-						</div>
-						<input type="password" [(ngModel)]="password" class="form-control" placeholder="password">
+				<div class="container">
+					<div class="form-group">
+						<label for="email">Email</label>
+						<input id="email" type="text" [(ngModel)]="email" class="form-control" placeholder=" ">
 					</div>
 					<div class="form-group">
-						<input type="submit" value="Entrar" class="btn btn-primary float-right btn-lg" (click)="loginAdmin(email, password)">
+							<label for="pwd">Contraseña</label>
+							<input id="pwd" type="password" [(ngModel)]="password" class="form-control" placeholder=" ">
+						</div>
+					<div class="form-group">
+						<input type="submit" value="Entrar" class="btn btn-success float-right btn-lg" (click)="loginAdmin(email, password)">
 					</div>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { BusService } from '../../../services/bus.service';
+import { TourService } from '../../../services/tour.service';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
@@ -13,13 +14,17 @@ export class NgbdModalEditBus{
     myForm: FormGroup;
     @Input() id: number;
     
-    public currentBus: any[] = [undefined, undefined];
+    public currentBus: any[] = [undefined, undefined,undefined];
+    public allTours: any[];
     
     
     constructor(
         private _busService: BusService,
         public activeModal: NgbActiveModal,
+        private _TourService: TourService,
         private formBuilder: FormBuilder) {this.createForm();}
+
+        
        
         showNotification(data, from, align){
             $.notify({
@@ -55,7 +60,7 @@ export class NgbdModalEditBus{
         
         updateBus() {
             this._busService.updateBus(this.currentBus[0],
-                this.currentBus[1], this.id).subscribe(res => {
+                this.currentBus[1],this.currentBus[2], this.id).subscribe(res => {
                     this.showNotification(res, 'top', 'right');
                 });
                 //this.closeModal();
@@ -63,17 +68,28 @@ export class NgbdModalEditBus{
             
             ngOnInit() {
                 this.getByIDBus();
+                this.getTours();
             }
-            
+            getTours(){
+                this._TourService.getTours().subscribe(res =>{
+                    this.allTours = res;
+                    console.log(res);
+                    
+                });
+            }
             getByIDBus(){
                 this._busService.getByIDBus(this.id)
-                .subscribe(data => {this.currentBus[0] = data.numBus, this.currentBus[1] = data.availability});
+                .subscribe(data => {this.currentBus[0] = data.numBus, this.currentBus[1] = data.availability, this.currentBus[2]=data.tour_id});
             }
             
             private createForm() {
                 this.myForm = this.formBuilder.group({
-                    numBus: ['', Validators.required], 
-                    availability:['', Validators.required]
+                    numBus: ['', Validators.compose([
+                        Validators.required,
+                        Validators.minLength(3)
+                    ])], 
+                    availability:['', Validators.required],
+                    tour_id:['',Validators.required]
                 });
             }
                 

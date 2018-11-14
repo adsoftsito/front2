@@ -1,39 +1,39 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
-import { BusService } from '../../../services/bus.service';
+import { Component, Output, EventEmitter, Input} from '@angular/core';
+import { PriceService } from '../../../services/price.service';
 import { TourService } from '../../../services/tour.service';
+import { TicketTypeService } from '../../../services/tickettype.service';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { CustomValidators } from '../../../custom-validators'
-import { unescapeIdentifier } from '@angular/compiler';
 
 declare const $: any;
 
 @Component({
-    templateUrl: './BusAddModal.component.html',
+    templateUrl: './PriceAddModal.component.html',
 })
 
-export class NgbdModalAddBus{ 
-    
+export class NgbdModalAddPrice{ 
+
     myForm: FormGroup;
-    public currentBus: any[] = [undefined, undefined, undefined];
+    public currentPrice: any[] = [undefined];
     public allTours: any[];
+    public allTypeOfTickets: any[];
     
     constructor(
-        private service: BusService,
+        private _PriceService: PriceService,
         private _TourService: TourService,
+        private _TicketTypeService: TicketTypeService,
         public activeModal: NgbActiveModal,
-        private formBuilder: FormBuilder) {
-            this.createForm();
-        }
+        private formBuilder: FormBuilder) {}
+
         ngOnInit(){
-            this.createForm();
             this.getTours();
-           
+            this.getTicketTypes();
+            this.createForm();
         }
         
         showNotification(data, from, align){
             $.notify({
-                message: "Autobús agregado"
+                message: "Precio agregado."
             },{
                 type: data.color,
                 timer: 1000,
@@ -62,34 +62,38 @@ export class NgbdModalAddBus{
             this.activeModal.close('Modal Closed');
         }
         
-        addBus(newBus){
-            this.service.addBus(newBus[0], newBus[1], newBus[2])
+        addPrice(newPrice){
+            console.log(newPrice);
+
+            this._PriceService.addPrice(newPrice[0], newPrice[1], newPrice[2])
             .subscribe(res => {
                 this.showNotification(res, 'top', 'right');
-                console.log(newBus[0]);
-                
             });
             
         }
+
         getTours(){
-            this._TourService.getTours().subscribe(res =>{
-                this.allTours = res;
-                console.log(res);
-                
-            });
+            this._TourService.getTours().subscribe(res =>{this.allTours = res});
+        }
+
+        getTicketTypes(){
+            this._TicketTypeService.getTicketTypes().subscribe(res =>{this.allTypeOfTickets = res});
         }
 
         private createForm() {
             this.myForm = this.formBuilder.group({
-                numBus: ['',  Validators.compose([
+                priceAmount: [null, Validators.compose([
+                    Validators.min(1),
+                    Validators.max(10000),
+                    Validators.required 
+                ])], 
+                tour_id: [null, Validators.compose([
                     Validators.required,
-                    Validators.minLength(3)
-                ])],  
-                availability:['', Validators.required],
-                tour_id:['',Validators.required]
+                ])],
+                ticket_type_id: [null, Validators.compose([
+                    Validators.required,
+                ])],
+               
             });
         }
-         
-    }
-    
-    
+}

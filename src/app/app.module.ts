@@ -23,8 +23,12 @@ import { BusService} from './services/bus.service';
 import { PlaceService} from './services/place.service';
 import {DateinformationService} from './services/dateinformation.service';
 import { LoginComponent } from './controllers/login/login.component';
+import {NeedAuthGuard} from './NeedAuthGuard.component';
+import {MatSelectModule} from '@angular/material/select';
 
-import { ModalComponent } from './modals/modal.component';
+import { ModalComponent } from './modals/modal/modal.component';
+import { AboutComponent } from './modals/about/about.component';
+
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { NgbdModalAddAdmin } from './controllers/admin/modals/AdminAddModal.component';
@@ -32,6 +36,13 @@ import { NgbdModalEditAdmin} from './controllers/admin/modals/AdminEditModal.com
 import { CompanyService } from './services/company.service';
 import { NgbdModalEditCompany } from './controllers/company/modals/CompanyEditModal.component';
 import { NgbdModalAddCompany } from './controllers/company/modals/CompanyAddModal.component';
+import { PriceService } from './services/price.service';
+import { NgbdModalEditPrice } from './controllers/price/modals/PriceEditModal.component';
+import { NgbdModalAddPrice } from './controllers/price/modals/PriceAddModal.component';
+import { TicketTypeService } from './services/tickettype.service';
+import { TourService } from './services/tour.service';
+import { PurchaseService } from './services/purchase.service';
+import { PurchaseInfoComponent } from './controllers/purchase/purchase.component';
 import { NgbdModalAddBus} from './controllers/bus/modals/BusAddModal.component';
 import { NgbdModalEditBus} from './controllers/bus/modals/BusEditModal.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -52,6 +63,7 @@ import { MapComponent } from './controllers/map/map.component';
     MatCheckboxModule,
     MatInputModule,
     MatDialogModule,
+    MatSelectModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyA4rm9L8UDG_OdmRFzLSlzz-lCUfz_zxpQ'
     }),
@@ -66,17 +78,33 @@ import { MapComponent } from './controllers/map/map.component';
     NgbdModalEditAdmin,
     NgbdModalAddCompany,
     NgbdModalEditCompany,
+    NgbdModalAddPrice,
+    NgbdModalEditPrice,
     NgbdModalAddBus,
     NgbdModalEditBus,
-    MapComponent
-   
 
-    
-   
-    // EditComponent//this one takes all the controllers within
+    MapComponent,
+  
+    AboutComponent,
+    ModalComponent,
+    PurchaseInfoComponent
+
+
   ],
   // services
-  providers: [UserService,AdminService,DateinformationService,BusService, CompanyService, NgbActiveModal,PlaceService],
+  providers: [UserService,
+              AdminService,
+              DateinformationService,
+              BusService,
+              CompanyService, 
+              NgbActiveModal,
+              PlaceService, 
+              PriceService, 
+              TicketTypeService, 
+              TourService,  
+              NeedAuthGuard,
+              PurchaseService,],
+
 
   // The root component which is the main view of the application
   bootstrap: [AppComponent],
@@ -85,9 +113,11 @@ import { MapComponent } from './controllers/map/map.component';
     NgbdModalEditAdmin,
     NgbdModalAddCompany,
     NgbdModalEditCompany,
+    NgbdModalAddPrice,
+    NgbdModalEditPrice,
     NgbdModalAddBus,
     NgbdModalEditBus,
-    
+    PurchaseInfoComponent,
   ]
 })
 export class AppModule { }

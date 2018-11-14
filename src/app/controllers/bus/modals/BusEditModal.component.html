@@ -11,7 +11,7 @@
                             <label for="numBus" [ngClass]="myForm.controls['numBus'].invalid ? 'text-danger' : ''">Número de autobús:</label>
                             <input id="numBus" [(ngModel)]='currentBus[0]' formControlName="numBus" type="text" class="form-control" [ngClass]="myForm.controls['numBus'].invalid ? 'is-invalid' : ''" #numBus>
                             <label class="text-danger" *ngIf="myForm.controls['numBus'].hasError('required')">
-                                    ¡El Número de autobús es Requerido!
+                                    ¡El Número de autobús es Requerido! Debe de estar compuesto por lo menos por 3 dígitos
                             </label>
                             
                         </div>
@@ -22,6 +22,19 @@
                             <label class="text-danger" *ngIf="myForm.controls['availability'].hasError('required')">
                                 ¡Disponibilidad requerida!
                             </label> 
+                        </div>
+
+                        <div class="form-group">
+                                <label for="tour_id" [ngClass]="myForm.controls['tour_id'].invalid ? 'text-danger' : ''">Tour:</label>
+                                <select class="form-control" type="text" formControlName="tour_id" id="tour_id" class="form-control" [(ngModel)]='currentBus[2]' [ngClass]="myForm.controls['tour_id'].invalid ? 'is-invalid' : ''" #tour_id>
+                                    <option [value]="undefined" selected></option>
+                                    <option *ngFor="let tour of allTours" [value]="tour.id">
+                                        {{tour.name}}
+                                    </option>
+                                </select>
+                                <label class="text-danger" *ngIf="myForm.controls['tour_id'].hasError('required')">
+                                        El Tour es requerido, si quieres agregar uno hacer click aqui.
+                                </label> 
                         </div>
             </div>
         </div>

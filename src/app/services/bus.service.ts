@@ -25,18 +25,20 @@ export class BusService {
   }
  
 
-  addBus(numBus,availability): Observable<IBus>{
+  addBus(numBus,availability,tour_id): Observable<IBus>{
     let obj = {
       numBus: numBus,
-      availability: availability
+      availability: availability,
+      tour_id:tour_id
     }
     return this.http.post<IBus>(API_URL + '/bus/add', obj);
   }
 
-  updateBus(numBus,availability, id): Observable<IBus> {
+  updateBus(numBus,availability,tour_id,id): Observable<IBus> {
     let obj = {
       numBus: numBus,
-      availability: availability
+      availability: availability,
+      tour_id : tour_id
     };
     return this.http.put<IBus>(API_URL + '/bus/edit/'+id, obj);
   }

@@ -10,6 +10,7 @@ import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 })
 export class DateinformationComponent implements OnInit {
   public dates = [];
+  date:any;
   // public hours = [];
   public dateInformation =[];
   constructor(private service: DateinformationService, private route: ActivatedRoute, private router: Router,private fb: FormBuilder) { }
@@ -26,7 +27,6 @@ export class DateinformationComponent implements OnInit {
   ngOnChanges(){
     this.service.getInformation()
     .subscribe(data => this.dates = data);
-    // this.selectedUsuario = "";
   }
   deleteDate(id) {
     if(confirm("Desea eliminar el horario?")){
@@ -34,6 +34,15 @@ export class DateinformationComponent implements OnInit {
         this.ngOnChanges(); 
       });
     }
+  }
+
+  getByIDDate(){
+    this.route.params.subscribe(params => {
+      this.date =this.service.getByIDDate(params['id']).subscribe(res => {
+        this.date = res;
+        console.log(res)
+    });
+  });
   }
 
 

@@ -12,21 +12,35 @@
                     <label for="numBus" [ngClass]="myForm.controls['numBus'].invalid ? 'text-danger' : ''">Número de autobús:</label>
                     <input id="numBus" [(ngModel)]='currentBus[0]' formControlName="numBus" type="text" class="form-control" [ngClass]="myForm.controls['numBus'].invalid ? 'is-invalid' : ''" #numBus>
                     <label class="text-danger" *ngIf="myForm.controls['numBus'].hasError('required')">
-                            ¡El Número de autobús es Requerido!
+                            ¡El Número de autobús es Requerido! Debe de estar compuesto por lo menos por tres dígitos.
                     </label>
                     
                 </div>
                 
                 <div class="form-group">
+                    
                     <label for="availability" [ngClass]="myForm.controls['availability'].invalid ? 'text-danger' : ''">Disponibilidad:</label>
                     <mat-checkbox class="example-margin" value="true" id="availability" [(ngModel)]='currentBus[1]' formControlName="availability"  class="form-control" [ngClass]="myForm.controls['availability'].invalid ? 'is-invalid' : ''" #availability>Disponible</mat-checkbox>
                     <label class="text-danger" *ngIf="myForm.controls['availability'].hasError('required')">
                         ¡Disponibilidad requerida!
                     </label> 
                 </div>
-                 
+
+                <div class="form-group">
+                    <label for="tour_id" [ngClass]="myForm.controls['tour_id'].invalid ? 'text-danger' : ''">Tour:</label>
+                    <select class="form-control" type="text" formControlName="tour_id" id="tour_id" class="form-control" [(ngModel)]='currentBus[2]' [ngClass]="myForm.controls['tour_id'].invalid ? 'is-invalid' : ''" #tour_id>
+                        <option [value]="undefined" selected></option>
+                        <option *ngFor="let tour of allTours" [value]="tour.id">
+                            {{tour.name}}
+                        </option>
+                    </select>
+                    <label class="text-danger" *ngIf="myForm.controls['tour_id'].hasError('required')">
+                            El Tour es requerido, si quieres agregar uno hacer click aqui.
+                    </label> 
                 </div>
+                 
             </div>
+        </div>
             <div class="modal-footer">
                 <button type="button"  (click)="addBus(currentBus)"  [disabled]="myForm.pristine || myForm.invalid"  class="btn btn-danger pull-right">Agregar</button> 
             </div>

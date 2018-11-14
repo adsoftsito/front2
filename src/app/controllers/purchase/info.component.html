@@ -14,6 +14,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
+                <p class="font-italic"> {{ purchase.createdAt | date: 'fullDate' }} </p>
                 <p class="font-weight-bold">Boletos</p>
                 <ul class="list-group">
                   <li class="list-group-item">Niño ({{ kidTickets.length }})</li>

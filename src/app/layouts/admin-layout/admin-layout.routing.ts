@@ -18,6 +18,8 @@ import { PriceComponent } from '../../controllers/price/price.component';
 import {CreateComponent} from '../../controllers/dateinformation/create/create.component';
 import {EditComponent} from '../../controllers/dateinformation/edit/edit.component';
 import {SelectdateComponent} from '../../controllers/dateinformation/selectdate/selectdate.component';
+import {CreatePlaceComponent} from '../../controllers/place/create-place/create-place.component';
+
 export const AdminLayoutRoutes: Routes = [
     // {
     //   path: '',
@@ -80,5 +82,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'create',          component: CreateComponent},
     { path: 'edit',          component: EditComponent},
     { path: 'selectdate',          component: SelectdateComponent},
+    { path: 'createplace',          component: CreatePlaceComponent},
+
 
 ];

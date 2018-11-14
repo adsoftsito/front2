@@ -50,6 +50,7 @@ import { TourInfoComponent } from './controllers/tour/showModals/tourInfo.compon
 import { BusInfoComponent } from './controllers/tour/showModals/busInfo.component';
 import { TimeInfoComponent } from './controllers/tour/showModals/timeInfo.component';
 import { PlaceInfoComponent } from './controllers/tour/showModals/placeInfo.component';
+import { MapComponent } from './controllers/map/map.component';
 
 
 @NgModule({
@@ -68,7 +69,7 @@ import { PlaceInfoComponent } from './controllers/tour/showModals/placeInfo.comp
     MatDialogModule,
     MatSelectModule,
     AgmCoreModule.forRoot({
-      apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
+      apiKey: 'AIzaSyA4rm9L8UDG_OdmRFzLSlzz-lCUfz_zxpQ'
     }),
     NgbModule.forRoot()
   ],
@@ -85,6 +86,9 @@ import { PlaceInfoComponent } from './controllers/tour/showModals/placeInfo.comp
     NgbdModalEditPrice,
     NgbdModalAddBus,
     NgbdModalEditBus,
+
+    MapComponent,
+  
     AboutComponent,
     ModalComponent,
     TourInfoComponent,
@@ -92,6 +96,7 @@ import { PlaceInfoComponent } from './controllers/tour/showModals/placeInfo.comp
     TimeInfoComponent,
     PlaceInfoComponent,
     PurchaseInfoComponent
+
 
   ],
   // services

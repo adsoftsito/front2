@@ -1,0 +1,98 @@
+<div class="main-content">
+    <div class="container-fluid">
+
+        <!-- formulario para agregar un nuevo lugar-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Agrega la información básica sobre el lugar</h4>
+                        <p class="card-category">Completa todos los campos</p>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="placeForm" novalidate >
+                            <div class="row">
+                                
+                                <div class="col-md-12">
+                                    <mat-form-field>
+                                          <input matInput placeholder="Escribe el nombre del lugar" formControlName=name #name>
+                                    </mat-form-field>
+                                    <label class="text-danger" *ngIf="placeForm.controls['name'].hasError('required')">
+                                            El nombre del lugar es requerido
+                                    </label>
+                                </div>
+                            </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                              <mat-form-field>
+                                                    <input matInput placeholder="Escribe la descripción del lugar" formControlName=description #description>
+                                              </mat-form-field>
+                                              <label class="text-danger" *ngIf="placeForm.controls['description'].hasError('required')">
+                                                    La descripcion es requerida
+                                              </label>
+                                    </div>
+                                </div>
+
+                                 <div class="row">
+                                   <div class="col-md-12">
+                                      <mat-form-field>
+                                          <input matInput  placeholder="Escribe una latitud" formControlName=latitude #latitude>
+                                       </mat-form-field>
+                                       <label class="text-danger" *ngIf="placeForm.controls['latitude'].hasError('required')">
+                                            La latitud es requerida
+                                      </label>
+                                   </div>
+                                 </div>
+
+                                 <div class="row">
+                                    <div class="col-md-12">
+                                       <mat-form-field>
+                                           <input matInput  placeholder="Escribe una longitud" formControlName=longitude #longitude>
+                                        </mat-form-field>
+                                        <label class="text-danger" *ngIf="placeForm.controls['longitude'].hasError('required')">
+                                                La longitud es requerida
+                                          </label>
+                                    </div>
+                                  </div>
+
+                                  <div class="row">
+                                      <div class="col-md-12">
+                                         <mat-form-field>
+                                                        <ngx-mat-file-input  valuePlaceholder="No ha seleccionado un archivo" formControlName="narrative"  #narrative placeholder="Agrega una narración" ></ngx-mat-file-input> 
+                                          </mat-form-field>
+                                          
+                                      </div>
+                                    </div>
+
+                                  <div class="row">
+                                    <div class="col-md-12">
+                                        <mat-form-field>
+                                            <mat-select placeholder="Selecciona el tipo de lugar" formControlName=place_type_id #place_type_id>
+                                              <mat-option *ngFor="let place of placeTypes" [value]="place.id">
+                                                {{place.name}}
+                                              </mat-option>
+                                            </mat-select>
+                                          </mat-form-field>
+                                          <label class="text-danger" *ngIf="placeForm.controls['place_type_id'].hasError('required')">
+                                                Debe seleccionar un tipo de lugar
+                                          </label>
+                                    </div>
+                                  </div>
+
+                                 <button mat-raised-button  type="submit"  [disabled]="placeForm.pristine || placeForm.invalid"   class="btn btn-danger pull-left" (click)="addPlace(name.value, description.value, latitude.value, longitude.value, place_type_id.value, narrative.value)" >Agregar nuevo lugar</button>
+                                 
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>  
+        </div>
+
+
+
+          
+    </div>
+  </div>
+
+
+

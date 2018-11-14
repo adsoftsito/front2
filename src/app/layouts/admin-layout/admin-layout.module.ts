@@ -23,6 +23,7 @@ import { PriceComponent } from '../../controllers/price/price.component';
 import { CreateComponent } from '../../controllers/dateinformation/create/create.component';
 import { EditComponent } from '../../controllers/dateinformation/edit/edit.component';
 import { SelectdateComponent } from '../../controllers/dateinformation/selectdate/selectdate.component';
+import {CreatePlaceComponent} from '../../controllers/place/create-place/create-place.component';
 // para el datepicker y timepicker
 import { MatDatepickerModule} from '@angular/material';
 import { MatNativeDateModule} from '@angular/material';
@@ -31,6 +32,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import {MatSelectModule} from '@angular/material/select';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 
 
@@ -58,6 +60,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatSelectModule,
     NgbModule,
     MatRadioModule,
+    MaterialFileInputModule,
     NgxMaterialTimepickerModule.forRoot(),
 
   ],
@@ -80,7 +83,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     TourComponent,
     CreateComponent,
     EditComponent,
-    SelectdateComponent
+    SelectdateComponent,
+    CreatePlaceComponent
   ]
 })
 

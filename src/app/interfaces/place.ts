@@ -3,6 +3,9 @@ export interface IPlace {
     name: string,
     description: string,
     image: string,
-    narrative:string
+    narrative:string,
+    latitude:number,
+    longitude:number,
+    place_type_id:number
    
 }

@@ -6,8 +6,12 @@
           <div class="col-md-12">
               <div class="card">
                   <div class="card-header card-header-warning">
-                      <h4 class="card-title text-dark">Lugares ()</h4>
-                      <button type="button" class="btn btn-success" >
+                      <h4 class="card-title text-dark">Lugares ({{places.length}})</h4>
+
+                      <button type="button" class="btn btn-success" [routerLink]="['/createplace']" >
+
+                     
+
                         Agregar
                       </button>
                     </div>
@@ -18,28 +22,44 @@
                                 <th>
                                     Lugar
                                 </th>
+                                
+                                
                                 <th>
                                     Descripción
                                 </th>
+                                
                                 <th>
                                     Tipo de lugar
                                 </th>
+                               
                                 <th>
-                                    Imagen
+                                    Mapa
                                 </th>
+                                
+                                
                                 <th>
+                                  
                                     Narrativa
                                 </th>
+                                
                                 <th>
-                                  Tour asociado
+                                
+                                    Acciones
                                 </th>
+
+                                 
+                          
                               <tbody>
                                 <tr *ngFor="let place of places"
                                 class="list-group-item-action">
                                     <td>{{place.name}}</td>
                                     <td>{{place.description}}</td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{place.place_type_id.name | titlecase}}</td>
+                                    <td><a [routerLink]="['/maps']">Mapa</a></td>
+                                    <td>{{place.narrative}}</td>
+
+                                    
+
                                     <!-- <td>{{mural.bud_id.numBus}}</td> -->
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Basic example">

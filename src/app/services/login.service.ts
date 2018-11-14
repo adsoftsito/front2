@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { IAdmin } from '../interfaces/admin';
 import { Observable } from 'rxjs';
 import { environment } from 'environments/environment';
+import { Router } from '@angular/router';
 
 
 const API_URL = environment.apiUrl;
@@ -17,14 +18,19 @@ export class LoginService {
   password: string = "";
   private adminID: 'adminID';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
-  setLoggedIn(option){
-    localStorage.setItem(this.adminID, option);
+  setLoggedIn(option: string){
+    localStorage.setItem('adminID', option);
   }
 
   isLoggedIn(){
-    return (localStorage.getItem(this.adminID) !== null);
+    return localStorage.getItem('adminID') != null;
+  }
+
+  logout(){
+    this.router.navigate(['/login']);
+    localStorage.removeItem('adminID');
   }
 
   login(email, password): Observable<IAdmin> {

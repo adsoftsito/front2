@@ -9,9 +9,6 @@
                       <h4 class="card-title text-dark">Lugares ({{places.length}})</h4>
 
                       <button type="button" class="btn btn-success" [routerLink]="['/createplace']" >
-
-                     
-
                         Agregar
                       </button>
                     </div>
@@ -22,33 +19,17 @@
                                 <th>
                                     Lugar
                                 </th>
-                                
-                                
                                 <th>
                                     Descripción
                                 </th>
-                                
                                 <th>
                                     Tipo de lugar
                                 </th>
-                               
                                 <th>
                                     Mapa
                                 </th>
-                                
-                                
                                 <th>
-                                  
-                                    Narrativa
                                 </th>
-                                
-                                <th>
-                                
-                                    Acciones
-                                </th>
-
-                                 
-                          
                               <tbody>
                                 <tr *ngFor="let place of places"
                                 class="list-group-item-action">
@@ -56,18 +37,13 @@
                                     <td>{{place.description}}</td>
                                     <td>{{place.place_type_id.name | titlecase}}</td>
                                     <td><a [routerLink]="['/maps']">Mapa</a></td>
-                                    <td>{{place.narrative}}</td>
-
-                                    
-
-                                    <!-- <td>{{mural.bud_id.numBus}}</td> -->
                                     <td>
-                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                        <div class="btn-group">
                                             <button class="btn btn-danger" type ="button" (click)="deletePlace(place.id)"  >
                                                 <i class="text-white fa fa-trash"></i>
                                             </button>
-                                            <button class="btn btn-outline-secondary" type="button" (click)="readyForEdition(usuario)">
-                                                <i class="fa fa-pencil text-dark"></i>
+                                            <button class="btn btn-info" type="button" >
+                                                <i class="fa fa-pencil text-white"></i>
                                             </button>
                                         </div>
                                     </td>

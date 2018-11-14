@@ -14,20 +14,23 @@
               <table class="table table-hover">
                 <thead class="">
                   <th>
-                    Cantidad
+                    Precio
                   </th>
                   <th>
-                    Tour para dicho Precio
+                    Tour
                   </th>
                   <th>
-                    Tipo de Ticket
+                    Tipo
+                  </th>
+                  <th>
+
                   </th>
                 </thead>
                 <tbody>
                   <tr *ngFor="let price of arrayOfPrices" class="list-group-item-action">
                     <td>${{ price.priceAmount }}</td>
                     
-                    <td>{{ price.tour_id.name | titlecase }}</td>
+                    <td>{{ price.tour_id?price.tour_id.name:"Sin asignar" | titlecase }}</td>
                     
                     <td>{{ price.ticket_type_id.name | titlecase }}</td>
                     

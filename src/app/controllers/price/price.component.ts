@@ -53,6 +53,7 @@ export class PriceComponent implements OnInit {
       this._priceService.getPrices()
       .subscribe(res => {
         this.arrayOfPrices = res;
+        console.log(this.arrayOfPrices);
       });
      
     }

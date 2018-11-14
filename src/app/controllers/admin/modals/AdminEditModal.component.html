@@ -8,26 +8,26 @@
     <div class="modal-boy">
         <div class="container" novalidate>
             <div class="form-group">
-                <label for="username" [ngClass]="myForm.controls['username'].invalid ? 'text-danger' : ''">Username</label>
+                <label for="username" [ngClass]="myForm.controls['username'].invalid ? 'text-danger' : 'text-success'">Nombre de usuario</label>
                 <input id="username" [(ngModel)]='currentAdmin[0]' formControlName="username" type="text" class="form-control" [ngClass]="myForm.controls['username'].invalid ? 'is-invalid' : ''" #usernmame>             
                 <label class="text-danger" *ngIf="myForm.controls['username'].hasError('required')">
-                    Username is Required!
+                    nombre de usuario es requerido
                 </label>
             </div>
             
             <div class="form-group">
-                <label for="email" [ngClass]="myForm.controls['email'].invalid ? 'text-danger' : ''">Email Address</label>
+                <label for="email" [ngClass]="myForm.controls['email'].invalid ? 'text-danger' : 'text-success'">Correo electronico</label>
                 <input id="email" [(ngModel)]='currentAdmin[1]' formControlName="email" type="email" class="form-control" [ngClass]="myForm.controls['email'].invalid ? 'is-invalid' : ''" #email>
                 <label class="text-danger" *ngIf="myForm.controls['email'].hasError('email')">
-                    Enter a valid email address!
+                    email no valido
                 </label>
                 <label class="text-danger" *ngIf="myForm.controls['email'].hasError('required')">
-                    Email is Required!
+                    email es requerido
                 </label>
             </div>
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button"  (click)="updateAdmin()"  [disabled]="myForm.pristine || myForm.invalid"  class="btn btn-danger pull-right">Editar</button> 
+        <button type="button"  (click)="updateAdmin()"  [disabled]="myForm.pristine || myForm.invalid"  class="btn btn-success pull-right">Editar</button> 
     </div>
 </form>

@@ -17,6 +17,9 @@
                                     <mat-form-field>
                                           <input matInput placeholder="Escribe el nombre del lugar" formControlName=name #name>
                                     </mat-form-field>
+                                    <label class="text-danger" *ngIf="placeForm.controls['name'].hasError('required')">
+                                            El nombre del lugar es requerido
+                                    </label>
                                 </div>
                             </div>
                                 <div class="row">
@@ -24,6 +27,9 @@
                                               <mat-form-field>
                                                     <input matInput placeholder="Escribe la descripción del lugar" formControlName=description #description>
                                               </mat-form-field>
+                                              <label class="text-danger" *ngIf="placeForm.controls['description'].hasError('required')">
+                                                    La descripcion es requerida
+                                              </label>
                                     </div>
                                 </div>
 
@@ -32,6 +38,9 @@
                                       <mat-form-field>
                                           <input matInput  placeholder="Escribe una latitud" formControlName=latitude #latitude>
                                        </mat-form-field>
+                                       <label class="text-danger" *ngIf="placeForm.controls['latitude'].hasError('required')">
+                                            La latitud es requerida
+                                      </label>
                                    </div>
                                  </div>
 
@@ -40,6 +49,9 @@
                                        <mat-form-field>
                                            <input matInput  placeholder="Escribe una longitud" formControlName=longitude #longitude>
                                         </mat-form-field>
+                                        <label class="text-danger" *ngIf="placeForm.controls['longitude'].hasError('required')">
+                                                La longitud es requerida
+                                          </label>
                                     </div>
                                   </div>
 
@@ -61,10 +73,13 @@
                                               </mat-option>
                                             </mat-select>
                                           </mat-form-field>
+                                          <label class="text-danger" *ngIf="placeForm.controls['place_type_id'].hasError('required')">
+                                                Debe seleccionar un tipo de lugar
+                                          </label>
                                     </div>
                                   </div>
 
-                                 <button mat-raised-button  type="submit"    class="btn btn-danger pull-left" (click)="addPlace(name.value, description.value, latitude.value, longitude.value, place_type_id.value, narrative.value)" >Agregar nuevo lugar</button>
+                                 <button mat-raised-button  type="submit"  [disabled]="placeForm.pristine || placeForm.invalid"   class="btn btn-danger pull-left" (click)="addPlace(name.value, description.value, latitude.value, longitude.value, place_type_id.value, narrative.value)" >Agregar nuevo lugar</button>
                                  
                             <div class="clearfix"></div>
                         </form>

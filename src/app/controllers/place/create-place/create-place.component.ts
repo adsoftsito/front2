@@ -24,13 +24,16 @@ export class CreatePlaceComponent implements OnInit {
     this.getPlaceType();
   }
 
-  addPlace(name, description,longitude,latitude,placeType,narrative){
-    this.service.addPlace(name,description,longitude,latitude,placeType,narrative).subscribe(data => {
+  addPlace(name, description,longitude,latitude,place_type_id,narrative){
+    this.service.addPlace(name,description,longitude,latitude,place_type_id,narrative).subscribe(data => {
       this.places= data
       console.log(data);
     });
   }
 
+  ngOnchanges(){
+    this.getPlaceType();
+  }
   getPlaceType() {
     this.service.getPlaceType().subscribe(res => {this.placeTypes = res;
       console.log(res);
@@ -43,7 +46,7 @@ export class CreatePlaceComponent implements OnInit {
       description:['',Validators.required],
       longitude:['',Validators.required],
       latitude:['', Validators.required],
-      placeType:['', Validators.required],
+      place_type_id:['', Validators.required],
       narrative:['']
     });
   }

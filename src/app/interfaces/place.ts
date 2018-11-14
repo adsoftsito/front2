@@ -5,6 +5,7 @@ export interface IPlace {
     image: string,
     narrative:string,
     latitude:number,
-    longitude:number
+    longitude:number,
+    place_type_id:number
    
 }

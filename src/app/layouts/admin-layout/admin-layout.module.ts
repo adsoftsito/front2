@@ -32,7 +32,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import {MatSelectModule} from '@angular/material/select';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 
 import {
@@ -59,6 +59,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatSelectModule,
     NgbModule,
     MatRadioModule,
+    MaterialFileInputModule,
     NgxMaterialTimepickerModule.forRoot(),
 
   ],

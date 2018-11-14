@@ -4,8 +4,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header card-header-warning">
-                        <h4 class="card-title text-dark">Autobuses ({{arrayOfBuses.length}})</h4>
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title text-white">Autobuses ({{arrayOfBuses.length}})</h4>
                         <button type="button" class="btn btn-success" (click)="openFormModal()">
                           Agregar
                         </button>
@@ -24,7 +24,6 @@
                                       Tour asociado
                                   </th>
                                   <th>
-                                      Acciones
                                   </th>
                                 <tbody>
                                   <tr *ngFor="let bus of arrayOfBuses"
@@ -33,13 +32,15 @@
                                       <td>{{bus.availability == true?"Disponible":"No Disponible"}}</td>
                                       <td>{{bus.tour_id?(bus.tour_id.name):"N/A"}}</td>
                                       <td>
-                                          <div class="btn-group" role="group" aria-label="Basic example">
+                                          <div class="btn-group">
                                               <button class="btn btn-danger" type ="button" (click)="deleteBus(bus.id)">
                                                   <i class="text-white fa fa-trash"></i>
                                               </button>
-                                              <button class="btn btn-outline-secondary" type="button" (click)="openFormModalEdit(bus.id)">
-                                                  <i class="fa fa-pencil text-dark"></i>
-                                              </button>
+                                          </div>
+                                          <div class="btn-group">
+                                            <button class="btn btn-info" type="button" (click)="openFormModalEdit(bus.id)">
+                                                 <i class="fa fa-pencil text-white"></i>
+                                            </button>
                                           </div>
                                       </td>
                                   </tr>

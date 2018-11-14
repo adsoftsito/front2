@@ -5,8 +5,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header card-header-warning">
-                        <h4 class="card-title text-dark">Horarios ({{dates.length}})</h4>
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title text-white">Horarios ({{dates.length}})</h4>
                         <button type="button" class="btn btn-success" [routerLink]="['/create']">
                           Agregar
                         </button>
@@ -34,28 +34,35 @@
                                       Frecuencia
                                   </th>
                                   <th>
-                                      Acciones
                                   </th>
-                                  
                                 <tbody>
                                   <tr *ngFor="let date of dates"
                                   class="list-group-item-action">
                                       <td>{{date.date_id?(date.date_id.start_date):"N/A"}}</td>
                                       <td>{{date.date_id?(date.date_id.end_date):"N/A"}}</td>
-                                      <td>{{date.date_id?(date.date_id.service):"N/A"}}</td>
+                                      <td>
+                                          <h4 class="float-left">
+                                            <i class="fa fa-check text-success"
+                                            *ngIf="date.date_id.service"
+                                            ></i>
+                                            <i class="fa fa-times text-danger"
+                                            *ngIf="!date.date_id.service"
+                                            ></i>
+                                          </h4>
+                                      </td>
                                       <td>{{date.hour_id?(date.hour_id.start_time):"N/A"}}</td>
                                       <td>{{date.hour_id?(date.hour_id.end_time):"N/A"}}</td>
                                       <td>{{date.hour_id?(date.hour_id.frequency):"N/A"}}</td>
-                                      
-                                    
                                       <td>
-                                          <div class="btn-group" role="group" aria-label="Basic example">
+                                          <div class="btn-group">
                                               <button class="btn btn-danger" type ="button" (click)="deleteDate(date.id)"  >
                                                   <i class="text-white fa fa-trash"></i>
                                               </button>
-                                              <button class="btn btn-outline-secondary" type="button" (click)="getByIDDATE()">
-                                                  <i class="fa fa-pencil text-dark"></i>
-                                              </button>
+                                          </div>
+                                          <div class="btn-group">
+                                            <button class="btn btn-info" type="button" (click)="getByIDDATE()">
+                                                <i class="fa fa-pencil text-white"></i>
+                                            </button>
                                           </div>
                                       </td>
                                   </tr>

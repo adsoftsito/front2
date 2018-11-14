@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { TourService } from '../../services/tour.service';
 import {NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { TourInfoComponent } from './showModals/tourInfo.component';
+import { BusInfoComponent } from './showModals/busInfo.component';
+import { TimeInfoComponent } from './showModals/timeInfo.component';
 
 
 @Component({
@@ -31,6 +33,15 @@ export class TourComponent implements OnInit {
   displayTourInfo(id){
     let modalRef = this._modalService.open(TourInfoComponent);
     modalRef.componentInstance.tourId = id;
+  }
+  displayBusInfo(arrayOfBuses){
+    let modalRef = this._modalService.open(BusInfoComponent);
+    modalRef.componentInstance.arrayOfBuses = arrayOfBuses;
+  }
+
+  displayTimeInfo(idDateInfos){
+    let modalRef = this._modalService.open(TimeInfoComponent);
+    modalRef.componentInstance.idDateInfos = idDateInfos;
   }
 
 }

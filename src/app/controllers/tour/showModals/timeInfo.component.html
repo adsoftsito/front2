@@ -1,0 +1,28 @@
+<div class="modal-header">
+    <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="activeModal.close('Close click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="text-center"> Tiempos </h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="font-weight-bold">Intervalos de Fechas y Horas:</p>
+                <ul class="list-group" *ngFor="let time of arrayOfDateInformations" class="list-group-item-action">
+                  <li class="list-group-item">Intervalo de Fecha: {{ time.start_date }} - {{ time.end_date }} </li>
+                  <li class="list-group-item">Intervalo de Hora: {{ time.start_time }} -  {{ time.end_time }} </li>
+                </ul>
+            </div>
+        </div>
+        
+       
+    </div>
+</div>
+<div class="modal-footer">
+  <button type="button" ngbAutofocus class="btn btn-danger" (click)="activeModal.close('Ok click')">Ok</button>
+</div>

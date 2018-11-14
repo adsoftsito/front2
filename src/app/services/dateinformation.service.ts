@@ -65,5 +65,9 @@ export class DateinformationService {
     return this.http.post<IDate>(API_URL+ '/dateinformation'+ "/add",obj);
   }
 
+  getByIdDateInfo(id): Observable<IDate> {
+    return this.http.get<IDate>(API_URL + '/dateinformation'+"/"+id);
+  }
+
   
 }

@@ -1,3 +1,65 @@
-<p>
-  tour works!
-</p>
+
+
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title">Tours ({{arrayOfTours.length}})</h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead class="">
+                  <th>
+                    Nombre del Tour
+                  </th>
+                  <th>
+                    Información del Tour
+                  </th>
+                  <th>
+                    Camiones Asignados
+                  </th>
+                  <th>
+                    Tiempos Asignados
+                  </th>
+                  <th>
+                    Lugares Asignados
+                  </th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let tour of arrayOfTours" class="list-group-item-action">
+                    <td> {{ (tour.name) | titlecase }} </td>
+                    <td>
+                      <a class="text-primary" (click)="displayTourInfo(tour.id)">
+                        Ver información
+                      </a>
+                    </td>
+                    <!--
+                    <td>
+                      <a class="text-primary" (click)="displayBusInfo(tour.buses)">
+                        Ver Camiones asignados
+                      </a>
+                    </td>
+                    <td>
+                      <a class="text-primary" (click)="displayTimeInfo(tour.dateinformations)">
+                        Ver Horarios asignadas.
+                      </a>
+                    </td>
+                    <td>
+                      <a class="text-primary" (click)="displayPlaceInfo(tour.places)">
+                        Ver Lugares asignados.
+                      </a>
+                    </td>
+                    -->
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>

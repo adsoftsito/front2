@@ -4,6 +4,7 @@ import {NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { TourInfoComponent } from './showModals/tourInfo.component';
 import { BusInfoComponent } from './showModals/busInfo.component';
 import { TimeInfoComponent } from './showModals/timeInfo.component';
+import { PlaceInfoComponent } from './showModals/placeInfo.component';
 
 
 @Component({
@@ -42,6 +43,12 @@ export class TourComponent implements OnInit {
   displayTimeInfo(idTour){
     let modalRef = this._modalService.open(TimeInfoComponent);
     modalRef.componentInstance.idTour = idTour;
+  }
+  
+
+  displayPlaceInfo(arrayOfPlaces){
+    let modalRef = this._modalService.open(PlaceInfoComponent);
+    modalRef.componentInstance.arrayOfPlaces = arrayOfPlaces;
   }
 
 }

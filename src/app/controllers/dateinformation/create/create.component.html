@@ -36,11 +36,16 @@
                                           <label class="text-danger" *ngIf="angForm.controls['end_date'].hasError('required')">
                                             La fecha de final es requerida
                                            </label>
+                                           <br>
                                       </div>
                                    </div>
                                    <div class="row">
                                        <div class="col-md-12">
-                                        <mat-checkbox class="example-margin" value="true" formControlName="servicio" #servicio>Servicio</mat-checkbox>
+                                            <mat-radio-group formControlName="servicio" >
+                                                    <mat-radio-button [value]="true" #servicio>Servicio</mat-radio-button>
+                                                    <mat-radio-button [value]="false" >No hay servicio</mat-radio-button>
+                                            </mat-radio-group>
+                                        <!-- <mat-checkbox class="example-margin" value="true" formControlName="servicio" #servicio>Servicio</mat-checkbox> -->
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <label class="text-danger" *ngIf="angForm.controls['servicio'].hasError('required')">

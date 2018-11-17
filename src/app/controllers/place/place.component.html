@@ -29,6 +29,10 @@
                                     Mapa
                                 </th>
                                 <th>
+                                    Tour asociado
+                                </th>
+                                <th>
+
                                 </th>
                               <tbody>
                                 <tr *ngFor="let place of places"
@@ -37,6 +41,7 @@
                                     <td>{{place.description}}</td>
                                     <td>{{place.place_type_id.name | titlecase}}</td>
                                     <td><a [routerLink]="['/maps']">Mapa</a></td>
+                                    <td> </td>
                                     <td>
                                         <div class="btn-group">
                                             <button class="btn btn-danger" type ="button" (click)="deletePlace(place.id)"  >

@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://ertourister.appspot.com'
+  apiUrl: 'https://er-citytourister.appspot.com/'
 };

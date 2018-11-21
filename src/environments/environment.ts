@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://ertourister.appspot.com'
+  apiUrl: 'https://er-citytourister.appspot.com'
 };

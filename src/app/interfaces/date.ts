@@ -1,6 +1,6 @@
 export interface IDate {
     id: number;
-    date_id: any;
-    hour_id: any;
+    date_id: number;
+    hour_id: number;
     tours: any[];
 }

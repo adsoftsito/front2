@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DateinformationComponent } from './dateinformation.component';
 
-describe('DateinformationComponent', () => {
+xdescribe('DateinformationComponent', () => {
   let component: DateinformationComponent;
   let fixture: ComponentFixture<DateinformationComponent>;
 

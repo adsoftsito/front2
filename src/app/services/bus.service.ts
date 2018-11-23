@@ -4,7 +4,7 @@ import { IBus } from '../interfaces/bus';
 import { Observable } from 'rxjs';
 import { environment } from 'environments/environment';
 
-const API_URL = environment.apiUrl;
+ const API_URL = environment.apiUrl;
 
 @Injectable()
 export class BusService {

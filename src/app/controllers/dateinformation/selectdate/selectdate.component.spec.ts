@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SelectdateComponent } from './selectdate.component';
 
-describe('SelectdateComponent', () => {
+xdescribe('SelectdateComponent', () => {
   let component: SelectdateComponent;
   let fixture: ComponentFixture<SelectdateComponent>;
 

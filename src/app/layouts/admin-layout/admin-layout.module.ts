@@ -21,7 +21,6 @@ import { PurchaseComponent } from '../../controllers/purchase/purchase.component
 import { TourComponent } from '../../controllers/tour/tour.component';
 import { PriceComponent } from '../../controllers/price/price.component';
 import { CreateComponent } from '../../controllers/dateinformation/create/create.component';
-import { EditComponent } from '../../controllers/dateinformation/edit/edit.component';
 import { SelectdateComponent } from '../../controllers/dateinformation/selectdate/selectdate.component';
 import {CreatePlaceComponent} from '../../controllers/place/create-place/create-place.component';
 import {TicketComponent} from '../../controllers/ticket/ticket.component';
@@ -83,7 +82,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     PurchaseComponent,
     TourComponent,
     CreateComponent,
-    EditComponent,
     SelectdateComponent,
     CreatePlaceComponent,
     TicketComponent

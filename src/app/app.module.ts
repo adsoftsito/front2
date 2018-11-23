@@ -12,7 +12,7 @@ import { ComponentsModule } from './components/components.module';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { AppComponent } from './app.component';
 import {MatInputModule} from '@angular/material/input';
-import {MatDialogModule} from "@angular/material";
+import {MatDialogModule} from '@angular/material';
 import {
   AgmCoreModule
 } from '@agm/core';
@@ -25,12 +25,12 @@ import {DateinformationService} from './services/dateinformation.service';
 import { LoginComponent } from './controllers/login/login.component';
 import {NeedAuthGuard} from './NeedAuthGuard.component';
 import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import { ModalComponent } from './modals/modal/modal.component';
 import { AboutComponent } from './modals/about/about.component';
 
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { NgbdModalAddAdmin } from './controllers/admin/modals/AdminAddModal.component';
 import { NgbdModalEditAdmin} from './controllers/admin/modals/AdminEditModal.component'
 import { CompanyService } from './services/company.service';
@@ -52,6 +52,7 @@ import { TimeInfoComponent } from './controllers/tour/showModals/timeInfo.compon
 import { PlaceInfoComponent } from './controllers/tour/showModals/placeInfo.component';
 import { MapComponent } from './controllers/map/map.component';
 import { TicketService } from './services/ticket.service';
+import { DateInfoEditModalComponent } from './controllers/dateinformation/edit/DateInfoEditModal.component';
 
 
 @NgModule({
@@ -69,6 +70,7 @@ import { TicketService } from './services/ticket.service';
     MatInputModule,
     MatDialogModule,
     MatSelectModule,
+    MatDatepickerModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyA4rm9L8UDG_OdmRFzLSlzz-lCUfz_zxpQ'
     }),
@@ -95,6 +97,7 @@ import { TicketService } from './services/ticket.service';
     TimeInfoComponent,
     PlaceInfoComponent,
     PurchaseInfoComponent,
+    DateInfoEditModalComponent
   ],
   // services
   providers: [UserService,
@@ -128,6 +131,7 @@ import { TicketService } from './services/ticket.service';
     BusInfoComponent,
     TimeInfoComponent,
     PlaceInfoComponent,
+    DateInfoEditModalComponent
   ]
 })
 export class AppModule { }

@@ -17,13 +17,13 @@ export class PriceService {
   }
  
   deletePrice(id): Observable<IPrice>{
-    if(confirm("¿Eliminar precio?")){
+    if(confirm('¿Eliminar precio?')){
       return this.http.delete<IPrice>(API_URL + '/price/' + id, AUTH);
     }
   }
 
   addPrice(priceAmount, tour_id, ticket_type_id): Observable<IPrice>{
-    let obj = {
+    const obj = {
       priceAmount: priceAmount, 
       tour_id: tour_id, 
       ticket_type_id: ticket_type_id
@@ -38,7 +38,7 @@ export class PriceService {
   }
 
   updatePrice(priceAmount, tour_id, ticket_type_id, id): Observable<IPrice> {
-    let obj = {
+    const obj = {
       priceAmount: priceAmount, 
       tour_id: tour_id, 
       ticket_type_id: ticket_type_id

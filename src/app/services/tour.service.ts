@@ -22,15 +22,11 @@ export class TourService {
     }
   }
 
-  addTour(name, image, description, tickets, buses, dateinformations, places): Observable<ITour>{
+  addTour(name, image, description): Observable<ITour>{
     let obj = {
       name: name, 
       image: image,
       description: description, 
-      tickets: tickets,
-      buses: buses,
-      dateinformations: dateinformations,
-      places: places
     }
     return this.http.post<ITour>(API_URL + '/tour/add', obj, AUTH);
   }
@@ -41,15 +37,11 @@ export class TourService {
     return this.http.get<ITour>(API_URL + '/tour/' + id, AUTH);
   }
 
-  updateTour(name, image, description, tickets, buses, dateinformations, places, id): Observable<ITour> {
+  updateTour(name, image, description, id): Observable<ITour> {
     let obj = {
       name: name, 
       image: image,
       description: description, 
-      tickets: tickets,
-      buses: buses,
-      dateinformations: dateinformations,
-      places: places
     };
     return this.http.put<ITour>(API_URL + '/tour/edit/' + id, obj, AUTH);
   }

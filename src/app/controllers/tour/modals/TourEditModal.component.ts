@@ -1,8 +1,5 @@
 import { Component, Output, EventEmitter, Input} from '@angular/core';
 import { TourService } from '../../../services/tour.service';
-import {BusService } from '../../../services/bus.service'
-import { PlaceService } from '../../../services/place.service'
-import { DateinformationService } from '../../../services/dateinformation.service'
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
@@ -16,29 +13,30 @@ export class NgbdModalEditTour{
 
     myForm: FormGroup;
     public currentTour: any[] = [undefined];
-    public allBuses: any[];
-    public allTimes: any[];
-    public allPlaces: any[];
+    @Input() id: number;
 
     
     constructor(
         private _TourService: TourService,
-        private _BusService: BusService,
-        private _PlaceService: PlaceService,
-        private _DateInfoService: DateinformationService,
         public activeModal: NgbActiveModal,
         private formBuilder: FormBuilder) {}
 
         ngOnInit(){
-            this.getPlaces();
-            this.getBuses();
-            this.getDateInfos();
-           // this.createForm();
+            this.createForm();
+            this.getByIdTour();
+        }
+
+        getByIdTour(){
+            this._TourService.getByIdTour(this.id)
+            .subscribe(data => {this.currentTour[0] = data.name;
+                this.currentTour[1] = data.image;
+                this.currentTour[2] = data.description; });
+
         }
         
         showNotification(data, from, align){
             $.notify({
-                message: "Tour agregado."
+                message: "Tour editado."
             },{
                 type: data.color,
                 timer: 1000,
@@ -58,7 +56,7 @@ export class NgbdModalEditTour{
                     this.closeModal();
                 },
                 onClose: ()=>{
-                   // window.location.reload();
+                   window.location.reload();
                 }
             });
         }
@@ -67,44 +65,29 @@ export class NgbdModalEditTour{
             this.activeModal.close('Modal Closed');
         }
         
-        addTour(newTour){
-            console.log(newTour);
 
-            this._TourService.addTour(newTour[0], newTour[1], newTour[2], newTour[3], newTour[4], newTour[5], newTour[6])
+        updateTour() {
+            this._TourService.updateTour(this.currentTour[0], this.currentTour[1], this.currentTour[2], this.id)
             .subscribe(res => {
-                this.showNotification(res, 'top', 'right');
-            });
-            
-        }
+                    this.showNotification(res, 'top', 'right');
+                });
+                //this.closeModal();
+            }
 
-        getPlaces(){
-            this._PlaceService.getPlaces().subscribe(res =>{this.allPlaces = res});
-        }
 
-        getBuses(){
-            this._BusService.getBuses().subscribe(res =>{this.allBuses = res});
-        }
-
-        getDateInfos(){
-            this._DateInfoService.getInformation().subscribe(res =>{this.allTimes = res});
-        }
-
-/*
         private createForm() {
             this.myForm = this.formBuilder.group({
-                priceAmount: [null, Validators.compose([
-                    Validators.min(1),
-                    Validators.max(10000),
+                name: [null, Validators.compose([
                     Validators.required 
                 ])], 
-                tour_id: [null, Validators.compose([
+                image: [null, Validators.compose([
                     Validators.required,
                 ])],
-                ticket_type_id: [null, Validators.compose([
+                description: [null, Validators.compose([
                     Validators.required,
                 ])],
                
             });
         }
-        */
+        
 }

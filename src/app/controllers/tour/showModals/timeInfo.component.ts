@@ -31,7 +31,7 @@ export class TimeInfoComponent implements OnInit{
             this.getDateInfos();
             this._tourService.getByIdTour(this.idTour)
             .subscribe(res => {
-                this.tour = res;
+                this.tour = res; 
                 this.getGeneralDateInfo(this.tour.dateinformations);
             });
         }
@@ -48,8 +48,6 @@ export class TimeInfoComponent implements OnInit{
                     this.dateIntervals.push(res.date_id);
                 });
             }
-            console.log(this.hourIntervals);
-            console.log(this.dateIntervals);
             
         }
         

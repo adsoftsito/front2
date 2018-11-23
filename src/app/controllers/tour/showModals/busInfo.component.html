@@ -1,28 +1,57 @@
 <div class="modal-header">
-    <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="activeModal.close('Close click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
+    <h4 class="modal-title">Modifiicar Camiones</h4>
+    <button type="button" class="close" aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')">
+</button>
 </div>
-<div class="modal-body">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="text-center"> Camiones </h3>
-            </div>
+
+<!--
+    <div class="row">
+        <div class="col-md-12">
+            <p class="font-weight-bold">Camiones Asignados:</p>
+            <table *ngFor="let bus of arrayOfAllBuses">
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>
+                        <ul class="list-group" class="list-group-item-action">
+                            <li class="list-group-item">Codigo del camion: {{ bus.numBus }}</li>
+                            <li class="list-group-item">Se encuentra activo: {{ (bus.availability)?"Afirmativo":"Negativo" }}</li>
+                        </ul>
+                    </td>
+                </tr>   
+            </table>
+            
+            
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <p class="font-weight-bold">Camiones Asignados:</p>
-                <ul class="list-group" *ngFor="let bus of arrayOfBuses" class="list-group-item-action">
-                  <li class="list-group-item">Codigo del camion: {{ bus.numBus }}</li>
-                  <li class="list-group-item">Se encuentra activo: {{ (bus.availability)?"Afirmativo":"Negativo" }}</li>
-                </ul>
-            </div>
-        </div>
-        
-       
     </div>
-</div>
-<div class="modal-footer">
-  <button type="button" ngbAutofocus class="btn btn-danger" (click)="activeModal.close('Ok click')">Ok</button>
-</div>
+-->
+
+<form [formGroup]="form">
+    <div class="modal-boy">
+        <div class="container" novalidate>
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="font-weight-bold">Camiones Asignados:</p>
+                    <table formArrayName="arrayOfAllBuses" *ngFor="let order of form.controls.arrayOfAllBuses.controls; let i = index">
+                        <tr>
+                            <td>
+                                <input type="checkbox">
+                            </td>
+                            <td>
+                                <ul class="list-group" class="list-group-item-action">
+                                    <li class="list-group-item">Codigo del camion: {{ arrayOfAllBuses[i].numBus }}</li>
+                                    <li class="list-group-item">Se encuentra activo: {{ (arrayOfAllBuses[i].availability)?"Afirmativo":"Negativo" }}</li>
+                                </ul>
+                            </td>
+                        </tr>    
+                    </table>                  
+                </div>                
+            </div>           
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button"  (click)="updateTour()"  [disabled]="form.pristine || form.invalid"  class="btn btn-danger pull-right">Editar</button> 
+    </div>
+</form>

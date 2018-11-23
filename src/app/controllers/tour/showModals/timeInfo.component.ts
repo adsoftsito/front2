@@ -13,11 +13,12 @@ export class TimeInfoComponent implements OnInit{
     
     
     @Input() idTour: any[];
-
+    
     public tour: any;
     public dateIntervals = [];
     public hourIntervals = [];
     public dateInfo = [];
+    arrayOfAllDateInfo=[];
     
     
     
@@ -27,25 +28,30 @@ export class TimeInfoComponent implements OnInit{
         private _dateinfoService:  DateinformationService){ }
         
         ngOnInit(){
+            this.getDateInfos();
             this._tourService.getByIdTour(this.idTour)
             .subscribe(res => {
-              this.tour = res;
-              this.getGeneralDateInfo(this.tour.dateinformations);
+                this.tour = res;
+                this.getGeneralDateInfo(this.tour.dateinformations);
             });
         }
-
+        
+        getDateInfos(){
+            this._dateinfoService.getDates().subscribe(res => { this.arrayOfAllDateInfo = res;});
+        }
+        
         getGeneralDateInfo(dateinformations){
             for(let dateinf of dateinformations){
                 this._dateinfoService.getByIdDateInfo(dateinf.id)
                 .subscribe(res => {
-                  this.hourIntervals.push(res.hour_id);
-                  this.dateIntervals.push(res.date_id);
+                    this.hourIntervals.push(res.hour_id);
+                    this.dateIntervals.push(res.date_id);
                 });
-              }
-              console.log(this.hourIntervals);
-              console.log(this.dateIntervals);
-
+            }
+            console.log(this.hourIntervals);
+            console.log(this.dateIntervals);
+            
         }
-
-  
+        
+        
     }

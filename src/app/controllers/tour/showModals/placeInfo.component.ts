@@ -10,20 +10,19 @@ import {NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   
 
     @Input() arrayOfPlaces: any;
+    arrayOfAllPlaces=[];
+
   
     constructor(
       private _placeService: PlaceService,
       private activeModal: NgbActiveModal){ }
   
     ngOnInit(){
-      //this.getByIdTimes();
+      this.getPlaces();
     }
-/*
-    getByIdTimes(){
-        this._dateService.getDates(this.tourId)
-        .subscribe(res => {
-          this.tour = res;
-        });
-    }*/
+    getPlaces(){
+      this._placeService.getPlaces().subscribe(res => { this.arrayOfAllPlaces = res;});
+    }
+
   }
   

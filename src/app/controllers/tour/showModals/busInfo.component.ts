@@ -10,20 +10,19 @@ import {NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   
 
     @Input() arrayOfBuses: any;
+    arrayOfAllBuses=[];
   
     constructor(
       private _busService: BusService,
       private activeModal: NgbActiveModal){ }
   
     ngOnInit(){
-      //this.getByIdTimes();
+      this.getBuses();
     }
-/*
-    getByIdTimes(){
-        this._dateService.getDates(this.tourId)
-        .subscribe(res => {
-          this.tour = res;
-        });
-    }*/
+
+    getBuses(){
+      this._busService.getBuses().subscribe(res => { this.arrayOfAllBuses = res;});
+    }
+
   }
   

@@ -5,50 +5,22 @@
 </button>
 </div>
 
-<!--
-    <div class="row">
-        <div class="col-md-12">
-            <p class="font-weight-bold">Camiones Asignados:</p>
-            <table *ngFor="let bus of arrayOfAllBuses">
-                <tr>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                    <td>
-                        <ul class="list-group" class="list-group-item-action">
-                            <li class="list-group-item">Codigo del camion: {{ bus.numBus }}</li>
-                            <li class="list-group-item">Se encuentra activo: {{ (bus.availability)?"Afirmativo":"Negativo" }}</li>
-                        </ul>
-                    </td>
-                </tr>   
-            </table>
-            
-            
-        </div>
-    </div>
--->
 
 <form [formGroup]="form">
     <div class="modal-boy">
         <div class="container" novalidate>
             <div class="row">
                 <div class="col-md-12">
+                    <br>
                     <p class="font-weight-bold">Camiones Asignados:</p>
-                    <table formArrayName="arrayOfAllBuses" *ngFor="let order of form.controls.arrayOfAllBuses.controls; let i = index">
-                        <tr>
-                            <td>
-                                <input type="checkbox">
-                            </td>
-                            <td>
-                                <ul class="list-group" class="list-group-item-action">
-                                    <li class="list-group-item">Codigo del camion: {{ arrayOfAllBuses[i].numBus }}</li>
-                                    <li class="list-group-item">Se encuentra activo: {{ (arrayOfAllBuses[i].availability)?"Afirmativo":"Negativo" }}</li>
-                                </ul>
-                            </td>
-                        </tr>    
-                    </table>                  
-                </div>                
-            </div>           
+                    <div class="radio" *ngFor="let order of form.controls.arrayOfAllBuses.controls; let i = index">
+                        <label formArrayName="arrayOfAllBuses">
+                            <input type="checkbox" [formControlName]="i">
+                            {{arrayOfAllBuses[i].numBus}}<br>
+                        </label> 
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="modal-footer">

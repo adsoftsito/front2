@@ -11,8 +11,8 @@ export class BusInfoComponent{
 
   form: FormGroup;
   @Input() arrayOfBuses: any;
-  arrayOfAllBuses= [];
   myForm: FormGroup;
+  arrayOfAllBuses = [];
   
   constructor(private formBuilder: FormBuilder,  
     private _busService: BusService,
@@ -20,15 +20,14 @@ export class BusInfoComponent{
 
     ngOnInit(){
       this.getBuses();
-
     }
 
     getBuses(){
-        this._busService.getBuses().subscribe(res => { this.arrayOfAllBuses = res;});
+        this._busService.getBuses().subscribe(res => { this.arrayOfAllBuses = res; this.createForm() });
     }
 
     
-    private createForm() {
+    createForm() {
        // Create a new array with a form control for each order
       const controls = this.arrayOfAllBuses.map(c => new FormControl(false));
       controls[1].setValue(true); // Set the first checkbox to true (checked)

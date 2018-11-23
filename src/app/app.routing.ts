@@ -7,7 +7,7 @@ import { LoginComponent } from './controllers/login/login.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { NeedAuthGuard } from './NeedAuthGuard.component';
 import { from } from 'rxjs';
-const routes: Routes =[
+const routes: Routes = [
   {
     path: '',
     redirectTo: 'dashboard',
@@ -21,13 +21,12 @@ const routes: Routes =[
         path: '',
         loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule' //takes all the routes of admin-routes
       }
-      
-    ]},{
+    ]}, {
         path: 'login',
         component: LoginComponent
     }
   ];
-  
+
   @NgModule({
     imports: [
       CommonModule,
@@ -38,4 +37,3 @@ const routes: Routes =[
     ],
   })
   export class AppRoutingModule { }
-  

@@ -51,6 +51,7 @@ import { BusInfoComponent } from './controllers/tour/showModals/busInfo.componen
 import { TimeInfoComponent } from './controllers/tour/showModals/timeInfo.component';
 import { PlaceInfoComponent } from './controllers/tour/showModals/placeInfo.component';
 import { MapComponent } from './controllers/map/map.component';
+import { TicketService } from './services/ticket.service';
 
 
 @NgModule({
@@ -86,18 +87,14 @@ import { MapComponent } from './controllers/map/map.component';
     NgbdModalEditPrice,
     NgbdModalAddBus,
     NgbdModalEditBus,
-
     MapComponent,
-  
     AboutComponent,
     ModalComponent,
     TourInfoComponent,
     BusInfoComponent,
     TimeInfoComponent,
     PlaceInfoComponent,
-    PurchaseInfoComponent
-
-
+    PurchaseInfoComponent,
   ],
   // services
   providers: [UserService,
@@ -111,7 +108,8 @@ import { MapComponent } from './controllers/map/map.component';
               TicketTypeService, 
               TourService,  
               NeedAuthGuard,
-              PurchaseService,],
+              PurchaseService,
+              TicketService],
 
 
   // The root component which is the main view of the application

@@ -8,17 +8,17 @@ declare interface RouteInfo {
     class: string;
 }
 export const ROUTES: RouteInfo[] = [
-    { path: '/maps', title: 'Rutas',  icon: 'map', class: '' },
     { path: '/user', title: 'Usuarios',  icon:'person', class: '' },
+    { path: '/purchase', title: 'Compras',  icon:'shopping_cart', class: '' },
+    { path: '/ticket', title: 'Boletos',  icon:'confirmation_number', class: '' },
+    { path: '/tour', title: 'Gestor de Tours',  icon:'map', class: '' },
+    { path: '/price', title: 'Gestor de Precios',  icon: 'attach_money', class: '' },
+    { path: '/maps', title: 'Rutas',  icon: 'map', class: '' },
     { path: '/place', title: 'Lugares',  icon:'location_on', class: '' },
     { path: '/bus', title: 'Autobuses',  icon:'directions_bus', class: '' },
-    { path: '/icons', title: 'Boletos',  icon:'confirmation_number', class: '' },
-    { path: '/purchase', title: 'Compras',  icon:'shopping_cart', class: '' },
     { path: '/dateinformation', title: 'Horarios',  icon:'access_time', class: '' },
-    { path: '/price', title: 'Gestor de Precios',  icon: 'attach_money', class: '' },
     { path: '/company', title: 'Compañias',  icon: 'business', class: '' },
     { path: '/admin', title: 'Admin',  icon:'supervised_user_circle', class: '' },
-    { path: '/tour', title: 'Gestor de Tours',  icon:'map', class: '' },
 
 ];
 

@@ -19,6 +19,7 @@ import {CreateComponent} from '../../controllers/dateinformation/create/create.c
 import {EditComponent} from '../../controllers/dateinformation/edit/edit.component';
 import {SelectdateComponent} from '../../controllers/dateinformation/selectdate/selectdate.component';
 import {CreatePlaceComponent} from '../../controllers/place/create-place/create-place.component';
+import {TicketComponent} from '../../controllers/ticket/ticket.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -65,7 +66,7 @@ export const AdminLayoutRoutes: Routes = [
     // }
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'table-list',     component: TableListComponent },
-    { path: 'table-list-rutas',component: TableListRutasComponent },
+    { path: 'table-list-rutas', component: TableListRutasComponent },
     { path: 'typography',     component: TypographyComponent },
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
@@ -83,6 +84,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'edit',          component: EditComponent},
     { path: 'selectdate',          component: SelectdateComponent},
     { path: 'createplace',          component: CreatePlaceComponent},
-
+    { path: 'ticket',        component: TicketComponent},
 
 ];

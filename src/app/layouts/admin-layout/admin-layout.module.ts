@@ -9,7 +9,7 @@ import { TypographyComponent } from '../../typography/typography.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { TableListRutasComponent } from '../../table-list-rutas/table-list-rutas.component';
-//controllers:
+// controllers:
 import { UserComponent } from '../../controllers/user/user.component';
 import { AdminComponent } from '../../controllers/admin/admin.component';
 import { BraceletComponent } from '../../controllers/bracelet/bracelet.component';
@@ -24,6 +24,7 @@ import { CreateComponent } from '../../controllers/dateinformation/create/create
 import { EditComponent } from '../../controllers/dateinformation/edit/edit.component';
 import { SelectdateComponent } from '../../controllers/dateinformation/selectdate/selectdate.component';
 import {CreatePlaceComponent} from '../../controllers/place/create-place/create-place.component';
+import {TicketComponent} from '../../controllers/ticket/ticket.component';
 // para el datepicker y timepicker
 import { MatDatepickerModule} from '@angular/material';
 import { MatNativeDateModule} from '@angular/material';
@@ -84,7 +85,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     CreateComponent,
     EditComponent,
     SelectdateComponent,
-    CreatePlaceComponent
+    CreatePlaceComponent,
+    TicketComponent
   ]
 })
 

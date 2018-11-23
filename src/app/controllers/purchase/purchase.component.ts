@@ -10,7 +10,7 @@ import { AboutComponent } from '../../modals/about/about.component';
 })
 export class PurchaseComponent implements OnInit {
 
-  arrayOfPurchases=[];
+  arrayOfPurchases = [];
 
   constructor(
     private _purchaseService: PurchaseService,

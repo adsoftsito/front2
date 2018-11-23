@@ -21,11 +21,11 @@ export class UserService {
   }
   
   deleteUsuarios(id: number): Observable<IUser> {
-    return this.http.delete<IUser>(API_URL + '/user' + '/' + id, AUTH);
+    return this.http.delete<IUser>(API_URL + '/user/' + id, AUTH);
   }
 
-  getIDUsuarios(id): Observable<IUser> {
-    return this.http.get<IUser>(API_URL + '/user' + '/' + id, AUTH);
+  getIDUsuarios(id: number): Observable<IUser> {
+    return this.http.get<IUser>(API_URL + '/user/' + id, AUTH);
   }
   
   addUsuarios(name, email, phone_number, password): Observable<IUser> {
@@ -35,7 +35,7 @@ export class UserService {
       phone_number: phone_number,
       password: password
     };
-    return this.http.post<IUser>(API_URL + '/user' + '/add', obj, AUTH);
+    return this.http.post<IUser>(API_URL + '/user/add', obj, AUTH);
   }
   
   updateUsuarios(name, email, phone_number, id): Observable<IUser> {
@@ -44,7 +44,7 @@ export class UserService {
       email: email,
       phone_number: phone_number,
     };
-    return this.http.put<IUser>(API_URL + '/user' + '/' + id, obj, AUTH);
+    return this.http.put<IUser>(API_URL + '/user/' + id, obj, AUTH);
   }
 
 

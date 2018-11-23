@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   admins: any;
   constructor(
-    private http: HttpClient, 
+    private http: HttpClient,
     private service: AdminService,
     private _loginService: LoginService,
     private router: Router) { }
@@ -29,20 +29,20 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  loginAdmin(email, password){
-    this._loginService.login(email, password).subscribe(res=>{
-      this._loginService.setLoggedIn(''+res.id);
+  loginAdmin(email, password) {
+    this._loginService.login(email, password).subscribe(res => {
+      this._loginService.setToken(res.token);
       this.showNotification(res, 'top', 'right');
       this.router.navigateByUrl('/dashboard');
-    }, err =>{
+    }, err => {
       this.showNotification(err.error, 'top', 'right');
     });
   }
 
-  showNotification(data, from, align){
+  showNotification(data, from, align) {
     $.notify({
-        message:data.info
-    },{
+        message: data.info
+    }, {
         type: data.color,
         timer: 500,
         placement: {
@@ -54,15 +54,13 @@ export class LoginComponent implements OnInit {
                       <span data-notify="icon"></span>
                       <span data-notify="message">{2}</span>
                       <div class="progress" data-notify="progressbar">
-                          <div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+                          <div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                          </div>
                       </div>
-                  </div>`,
-        onClose: ()=>{
-          
-        }
-      }); 
+                  </div>`
+      });
     }
 
-  //NOTA: verificar que se haga logout para que se elimine el adminID del storage
+  // NOTA: verificar que se haga logout para que se elimine el adminID del storage
 
 }

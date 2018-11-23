@@ -5,7 +5,7 @@ import { environment } from 'environments/environment';
 import { IPlace } from '../interfaces/place';
 
 const API_URL = environment.apiUrl;
-
+const AUTH = environment.token;
 
 
 @Injectable({
@@ -17,11 +17,11 @@ export class PlaceService {
   constructor(private http: HttpClient) { }
 
   getPlaces(): Observable<IPlace[]> {
-    return this.http.get<IPlace[]>(API_URL + '/place');
+    return this.http.get<IPlace[]>(API_URL + '/place', AUTH);
   }
 
   getPlaceType():Observable<IPlace[]>{
-    return this.http.get<IPlace[]>(API_URL + '/placetype');  
+    return this.http.get<IPlace[]>(API_URL + '/placetype', AUTH);  
   }
   
   addPlace(name,description,longitude,latitude,place_type_id,narrative):Observable<IPlace>{
@@ -35,29 +35,29 @@ export class PlaceService {
       narrative:narrative
     };
 
-    return this.http.post<IPlace>(API_URL+ '/place'+ "/add",obj);
+    return this.http.post<IPlace>(API_URL + '/place/add', obj, AUTH);
   }
 
   addPlaceType(name):Observable<IPlace>{
-    const obj ={
-      name:name
+    const obj = {
+      name: name
     };
-    return this.http.post<IPlace>(API_URL+ '/placetype'+ "/add",obj);
+    return this.http.post<IPlace>(API_URL + '/placetype/add', obj, AUTH);
   }
 
   addImage(url):Observable<IPlace>{
-    const obj ={
+    const obj = {
     url: url
     }
-    return this.http.post<IPlace>(API_URL+ '/imageofplace'+ "/add",obj);
+    return this.http.post<IPlace>(API_URL + '/imageofplace/add', obj, AUTH);
   }
   
   deletePlace(id: number): Observable<IPlace> {
-    return this.http.delete<IPlace>(API_URL + '/place'+"/"+id);
+    return this.http.delete<IPlace>(API_URL + '/place/' + id, AUTH);
   }
 
   //returns a user searched by an id. this is used when you try to edit a user
   getIDPlace(id): Observable<IPlace> {
-    return this.http.get<IPlace>(API_URL + '/place'+"/"+id);
+    return this.http.get<IPlace>(API_URL + '/place/' + id, AUTH);
   }
 }

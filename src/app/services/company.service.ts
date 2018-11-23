@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { ICompany } from '../interfaces/company';
 
 const API_URL = environment.apiUrl;
+const AUTH = environment.token;
 
 @Injectable()
 export class CompanyService {
@@ -12,17 +13,17 @@ export class CompanyService {
 
 
   getCompanies(): Observable<ICompany[]> {
-    return this.http.get<ICompany[]>(API_URL + '/company');
+    return this.http.get<ICompany[]>(API_URL + '/company', AUTH);
   }
 
-  deleteCompany(id): Observable<ICompany>{
-    if(confirm("¿Eliminar compañia?")){
-      return this.http.delete<ICompany>(API_URL+'/company'+'/'+id);
+  deleteCompany(id): Observable<ICompany> {
+    if (confirm('¿Eliminar compañia?')) {
+      return this.http.delete<ICompany>(API_URL + '/company/' + id, AUTH);
     }
   }
 
   addCompany(name, full_name, phone_number, address, postal_code, rfc, ieps, iva): Observable<ICompany>{
-    let obj = {
+    const obj = {
       name: name,
       full_name: full_name,
       phone_number: phone_number,
@@ -32,17 +33,15 @@ export class CompanyService {
       ieps: ieps, 
       iva: iva
     }
-    return this.http.post<ICompany>(API_URL + '/company/add', obj);
+    return this.http.post<ICompany>(API_URL + '/company/add', obj, AUTH);
   }
 
-  
-
   getByIdCompany(id): Observable<ICompany> {
-    return this.http.get<ICompany>(API_URL + '/company/'+id);
+    return this.http.get<ICompany>(API_URL + '/company/' + id, AUTH);
   }
 
   updateCompany(name, full_name, phone_number, address, postal_code, rfc, ieps, iva, id): Observable<ICompany> {
-    let obj = {
+    const obj = {
       name: name,
       full_name: full_name,
       phone_number: phone_number,
@@ -52,7 +51,7 @@ export class CompanyService {
       ieps: ieps, 
       iva: iva
     };
-    return this.http.put<ICompany>(API_URL + '/company/edit/'+id, obj);
+    return this.http.put<ICompany>(API_URL + '/company/edit/' + id, obj, AUTH);
   }
 
 }

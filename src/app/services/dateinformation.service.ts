@@ -71,21 +71,22 @@ export class DateinformationService {
     return this.http.get<IHour>(API_URL + '/hourinterval/' + id, AUTH);
   }
 
-  updateHour(id, startTime, endTime, service): Observable<IHour> {
+  updateHour(id, startTime, endTime, frequency): Observable<IHour> {
     const obj = {
       start_time: startTime,
       end_time: endTime,
-      service: service
+      frequency: frequency
     }
     return this.http.put<IHour>(API_URL + '/hourinterval/edit/' + id, obj, AUTH);
   }
 
-  updateDate(id, startDate, endDate, frequency): Observable<IDate> {
+  updateDate(id, startDate, endDate, service): Observable<IDate> {
     const obj = {
       start_date: startDate,
       end_date: endDate,
-      frequency: frequency
+      service: service
     }
     return this.http.put<IDate>(API_URL + '/dateinterval/edit/' + id, obj, AUTH);
+  }
 
 }

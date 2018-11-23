@@ -5,22 +5,38 @@
 </div>
 <div class="modal-body">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
         <mat-form-field>
-            <input matInput class="datepicker" [matDatepicker]="startDate" placeholder="Elige una fecha de inicio">
+            <input matInput [matDatepicker]="startDate" placeholder="Fecha de inicio" 
+              [(ngModel)]="start_date"
+              (dateChange)="updateStartDate($event)"
+              (dateInput)="updateStartDate($event)">
             <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
             <mat-datepicker #startDate></mat-datepicker>
         </mat-form-field>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <mat-form-field>
-            <input matInput [matDatepicker]="endDate" placeholder="Elige una fecha de inicio">
+            <input  matInput [matDatepicker]="endDate" placeholder="Fecha final"
+              [(ngModel)]="end_date"
+              (dateChange)="updateEndDate($event)"
+              (dateInput)="updateEndDate($event)">
             <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
             <mat-datepicker #endDate></mat-datepicker>
         </mat-form-field>
     </div>
+    <div class="col-md-4">
+        <mat-checkbox [(ngModel)]="dateInterval.service">Servicio</mat-checkbox>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <ngb-timepicker [(ngModel)]="time"></ngb-timepicker>
+    </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4"></div>
   </div>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cancelar</button>
+  <button class="btn btn-success" (click)="updateDateInterval()">Guardar</button>
 </div>

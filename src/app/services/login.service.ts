@@ -14,26 +14,25 @@ const API_URL = environment.apiUrl;
 export class LoginService {
 
   private _id: number;
-  email: string = "";
-  password: string = "";
-  private adminID: 'adminID';
+  email: string;
+  password: string;
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  setLoggedIn(option: string){
-    localStorage.setItem('adminID', option);
+  setToken(token: string) {
+    localStorage.setItem('TOKEN', token);
   }
 
-  isLoggedIn(){
-    return localStorage.getItem('adminID') != null;
+  isLoggedIn() {
+    return localStorage.getItem('TOKEN') != null;
   }
 
-  logout(){
+  logout() {
     this.router.navigate(['/login']);
-    localStorage.removeItem('adminID');
+    localStorage.removeItem('TOKEN');
   }
 
   login(email, password): Observable<IAdmin> {
-    return this.http.post<IAdmin>(API_URL+'/admin'+'/login', {email: email, password: password});
+    return this.http.post<IAdmin>(API_URL + '/admin' + '/login', {email: email, password: password});
   }
 }

@@ -3,7 +3,14 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
+import { HttpHeaders } from '@angular/common/http';
+
 export const environment = {
   production: false,
-  apiUrl: 'https://ertourister.appspot.com'
+  apiUrl: 'https://er-citytourister.appspot.com',
+  token: {
+    headers: new HttpHeaders({
+      'auth': localStorage.getItem('TOKEN'),
+    })
+  }
 };

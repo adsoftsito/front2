@@ -4,4 +4,5 @@ export interface IAdmin {
     email: string;
     password: string;
     connection_time: string;
+    token: string;
 }

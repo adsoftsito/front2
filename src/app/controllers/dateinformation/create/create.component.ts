@@ -117,7 +117,7 @@ export class CreateComponent implements OnInit {
     });
     
     this.information = true; 
-    this.router.navigate(['/selectdate']);
+    // this.router.navigate(['/selectdate']);
   }
   
   

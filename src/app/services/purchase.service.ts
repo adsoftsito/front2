@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { IPurchase } from '../interfaces/purchase';
 
 const API_URL = environment.apiUrl;
+const AUTH = environment.token;
 
 @Injectable()
 export class PurchaseService {
@@ -12,10 +13,10 @@ export class PurchaseService {
   constructor(private http: HttpClient) { }
 
   getPurchases(): Observable<IPurchase[]>{
-    return this.http.get<IPurchase[]>(API_URL+'/purchase');
+    return this.http.get<IPurchase[]>(API_URL + '/purchase', AUTH);
   }
 
   getPurchaseById(id): Observable<IPurchase>{
-    return this.http.get<IPurchase>(API_URL+'/purchase'+'/'+id);
+    return this.http.get<IPurchase>(API_URL + '/purchase/' + id, AUTH);
   }
 }

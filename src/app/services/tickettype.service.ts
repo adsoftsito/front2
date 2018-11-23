@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { ITicketType } from '../interfaces/tickettype';
 
 const API_URL = environment.apiUrl;
+const AUTH = environment.token;
 
 @Injectable()
 export class TicketTypeService {
@@ -12,7 +13,7 @@ export class TicketTypeService {
 
 
   getTicketTypes(): Observable<ITicketType[]> {
-    return this.http.get<ITicketType[]>(API_URL + '/tickettype');
+    return this.http.get<ITicketType[]>(API_URL + '/tickettype', AUTH);
   }
  /* RIGHT NOW WE ARE NOT USING THIS
   deleteTicketType(id): Observable<ITicketType>{

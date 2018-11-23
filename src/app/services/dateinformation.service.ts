@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { environment } from 'environments/environment';
 
 const API_URL = environment.apiUrl;
+const AUTH = environment.token;
 
 @Injectable({
   providedIn: 'root'
@@ -15,17 +16,17 @@ export class DateinformationService {
   constructor(private http: HttpClient) { }
 
   getInformation(): Observable<IDate[]> {
-    return this.http.get<IDate[]>(API_URL + '/dateinformation');
+    return this.http.get<IDate[]>(API_URL + '/dateinformation', AUTH);
   }
   getDates(): Observable<IDate[]> {
-    return this.http.get<IDate[]>(API_URL + '/dateinterval');
+    return this.http.get<IDate[]>(API_URL + '/dateinterval', AUTH);
   }
   getHours(): Observable<IDate[]> {
-    return this.http.get<IDate[]>(API_URL + '/hourinterval');
+    return this.http.get<IDate[]>(API_URL + '/hourinterval', AUTH);
   }
   
   deleteDate(id: number): Observable<IDate> {
-    return this.http.delete<IDate>(API_URL + '/dateinformation'+"/"+id);
+    return this.http.delete<IDate>(API_URL + '/dateinformation/' + id, AUTH);
   }
  
   // //returns a user searched by an id. this is used when you try to edit a user
@@ -34,14 +35,13 @@ export class DateinformationService {
   // }
 
   // Funcion para agregar a la tabla de dateInterval
-  addDate(start_date,end_date,service):Observable<IDate>{
-    const obj={
+  addDate(start_date, end_date, service): Observable<IDate> {
+    const obj = {
       start_date: start_date,
       end_date : end_date,
       service: service
-      
     };
-    return this.http.post<IDate>(API_URL + '/dateinterval'+"/add",obj);
+    return this.http.post<IDate>(API_URL + '/dateinterval/add', obj, AUTH);
   }
 
   // Funcion para agregar a la tabla de hourInterval
@@ -53,26 +53,26 @@ export class DateinformationService {
       frequency : frequency
     };
 
-    return this.http.post<IDate>(API_URL+ '/hourinterval'+ "/add",obj);
+    return this.http.post<IDate>(API_URL + '/hourinterval/add', obj, AUTH);
   }
 
-  addInformationDate(date_id, hour_id):Observable<IDate>{
-    const obj ={
-      date_id :date_id,
-      hour_id :hour_id
+  addInformationDate(date_id, hour_id):Observable<IDate> {
+    const obj = {
+      date_id: date_id,
+      hour_id: hour_id
     };
 
-    return this.http.post<IDate>(API_URL+ '/dateinformation'+ "/add",obj);
+    return this.http.post<IDate>(API_URL + '/dateinformation/add', obj, AUTH);
   }
 
   getByIdDateInfo(id): Observable<IDate> {
-    return this.http.get<IDate>(API_URL + '/dateinformation'+"/"+id);
+    return this.http.get<IDate>(API_URL + '/dateinformation/' + id, AUTH);
   }
 
 
 
   getByIDDate(id): Observable<IDate> {
-    return this.http.get<IDate>(API_URL + '/dateinterval'+"/"+id);
+    return this.http.get<IDate>(API_URL + '/dateinterval/' + id, AUTH);
   }
 
 }

@@ -17,7 +17,7 @@ export class TourService {
   }
  
   deleteTour(id): Observable<ITour>{
-    if(confirm('¿Eliminar tour type?')){
+    if(confirm('¿Eliminar tour?')){
       return this.http.delete<ITour>(API_URL + '/tour/' + id, AUTH);
     }
   }

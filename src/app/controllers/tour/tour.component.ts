@@ -31,6 +31,13 @@ export class TourComponent implements OnInit {
     });
   }
 
+  deleteTour(id){
+    this._TourService.deleteTour(id)
+    .subscribe(res => {
+      this.getTours();
+    });
+  }
+
   displayTourInfo(id){
     let modalRef = this._modalService.open(TourInfoComponent);
     modalRef.componentInstance.tourId = id;

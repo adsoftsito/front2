@@ -5,6 +5,8 @@ import { TourInfoComponent } from './showModals/tourInfo.component';
 import { BusInfoComponent } from './showModals/busInfo.component';
 import { TimeInfoComponent } from './showModals/timeInfo.component';
 import { PlaceInfoComponent } from './showModals/placeInfo.component';
+import {NgbdModalAddTour} from './modals/TourAddModal.component';
+import {NgbdModalEditTour} from './modals/TourEditModal.component';
 
 
 @Component({
@@ -56,6 +58,27 @@ export class TourComponent implements OnInit {
   displayPlaceInfo(arrayOfPlaces){
     let modalRef = this._modalService.open(PlaceInfoComponent);
     modalRef.componentInstance.arrayOfPlaces = arrayOfPlaces;
+  }
+
+  openFormModalEdit(id) {
+    const modalRef = this._modalService.open(NgbdModalEditTour);
+    modalRef.componentInstance.id = id;
+
+    modalRef.result.then((result) => {
+      console.log(result);
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
+  openFormModalAdd() {
+    const modalRef = this._modalService.open(NgbdModalAddTour);
+    
+    modalRef.result.then((result) => {
+      console.log(result);
+    }).catch((error) => {
+      console.log(error);
+    });
   }
 
 }

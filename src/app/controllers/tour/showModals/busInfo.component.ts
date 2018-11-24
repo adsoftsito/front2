@@ -16,7 +16,8 @@ export class BusInfoComponent{
   @Input() idOfTour: any;
   myForm: FormGroup;
   arrayOfAllBuses = [undefined];
-  buses = [];
+  controls;
+  mybuses;
   
   constructor(private formBuilder: FormBuilder,  
     private _busService: BusService,
@@ -30,41 +31,41 @@ export class BusInfoComponent{
     getBuses(){
       this._busService.getBuses().subscribe(res => { this.arrayOfAllBuses = res; this.createForm() });
     }
-
+    
     showNotification(from, align){
       $.notify({
-          message: "Tour editado."
+        message: "Tour editado."
       },{
-          timer: 1000,
-          placement: {
-              from: from,
-              align: align
-          },
-          template: `<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">
-          <button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>
-          <span data-notify="icon"></span>
-          <span data-notify="message">{2}</span>
-          <div class="progress" data-notify="progressbar">
-          <div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
-          </div>
-          </div>`,
-          onShow: ()=>{
-              this.closeModal();
-          },
-          onClose: ()=>{
-             //window.location.reload();
-          }
+        timer: 1000,
+        placement: {
+          from: from,
+          align: align
+        },
+        template: `<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">
+        <button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>
+        <span data-notify="icon"></span>
+        <span data-notify="message">{2}</span>
+        <div class="progress" data-notify="progressbar">
+        <div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+        </div>
+        </div>`,
+        onShow: ()=>{
+          this.closeModal();
+        },
+        onClose: ()=>{
+          //window.location.reload();
+        }
       });
-  }
-  
-  closeModal() {
+    }
+    
+    closeModal() {
       this.activeModal.close('Modal Closed');
-  }
+    }
     
     updateTour() {
-      console.log(this.buses);
-/*
-
+      console.log(this.controls[4].value);
+      /*
+      
       for(let mybus of this.arrayOfAllBuses){
         this._tourService.addBus(mybus, this.idOfTour)
         .subscribe(res => {});
@@ -72,23 +73,41 @@ export class BusInfoComponent{
       this.showNotification('top', 'right')
       */
     }
+/*
+    createArray(){
+      this.buses = this.arrayOfAllBuses;
+      console.log(this.buses);
+
+        //esto se podria hacer mil veces mas eficiente (primera idea... un sort)... 
+        for(let mybus of this.arrayOfBuses){
+          for(let i = 0 ; i < this.arrayOfAllBuses.length ; i++){
+            if(mybus.id == this.arrayOfAllBuses[i].id){
+              this.buses[i].setValue(true);
+              break;
+            }
+          }
+        }
+
+        console.log(this.buses);
     
+    }
+    */
     
     createForm() {
-      // Create a new array with a form control for each order
-      const controls = this.arrayOfAllBuses.map(c => new FormControl(false));
-      
+      this.controls = this.arrayOfAllBuses.map(c => new FormControl(false));
+      console.log(this.controls[4].value);
       //esto se podria hacer mil veces mas eficiente (primera idea... un sort)... 
       for(let mybus of this.arrayOfBuses){
         for(let i = 0 ; i < this.arrayOfAllBuses.length ; i++){
           if(mybus.id == this.arrayOfAllBuses[i].id){
-            controls[i].setValue(true);
+            this.controls[i].setValue(true);
             break;
           }
         }
       }
+      console.log(this.controls[4].value);
       this.form = this.formBuilder.group({
-        arrayOfAllBuses: new FormArray(controls)
+        arrayOfAllBuses: new FormArray(this.controls)
       });
     }
     

@@ -8,36 +8,44 @@ import { FormBuilder, FormGroup, FormArray, FormControl, ValidatorFn} from '@ang
 })
 
 export class BusInfoComponent{ 
-
+  
   form: FormGroup;
   @Input() arrayOfBuses: any;
   myForm: FormGroup;
-  arrayOfAllBuses = [];
+  arrayOfAllBuses = [undefined];
   
   constructor(private formBuilder: FormBuilder,  
-    private _busService: BusService,
-    private activeModal: NgbActiveModal) {}
-
+    private _busService: BusService) {}
+    
     ngOnInit(){
       this.getBuses();
     }
-
+    
     getBuses(){
-        this._busService.getBuses().subscribe(res => { this.arrayOfAllBuses = res; this.createForm() });
+      this._busService.getBuses().subscribe(res => { this.arrayOfAllBuses = res; this.createForm() });
     }
-
+    
     
     createForm() {
-       // Create a new array with a form control for each order
+      // Create a new array with a form control for each order
       const controls = this.arrayOfAllBuses.map(c => new FormControl(false));
-      controls[1].setValue(true); // Set the first checkbox to true (checked)
       
-      this.form = this.formBuilder.group({
-        arrayOfAllBuses: new FormArray(controls)
-      });
-    }
+      //esto se podria hacer mil veces mas eficiente (primera idea... un sort)... 
+      for(let mybus of this.arrayOfBuses){
+        for(let i = 0 ; i < this.arrayOfAllBuses.length ; i++){
+          if(mybus.id == this.arrayOfAllBuses[i].id){
+            controls[i].setValue(true);
+            break;
+          }
+        }
+      }
     
-
     
+    this.form = this.formBuilder.group({
+      arrayOfAllBuses: new FormArray(controls)
+    });
   }
   
+  
+  
+}

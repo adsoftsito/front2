@@ -54,4 +54,11 @@ export class TourService {
 
   }
 
+  removeBus(bus, id): Observable<ITour>{
+    let obj = {
+      buses: bus
+    };
+    return this.http.put<ITour>(API_URL + '/tour/'+ id +'/remove', obj, AUTH);
+  }
+
 }

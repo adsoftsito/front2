@@ -63,39 +63,22 @@ export class BusInfoComponent{
     }
     
     updateTour() {
-      console.log(this.controls[4].value);
-      /*
-      
-      for(let mybus of this.arrayOfAllBuses){
-        this._tourService.addBus(mybus, this.idOfTour)
-        .subscribe(res => {});
-      }
-      this.showNotification('top', 'right')
-      */
-    }
-/*
-    createArray(){
-      this.buses = this.arrayOfAllBuses;
-      console.log(this.buses);
-
-        //esto se podria hacer mil veces mas eficiente (primera idea... un sort)... 
-        for(let mybus of this.arrayOfBuses){
-          for(let i = 0 ; i < this.arrayOfAllBuses.length ; i++){
-            if(mybus.id == this.arrayOfAllBuses[i].id){
-              this.buses[i].setValue(true);
-              break;
-            }
-          }
+      for(let i = 0; i < this.arrayOfAllBuses.length; i++){
+        if(this.controls[i].value == true){
+          //add bus
+          this._tourService.addBus(this.arrayOfAllBuses[i].id, this.idOfTour).subscribe();
+        }else{
+          //remove bus
+          this._tourService.removeBus(this.arrayOfAllBuses[i].id, this.idOfTour).subscribe();
         }
-
-        console.log(this.buses);
-    
+      }
+      this.showNotification('top', 'right');
+     
     }
-    */
+
     
     createForm() {
       this.controls = this.arrayOfAllBuses.map(c => new FormControl(false));
-      console.log(this.controls[4].value);
       //esto se podria hacer mil veces mas eficiente (primera idea... un sort)... 
       for(let mybus of this.arrayOfBuses){
         for(let i = 0 ; i < this.arrayOfAllBuses.length ; i++){
@@ -105,7 +88,6 @@ export class BusInfoComponent{
           }
         }
       }
-      console.log(this.controls[4].value);
       this.form = this.formBuilder.group({
         arrayOfAllBuses: new FormArray(this.controls)
       });

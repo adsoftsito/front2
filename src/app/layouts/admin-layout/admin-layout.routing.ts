@@ -20,6 +20,8 @@ import {SelectdateComponent} from '../../controllers/dateinformation/selectdate/
 import {CreatePlaceComponent} from '../../controllers/place/create-place/create-place.component';
 import {TicketComponent} from '../../controllers/ticket/ticket.component';
 
+import {NeedAuthGuard} from '../../NeedAuthGuard.component';
+
 export const AdminLayoutRoutes: Routes = [
     // {
     //   path: '',
@@ -63,7 +65,7 @@ export const AdminLayoutRoutes: Routes = [
     //         component: UpgradeComponent
     //     }]
     // }
-    { path: 'dashboard',      component: DashboardComponent },
+    { path: 'dashboard',      component: DashboardComponent, canActivate: [NeedAuthGuard] },
     { path: 'table-list',     component: TableListComponent },
     { path: 'table-list-rutas', component: TableListRutasComponent },
     { path: 'typography',     component: TypographyComponent },

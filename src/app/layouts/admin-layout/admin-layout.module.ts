@@ -24,6 +24,7 @@ import { CreateComponent } from '../../controllers/dateinformation/create/create
 import { SelectdateComponent } from '../../controllers/dateinformation/selectdate/selectdate.component';
 import {CreatePlaceComponent} from '../../controllers/place/create-place/create-place.component';
 import {TicketComponent} from '../../controllers/ticket/ticket.component';
+import {LoginComponent} from '../../controllers/login/login.component';
 // para el datepicker y timepicker
 import { MatDatepickerModule} from '@angular/material';
 import { MatNativeDateModule} from '@angular/material';
@@ -84,7 +85,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     CreateComponent,
     SelectdateComponent,
     CreatePlaceComponent,
-    TicketComponent
+    TicketComponent,
   ]
 })
 

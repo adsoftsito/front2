@@ -6,8 +6,9 @@
 <div class="modal-body">
   <div class="row">
     <div class="col-md-4">
+      <h5>Fecha de inicio</h5>
         <mat-form-field>
-            <input matInput [matDatepicker]="startDate" placeholder="Fecha de inicio" 
+            <input matInput [matDatepicker]="startDate" 
               [(ngModel)]="start_date"
               (dateChange)="updateStartDate($event)"
               (dateInput)="updateStartDate($event)">
@@ -16,8 +17,9 @@
         </mat-form-field>
     </div>
     <div class="col-md-4">
+      <h5>Fecha de término</h5>
         <mat-form-field>
-            <input  matInput [matDatepicker]="endDate" placeholder="Fecha final"
+            <input  matInput [matDatepicker]="endDate"
               [(ngModel)]="end_date"
               (dateChange)="updateEndDate($event)"
               (dateInput)="updateEndDate($event)">
@@ -26,14 +28,18 @@
         </mat-form-field>
     </div>
     <div class="col-md-4">
-        <mat-checkbox [(ngModel)]="dateInterval.service">Servicio</mat-checkbox>
+      <mat-checkbox [(ngModel)]="dateInterval.service">Servicio</mat-checkbox>
     </div>
   </div>
   <div class="row">
     <div class="col-md-4">
-      <ngb-timepicker [(ngModel)]="time"></ngb-timepicker>
+      <h5>Hora de inicio</h5>
+      <ngb-timepicker [(ngModel)]="start_hour" [meridian]="true"></ngb-timepicker>
     </div>
-    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <h5>Hora de término</h5>
+        <ngb-timepicker [(ngModel)]="end_hour" [meridian]="true"></ngb-timepicker>
+    </div>
     <div class="col-md-4"></div>
   </div>
 </div>

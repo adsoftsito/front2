@@ -19,8 +19,8 @@ export class DateInfoEditModalComponent implements OnInit {
   end_date: Date;
 
   hourInterval: any;
-  start_hour: Date;
-  end_hour: Date;
+  start_hour: any;
+  end_hour: any;
 
   constructor(
     private service: DateinformationService,
@@ -36,7 +36,23 @@ export class DateInfoEditModalComponent implements OnInit {
       this.start_date = new Date(this.dateInterval.start_date * 1000.0);
       this.end_date = new Date(this.dateInterval.end_date * 1000.0);
       this.hourInterval = res.hour_id;
+      this.getHoursAndMinutes(
+        new Date(this.hourInterval.start_time * 1000.0),
+        new Date(this.hourInterval.end_time * 1000.0)
+      )
     });
+  }
+
+  getHoursAndMinutes(start_time, end_time) {
+    this.start_hour = {
+      hour: start_time.getHours(),
+      minute: start_time.getMinutes()
+    }
+
+    this.end_hour = {
+      hour: end_time.getHours(),
+      minute: end_time.getMinutes()
+    }
   }
 
   updateDateInterval() {

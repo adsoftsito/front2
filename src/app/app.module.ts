@@ -80,7 +80,6 @@ import { DateInfoEditModalComponent } from './controllers/dateinformation/edit/D
     //  classes that belong to this module and are related to views.
     AppComponent,
     AdminLayoutComponent,
-    LoginComponent,
     NgbdModalAddAdmin,
     NgbdModalEditAdmin,
     NgbdModalAddCompany,
@@ -97,7 +96,8 @@ import { DateInfoEditModalComponent } from './controllers/dateinformation/edit/D
     TimeInfoComponent,
     PlaceInfoComponent,
     PurchaseInfoComponent,
-    DateInfoEditModalComponent
+    DateInfoEditModalComponent,
+    LoginComponent
   ],
   // services
   providers: [UserService,

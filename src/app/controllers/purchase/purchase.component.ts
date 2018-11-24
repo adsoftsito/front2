@@ -29,6 +29,11 @@ export class PurchaseComponent implements OnInit {
 
   displayTicketsInfo(id) {
     const modalRef = this._modalService.open(PurchaseInfoComponent);
+    modalRef.result.then( res => {
+      this.getPurchases();
+    }).catch( err => {
+      console.log('NO SE PUEDE ABRIR MODAL');
+    });
     modalRef.componentInstance.purchaseId = id;
   }
 

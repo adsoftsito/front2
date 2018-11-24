@@ -44,22 +44,19 @@ export class NgbdModalAddAdmin{
                             </div>`,
                 onShow: ()=>{
                     this.closeModal();
-                },
-                onClose: ()=>{
-                    
                 }
             });
         }
         
         closeModal() {
-            this.activeModal.close('Modal Closed');
+            this.activeModal.close(true);
         }
         
         addAdmin(newAdmin){
             this._adminService.addAdmin(newAdmin[0], newAdmin[1], newAdmin[2])
             .subscribe(res => {
                 this.showNotification(res, 'top', 'right');
-                window.location.reload();
+                // window.location.reload();
             }, err=>{
                 this.showNotification(err.error, 'top', 'right');
             });

@@ -46,4 +46,12 @@ export class TourService {
     return this.http.put<ITour>(API_URL + '/tour/edit/' + id, obj, AUTH);
   }
 
+  addBus(bus, id): Observable<ITour> {
+    let obj = {
+      buses: bus
+    };
+    return this.http.put<ITour>(API_URL + '/tour/edit/' + id, obj, AUTH);
+
+  }
+
 }

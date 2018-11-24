@@ -44,9 +44,11 @@ export class TourComponent implements OnInit {
     let modalRef = this._modalService.open(TourInfoComponent);
     modalRef.componentInstance.tourId = id;
   }
-  displayBusInfo(arrayOfBuses){
+  displayBusInfo(arrayOfBuses, idOfTour){
     let modalRef = this._modalService.open(BusInfoComponent);
     modalRef.componentInstance.arrayOfBuses = arrayOfBuses;
+    modalRef.componentInstance.idOfTour = idOfTour;
+
   }
 
   displayTimeInfo(idTour){

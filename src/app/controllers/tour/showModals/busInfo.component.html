@@ -16,7 +16,7 @@
                     <div class="checkbox" *ngFor="let order of form.controls.arrayOfAllBuses.controls; let i = index">
                         <label formArrayName="arrayOfAllBuses">
                             <input type="checkbox" [formControlName]="i">
-                            {{arrayOfAllBuses[i].numBus}}<br>
+                            {{arrayOfAllBuses[i].numBus}}: {{(arrayOfAllBuses[i].availability)?"Activo":"En Mantenimiento"}}<br>
                         </label> 
                     </div>
                 </div>

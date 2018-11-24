@@ -61,4 +61,35 @@ export class TourService {
     return this.http.put<ITour>(API_URL + '/tour/'+ id +'/remove', obj, AUTH);
   }
 
+  addPlace(place, id): Observable<ITour> {
+    let obj = {
+      places: place
+    };
+    return this.http.put<ITour>(API_URL + '/tour/edit/' + id, obj, AUTH);
+
+  }
+
+  removePlace(place, id): Observable<ITour>{
+    let obj = {
+      places: place
+    };
+    return this.http.put<ITour>(API_URL + '/tour/'+ id +'/remove', obj, AUTH);
+  }
+
+  
+  addTime(time, id): Observable<ITour> {
+    let obj = {
+      dateinformations: time
+    };
+    return this.http.put<ITour>(API_URL + '/tour/edit/' + id, obj, AUTH);
+
+  }
+
+  removeTime(time, id): Observable<ITour>{
+    let obj = {
+      dateinformations: time
+    };
+    return this.http.put<ITour>(API_URL + '/tour/'+ id +'/remove', obj, AUTH);
+  }
+
 }

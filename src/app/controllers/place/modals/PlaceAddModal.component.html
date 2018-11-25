@@ -1,87 +1,70 @@
 <div class="modal-header">
-        <h4 class="modal-title">Agregar Precio</h4>
-        <button type="button" class="close" aria-label="Close"
-        (click)="activeModal.dismiss('Cross click')">
-</button>
+        <h4 class="modal-title">Agregar Lugar</h4>
+        <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="activeModal.close('Close click')">
+                <span aria-hidden="true">&times;</span>
+        </button>
 </div>
 <form [formGroup]="placeForm" novalidate >
         <div class="modal-boy">
                 <div class="container" novalidate>
+                        
                         <div class="form-group">
-                                <mat-form-field>
-                                        <input matInput placeholder="Escribe el nombre del lugar" formControlName="name" #name [(ngModel)]='currentPlace[0]' >
-                                </mat-form-field>
-                                <label class="text-danger" *ngIf="placeForm.controls['name'].hasError('required')">
+                                <label for="name" [ngClass]="placeForm.controls['name'].invalid ? 'text-danger' : 'text-success'" class="text-muted">Nombre del lugar:</label>
+                                <input id="name" [(ngModel)]='currentPlace[0]' formControlName="name" type="text" class="form-control" [ngClass]="placeForm.controls['name'].invalid ? 'is-invalid' : ''" #name>
+                                <small class="form-text text-danger" *ngIf="placeForm.controls['name'].hasError('required')">
                                         El nombre del lugar es requerido
-                                </label>
+                                </small> 
                         </div>
                         
-                        
-                        
-                        
                         <div class="form-group">
-                                <mat-form-field>
-                                        <input matInput placeholder="Escribe la descripción del lugar"  formControlName="description" #description  [(ngModel)]='currentPlace[1]'>
-                                </mat-form-field>
-                                <label class="text-danger" *ngIf="placeForm.controls['description'].hasError('required')">
-                                        La descripcion es requerida
-                                </label>
-                                
+                                <label for="description" [ngClass]="placeForm.controls['description'].invalid ? 'text-danger' : 'text-success'" class="text-muted">Descripcion del place:</label>
+                                <input id="description" [(ngModel)]='currentPlace[1]' formControlName="description" type="text" class="form-control" [ngClass]="placeForm.controls['description'].invalid ? 'is-invalid' : ''" #description>
+                                <small class="form-text text-danger" *ngIf="placeForm.controls['description'].hasError('required')">
+                                        La descripcion del lugar es requerido
+                                </small> 
                         </div>
                         
-                        
                         <div class="form-group">
-                                <mat-form-field>
-                                        <input matInput  placeholder="Escribe una latitud" #latitude   formControlName="latitude" [(ngModel)]='currentPlace[2]'>
-                                </mat-form-field>
-                                <label class="text-danger" *ngIf="placeForm.controls['latitude'].hasError('required')">
-                                        La latitud es requerida
-                                </label>
+                                <label for="latitude" [ngClass]="placeForm.controls['latitude'].invalid ? 'text-danger' : 'text-success'" class="text-muted">Latitud del lugar:</label>
+                                <input id="latitude" [(ngModel)]='currentPlace[2]' formControlName="latitude" type="text" class="form-control" [ngClass]="placeForm.controls['latitude'].invalid ? 'is-invalid' : ''" #latitude>
+                                <small class="form-text text-danger" *ngIf="placeForm.controls['latitude'].hasError('required')">
+                                        La latitud del lugar es requerida
+                                </small> 
                         </div>
                         
-                        
                         <div class="form-group">
-                                <mat-form-field>
-                                        <input matInput  placeholder="Escribe una longitud" formControlName="longitude" #longitude  [(ngModel)]='currentPlace[3]'>
-                                </mat-form-field>
-                                <label class="text-danger" *ngIf="placeForm.controls['longitude'].hasError('required')">
-                                        La longitud es requerida
-                                </label>
+                                <label for="longitude" [ngClass]="placeForm.controls['longitude'].invalid ? 'text-danger' : 'text-success'" class="text-muted">Longitud del lugar:</label>
+                                <input id="longitude" [(ngModel)]='currentPlace[3]' formControlName="longitude" type="text" class="form-control" [ngClass]="placeForm.controls['longitude'].invalid ? 'is-invalid' : ''" #longitude>
+                                <small class="form-text text-danger" *ngIf="placeForm.controls['longitude'].hasError('required')">
+                                        La longitud del lugar es requerida
+                                </small> 
                         </div>
                         
-                        
-                        
                         <div class="form-group">
-                                <mat-form-field>
-                                        <input matInput  placeholder="Escribe el URL de la narrativa" formControlName="narrative_url" #narrative_url  [(ngModel)]='currentPlace[4]'>
-                                </mat-form-field>
+                                <label for="narrative_url" [ngClass]="placeForm.controls['narrative_url'].invalid ? 'text-danger' : 'text-success'" class="text-muted">Narrative del lugar:</label>
+                                <input id="narrative_url" [(ngModel)]='currentPlace[4]' formControlName="narrative_url" type="text" class="form-control" [ngClass]="placeForm.controls['narrative_url'].invalid ? 'is-invalid' : ''" #narrative_url>
                         </div>
                         
-                        
-                        
-                        
                         <div class="form-group">
-                                <mat-form-field>
-                                        <mat-select placeholder="Selecciona el tipo de lugar" formControlName=place_type_id #place_type_id>
-                                                <mat-option *ngFor="let place of allTypeOfPlaces" [value]="place.id" [(ngModel)]='currentPlace[5]'>
-                                                        {{place.name}}
-                                                </mat-option>
-                                        </mat-select>
-                                </mat-form-field>
+                                <label for="place_type_id" [ngClass]="placeForm.controls['place_type_id'].invalid ? 'text-danger' : ''">Tipo de Lugar:</label>
+                                <div class="radio" *ngFor="let type of allTypeOfPlaces">
+                                        <label>
+                                                <input id="place_type_id" type="radio" [value]="type.id" [(ngModel)]='currentPlace[5]' formControlName="place_type_id" [ngClass]="placeForm.controls['place_type_id'].invalid ? 'is-invalid' : ''" #place_type_id>
+                                                {{type.name}}
+                                        </label>
+                                </div>
                                 <label class="text-danger" *ngIf="placeForm.controls['place_type_id'].hasError('required')">
-                                        Debe seleccionar un tipo de lugar
-                                </label>
-                        </div>
-
-
-                       
+                                        El Tipo de Lugar es requerido.
+                                </label> 
+                        </div>   
+                        
                 </div>
         </div>
-        
-        
-        <div>
-                <button mat-raised-button  type="submit"  [disabled]="placeForm.pristine || placeForm.invalid"   class="btn btn-danger pull-right " (click)="addPlace(currentPlace)" >Agregar nuevo lugar</button>
-                
+        <div class="modal-footer">
+                <button type="button"  (click)="addPlace(currentPlace)"  [disabled]="placeForm.pristine || placeForm.invalid"  class="btn btn-danger pull-right">Agregar</button> 
         </div>
-        
 </form>
+
+
+
+

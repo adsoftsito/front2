@@ -3,28 +3,30 @@
       <span aria-hidden="true">&times;</span>
     </button>
 </div>
-<div class="modal-body">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="text-center"> Tiempos </h3>
+
+
+<form [formGroup]="form">
+    <div class="modal-boy">
+        <div class="container" novalidate>
+            <div class="row">
+                <div class="col-md-12">
+                    <br>
+                    <p class="font-weight-bold">Intervalos de Fechas y Horas:</p>
+                    <div class="checkbox" *ngFor="let time of form.controls.arrayOfAllDateInfo.controls; let i = index">
+                        <label formArrayName="arrayOfAllDateInfo">
+                            <input type="checkbox" [formControlName]="i">
+                            Intervalo de Fecha: {{arrayOfAllDateInfo[i].date_id.start_date}} - {{arrayOfAllDateInfo[i].date_id.end_date}}<br>
+                            Intervalo de Hora: {{arrayOfAllDateInfo[i].hour_id.start_time}} - {{arrayOfAllDateInfo[i].hour_id.end_time}}<br>
+                        </label> 
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <p class="font-weight-bold">Intervalos de Fechas y Horas:</p>
-                
-                <ul class="list-group" *ngFor="let info of dateIntervals; let i=index"  class="list-group-item-action">
-                  <li class="list-group-item">Intervalo de Fecha: {{ info.start_date }} - {{ info.end_date }} </li>
-                  <li class="list-group-item">Intervalo de Hora: {{ hourIntervals[i].start_time }} -  {{ hourIntervals[i].end_time }} </li>
-                </ul>
-                
-            </div>
-        </div>
-        
-       
     </div>
-</div>
-<div class="modal-footer">
-  <button type="button" ngbAutofocus class="btn btn-danger" (click)="activeModal.close('Ok click')">Ok</button>
-</div>
+    <br>
+    Si quieres agregar mas Intervalos de Fechas, haz click aqui.
+    <div class="modal-footer">
+        <button type="button"  (click)="updateTour()"  [disabled]="form.pristine || form.invalid"  class="btn btn-danger pull-right">Editar</button> 
+    </div>
+</form>
+

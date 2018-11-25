@@ -7,6 +7,7 @@
         <div class="card">
           <div class="card-header card-header-primary">
             <h4 class="card-title">Tours ({{arrayOfTours.length}})</h4>
+            <button class="btn btn-success" (click)="openFormModalAdd()">Agregar</button>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -33,25 +34,38 @@
                     <td> {{ (tour.name) | titlecase }} </td>
                     <td>
                       <a class="text-primary" (click)="displayTourInfo(tour.id)">
-                        Ver información
+                        Ver información.
                       </a>
                     </td>
                     
                     <td>
-                      <a class="text-primary" (click)="displayBusInfo(tour.buses)">
-                        Ver Camiones asignados
+                      <a class="text-primary" (click)="displayBusInfo(tour)">
+                        Ver Camiones asignados.
                       </a>
                     </td>
                     <td>
-                      <a class="text-primary" (click)="displayTimeInfo(tour.id)">
-                        Ver Horarios asignadas.
+                      <a class="text-primary" (click)="displayTimeInfo(tour)">
+                        Ver Horarios asignados.
                       </a>
                     </td>
                     <td>
-                      <a class="text-primary" (click)="displayPlaceInfo(tour.places)">
+                      <a class="text-primary" (click)="displayPlaceInfo(tour)">
                         Ver Lugares asignados.
                       </a>
                     </td>
+
+                    <td>
+                      <div class="btn-group">
+                          <button class="btn btn-danger" type="button" (click)="deleteTour(tour.id)">
+                              <i class="fa fa-trash text-white"></i>
+                          </button>
+                      </div>
+                      <div class="btn-group">
+                          <button class="btn btn-info" type="button" (click)="openFormModalEdit(tour.id)">
+                              <i class="fa fa-pencil text-white"></i>
+                          </button>
+                      </div>
+                  </td>
                     
                   </tr>
                 </tbody>

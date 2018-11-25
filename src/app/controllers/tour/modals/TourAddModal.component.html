@@ -1,0 +1,39 @@
+<div class="modal-header">
+    <h4 class="modal-title">Agregar Tour</h4>
+    <button type="button" class="close" aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')">
+</button>
+</div>
+<form [formGroup]="myForm">
+    <div class="modal-boy">
+        <div class="container" novalidate>
+            
+            <div class="form-group">
+                <label for="name" [ngClass]="myForm.controls['name'].invalid ? 'text-danger' : ''">Nombre del Tour:</label>
+                <input id="name" [(ngModel)]='currentTour[0]' formControlName="name" type="text" class="form-control" [ngClass]="myForm.controls['name'].invalid ? 'is-invalid' : ''" #name>
+                <label class="text-danger" *ngIf="myForm.controls['name'].hasError('required')">
+                   El nombre es requerido.
+                </label> 
+            </div>
+
+            <div class="form-group">
+                <label for="image" [ngClass]="myForm.controls['image'].invalid ? 'text-danger' : ''">URL de la Imagen del Tour:</label>
+                <input id="image" [(ngModel)]='currentTour[1]' size="500" formControlName="image" type="text" class="form-control" [ngClass]="myForm.controls['image'].invalid ? 'is-invalid' : ''" #image>
+                <label class="text-danger" *ngIf="myForm.controls['image'].hasError('required')">
+                   La imagen es requerida.
+                </label> 
+            </div>
+   
+            <div class="form-group">
+                <label for="description" [ngClass]="myForm.controls['description'].invalid ? 'text-danger' : ''">Descripción del Tour:</label>
+                <textarea id="description" outline="1px solid blue" rows="5" [(ngModel)]='currentTour[2]' formControlName="description" type="text" class="form-control" [ngClass]="myForm.controls['description'].invalid ? 'is-invalid' : ''" #description></textarea>
+                <label class="text-danger" *ngIf="myForm.controls['description'].hasError('required')">
+                   La descripción es requerida.
+                </label> 
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button"  (click)="addTour(currentTour)"  [disabled]="myForm.pristine || myForm.invalid"  class="btn btn-danger pull-right">Agregar</button> 
+    </div>
+</form>

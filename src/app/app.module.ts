@@ -39,6 +39,8 @@ import { NgbdModalAddCompany } from './controllers/company/modals/CompanyAddModa
 import { PriceService } from './services/price.service';
 import { NgbdModalEditPrice } from './controllers/price/modals/PriceEditModal.component';
 import { NgbdModalAddPrice } from './controllers/price/modals/PriceAddModal.component';
+import { NgbdModalEditTour } from './controllers/tour/modals/TourEditModal.component';
+import { NgbdModalAddTour } from './controllers/tour/modals/TourAddModal.component';
 import { TicketTypeService } from './services/tickettype.service';
 import { TourService } from './services/tour.service';
 import { PurchaseService } from './services/purchase.service';
@@ -88,6 +90,8 @@ import { DateInfoEditModalComponent } from './controllers/dateinformation/edit/D
     NgbdModalEditPrice,
     NgbdModalAddBus,
     NgbdModalEditBus,
+    NgbdModalAddTour,
+    NgbdModalEditTour,
     MapComponent,
     AboutComponent,
     ModalComponent,
@@ -124,6 +128,8 @@ import { DateInfoEditModalComponent } from './controllers/dateinformation/edit/D
     NgbdModalEditCompany,
     NgbdModalAddPrice,
     NgbdModalEditPrice,
+    NgbdModalAddTour,
+    NgbdModalEditTour,
     NgbdModalAddBus,
     NgbdModalEditBus,
     PurchaseInfoComponent,

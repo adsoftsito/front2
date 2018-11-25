@@ -22,7 +22,11 @@ export class CreateComponent implements OnInit {
   show: boolean;
   information:boolean;
   
-  constructor(private service: DateinformationService, private route: ActivatedRoute, private router: Router,private fb: FormBuilder) {
+  constructor(
+    private service: DateinformationService, 
+    private route: ActivatedRoute, 
+    private router: Router,
+    private fb: FormBuilder) {
     this.createForm();
     this.createDate();
     
@@ -119,15 +123,4 @@ export class CreateComponent implements OnInit {
     this.information = true; 
     // this.router.navigate(['/selectdate']);
   }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 }

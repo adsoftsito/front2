@@ -1,0 +1,47 @@
+
+
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title">Boletos ({{arrayOfTickets.length}})</h4>
+                    </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table table-hover">
+                              <thead class="">
+                                <th>
+                                    Nombre
+                                </th>
+                                <th>
+                                    Fecha de compra
+                                </th>
+                                <th>
+                                    No. de compra
+                                </th>
+                                <th>
+                                    Precio
+                                </th>
+                                <th>
+                                    Categoría
+                                </th>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let ticket of arrayOfTickets" class="list-group-item-action">
+                                    <td> {{ ticket.name | titlecase }} </td>
+                                    <td> {{ ticket.createdAt | date: 'short' }} </td>
+                                    <td> {{ ticket.purchase_id.id }} </td>
+                                    <td> $ {{ ticket.price_id.priceAmount }} </td>
+                                    <td> {{ ticket.price_id.ticket_type_id }} </td>
+                                </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>  
+      </div>
+  </div>
+  </div>

@@ -1,27 +1,41 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdModalAddAdmin } from './modals/AdminAddModal.component';
 import { NgbdModalEditAdmin} from './modals/AdminEditModal.component';
+import {Router, NavigationEnd} from '@angular/router';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent implements OnDestroy {
   
   public arrayOfAdmins = [];
+  navigationSubscription;
   
   constructor(
     private _adminService: AdminService, 
-    private _modalService: NgbModal) { }
-    
+    private _modalService: NgbModal,
+    private router: Router) {
+      this.navigationSubscription = this.router.events
+      .subscribe(e => {
+        if (e instanceof NavigationEnd) {
+          this.getAdmins();
+        }
+      });
+    }
+
+    ngOnDestroy() {
+      if (this.navigationSubscription)
+        this.navigationSubscription.unsubscribe();
+    }
+
     openFormModal() {
-      const modalRef = this._modalService.open(NgbdModalAddAdmin);
-      
-      modalRef.result.then((result) => {
-        console.log(result);
+      const modalRef = this._modalService.open(NgbdModalAddAdmin)
+      .result.then((result) => {
+        this.getAdmins();
       }).catch((error) => {
         console.log(error);
       });
@@ -32,26 +46,16 @@ export class AdminComponent implements OnInit {
       modalRef.componentInstance.id = id;
 
       modalRef.result.then((result) => {
-        console.log(result);
+        this.getAdmins();
       }).catch((error) => {
         console.log(error);
       });
-    }
-  
-    
-    ngOnInit() {
-      this.getAdmins();
-    }
-    
-    ngOnChanges(){
-      this.getAdmins();
     }
     
     getAdmins() {
       this._adminService.getAdmins()
       .subscribe(res => {
         this.arrayOfAdmins = res;
-        
       });
      
     }
@@ -64,8 +68,3 @@ export class AdminComponent implements OnInit {
     }
     
   }
-  
-  
-  
-  
-  

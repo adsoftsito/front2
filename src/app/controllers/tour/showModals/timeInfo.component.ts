@@ -68,7 +68,7 @@ export class TimeInfoComponent implements OnInit{
         
         getGeneralDateInfo(dateinformations){
             for(let dateinf of dateinformations){
-                this._dateinfoService.getByIdDateInfo(dateinf.id)
+                this._dateinfoService.getDateInfoById(dateinf.id)
                 .subscribe(res => {
                     this.arrayOfDateInfo.push(res);
                 });

@@ -12,7 +12,7 @@ import { ComponentsModule } from './components/components.module';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { AppComponent } from './app.component';
 import {MatInputModule} from '@angular/material/input';
-import {MatDialogModule} from "@angular/material";
+import {MatDialogModule} from '@angular/material';
 import {
   AgmCoreModule
 } from '@agm/core';
@@ -25,12 +25,12 @@ import {DateinformationService} from './services/dateinformation.service';
 import { LoginComponent } from './controllers/login/login.component';
 import {NeedAuthGuard} from './NeedAuthGuard.component';
 import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import { ModalComponent } from './modals/modal/modal.component';
 import { AboutComponent } from './modals/about/about.component';
 
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { NgbdModalAddAdmin } from './controllers/admin/modals/AdminAddModal.component';
 import { NgbdModalEditAdmin} from './controllers/admin/modals/AdminEditModal.component'
 import { CompanyService } from './services/company.service';
@@ -53,6 +53,8 @@ import { BusInfoComponent } from './controllers/tour/showModals/busInfo.componen
 import { TimeInfoComponent } from './controllers/tour/showModals/timeInfo.component';
 import { PlaceInfoComponent } from './controllers/tour/showModals/placeInfo.component';
 import { MapComponent } from './controllers/map/map.component';
+import { TicketService } from './services/ticket.service';
+import { DateInfoEditModalComponent } from './controllers/dateinformation/edit/DateInfoEditModal.component';
 
 
 @NgModule({
@@ -70,6 +72,7 @@ import { MapComponent } from './controllers/map/map.component';
     MatInputModule,
     MatDialogModule,
     MatSelectModule,
+    MatDatepickerModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyA4rm9L8UDG_OdmRFzLSlzz-lCUfz_zxpQ'
     }),
@@ -79,7 +82,6 @@ import { MapComponent } from './controllers/map/map.component';
     //  classes that belong to this module and are related to views.
     AppComponent,
     AdminLayoutComponent,
-    LoginComponent,
     NgbdModalAddAdmin,
     NgbdModalEditAdmin,
     NgbdModalAddCompany,
@@ -97,9 +99,9 @@ import { MapComponent } from './controllers/map/map.component';
     BusInfoComponent,
     TimeInfoComponent,
     PlaceInfoComponent,
-    PurchaseInfoComponent
-
-
+    PurchaseInfoComponent,
+    DateInfoEditModalComponent,
+    LoginComponent
   ],
   // services
   providers: [UserService,
@@ -113,7 +115,8 @@ import { MapComponent } from './controllers/map/map.component';
               TicketTypeService, 
               TourService,  
               NeedAuthGuard,
-              PurchaseService,],
+              PurchaseService,
+              TicketService],
 
 
   // The root component which is the main view of the application
@@ -134,6 +137,7 @@ import { MapComponent } from './controllers/map/map.component';
     BusInfoComponent,
     TimeInfoComponent,
     PlaceInfoComponent,
+    DateInfoEditModalComponent
   ]
 })
 export class AppModule { }

@@ -10,7 +10,7 @@ import { AboutComponent } from '../../modals/about/about.component';
 })
 export class PurchaseComponent implements OnInit {
 
-  arrayOfPurchases=[];
+  arrayOfPurchases = [];
 
   constructor(
     private _purchaseService: PurchaseService,
@@ -20,15 +20,20 @@ export class PurchaseComponent implements OnInit {
     this.getPurchases();
   }
 
-  getPurchases(){
+  getPurchases() {
     this._purchaseService.getPurchases()
-    .subscribe(res=>{
+    .subscribe(res => {
       this.arrayOfPurchases = res;
     });
   }
 
-  displayTicketsInfo(id){
-    let modalRef = this._modalService.open(PurchaseInfoComponent);
+  displayTicketsInfo(id) {
+    const modalRef = this._modalService.open(PurchaseInfoComponent);
+    modalRef.result.then( res => {
+      this.getPurchases();
+    }).catch( err => {
+      console.log('NO SE PUEDE ABRIR MODAL');
+    });
     modalRef.componentInstance.purchaseId = id;
   }
 
@@ -39,7 +44,7 @@ export class PurchaseComponent implements OnInit {
   templateUrl: './info.component.html'
 })
 
-export class PurchaseInfoComponent implements OnInit{
+export class PurchaseInfoComponent implements OnInit {
 
   public purchase: any;
 

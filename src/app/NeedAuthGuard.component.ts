@@ -15,18 +15,13 @@ export class NeedAuthGuard implements CanActivate {
 
     if (this.service.isLoggedIn()) {
       return true;
-    }
-
-    this.router.navigateByUrl(
-      this.router.createUrlTree(
-        ['/login'], {
-          queryParams: {
-            redirectUrl
-          }
+    } else {
+      this.router.navigate(['/login'], {
+        queryParams: {
+          return: state.url
         }
-      )
-    );
-
-    return false;
+      });
+      return false;
+    }
   }
 }

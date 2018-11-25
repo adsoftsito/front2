@@ -57,9 +57,10 @@ export class TourComponent implements OnInit {
   }
   
 
-  displayPlaceInfo(arrayOfPlaces){
+  displayPlaceInfo(arrayOfPlaces, idOfTour){
     let modalRef = this._modalService.open(PlaceInfoComponent);
     modalRef.componentInstance.arrayOfPlaces = arrayOfPlaces;
+    modalRef.componentInstance.idOfTour = idOfTour;
   }
 
   openFormModalEdit(id) {

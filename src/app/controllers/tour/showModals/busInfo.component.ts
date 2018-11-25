@@ -14,10 +14,8 @@ export class BusInfoComponent{
   form: FormGroup;
   @Input() arrayOfBuses: any;
   @Input() idOfTour: any;
-  myForm: FormGroup;
   arrayOfAllBuses = [undefined];
   controls;
-  mybuses;
   
   constructor(private formBuilder: FormBuilder,  
     private _busService: BusService,

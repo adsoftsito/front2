@@ -3,6 +3,30 @@
       <span aria-hidden="true">&times;</span>
     </button>
 </div>
+
+
+<form [formGroup]="form">
+    <div class="modal-boy">
+        <div class="container" novalidate>
+            <div class="row">
+                <div class="col-md-12">
+                    <br>
+                    <p class="font-weight-bold">Lugares Asignados:</p>
+                    <div class="checkbox" *ngFor="let place of form.controls.arrayOfAllPlaces.controls; let i = index">
+                        <label formArrayName="arrayOfAllPlaces">
+                            <input type="checkbox" [formControlName]="i">
+                            {{arrayOfAllPlaces[i].name}}<br>
+                        </label> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button"  (click)="updateTour()"  [disabled]="form.pristine || form.invalid"  class="btn btn-danger pull-right">Editar</button> 
+    </div>
+</form>
+<!--
 <div class="modal-body">
     <div class="container-fluid">
         <div class="row">
@@ -27,3 +51,4 @@
 <div class="modal-footer">
   <button type="button" ngbAutofocus class="btn btn-danger" (click)="activeModal.close('Ok click')">Ok</button>
 </div>
+-->

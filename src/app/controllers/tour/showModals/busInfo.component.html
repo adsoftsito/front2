@@ -13,7 +13,7 @@
                 <div class="col-md-12">
                     <br>
                     <p class="font-weight-bold">Camiones Asignados:</p>
-                    <div class="checkbox" *ngFor="let order of form.controls.arrayOfAllBuses.controls; let i = index">
+                    <div class="checkbox" *ngFor="let bus of form.controls.arrayOfAllBuses.controls; let i = index">
                         <label formArrayName="arrayOfAllBuses">
                             <input type="checkbox" [formControlName]="i">
                             {{arrayOfAllBuses[i].numBus}}: {{(arrayOfAllBuses[i].availability)?"Activo":"En Mantenimiento"}}<br>

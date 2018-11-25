@@ -10,9 +10,9 @@ declare const $: any;
 })
 export class NgbdModalAddPlace{
     placeForm: FormGroup;
-    public currentPlace: any[] = [undefined, undefined, undefined,undefined,undefined,undefined];
+    public currentPlace: any[] = [undefined];
     public allPlaces: any[];
-    public placeTypes: any[];
+    public allTypeOfPlaces: any[];
     
     constructor(
         private _PlaceService: PlaceService,
@@ -70,19 +70,30 @@ export class NgbdModalAddPlace{
         }
 
         getPlaceType() {
-            this._PlaceService.getPlaceType().subscribe(res => {this.placeTypes = res;
-              console.log(res);
-            });
+            this._PlaceService.getPlaceType().subscribe(res => {this.allTypeOfPlaces = res; console.log(res)});
           }
 
-        createForm(){
+          private createForm() {
             this.placeForm = this.formBuilder.group({
-              name:['',Validators.required],
-              description:['',Validators.required],
-              longitude:['',Validators.required],
-              latitude:['', Validators.required],
-              place_type_id:['', Validators.required],
-              narrative_url:['']
+                name: [null, Validators.compose([
+                    Validators.required 
+                ])], 
+                description: [null, Validators.compose([
+                    Validators.required,
+                ])],
+                latitude: [null, Validators.compose([
+                    Validators.required,
+                ])],
+                longitude: [null, Validators.compose([
+                    Validators.required,
+                ])],
+                narrative_url: [null, Validators.compose([
+                    Validators.required,
+                ])],
+                place_type_id: [null, Validators.compose([
+                    Validators.required,
+                ])],
+               
             });
-          }
+        }
 }

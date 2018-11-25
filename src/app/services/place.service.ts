@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from 'environments/environment';
 import { IPlace } from '../interfaces/place';
+import { IPlaceType } from '../interfaces/placetype';
 
 const API_URL = environment.apiUrl;
 const AUTH = environment.token;
@@ -20,11 +21,11 @@ export class PlaceService {
     return this.http.get<IPlace[]>(API_URL + '/place', AUTH);
   }
 
-  getPlaceType():Observable<IPlace[]>{
-    return this.http.get<IPlace[]>(API_URL + '/placetype', AUTH);  
+  getPlaceType():Observable<IPlaceType[]>{
+    return this.http.get<IPlaceType[]>(API_URL + '/placetype', AUTH);  
   }
   
-  addPlace(name,description,longitude,latitude,place_type_id,narrative_url):Observable<IPlace>{
+  addPlace(name,description,longitude,latitude,narrative_url,place_type_id):Observable<IPlace>{
 
     const obj ={
       name:name,

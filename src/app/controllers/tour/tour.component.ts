@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TourService } from '../../services/tour.service';
+import { BusService } from '../../services/bus.service';
 import {NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { TourInfoComponent } from './showModals/tourInfo.component';
 import { BusInfoComponent } from './showModals/busInfo.component';
@@ -16,20 +17,30 @@ import {NgbdModalEditTour} from './modals/TourEditModal.component';
 })
 export class TourComponent implements OnInit {
 
-  arrayOfTours=[];
+  arrayOfTours = [];
+  arrayOfBuses = [];
 
   constructor(
     private _TourService: TourService,
+    private _busService: BusService,
     private _modalService: NgbModal) { }
 
   ngOnInit() {
     this.getTours();
+    this.getBuses();
   }
 
   getTours(){
     this._TourService.getTours()
     .subscribe(res=>{
       this.arrayOfTours = res;
+    });
+  }
+
+  getBuses() {
+    this._busService.getBuses()
+    .subscribe(res => {
+      this.arrayOfBuses = res;
     });
   }
 
@@ -46,7 +57,12 @@ export class TourComponent implements OnInit {
   }
   displayBusInfo(actualTour){
     let modalRef = this._modalService.open(BusInfoComponent);
+    modalRef.componentInstance.buses = this.arrayOfBuses;
     modalRef.componentInstance.actualTour = actualTour;
+
+    modalRef.result.then( res => {
+      this.ngOnInit();
+    })
   }
 
   displayTimeInfo(actualTour){

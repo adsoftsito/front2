@@ -14,43 +14,43 @@
               <table class="table table-hover">
                 <thead class="">
                   <th>
-                    Nombre del Tour
+                    Nombre
                   </th>
                   <th>
-                    Información del Tour
+                    Información
                   </th>
                   <th>
-                    Camiones Asignados
+                    Camiones
                   </th>
                   <th>
-                    Tiempos Asignados
+                    Horarios
                   </th>
                   <th>
-                    Lugares Asignados
+                    Lugares
                   </th>
                 </thead>
                 <tbody>
                   <tr *ngFor="let tour of arrayOfTours" class="list-group-item-action">
                     <td> {{ (tour.name) | titlecase }} </td>
                     <td>
-                      <a class="text-primary" (click)="displayTourInfo(tour.id)">
-                        Ver información.
+                      <a class="text-primary text-center" (click)="displayTourInfo(tour.id)">
+                        ver
                       </a>
                     </td>
                     
                     <td>
-                      <a class="text-primary" (click)="displayBusInfo(tour)">
-                        Ver Camiones asignados.
+                      <a class="text-primary text-center" (click)="displayBusInfo(tour)">
+                        ver
                       </a>
                     </td>
                     <td>
-                      <a class="text-primary" (click)="displayTimeInfo(tour)">
-                        Ver Horarios asignados.
+                      <a class="text-primary text-center" (click)="displayTimeInfo(tour)">
+                        ver
                       </a>
                     </td>
                     <td>
-                      <a class="text-primary" (click)="displayPlaceInfo(tour)">
-                        Ver Lugares asignados.
+                      <a class="text-primary text-center" (click)="displayPlaceInfo(tour)">
+                        ver
                       </a>
                     </td>
 

@@ -1,31 +1,52 @@
 <div class="modal-header">
-    <h4 class="modal-title">Modifiicar Camiones</h4>
-    <button type="button" class="close" aria-label="Close"
-    (click)="activeModal.dismiss('Cross click')">
-</button>
+    <h3 class="modal-title text-center">Editar autobuses: {{actualTour.name | titlecase}} </h3>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>
-
-
-<form [formGroup]="form">
-    <div class="modal-boy">
-        <div class="container" novalidate>
-            <div class="row">
-                <div class="col-md-12">
-                    <br>
-                    <p class="font-weight-bold">Camiones Asignados:</p>
-                    <div class="checkbox" *ngFor="let bus of form.controls.arrayOfAllBuses.controls; let i = index">
-                        <label formArrayName="arrayOfAllBuses">
-                            <input type="checkbox" [formControlName]="i">
-                            {{arrayOfAllBuses[i].numBus}}: {{(arrayOfAllBuses[i].availability)?"Activo":"En Mantenimiento"}}<br>
-                        </label> 
-                    </div>
-                </div>
+<div class="modal-boy">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <th>
+                            Activo
+                        </th>
+                        <th>
+                            Nombre
+                        </th>
+                        <th>
+                        </th>
+                    </thead>
+                    <tbody>
+                        <tr class="list-group-item-action"
+                        *ngFor="let bus of arrayOfAllBuses">
+                            <td>
+                                <h4 class="float-left">
+                                    <i class="fa fa-check text-success"
+                                    *ngIf="bus.availability"
+                                    ></i>
+                                    <i class="fa fa-times text-danger"
+                                    *ngIf="!bus.availability"
+                                    ></i>
+                                </h4>
+                            </td>
+                            <td>
+                                {{ bus.numBus | titlecase }}
+                            </td>
+                            <td>
+                                <mat-checkbox [(ngModel)]="bus.busAtTour"></mat-checkbox>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-    <br>
-    Si quieres agregar mas Camiones, haz click aqui.
-    <div class="modal-footer">
-        <button type="button"  (click)="updateTour()"  [disabled]="form.pristine || form.invalid"  class="btn btn-danger pull-right">Editar</button> 
-    </div>
-</form>
+</div>
+<br>
+Si quieres agregar mas Camiones, haz click aqui.
+<div class="modal-footer">
+    <button type="button"  (click)="updateTour()" class="btn btn-success">Editar</button> 
+</div>

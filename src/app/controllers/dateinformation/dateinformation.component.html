@@ -38,8 +38,8 @@
                                 <tbody>
                                   <tr *ngFor="let date of dates"
                                   class="list-group-item-action">
-                                      <td>{{date.date_id?(date.date_id.start_date | date:'shortDate'):"N/A" }}</td>
-                                      <td>{{date.date_id?(date.date_id.end_date | date:'shortDate'):"N/A"}}</td>
+                                      <td>{{date.date_id?(date.date_id.start_date):"N/A" }}</td>
+                                      <td>{{date.date_id?(date.date_id.end_date):"N/A"}}</td>
                                       <td>
                                           <h4 class="float-left">
                                             <i class="fa fa-check text-success"

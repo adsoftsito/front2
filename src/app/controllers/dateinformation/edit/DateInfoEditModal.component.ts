@@ -43,6 +43,33 @@ export class DateInfoEditModalComponent implements OnInit {
     });
   }
 
+  updateDateInfo() {
+    this.updateDateInterval();
+    this.updateHourInterval();
+    this.activeModal.close();
+  }
+
+  updateHourInterval() {
+    const temp = {
+      start: new Date(),
+      end: new Date()
+    };
+    temp.start.setHours(this.start_hour.hour);
+    temp.start.setMinutes(this.start_hour.minute);
+    temp.start.setSeconds(0);
+    temp.end.setHours(this.end_hour.hour);
+    temp.end.setMinutes(this.end_hour.minute);
+    temp.end.setSeconds(0);
+    this.service.updateHour(
+      this.hourInterval.id,
+      temp.start.getTime() / 1000,
+      temp.end.getTime() / 1000,
+      this.hourInterval.frequency
+    ).subscribe(res => {
+      console.log(res);
+    });
+  }
+
   getHoursAndMinutes(start_time, end_time) {
     this.start_hour = {
       hour: start_time.getHours(),
@@ -63,7 +90,6 @@ export class DateInfoEditModalComponent implements OnInit {
       this.dateInterval.service)
     .subscribe(res => {
       console.log(res);
-      this.activeModal.close();
     })
   }
 

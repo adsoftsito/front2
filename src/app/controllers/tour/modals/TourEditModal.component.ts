@@ -56,7 +56,7 @@ export class NgbdModalEditTour{
                     this.closeModal();
                 },
                 onClose: ()=>{
-                   window.location.reload();
+                //    window.location.reload();
                 }
             });
         }

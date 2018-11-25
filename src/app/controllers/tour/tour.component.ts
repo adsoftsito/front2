@@ -65,6 +65,7 @@ export class TourComponent implements OnInit {
     modalRef.componentInstance.id = id;
 
     modalRef.result.then((result) => {
+      this.getTours();
       console.log(result);
     }).catch((error) => {
       console.log(error);
@@ -75,6 +76,7 @@ export class TourComponent implements OnInit {
     const modalRef = this._modalService.open(NgbdModalAddTour);
     
     modalRef.result.then((result) => {
+      this.getTours();
       console.log(result);
     }).catch((error) => {
       console.log(error);

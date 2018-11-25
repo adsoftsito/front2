@@ -51,9 +51,9 @@ export class TourComponent implements OnInit {
 
   }
 
-  displayTimeInfo(idTour){
+  displayTimeInfo(actualTour){
     let modalRef = this._modalService.open(TimeInfoComponent);
-    modalRef.componentInstance.idTour = idTour;
+    modalRef.componentInstance.actualTour = actualTour;
   }
   
 

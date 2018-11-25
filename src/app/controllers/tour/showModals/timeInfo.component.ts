@@ -12,9 +12,7 @@ import {NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class TimeInfoComponent implements OnInit{
     
     
-    @Input() idTour: any[];
-    public tour: any;
-
+    @Input() actualTour;
     arrayOfAllDateInfo=[];
     arrayOfDateInfo=[];
     
@@ -25,11 +23,7 @@ export class TimeInfoComponent implements OnInit{
         
         ngOnInit(){
             this.getDateInfos();
-            this._tourService.getByIdTour(this.idTour)
-            .subscribe(res => {
-                this.tour = res; 
-                this.getGeneralDateInfo(this.tour.dateinformations);
-            });
+            this.getGeneralDateInfo(this.actualTour.dateinformations);
         }
         
         getDateInfos(){

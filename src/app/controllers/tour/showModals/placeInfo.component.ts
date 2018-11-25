@@ -79,9 +79,9 @@ export class PlaceInfoComponent{
     createForm() {
       this.controls = this.arrayOfAllPlaces.map(c => new FormControl(false));
       //esto se podria hacer mil veces mas eficiente (primera idea... un sort)... 
-      for(let mybus of this.arrayOfPlaces){
+      for(let myplace of this.arrayOfPlaces){
         for(let i = 0 ; i < this.arrayOfAllPlaces.length ; i++){
-          if(mybus.id == this.arrayOfAllPlaces[i].id){
+          if(myplace.id == this.arrayOfAllPlaces[i].id){
             this.controls[i].setValue(true);
             break;
           }

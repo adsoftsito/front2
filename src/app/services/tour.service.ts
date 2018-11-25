@@ -17,20 +17,16 @@ export class TourService {
   }
  
   deleteTour(id): Observable<ITour>{
-    if(confirm('¿Eliminar tour type?')){
+    if(confirm('¿Eliminar tour?')){
       return this.http.delete<ITour>(API_URL + '/tour/' + id, AUTH);
     }
   }
 
-  addTour(name, image, description, tickets, buses, dateinformations, places): Observable<ITour>{
+  addTour(name, image, description): Observable<ITour>{
     let obj = {
       name: name, 
       image: image,
       description: description, 
-      tickets: tickets,
-      buses: buses,
-      dateinformations: dateinformations,
-      places: places
     }
     return this.http.post<ITour>(API_URL + '/tour/add', obj, AUTH);
   }
@@ -41,17 +37,59 @@ export class TourService {
     return this.http.get<ITour>(API_URL + '/tour/' + id, AUTH);
   }
 
-  updateTour(name, image, description, tickets, buses, dateinformations, places, id): Observable<ITour> {
+  updateTour(name, image, description, id): Observable<ITour> {
     let obj = {
       name: name, 
       image: image,
       description: description, 
-      tickets: tickets,
-      buses: buses,
-      dateinformations: dateinformations,
-      places: places
     };
     return this.http.put<ITour>(API_URL + '/tour/edit/' + id, obj, AUTH);
+  }
+
+  addBus(bus, id): Observable<ITour> {
+    let obj = {
+      buses: bus
+    };
+    return this.http.put<ITour>(API_URL + '/tour/edit/' + id, obj, AUTH);
+
+  }
+
+  removeBus(bus, id): Observable<ITour>{
+    let obj = {
+      buses: bus
+    };
+    return this.http.put<ITour>(API_URL + '/tour/'+ id +'/remove', obj, AUTH);
+  }
+
+  addPlace(place, id): Observable<ITour> {
+    let obj = {
+      places: place
+    };
+    return this.http.put<ITour>(API_URL + '/tour/edit/' + id, obj, AUTH);
+
+  }
+
+  removePlace(place, id): Observable<ITour>{
+    let obj = {
+      places: place
+    };
+    return this.http.put<ITour>(API_URL + '/tour/'+ id +'/remove', obj, AUTH);
+  }
+
+  
+  addTime(time, id): Observable<ITour> {
+    let obj = {
+      dateinformations: time
+    };
+    return this.http.put<ITour>(API_URL + '/tour/edit/' + id, obj, AUTH);
+
+  }
+
+  removeTime(time, id): Observable<ITour>{
+    let obj = {
+      dateinformations: time
+    };
+    return this.http.put<ITour>(API_URL + '/tour/'+ id +'/remove', obj, AUTH);
   }
 
 }

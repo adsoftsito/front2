@@ -29,7 +29,7 @@
                                     Mapa
                                 </th>
                                 <th>
-                                    Tour asociado
+                                    Tours Asociado
                                 </th>
                                 <th>
 
@@ -41,13 +41,19 @@
                                     <td>{{place.description}}</td>
                                     <td>{{place.place_type_id.name | titlecase}}</td>
                                     <td><a [routerLink]="['/maps']">Mapa</a></td>
-                                    <td> </td>
+                                    <td> 
+                                        <ul *ngFor="let tour of place.tours" >
+                                            <li>
+                                                {{tour.name | titlecase}}
+                                            </li>
+                                        </ul>
+                                    </td>
                                     <td>
                                         <div class="btn-group">
                                             <button class="btn btn-danger" type ="button" (click)="deletePlace(place.id)"  >
                                                 <i class="text-white fa fa-trash"></i>
                                             </button>
-                                            <button class="btn btn-info" type="button" >
+                                            <button class="btn btn-info" type="button" (click)="openFormModalEdit(place.id)">
                                                 <i class="fa fa-pencil text-white"></i>
                                             </button>
                                         </div>

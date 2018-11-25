@@ -11,6 +11,7 @@ import { NgbdModalEditPlace} from './modals/PlaceEditModal.component';
 })
 export class PlaceComponent implements OnInit {
   public places = [];
+  allTours= [];
   constructor(private service: PlaceService, private _modalService: NgbModal) { }
   
   openFormModal() {

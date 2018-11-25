@@ -2,17 +2,16 @@ import { Component, Output, EventEmitter, Input} from '@angular/core';
 import { PlaceService } from '../../../services/place.service';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-
 declare const $: any;
 
 @Component({
     templateUrl: './PlaceEditModal.component.html',
 })
 export class NgbdModalEditPlace{
-    myForm: FormGroup;
-    public currentPlaces: any[] = [undefined, undefined, undefined,undefined,undefined,undefined];
-    public allPlaces: any[];
-    public placeTypes: any[];
+    placeForm: FormGroup;
+    @Input() id: number;
+    public currentPlace: any[] = [undefined];
+    public allTypeOfPlaces: any[];
     
     constructor(
         private _PlaceService: PlaceService,
@@ -20,14 +19,18 @@ export class NgbdModalEditPlace{
         private formBuilder: FormBuilder) {}
 
         ngOnInit(){
-            this.getPlaces();
+            this.getByIdPlace();
             this.createForm();
             this.getPlaceType();
+        }
+
+        getByIdPlace(){
+            this._PlaceService.getIDPlace(this.id).subscribe(res =>{this.currentPlace[0] = res.name; this.currentPlace[1] = res.description; this.currentPlace[2] = res.latitude; this.currentPlace[3] = res.longitude; this.currentPlace[4] = res.narrative; });
         }
         
         showNotification(data, from, align){
             $.notify({
-                message: "Precio agregado."
+                message: "Lugar editado"
             },{
                 type: data.color,
                 timer: 1000,
@@ -56,33 +59,39 @@ export class NgbdModalEditPlace{
             this.activeModal.close('Modal Closed');
         }
         
-        addPlace(newPlace){
-            console.log(newPlace);
-            this._PlaceService.addPlace(newPlace[0], newPlace[1], newPlace[2], newPlace[3], newPlace[4], newPlace[5])
+        updatePlace(newPlace){
+            this._PlaceService.updatePlace(newPlace[0], newPlace[1], newPlace[2], newPlace[3], newPlace[4], newPlace[5], this.id)
             .subscribe(res => {
                 this.showNotification(res, 'top', 'right');
             });
             
         }
 
-        getPlaces(){
-            this._PlaceService.getPlaces().subscribe(res =>{this.allPlaces = res});
-        }
 
         getPlaceType() {
-            this._PlaceService.getPlaceType().subscribe(res => {this.placeTypes = res;
-              console.log(res);
-            });
+            this._PlaceService.getPlaceType().subscribe(res => {this.allTypeOfPlaces = res;});
           }
 
-        createForm(){
-            this.myForm = this.formBuilder.group({
-              name:['',Validators.required],
-              description:['',Validators.required],
-              longitude:['',Validators.required],
-              latitude:['', Validators.required],
-              place_type_id:['', Validators.required],
-              narrative:['']
+          private createForm() {
+            this.placeForm = this.formBuilder.group({
+                name: [null, Validators.compose([
+                    Validators.required 
+                ])], 
+                description: [null, Validators.compose([
+                    Validators.required,
+                ])],
+                latitude: [null, Validators.compose([
+                    Validators.required,
+                ])],
+                longitude: [null, Validators.compose([
+                    Validators.required,
+                ])],
+                narrative_url: [null, Validators.compose([
+                ])],
+                place_type_id: [null, Validators.compose([
+                    Validators.required,
+                ])],
+               
             });
-          }
+        }
 }

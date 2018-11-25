@@ -27,7 +27,7 @@ export class NgbdModalAddPlace{
         
         showNotification(data, from, align){
             $.notify({
-                message: "Precio agregado."
+                message: "Lugar agregado."
             },{
                 type: data.color,
                 timer: 1000,
@@ -88,7 +88,6 @@ export class NgbdModalAddPlace{
                     Validators.required,
                 ])],
                 narrative_url: [null, Validators.compose([
-                    Validators.required,
                 ])],
                 place_type_id: [null, Validators.compose([
                     Validators.required,

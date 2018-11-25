@@ -24,7 +24,7 @@ export class PlaceService {
     return this.http.get<IPlace[]>(API_URL + '/placetype', AUTH);  
   }
   
-  addPlace(name,description,longitude,latitude,place_type_id,narrative):Observable<IPlace>{
+  addPlace(name,description,longitude,latitude,place_type_id,narrative_url):Observable<IPlace>{
 
     const obj ={
       name:name,
@@ -32,7 +32,7 @@ export class PlaceService {
       longitude:longitude,
       latitude:latitude,
       place_type_id:place_type_id,
-      narrative:narrative
+      narrative_url:narrative_url
     };
 
     return this.http.post<IPlace>(API_URL + '/place/add', obj, AUTH);

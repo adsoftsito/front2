@@ -1,0 +1,86 @@
+<div class="modal-header">
+        <h4 class="modal-title">Agregar Precio</h4>
+        <button type="button" class="close" aria-label="Close"
+        (click)="activeModal.dismiss('Cross click')">
+    </button>
+    </div>
+                        <form [formGroup]="placeForm" novalidate >
+                                <div class="modal-boy">
+                                        <div class="container" novalidate>
+                                            <div class="form-group">
+                                                    <mat-form-field>
+                                                            <input matInput placeholder="Escribe el nombre del lugar"  #name [(ngModel)]='currentPlace[0]' >
+                                                      </mat-form-field>
+                                                      <label class="text-danger" *ngIf="placeForm.controls['name'].hasError('required')">
+                                                              El nombre del lugar es requerido
+                                                      </label>
+                                            </div>
+                           
+                                   
+                               
+                                
+                                             <div class="form-group">
+                                                    <mat-form-field>
+                                                            <input matInput placeholder="Escribe la descripción del lugar"  #description  [(ngModel)]='currentPlace[1]'>
+                                                      </mat-form-field>
+                                                      <label class="text-danger" *ngIf="placeForm.controls['description'].hasError('required')">
+                                                            La descripcion es requerida
+                                                      </label>
+                                           
+                                             </div>
+
+                                 
+                                    <div class="form-group">
+                                            <mat-form-field>
+                                                    <input matInput  placeholder="Escribe una latitud" #latitude  [(ngModel)]='currentPlace[2]'>
+                                                 </mat-form-field>
+                                                 <label class="text-danger" *ngIf="placeForm.controls['latitude'].hasError('required')">
+                                                      La latitud es requerida
+                                                </label>
+                                    </div>
+                                 
+                                 
+                                      <div class="form-group">
+                                            <mat-form-field>
+                                                    <input matInput  placeholder="Escribe una longitud"  #longitude  [(ngModel)]='currentPlace[3]'>
+                                                 </mat-form-field>
+                                                 <label class="text-danger" *ngIf="placeForm.controls['longitude'].hasError('required')">
+                                                         La longitud es requerida
+                                                   </label>
+                                      </div>
+                                   
+
+                                 
+                                        <div class="form-group">
+                                                <mat-form-field>
+                                                        <ngx-mat-file-input  valuePlaceholder="No ha seleccionado un archivo" #narrative placeholder="Agrega una narración"   [(ngModel)]='currentPlace[4]'></ngx-mat-file-input> 
+                                          </mat-form-field>
+                                        </div>
+                                          
+                                     
+
+                                  
+                                        <div class="form-group">
+                                                <mat-form-field>
+                                                        <mat-select placeholder="Selecciona el tipo de lugar"  #place_type_id  >
+                                                          <mat-option *ngFor="let place of placeTypes" [value]="place.id" [(ngModel)]='currentPlace[5]'>
+                                                            {{place.name}}
+                                                          </mat-option>
+                                                        </mat-select>
+                                                      </mat-form-field>
+                                                      <label class="text-danger" *ngIf="placeForm.controls['place_type_id'].hasError('required')">
+                                                            Debe seleccionar un tipo de lugar
+                                                      </label>
+                                        </div>
+                                    </div>
+                                    </div>
+                                  
+
+                                    <div>
+                                            <button mat-raised-button  type="submit"  [disabled]="placeForm.pristine || placeForm.invalid"   class="btn btn-danger pull-right " (click)="addPlace(currentPlace)" >Agregar nuevo lugar</button>
+
+                                    </div>
+                          
+                        </form>
+
+

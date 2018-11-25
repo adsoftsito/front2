@@ -8,7 +8,7 @@
                   <div class="card-header card-header-warning">
                       <h4 class="card-title text-dark">Lugares ({{places.length}})</h4>
 
-                      <button type="button" class="btn btn-success" [routerLink]="['/createplace']" >
+                      <button type="button" class="btn btn-success" (click)="openFormModal()" >
                         Agregar
                       </button>
                     </div>

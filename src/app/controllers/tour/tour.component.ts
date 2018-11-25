@@ -5,6 +5,8 @@ import { TourInfoComponent } from './showModals/tourInfo.component';
 import { BusInfoComponent } from './showModals/busInfo.component';
 import { TimeInfoComponent } from './showModals/timeInfo.component';
 import { PlaceInfoComponent } from './showModals/placeInfo.component';
+import {NgbdModalAddTour} from './modals/TourAddModal.component';
+import {NgbdModalEditTour} from './modals/TourEditModal.component';
 
 
 @Component({
@@ -31,24 +33,54 @@ export class TourComponent implements OnInit {
     });
   }
 
+  deleteTour(id){
+    this._TourService.deleteTour(id)
+    .subscribe(res => {
+      this.getTours();
+    });
+  }
+
   displayTourInfo(id){
     let modalRef = this._modalService.open(TourInfoComponent);
     modalRef.componentInstance.tourId = id;
   }
-  displayBusInfo(arrayOfBuses){
+  displayBusInfo(actualTour){
     let modalRef = this._modalService.open(BusInfoComponent);
-    modalRef.componentInstance.arrayOfBuses = arrayOfBuses;
+    modalRef.componentInstance.actualTour = actualTour;
   }
 
-  displayTimeInfo(idTour){
+  displayTimeInfo(actualTour){
     let modalRef = this._modalService.open(TimeInfoComponent);
-    modalRef.componentInstance.idTour = idTour;
+    modalRef.componentInstance.actualTour = actualTour;
   }
   
 
-  displayPlaceInfo(arrayOfPlaces){
+  displayPlaceInfo(actualTour){
     let modalRef = this._modalService.open(PlaceInfoComponent);
-    modalRef.componentInstance.arrayOfPlaces = arrayOfPlaces;
+    modalRef.componentInstance.actualTour = actualTour;
+  }
+
+  openFormModalEdit(id) {
+    const modalRef = this._modalService.open(NgbdModalEditTour);
+    modalRef.componentInstance.id = id;
+
+    modalRef.result.then((result) => {
+      this.getTours();
+      console.log(result);
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
+  openFormModalAdd() {
+    const modalRef = this._modalService.open(NgbdModalAddTour);
+    
+    modalRef.result.then((result) => {
+      this.getTours();
+      console.log(result);
+    }).catch((error) => {
+      console.log(error);
+    });
   }
 
 }

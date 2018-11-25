@@ -2,5 +2,5 @@ export interface IBus {
     id: number,
     numBus: string,
     availability: boolean,
-    tour_id: number
+    tour_id: any
 }

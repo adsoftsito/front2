@@ -39,9 +39,10 @@ import { NgbdModalAddCompany } from './controllers/company/modals/CompanyAddModa
 import { PriceService } from './services/price.service';
 import { NgbdModalEditPrice } from './controllers/price/modals/PriceEditModal.component';
 import { NgbdModalAddPrice } from './controllers/price/modals/PriceAddModal.component';
-
 import { NgbdModalEditPlace } from './controllers/place/modals/PlaceEditModal.component';
 import { NgbdModalAddPlace } from './controllers/place/modals/PlaceAddModal.component';
+import { NgbdModalEditTour } from './controllers/tour/modals/TourEditModal.component';
+import { NgbdModalAddTour } from './controllers/tour/modals/TourAddModal.component';
 import { TicketTypeService } from './services/tickettype.service';
 import { TourService } from './services/tour.service';
 import { PurchaseService } from './services/purchase.service';
@@ -95,6 +96,8 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
     NgbdModalEditPlace,
     NgbdModalAddBus,
     NgbdModalEditBus,
+    NgbdModalAddTour,
+    NgbdModalEditTour,
     MapComponent,
     AboutComponent,
     ModalComponent,
@@ -133,6 +136,8 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
     NgbdModalEditPrice,
     NgbdModalAddPlace,
     NgbdModalEditPlace,
+    NgbdModalAddTour,
+    NgbdModalEditTour,
     NgbdModalAddBus,
     NgbdModalEditBus,
     PurchaseInfoComponent,

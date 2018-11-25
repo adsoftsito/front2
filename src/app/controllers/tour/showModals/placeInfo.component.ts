@@ -11,9 +11,9 @@ declare const $: any;
 
 export class PlaceInfoComponent{ 
   
+  @Input() actualTour;
   form: FormGroup;
-  @Input() arrayOfPlaces: any;
-  @Input() idOfTour: any;
+  arrayOfPlaces = []
   arrayOfAllPlaces = [undefined];
   controls;
   
@@ -23,6 +23,7 @@ export class PlaceInfoComponent{
     private _tourService: TourService) {}
     
     ngOnInit(){
+      this.arrayOfPlaces = this.actualTour.places;
       this.getPlaces();
     }
     
@@ -64,10 +65,10 @@ export class PlaceInfoComponent{
       for(let i = 0; i < this.arrayOfAllPlaces.length; i++){
         if(this.controls[i].value == true){
           //add bus
-          this._tourService.addPlace(this.arrayOfAllPlaces[i].id, this.idOfTour).subscribe();
+          this._tourService.addPlace(this.arrayOfAllPlaces[i].id, this.actualTour.id).subscribe();
         }else{
           //remove bus
-          this._tourService.removePlace(this.arrayOfAllPlaces[i].id, this.idOfTour).subscribe();
+          this._tourService.removePlace(this.arrayOfAllPlaces[i].id, this.actualTour.id).subscribe();
         }
       }
       this.showNotification('top', 'right');

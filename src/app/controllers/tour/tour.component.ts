@@ -44,11 +44,9 @@ export class TourComponent implements OnInit {
     let modalRef = this._modalService.open(TourInfoComponent);
     modalRef.componentInstance.tourId = id;
   }
-  displayBusInfo(arrayOfBuses, idOfTour){
+  displayBusInfo(actualTour){
     let modalRef = this._modalService.open(BusInfoComponent);
-    modalRef.componentInstance.arrayOfBuses = arrayOfBuses;
-    modalRef.componentInstance.idOfTour = idOfTour;
-
+    modalRef.componentInstance.actualTour = actualTour;
   }
 
   displayTimeInfo(actualTour){
@@ -57,10 +55,9 @@ export class TourComponent implements OnInit {
   }
   
 
-  displayPlaceInfo(arrayOfPlaces, idOfTour){
+  displayPlaceInfo(actualTour){
     let modalRef = this._modalService.open(PlaceInfoComponent);
-    modalRef.componentInstance.arrayOfPlaces = arrayOfPlaces;
-    modalRef.componentInstance.idOfTour = idOfTour;
+    modalRef.componentInstance.actualTour = actualTour;
   }
 
   openFormModalEdit(id) {

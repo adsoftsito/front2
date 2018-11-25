@@ -12,10 +12,10 @@ declare const $: any;
 export class BusInfoComponent{ 
   
   form: FormGroup;
-  @Input() arrayOfBuses: any;
-  @Input() idOfTour: any;
+  @Input() actualTour;
   arrayOfAllBuses = [undefined];
   controls;
+  arrayOfBuses = [];
   
   constructor(private formBuilder: FormBuilder,  
     private _busService: BusService,
@@ -23,6 +23,7 @@ export class BusInfoComponent{
     private _tourService: TourService) {}
     
     ngOnInit(){
+      this.arrayOfBuses = this.actualTour.buses;
       this.getBuses();
     }
     
@@ -64,10 +65,10 @@ export class BusInfoComponent{
       for(let i = 0; i < this.arrayOfAllBuses.length; i++){
         if(this.controls[i].value == true){
           //add bus
-          this._tourService.addBus(this.arrayOfAllBuses[i].id, this.idOfTour).subscribe();
+          this._tourService.addBus(this.arrayOfAllBuses[i].id, this.actualTour.id).subscribe();
         }else{
           //remove bus
-          this._tourService.removeBus(this.arrayOfAllBuses[i].id, this.idOfTour).subscribe();
+          this._tourService.removeBus(this.arrayOfAllBuses[i].id, this.actualTour.id).subscribe();
         }
       }
       this.showNotification('top', 'right');

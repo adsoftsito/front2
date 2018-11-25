@@ -21,6 +21,7 @@ export class BusComponent implements OnInit {
     const modalRef = this._modalService.open(NgbdModalAddBus);
     
     modalRef.result.then((result) => {
+      this.getBuses();
       console.log(result);
     }).catch((error) => {
       console.log(error);
@@ -32,6 +33,7 @@ export class BusComponent implements OnInit {
     modalRef.componentInstance.id = id;
 
     modalRef.result.then((result) => {
+      this.getBuses();
       console.log(result);
     }).catch((error) => {
       console.log(error);

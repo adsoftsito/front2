@@ -11,105 +11,100 @@ declare const $: any;
 })
 
 export class TimeInfoComponent implements OnInit{
-    
-    form: FormGroup;
+
     @Input() actualTour;
-    arrayOfAllDateInfo=[];
-    arrayOfDateInfo=[];
-    controls;
+    @Input() dateInfo;
+
+    arrayOfAllDateInfos = [];
+    arrayOfTourIndex = [];
     
     constructor(
-        private formBuilder: FormBuilder,  
         private _tourService: TourService,
-        private activeModal: NgbActiveModal,
-        private _dateinfoService:  DateinformationService){ }
+        private activeModal: NgbActiveModal){ }
         
-        ngOnInit(){
-            //to create arrayOdDateInfo
-            this.getGeneralDateInfo(this.actualTour.dateinformations);
-            //to create arrayOfAllDateInfo
-            this.getDateInfos();
-        }
-        
-        showNotification(from, align){
-            $.notify({
-                message: "Tour editado."
-            },{
-                timer: 1000,
-                placement: {
-                    from: from,
-                    align: align
-                },
-                template: `<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">
-                <button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>
-                <span data-notify="icon"></span>
-                <span data-notify="message">{2}</span>
-                <div class="progress" data-notify="progressbar">
-                <div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
-                </div>
-                </div>`,
-                onShow: ()=>{
-                    this.closeModal();
-                },
-                onClose: ()=>{
-                    window.location.reload();
-                }
-            });
-        }
-        
-        closeModal() {
-            this.activeModal.close('Modal Closed');
-        }
-        
-        
-        getDateInfos(){
-            this._dateinfoService.getInformation().subscribe(res => { this.arrayOfAllDateInfo = res; this.createForm();});
-        }
-        
-        getGeneralDateInfo(dateinformations){
-            for(let dateinf of dateinformations){
-                this._dateinfoService.getDateInfoById(dateinf.id)
-                .subscribe(res => {
-                    this.arrayOfDateInfo.push(res);
-                });
-            }
-            
-            
-        }
-        
-        updateTour() {
-            for(let i = 0; i < this.arrayOfAllDateInfo.length; i++){
-                if(this.controls[i].value == true){
-                    //add bus
-                    this._tourService.addTime(this.arrayOfAllDateInfo[i].id, this.actualTour.id).subscribe();
-                }else{
-                    //remove bus
-                    this._tourService.removeTime(this.arrayOfAllDateInfo[i].id, this.actualTour.id).subscribe();
-                }
-            }
-            this.showNotification('top', 'right');
-            
-        }
-        
-        
-        createForm() {
-            console.log(this.arrayOfAllDateInfo);
-            console.log(this.arrayOfDateInfo);
-
-            this.controls = this.arrayOfAllDateInfo.map(c => new FormControl(false));
-            //esto se podria hacer mil veces mas eficiente (primera idea... un sort)... 
-            for(let mydate of this.arrayOfDateInfo){
-                for(let i = 0 ; i < this.arrayOfAllDateInfo.length ; i++){
-                    if(mydate.id == this.arrayOfAllDateInfo[i].id){
-                        this.controls[i].setValue(true);
-                        break;
-                    }
-                }
-            }
-            this.form = this.formBuilder.group({
-                arrayOfAllDateInfo: new FormArray(this.controls)
-            });
-        }
-        
-        
+    ngOnInit() {
+        this.arrayOfAllDateInfos = this.dateInfo;
+        this.mapDateInfoFromTourIndex(this.actualTour.dateinformations);
+        this.convertToDates(this.arrayOfAllDateInfos);
+        this.convertToHours(this.arrayOfAllDateInfos);
     }
+
+    mapDateInfoFromTourIndex(tourDateInfos) {
+        for (const date of tourDateInfos) {
+            this.arrayOfTourIndex.push(date.id);
+        }
+        this.arrayOfAllDateInfos.map((value) => {
+            if (this.arrayOfTourIndex.includes(value.id)) {
+                value.dateAtTour = true;
+            } else {
+                value.dateAtTour = false;
+            }
+        });
+    }
+
+    convertToHours(arrayOfDates) {
+      let temp_start, temp_end;
+      for (let i = 0; i < arrayOfDates.length; i++) {
+        temp_start = new Date(this.arrayOfAllDateInfos[i].hour_id.start_time * 1000.0);
+        this.arrayOfAllDateInfos[i].hour_id.start_time = temp_start.toLocaleTimeString();
+        temp_end = new Date(this.arrayOfAllDateInfos[i].hour_id.end_time * 1000.0);
+        this.arrayOfAllDateInfos[i].hour_id.end_time = temp_end.toLocaleTimeString();
+      }
+    }
+
+    convertToDates(arrayOfDates) {
+      let temp_start, temp_end;
+      for (let i = 0; i < arrayOfDates.length; i++) {
+        temp_start = new Date(this.arrayOfAllDateInfos[i].date_id.start_date * 1000.0);
+        this.arrayOfAllDateInfos[i].date_id.start_date = temp_start.toLocaleDateString('es-MX', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric'
+        });
+        temp_end = new Date(this.arrayOfAllDateInfos[i].date_id.end_date * 1000.0);
+        this.arrayOfAllDateInfos[i].date_id.end_date = temp_end.toLocaleDateString('es-MX', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric'
+        });
+      }
+    }
+
+    updateTour() {
+      for (const date of this.arrayOfAllDateInfos) {
+        if (date.dateAtTour) {
+          this._tourService.addTime(date.id, this.actualTour.id).subscribe();
+        } else {
+          this._tourService.removeTime(date.id, this.actualTour.id).subscribe();
+        }
+      }
+      this.showNotification('top', 'right');
+    }
+
+    closeModal() {
+        this.activeModal.close('Modal Closed');
+    }
+        
+    showNotification(from, align){
+        $.notify({
+            message: "Tour editado."
+        },{
+            timer: 1000,
+            placement: {
+                from: from,
+                align: align
+            },
+            template: `<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">
+            <button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>
+            <span data-notify="icon"></span>
+            <span data-notify="message">{2}</span>
+            <div class="progress" data-notify="progressbar">
+            <div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+            </div>
+            </div>`,
+            onShow: () => {
+                this.closeModal();
+            }
+        });
+    }
+}

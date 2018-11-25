@@ -57,13 +57,15 @@ export class DateInfoEditModalComponent implements OnInit {
     temp.start.setHours(this.start_hour.hour);
     temp.start.setMinutes(this.start_hour.minute);
     temp.start.setSeconds(0);
+    this.hourInterval.start_time = Math.trunc(temp.start.getTime() / 1000);
     temp.end.setHours(this.end_hour.hour);
     temp.end.setMinutes(this.end_hour.minute);
     temp.end.setSeconds(0);
+    this.hourInterval.end_time = Math.trunc(temp.end.getTime() / 1000);
     this.service.updateHour(
       this.hourInterval.id,
-      temp.start.getTime() / 1000,
-      temp.end.getTime() / 1000,
+      this.hourInterval.start_time,
+      this.hourInterval.end_time,
       this.hourInterval.frequency
     ).subscribe(res => {
       console.log(res);

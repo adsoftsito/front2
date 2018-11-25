@@ -17,11 +17,9 @@ export class BusInfoComponent implements OnInit{
   @Input() buses;
   
   arrayOfAllBuses = [];
-  arrayOfBusesFromTour = [];
   arrayOfTourIndex = [];
   
-  constructor(private formBuilder: FormBuilder,  
-    private _busService: BusService,
+  constructor(
     public activeModal: NgbActiveModal,
     private _tourService: TourService) {}
     
@@ -34,7 +32,7 @@ export class BusInfoComponent implements OnInit{
       tourBuses.map((bus) => {
         this.arrayOfTourIndex.push(bus.id);
       });
-      this.arrayOfAllBuses.map((value, index) => {
+      this.arrayOfAllBuses.map((value) => {
         value.busAtTour = false;
         if (this.arrayOfTourIndex.includes(value.id)) {
           value.busAtTour = true;

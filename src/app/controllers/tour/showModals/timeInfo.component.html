@@ -3,30 +3,59 @@
       <span aria-hidden="true">&times;</span>
     </button>
 </div>
+<div class="modal-boy">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead class="text-center">
+                        <th>
+                            Fechas
+                        </th>
+                        <th>
+                            Horarios
+                        </th>
+                        <th>
 
-
-<form [formGroup]="form">
-    <div class="modal-boy">
-        <div class="container" novalidate>
-            <div class="row">
-                <div class="col-md-12">
-                    <br>
-                    <p class="font-weight-bold">Intervalos de Fechas y Horas:</p>
-                    <div class="checkbox" *ngFor="let time of form.controls.arrayOfAllDateInfo.controls; let i = index">
-                        <label formArrayName="arrayOfAllDateInfo">
-                            <input type="checkbox" [formControlName]="i">
-                            Intervalo de Fecha: {{arrayOfAllDateInfo[i].date_id.start_date}} - {{arrayOfAllDateInfo[i].date_id.end_date}}<br>
-                            Intervalo de Hora: {{arrayOfAllDateInfo[i].hour_id.start_time}} - {{arrayOfAllDateInfo[i].hour_id.end_time}}<br>
-                        </label> 
-                    </div>
-                </div>
+                        </th>
+                    </thead>
+                    <tbody>
+                        <tr class="list-group-item-action"
+                        *ngFor="let date of arrayOfAllDateInfos">
+                            <td class="text-center">
+                                <p> {{ date.date_id.start_date }} </p>
+                                <h6>a</h6>
+                                <p> {{ date.date_id.end_date }} </p>
+                                <h6>Servicio: 
+                                    <span>
+                                        <i class="fa fa-check text-success"
+                                        *ngIf="date.date_id.service"
+                                        ></i>
+                                        <i class="fa fa-times text-danger"
+                                        *ngIf="!date.date_id.service"
+                                        ></i>
+                                    </span>
+                                </h6>
+                            </td>
+                            <td class="text-center">
+                                <p> {{ date.hour_id.start_time }} </p>
+                                <h6>a</h6>
+                                <p> {{ date.hour_id.end_time }} </p>
+                                <h6>Frecuencia: {{date.hour_id.frequency}} min</h6>
+                            </td>
+                            <td class="align-middle">
+                                <mat-checkbox [(ngModel)]="date.dateAtTour" color="primary"></mat-checkbox>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-    <br>
-    Si quieres agregar mas Intervalos de Fechas, haz click aqui.
-    <div class="modal-footer">
-        <button type="button"  (click)="updateTour()"  [disabled]="form.pristine || form.invalid"  class="btn btn-danger pull-right">Editar</button> 
-    </div>
-</form>
+</div>
+<br>
+Si quieres agregar mas Intervalos de Fechas, haz click aqui.
+<div class="modal-footer">
+    <button type="button"  (click)="updateTour()"  class="btn btn-success">Editar</button> 
+</div>
 

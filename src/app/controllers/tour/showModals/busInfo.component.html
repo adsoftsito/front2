@@ -11,32 +11,24 @@
                 <table class="table">
                     <thead>
                         <th>
-                            Activo
-                        </th>
-                        <th>
                             Nombre
                         </th>
                         <th>
+                            Agregar/Quitar
                         </th>
                     </thead>
                     <tbody>
                         <tr class="list-group-item-action"
                         *ngFor="let bus of arrayOfAllBuses">
                             <td>
-                                <h4 class="float-left">
-                                    <i class="fa fa-check text-success"
-                                    *ngIf="bus.availability"
-                                    ></i>
-                                    <i class="fa fa-times text-danger"
-                                    *ngIf="!bus.availability"
-                                    ></i>
-                                </h4>
-                            </td>
-                            <td>
                                 {{ bus.numBus | titlecase }}
                             </td>
                             <td>
-                                <mat-checkbox [(ngModel)]="bus.busAtTour"></mat-checkbox>
+                                <mat-checkbox 
+                                    [(ngModel)]="bus.busAtTour"
+                                    [disabled]="bus.availability"
+                                    color="primary">
+                                </mat-checkbox>
                             </td>
                         </tr>
                     </tbody>

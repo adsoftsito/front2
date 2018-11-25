@@ -13,14 +13,10 @@ export class TimeInfoComponent implements OnInit{
     
     
     @Input() idTour: any[];
-    
     public tour: any;
-    public dateIntervals = [];
-    public hourIntervals = [];
-    public dateInfo = [];
+
     arrayOfAllDateInfo=[];
-    
-    
+    arrayOfDateInfo=[];
     
     constructor(
         private _tourService: TourService,
@@ -44,10 +40,10 @@ export class TimeInfoComponent implements OnInit{
             for(let dateinf of dateinformations){
                 this._dateinfoService.getByIdDateInfo(dateinf.id)
                 .subscribe(res => {
-                    this.hourIntervals.push(res.hour_id);
-                    this.dateIntervals.push(res.date_id);
+                    this.arrayOfDateInfo.push(res);
                 });
             }
+            
             
         }
         

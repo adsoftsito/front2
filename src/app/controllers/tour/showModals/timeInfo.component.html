@@ -14,9 +14,9 @@
             <div class="col-md-12">
                 <p class="font-weight-bold">Intervalos de Fechas y Horas:</p>
                 
-                <ul class="list-group" *ngFor="let info of dateIntervals; let i=index"  class="list-group-item-action">
-                  <li class="list-group-item">Intervalo de Fecha: {{ info.start_date }} - {{ info.end_date }} </li>
-                  <li class="list-group-item">Intervalo de Hora: {{ hourIntervals[i].start_time }} -  {{ hourIntervals[i].end_time }} </li>
+                <ul class="list-group" *ngFor="let info of arrayOfDateInfo"  class="list-group-item-action">
+                  <li class="list-group-item">Intervalo de Fecha: {{ info.date_id.start_date }} - {{ info.date_id.end_date }} </li>
+                  <li class="list-group-item">Intervalo de Hora: {{ info.hour_id.start_time }} -  {{ info.hour_id.end_time }} </li>
                 </ul>
                 
             </div>

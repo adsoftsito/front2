@@ -22,6 +22,7 @@ export class CompanyComponent implements OnInit {
       const modalRef = this._modalService.open(NgbdModalAddCompany);
       
       modalRef.result.then((result) => {
+        this.getCompanies();
         console.log(result);
       }).catch((error) => {
         console.log(error);
@@ -33,6 +34,7 @@ export class CompanyComponent implements OnInit {
       modalRef.componentInstance.id = id;
 
       modalRef.result.then((result) => {
+        this.getCompanies();
         console.log(result);
       }).catch((error) => {
         console.log(error);

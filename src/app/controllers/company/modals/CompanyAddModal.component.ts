@@ -46,7 +46,7 @@ export class NgbdModalAddCompany{
                     this.closeModal();
                 },
                 onClose: ()=>{
-                    window.location.reload();
+                    // window.location.reload();
                 }
             });
         }

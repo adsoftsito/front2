@@ -49,7 +49,7 @@ export class NgbdModalEditCompany{
                     this.closeModal();
                 },
                 onClose: ()=>{
-                    window.location.reload();
+                    // window.location.reload();
                 }
             });
         }

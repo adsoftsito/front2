@@ -53,7 +53,7 @@ export class NgbdModalAddPrice{
                     this.closeModal();
                 },
                 onClose: ()=>{
-                    window.location.reload();
+                    // window.location.reload();
                 }
             });
         }

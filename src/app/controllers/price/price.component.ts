@@ -23,6 +23,7 @@ export class PriceComponent implements OnInit {
       const modalRef = this._modalService.open(NgbdModalAddPrice);
       
       modalRef.result.then((result) => {
+        this,this.getPrices();
         console.log(result);
       }).catch((error) => {
         console.log(error);
@@ -34,6 +35,7 @@ export class PriceComponent implements OnInit {
       modalRef.componentInstance.id = id;
 
       modalRef.result.then((result) => {
+        this.getPrices();
         console.log(result);
       }).catch((error) => {
         console.log(error);

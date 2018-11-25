@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from 'environments/environment';
 import { IPlace } from '../interfaces/place';
+import { IPlaceType } from '../interfaces/placetype';
 
 const API_URL = environment.apiUrl;
 const AUTH = environment.token;
@@ -20,11 +21,11 @@ export class PlaceService {
     return this.http.get<IPlace[]>(API_URL + '/place', AUTH);
   }
 
-  getPlaceType():Observable<IPlace[]>{
-    return this.http.get<IPlace[]>(API_URL + '/placetype', AUTH);  
+  getPlaceType():Observable<IPlaceType[]>{
+    return this.http.get<IPlaceType[]>(API_URL + '/placetype', AUTH);  
   }
   
-  addPlace(name,description,longitude,latitude,place_type_id,narrative):Observable<IPlace>{
+  addPlace(name,description,longitude,latitude,narrative_url,place_type_id):Observable<IPlace>{
 
     const obj ={
       name:name,
@@ -32,7 +33,7 @@ export class PlaceService {
       longitude:longitude,
       latitude:latitude,
       place_type_id:place_type_id,
-      narrative:narrative
+      narrative_url:narrative_url
     };
 
     return this.http.post<IPlace>(API_URL + '/place/add', obj, AUTH);
@@ -59,5 +60,17 @@ export class PlaceService {
   //returns a user searched by an id. this is used when you try to edit a user
   getIDPlace(id): Observable<IPlace> {
     return this.http.get<IPlace>(API_URL + '/place/' + id, AUTH);
+  }
+
+  updatePlace(name, description, latitude, longitude, narrative_url, place_type_id, id): Observable<IPlace> {
+    let obj = {
+      name: name,
+      description: description,
+      latitude: latitude,
+      longitude: longitude,
+      narrative_url: narrative_url,
+      place_type_id: place_type_id
+    };
+    return this.http.put<IPlace>(API_URL + '/place/edit/' + id, obj, AUTH);
   }
 }

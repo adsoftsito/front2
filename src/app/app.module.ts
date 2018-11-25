@@ -39,6 +39,8 @@ import { NgbdModalAddCompany } from './controllers/company/modals/CompanyAddModa
 import { PriceService } from './services/price.service';
 import { NgbdModalEditPrice } from './controllers/price/modals/PriceEditModal.component';
 import { NgbdModalAddPrice } from './controllers/price/modals/PriceAddModal.component';
+import { NgbdModalEditPlace } from './controllers/place/modals/PlaceEditModal.component';
+import { NgbdModalAddPlace } from './controllers/place/modals/PlaceAddModal.component';
 import { NgbdModalEditTour } from './controllers/tour/modals/TourEditModal.component';
 import { NgbdModalAddTour } from './controllers/tour/modals/TourAddModal.component';
 import { TicketTypeService } from './services/tickettype.service';
@@ -55,6 +57,7 @@ import { PlaceInfoComponent } from './controllers/tour/showModals/placeInfo.comp
 import { MapComponent } from './controllers/map/map.component';
 import { TicketService } from './services/ticket.service';
 import { DateInfoEditModalComponent } from './controllers/dateinformation/edit/DateInfoEditModal.component';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 
 @NgModule({
@@ -68,6 +71,7 @@ import { DateInfoEditModalComponent } from './controllers/dateinformation/edit/D
     HttpClientModule,
     ReactiveFormsModule,
     MatFormFieldModule,
+    MaterialFileInputModule,
     MatCheckboxModule,
     MatInputModule,
     MatDialogModule,
@@ -88,6 +92,8 @@ import { DateInfoEditModalComponent } from './controllers/dateinformation/edit/D
     NgbdModalEditCompany,
     NgbdModalAddPrice,
     NgbdModalEditPrice,
+    NgbdModalAddPlace,
+    NgbdModalEditPlace,
     NgbdModalAddBus,
     NgbdModalEditBus,
     NgbdModalAddTour,
@@ -128,6 +134,8 @@ import { DateInfoEditModalComponent } from './controllers/dateinformation/edit/D
     NgbdModalEditCompany,
     NgbdModalAddPrice,
     NgbdModalEditPrice,
+    NgbdModalAddPlace,
+    NgbdModalEditPlace,
     NgbdModalAddTour,
     NgbdModalEditTour,
     NgbdModalAddBus,

@@ -6,6 +6,7 @@ export interface IPlace {
     narrative:string,
     latitude:number,
     longitude:number,
-    place_type_id:number
+    place_type_id:number,
+    tours: any[]
    
 }

@@ -20,12 +20,12 @@ export class NgbdModalEditAdmin{
         private _adminService: AdminService,
         public activeModal: NgbActiveModal,
         private formBuilder: FormBuilder) {}
-
+        
         ngOnInit(){
             this.getByIdAdmin();
             this.createForm();
         }
-       
+        
         showNotification(data, from, align){
             $.notify({
                 message: "Usuario editado."
@@ -71,16 +71,18 @@ export class NgbdModalEditAdmin{
             
             private createForm() {
                 this.myForm = this.formBuilder.group({
-                    username: ['', Validators.compose([
+                    username: [null, Validators.compose([
                         Validators.required,
                         Validators.maxLength(30),
                         Validators.minLength(3)])], 
-                        email: ['', Validators.compose([
+                        email: [null, Validators.compose([
                             Validators.required,
                             Validators.email
                         ])],
                     });
                 }
+                
+                
                 
                 
                 

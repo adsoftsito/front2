@@ -17,8 +17,8 @@
                         </div>
                         
                         <div class="form-group">
-                                <label for="description" [ngClass]="placeForm.controls['description'].invalid ? 'text-danger' : 'text-success'" class="text-muted">Descripcion del place:</label>
-                                <input id="description" [(ngModel)]='currentPlace[1]' formControlName="description" type="text" class="form-control" [ngClass]="placeForm.controls['description'].invalid ? 'is-invalid' : ''" #description>
+                                <label for="description" [ngClass]="placeForm.controls['description'].invalid ? 'text-danger' : 'text-success'" class="text-muted">Descripcion del lugar:</label>
+                                <textarea id="description" outline="1px solid blue" rows="5" [(ngModel)]='currentPlace[1]' formControlName="description" type="text" class="form-control" [ngClass]="placeForm.controls['description'].invalid ? 'is-invalid' : ''" #description></textarea>
                                 <small class="form-text text-danger" *ngIf="placeForm.controls['description'].hasError('required')">
                                         La descripcion del lugar es requerido
                                 </small> 

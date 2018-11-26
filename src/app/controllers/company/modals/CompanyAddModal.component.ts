@@ -79,8 +79,8 @@ export class NgbdModalAddCompany{
                     Validators.maxLength(30),
                 ])],
                 phone_number: [null, Validators.compose([
-                    Validators.minLength(10),
-                    Validators.maxLength(10),
+                    Validators.minLength(5),
+                    Validators.maxLength(15),
                     CustomValidators.patternValidator(/\d/, { hasNumber: true }),
                 ])],
                 ieps: [null, Validators.compose([

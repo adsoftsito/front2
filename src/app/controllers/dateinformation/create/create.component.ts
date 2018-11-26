@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { DateinformationService } from '../../../services/dateinformation.service';
-
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 // jquery
 declare const $: any;
 @Component({
@@ -14,6 +14,7 @@ export class CreateComponent implements OnInit {
   date: any;
   dates: any;
   hours: any;
+  fecha:any;
   dateInformation:any;
   hour: any;
   angForm: FormGroup;
@@ -21,6 +22,8 @@ export class CreateComponent implements OnInit {
   myInfo :FormGroup;
   show: boolean;
   information:boolean;
+  start_date: Date;
+  end_date: Date;
   
   constructor(
     private service: DateinformationService, 
@@ -91,7 +94,7 @@ export class CreateComponent implements OnInit {
   }
   createForm() {  
     this.angForm = this.fb.group({
-      start_date: ['',Validators.required], 
+      fecha: ['',Validators.required], 
       end_date: ['',Validators.required] ,
       servicio: ['',Validators.required]
       
@@ -107,10 +110,28 @@ export class CreateComponent implements OnInit {
   }
   
   
-  addDate(start_date,end_date,service){
-    this.service.addDate(start_date,end_date,service).subscribe(data => this.dates = data);
+  addDate(fecha,end_date,service){
+   
+    console.log(fecha);
+    console.log(end_date);  
+    this.service.addDate(this.dates.fecha,this.dates.end_date,service).subscribe(data => {
+      this.dates = data;
+      console.log(data);
+    });
     this.show =true;
     
+  }
+
+  addStartDate(event: MatDatepickerInputEvent<Date>) {
+    this.start_date = new Date(event.value);
+    this.dates.fecha= this.start_date.getTime() / 1000.0;
+     console.log(this.dates.fecha);
+  }
+
+  addEndDate(event: MatDatepickerInputEvent<Date>) {
+    this.end_date = new Date(event.value);
+    this.dates.end_date=this.end_date.getTime() / 1000.0;
+    console.log(this.dates.end_date);
   }
   
   addHour(start_time, end_time, frequency){

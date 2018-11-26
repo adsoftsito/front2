@@ -98,11 +98,13 @@ export class DateInfoEditModalComponent implements OnInit {
   updateStartDate(event: MatDatepickerInputEvent<Date>) {
     this.start_date = new Date(event.value);
     this.dateInterval.start_date = this.start_date.getTime() / 1000.0;
+    console.log(this.start_date)
   }
 
   updateEndDate(event: MatDatepickerInputEvent<Date>) {
     this.end_date = new Date(event.value);
     this.dateInterval.end_date = this.end_date.getTime() / 1000.0;
+    console.log(this.end_date);
   }
 
 }

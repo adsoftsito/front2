@@ -59,6 +59,7 @@ export class NgbdModalAddCompany{
             console.log(newCompany);
             this._CompanyService.addCompany(newCompany[0], newCompany[1], newCompany[2], newCompany[3], newCompany[4], newCompany[5], newCompany[6], newCompany[7])
             .subscribe(res => {
+                console.log(res);
                 this.showNotification(res, 'top', 'right');
             });
             
@@ -92,10 +93,9 @@ export class NgbdModalAddCompany{
                     CustomValidators.patternValidator(/\d/, { hasNumber: true })
                 ])],
                 rfc: [null, Validators.compose([
-                    Validators.required,
                     CustomValidators.patternValidator(/[A-Z]||[a-z]/, { hasCase: true }),
-                    Validators.minLength(12),
-                    Validators.maxLength(12),
+                    Validators.minLength(10),
+                    Validators.maxLength(15),
                 ])],
                 address: [null, Validators.compose([
                     CustomValidators.patternValidator(/[A-Z]||[a-z]/, { hasCase: true }),

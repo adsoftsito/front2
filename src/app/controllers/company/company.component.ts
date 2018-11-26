@@ -58,7 +58,7 @@ export class CompanyComponent implements OnInit {
      
     }
     
-    deleteAdmin(id){
+    deleteCompany(id){
       this._companyService.deleteCompany(id)
       .subscribe(res => {
         this.getCompanies();

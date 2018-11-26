@@ -34,7 +34,6 @@ export class BusComponent implements OnInit {
 
     modalRef.result.then((result) => {
       this.getBuses();
-      console.log(result);
     }).catch((error) => {
       console.log(error);
     });

@@ -1,30 +1,43 @@
 <div class="modal-header">
-    <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="activeModal.close('Close click')">
-      <span aria-hidden="true">&times;</span>
+    <h3 class="modal-title text-center">Editar autobuses: {{actualTour.name | titlecase}} </h3>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
     </button>
 </div>
-
-
-<form [formGroup]="form">
-    <div class="modal-boy">
-        <div class="container" novalidate>
-            <div class="row">
-                <div class="col-md-12">
-                    <br>
-                    <p class="font-weight-bold">Lugares Asignados:</p>
-                    <div class="checkbox" *ngFor="let place of form.controls.arrayOfAllPlaces.controls; let i = index">
-                        <label formArrayName="arrayOfAllPlaces">
-                            <input type="checkbox" [formControlName]="i">
-                            {{arrayOfAllPlaces[i].name}}<br>
-                        </label> 
-                    </div>
-                </div>
+<div class="modal-boy">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <th>
+                            Nombre
+                        </th>
+                        <th>
+                            Agregar/Quitar
+                        </th>
+                    </thead>
+                    <tbody>
+                        <tr class="list-group-item-action"
+                        *ngFor="let place of arrayOfAllPlaces">
+                            <td>
+                                {{ place.name | titlecase }}
+                            </td>
+                            <td>
+                                <mat-checkbox 
+                                    [(ngModel)]="place.placeAtTour"
+                                    color="primary">
+                                </mat-checkbox>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-    <br>
-    Si quieres agregar mas Places, haz click aqui.
-    <div class="modal-footer">
-        <button type="button"  (click)="updateTour()"  [disabled]="form.pristine || form.invalid"  class="btn btn-danger pull-right">Editar</button> 
-    </div>
-</form>
+</div>
+<br>
+Si quieres agregar mas Camiones, haz click aqui.
+<div class="modal-footer">
+    <button type="button"  (click)="updateTour()" class="btn btn-success">Editar</button> 
+</div>

@@ -95,8 +95,8 @@ export class NgbdModalEditCompany{
                         Validators.maxLength(30),
                     ])],
                     phone_number: [null, Validators.compose([
-                        Validators.minLength(10),
-                        Validators.maxLength(10),
+                        Validators.minLength(5),
+                        Validators.maxLength(15),
                         CustomValidators.patternValidator(/\d/, { hasNumber: true }),
                     ])],
                     ieps: [null, Validators.compose([
@@ -108,10 +108,9 @@ export class NgbdModalEditCompany{
                         CustomValidators.patternValidator(/\d/, { hasNumber: true })
                     ])],
                     rfc: [null, Validators.compose([
-                        Validators.required,
                         CustomValidators.patternValidator(/[A-Z]||[a-z]/, { hasCase: true }),
-                        Validators.minLength(12),
-                        Validators.maxLength(12),
+                        Validators.minLength(10),
+                        Validators.maxLength(20),
                     ])],
                     address: [null, Validators.compose([
                         CustomValidators.patternValidator(/[A-Z]||[a-z]/, { hasCase: true }),

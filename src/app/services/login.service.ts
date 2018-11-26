@@ -19,8 +19,9 @@ export class LoginService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  setToken(token: string) {
+  setToken(token: string, id: string) {
     localStorage.setItem('TOKEN', token);
+    localStorage.setItem('ID', id);
   }
 
   isLoggedIn() {
@@ -30,6 +31,7 @@ export class LoginService {
   logout() {
     this.router.navigate(['/login']);
     localStorage.removeItem('TOKEN');
+    localStorage.removeItem('ID');
   }
 
   login(email, password): Observable<IAdmin> {

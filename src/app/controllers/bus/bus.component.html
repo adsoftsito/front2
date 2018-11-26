@@ -29,7 +29,10 @@
                                   <tr *ngFor="let bus of arrayOfBuses"
                                   class="list-group-item-action">
                                       <td>{{bus.numBus}}</td>
-                                      <td>{{bus.availability == true?"Disponible":"No Disponible"}}</td>
+                                      <td>
+                                          <span class="text-success" *ngIf="bus.availability">Disponible</span>
+                                          <span class="text-danger" *ngIf="!bus.availability">No disponible</span>
+                                      </td>
                                       <td>{{bus.tour_id?(bus.tour_id.name):"N/A"}}</td>
                                       <td>
                                           <div class="btn-group">

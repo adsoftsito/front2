@@ -14,11 +14,13 @@ export class AdminComponent implements OnDestroy {
   
   public arrayOfAdmins = [];
   navigationSubscription;
+  currentAdminId: any;
   
   constructor(
     private _adminService: AdminService, 
     private _modalService: NgbModal,
     private router: Router) {
+      this.currentAdminId = localStorage.getItem('ID');
       this.navigationSubscription = this.router.events
       .subscribe(e => {
         if (e instanceof NavigationEnd) {

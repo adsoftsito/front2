@@ -32,7 +32,8 @@
                                     <td> {{ admin.email }} </td>
                                     <td> {{ admin.connection_time?(admin.connection_time):"N/A"}} </td>
                                     <td>
-                                        <div class="btn-group">
+                                        <div class="btn-group"
+                                            *ngIf="admin.id!=currentAdminId">
                                             <button class="btn btn-danger" type="button" (click)="deleteAdmin(admin.id)">
                                                 <i class="fa fa-trash text-white"></i>
                                             </button>

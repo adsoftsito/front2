@@ -38,7 +38,7 @@ export class PlaceComponent implements OnInit {
   }
 
   openAddModal() {
-    this.modalRef = this._modalService.open(NgbdModalAddPlace);
+    this.modalRef = this._modalService.open(NgbdModalAddPlace, {size: 'lg'});
     
     this.modalRef.result.then((result) => {
       this.getPlaces();

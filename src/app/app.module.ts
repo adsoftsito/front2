@@ -58,6 +58,7 @@ import { MapComponent } from './controllers/map/map.component';
 import { TicketService } from './services/ticket.service';
 import { DateInfoEditModalComponent } from './controllers/dateinformation/edit/DateInfoEditModal.component';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { GetMapModalComponent } from './controllers/place/modals/GetMapModalComponent.component';
 
@@ -74,6 +75,7 @@ import { GetMapModalComponent } from './controllers/place/modals/GetMapModalComp
     MatFormFieldModule,
     MaterialFileInputModule,
     MatCheckboxModule,
+    MatRadioModule,
     MatInputModule,
     MatDialogModule,
     MatSelectModule,

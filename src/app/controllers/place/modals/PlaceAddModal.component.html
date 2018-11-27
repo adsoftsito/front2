@@ -23,40 +23,26 @@
                                         La descripcion del lugar es requerido
                                 </small> 
                         </div>
-                        
-                        <div class="form-group">
-                                <label for="latitude" [ngClass]="placeForm.controls['latitude'].invalid ? 'text-danger' : 'text-success'" class="text-muted">Latitud del lugar:</label>
-                                <input id="latitude" [(ngModel)]='currentPlace[2]' formControlName="latitude" type="text" class="form-control" [ngClass]="placeForm.controls['latitude'].invalid ? 'is-invalid' : ''" #latitude>
-                                <small class="form-text text-danger" *ngIf="placeForm.controls['latitude'].hasError('required')">
-                                        La latitud del lugar es requerida
-                                </small> 
-                        </div>
-                        
-                        <div class="form-group">
-                                <label for="longitude" [ngClass]="placeForm.controls['longitude'].invalid ? 'text-danger' : 'text-success'" class="text-muted">Longitud del lugar:</label>
-                                <input id="longitude" [(ngModel)]='currentPlace[3]' formControlName="longitude" type="text" class="form-control" [ngClass]="placeForm.controls['longitude'].invalid ? 'is-invalid' : ''" #longitude>
-                                <small class="form-text text-danger" *ngIf="placeForm.controls['longitude'].hasError('required')">
-                                        La longitud del lugar es requerida
-                                </small> 
-                        </div>
+
+                        <p class="font-weight-bold text-danger">Nota: haz click sobre el mapa para mover el marcador</p>
+                        <agm-map style="height: 400px;" [latitude]="lat" [longitude]="lng" [zoom]="17" (mapClick)="changeMarkerOnMap($event)">
+                            <agm-marker [latitude]="lat" [longitude]="lng">
+                                <agm-info-window [isOpen]="true">
+                                        <h5 class="text-dark font-weight-bold">Tipo de lugar: </h5>
+                                        <mat-radio-group [(ngModel)]="currentTypeOfPlaceId">
+                                                        <mat-radio-button  *ngFor="let type of allTypeOfPlaces" [value]="type.id" >
+                                                                {{type.name}}
+                                                        </mat-radio-button>
+                                        </mat-radio-group>
+                                        <p>Selected: {{currentTypeOfPlaceId}}</p>
+                                </agm-info-window>
+                            </agm-marker>
+                        </agm-map>
                         
                         <div class="form-group">
                                 <label for="narrative_url"  class="text-muted">Narrativa del lugar (URL):</label>
                                 <input id="narrative_url" [(ngModel)]='currentPlace[4]' formControlName="narrative_url" type="text" class="form-control" [ngClass]="placeForm.controls['narrative_url'].invalid ? 'is-invalid' : ''" #narrative_url>
-                        </div>
-                        
-                        <div class="form-group">
-                                <label for="place_type_id" [ngClass]="placeForm.controls['place_type_id'].invalid ? 'text-danger' : ''">Tipo de Lugar:</label>
-                                <div class="radio" *ngFor="let type of allTypeOfPlaces">
-                                        <label>
-                                                <input id="place_type_id" type="radio" [value]="type.id" [(ngModel)]='currentPlace[5]' formControlName="place_type_id" [ngClass]="placeForm.controls['place_type_id'].invalid ? 'is-invalid' : ''" #place_type_id>
-                                                {{type.name}}
-                                        </label>
-                                </div>
-                                <label class="text-danger" *ngIf="placeForm.controls['place_type_id'].hasError('required')">
-                                        El Tipo de Lugar es requerido.
-                                </label> 
-                        </div>   
+                        </div>  
                         
                 </div>
         </div>

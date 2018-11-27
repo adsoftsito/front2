@@ -1,5 +1,6 @@
 <div class="modal-header">
-    <h3 class="modal-title text-center">Editar horario: {{id}} </h3>
+  <h3 class="modal-title text-center" *ngIf="!switchToAddModal">Editar horario: {{id}} </h3>
+  <h3 class="modal-title text-center" *ngIf="switchToAddModal">Agregar nuuevo Horario </h3>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -48,5 +49,14 @@
   </div>
 </div>
 <div class="modal-footer">
-  <button class="btn btn-success" (click)="updateDateInfo()">Guardar</button>
+  <button class="btn btn-success" 
+    (click)="updateDateInfo()"
+    *ngIf="!switchToAddModal">
+    Actualizar
+  </button>
+  <button class="btn btn-success" 
+    (click)="addDate()"
+    *ngIf="switchToAddModal">
+    Guardar
+  </button>
 </div>

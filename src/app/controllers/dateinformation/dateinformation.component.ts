@@ -12,10 +12,9 @@ import { DateInfoEditModalComponent } from './edit/DateInfoEditModal.component';
   styleUrls: ['./dateinformation.component.scss']
 })
 export class DateinformationComponent implements OnInit {
+  
   public dates = [];
-  date:any;
-  // public hours = [];
-  public dateInformation = [];
+  
   constructor(
     private _dateInfoService: DateinformationService, 
     private route: ActivatedRoute, 

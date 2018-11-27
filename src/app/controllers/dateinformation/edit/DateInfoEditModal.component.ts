@@ -4,6 +4,7 @@ import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { DateinformationService } from '../../../services/dateinformation.service';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { isNumber } from 'util';
 
 @Component({
   selector: 'app-edit',
@@ -12,7 +13,9 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class DateInfoEditModalComponent implements OnInit {
 
-  @Input() id: number;
+  @Input() id: any;
+
+  switchToAddModal = false;
 
   dateInterval: any;
   start_date: Date;
@@ -27,10 +30,59 @@ export class DateInfoEditModalComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
-    private activeModal: NgbActiveModal) { }
+    private activeModal: NgbActiveModal) {
+      this.start_date = new Date();
+      this.end_date = new Date();
+    }
 
   ngOnInit() {
-    this.service.getDateInfoById(this.id)
+    if (!isNumber(this.id)) {
+      this.switchToAddModal = true;
+      this.getHoursAndMinutes(this.start_date, this.end_date);
+      console.log('SwitchToAddModal: ' + this.switchToAddModal + ' start: ' + this.start_date);
+    } else {
+      this.populateById(this.id);
+    }
+  }
+
+  addDate() {
+    let date_id;
+    this.service.addDate(this.start_date, this.end_date, this.dateInterval.service)
+    .subscribe(res => {
+      date_id = res.id;
+      this.addHour(date_id);
+    }, err => {
+      console.log('Error adding Date Interval');
+      console.log(err);
+    });
+  }
+
+  addHour(date_id) {
+    let hour_id;
+    this.hourInterval.start_time = Math.trunc(this.start_hour.getTime() / 1000);
+    this.hourInterval.end_time = Math.trunc(this.end_hour.getTime() / 1000);
+    this.service.addHour(
+      this.hourInterval.start_time, 
+      this.hourInterval.end_time,
+      this.hourInterval.frequency
+    ).subscribe( res => {
+      hour_id = res.id;
+      this.addDateInfo(date_id, hour_id);
+    }, err => {
+      console.log('Error adding Hour Interval');
+      console.log(err);
+    });
+  }
+
+  addDateInfo(date_id, hour_id) {
+    this.service.addInformationDate(date_id, hour_id)
+    .subscribe(res => {
+      console.log(res);
+    })
+  }
+
+  populateById(id) {
+    this.service.getDateInfoById(id)
     .subscribe( res => {
       this.dateInterval = res.date_id;
       this.start_date = new Date(this.dateInterval.start_date * 1000.0);

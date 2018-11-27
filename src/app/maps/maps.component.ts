@@ -16,8 +16,8 @@ draggable?: boolean;
 })
 export class MapsComponent implements OnInit {
 
-    lat = 19.04334;
-    lon = -98.20193;
+  public lat = 19.04334;
+  public lon = -98.20193;
 
   constructor() { }
 

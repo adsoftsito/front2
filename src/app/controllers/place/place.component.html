@@ -8,7 +8,7 @@
                   <div class="card-header card-header-warning">
                       <h4 class="card-title text-dark">Lugares ({{places.length}})</h4>
 
-                      <button type="button" class="btn btn-success" (click)="openFormModal()" >
+                      <button type="button" class="btn btn-success" (click)="openAddModal()" >
                         Agregar
                       </button>
                     </div>
@@ -40,7 +40,18 @@
                                     <td>{{place.name}}</td>
                                     <td>{{place.description}}</td>
                                     <td>{{place.place_type_id.name | titlecase}}</td>
-                                    <td><a [routerLink]="['/maps']">Mapa</a></td>
+                                    <td>
+                                        <a class="text-primary text-center"
+                                        (click)="openMapModal({
+                                                    name: place.name,
+                                                    lat: place.latitude,
+                                                    lng: place.longitude,
+                                                    type: place.place_type_id.name
+                                                    }, place.tours
+                                                )">
+                                            Mapa
+                                        </a>
+                                    </td>
                                     <td> 
                                         <ul *ngFor="let tour of place.tours" >
                                             <li>
@@ -53,7 +64,7 @@
                                             <button class="btn btn-danger" type ="button" (click)="deletePlace(place.id)"  >
                                                 <i class="text-white fa fa-trash"></i>
                                             </button>
-                                            <button class="btn btn-info" type="button" (click)="openFormModalEdit(place.id)">
+                                            <button class="btn btn-info" type="button" (click)="openEditModal(place.id)">
                                                 <i class="fa fa-pencil text-white"></i>
                                             </button>
                                         </div>

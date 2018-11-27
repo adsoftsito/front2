@@ -1,3 +1,19 @@
-<agm-map [latitude]="lat" [longitude]="lng">
-    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-  </agm-map>
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title text-white">Rutas</h4>
+                      </div>
+                    <div class="card-body">
+                        <agm-map [latitude]="lat" [longitude]="lng" [backgroundColor]="000">
+                            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                        </agm-map>
+                    </div>
+                </div>
+            </div>    
+        </div>
+    </div>
+ </div>

@@ -1,0 +1,35 @@
+<div class="modal-header">
+    <h3 class="modal-title text-center"> {{ name }} </h3>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <p class="font-weight-bold text-danger">Nota: haz click sobre el marcador</p>
+            <agm-map style="height: 500px;" [latitude]="lat" [longitude]="lng" [zoom]="17">
+                <agm-marker [latitude]="lat" [longitude]="lng">
+                    <agm-info-window [maxWidth]="300">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h5 class="text-white">{{place_type}}</h5>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h6>Tours: </h6>
+                            <ul class="list-group">
+                                <li class="list-group-item text-dark" *ngFor="let tour of toursAssociated">
+                                    {{tour.name}}
+                                </li>
+                            </ul>
+                        </div>
+                    </agm-info-window>
+                </agm-marker>
+            </agm-map>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" (click)="activeModal.close()">Aceptar</button>
+</div>

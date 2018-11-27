@@ -3,6 +3,7 @@ import { PlaceService } from '../../services/place.service';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdModalAddPlace } from './modals/PlaceAddModal.component';
 import { NgbdModalEditPlace} from './modals/PlaceEditModal.component';
+import { GetMapModalComponent } from './modals/GetMapModalComponent.component';
 
 @Component({
   selector: 'app-place',
@@ -10,60 +11,59 @@ import { NgbdModalEditPlace} from './modals/PlaceEditModal.component';
   styleUrls: ['./place.component.scss']
 })
 export class PlaceComponent implements OnInit {
-  public places = [];
-  allTours= [];
-  constructor(private service: PlaceService, private _modalService: NgbModal) { }
-  
-  openFormModal() {
-    const modalRef = this._modalService.open(NgbdModalAddPlace);
-    
-    modalRef.result.then((result) => {
-      this,this.getPlaces();
-      console.log(result);
-    }).catch((error) => {
-      console.log(error);
-    });
-  }
 
-  openFormModalEdit(id) {
-    const modalRef = this._modalService.open(NgbdModalEditPlace);
-    modalRef.componentInstance.id = id;
+  places = [];
+  modalRef;
 
-    modalRef.result.then((result) => {
-      this.getPlaces();
-      console.log(result);
-    }).catch((error) => {
-      console.log(error);
-    });
-  }
+  constructor(
+    private service: PlaceService,
+    private _modalService: NgbModal) { }
 
   ngOnInit() {
     this.service.getPlaces()
     .subscribe(data => this.places = data);
   }
 
-
-  ngOnChanges(){
-    this.service.getPlaces()
-    .subscribe(data => this.places = data);
-    // this.selectedUsuario = "";
-  }
-
-  deletePlace(id) {
-    if(confirm("Desea eliminar el lugar?")){
-      this.service.deletePlace(id).subscribe(data => {
-        this.ngOnChanges(); 
-      });
-    }
-  }
-
   getPlaces() {
     this.service.getPlaces()
     .subscribe(res => {
       this.places = res;
-      console.log(this.places);
     });
-   
+  }
+
+  openMapModal(info, toursFromPlace) {
+    this.modalRef = this._modalService.open(GetMapModalComponent, {size: 'lg'});
+    this.modalRef.componentInstance.placeInfo = info;
+    this.modalRef.componentInstance.toursFromPlace = toursFromPlace;
+  }
+
+  openAddModal() {
+    this.modalRef = this._modalService.open(NgbdModalAddPlace);
+    
+    this.modalRef.result.then((result) => {
+      this.getPlaces();
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
+  openEditModal(id) {
+    this.modalRef = this._modalService.open(NgbdModalEditPlace);
+    this.modalRef.componentInstance.id = id;
+
+    this.modalRef.result.then((result) => {
+      this.getPlaces();
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
+  deletePlace(id) {
+    if(confirm('Desea eliminar el lugar?')){
+      this.service.deletePlace(id).subscribe(data => {
+        this.getPlaces();
+      });
+    }
   }
 
 }

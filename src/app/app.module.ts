@@ -59,6 +59,7 @@ import { TicketService } from './services/ticket.service';
 import { DateInfoEditModalComponent } from './controllers/dateinformation/edit/DateInfoEditModal.component';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 
+import { GetMapModalComponent } from './controllers/place/modals/GetMapModalComponent.component';
 
 @NgModule({
   imports: [
@@ -77,7 +78,10 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
     MatDialogModule,
     MatSelectModule,
     MatDatepickerModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyD9xXq1L6UtsTBi8miLM0FJU2erOkwW_0I'
+    })
   ],
   declarations: [
     //  classes that belong to this module and are related to views.
@@ -96,6 +100,7 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
     NgbdModalAddTour,
     NgbdModalEditTour,
     MapComponent,
+    GetMapModalComponent,
     AboutComponent,
     ModalComponent,
     TourInfoComponent,
@@ -142,7 +147,8 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
     BusInfoComponent,
     TimeInfoComponent,
     PlaceInfoComponent,
-    DateInfoEditModalComponent
+    DateInfoEditModalComponent,
+    GetMapModalComponent
   ]
 })
 export class AppModule { }

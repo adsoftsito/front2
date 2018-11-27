@@ -35,7 +35,9 @@ import {MatSelectModule} from '@angular/material/select';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 
-
+import {
+  AgmCoreModule
+} from '@agm/core';
 
 import {
   MatButtonModule,
@@ -63,7 +65,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatRadioModule,
     MaterialFileInputModule,
     NgxMaterialTimepickerModule.forRoot(),
-
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyD9xXq1L6UtsTBi8miLM0FJU2erOkwW_0I'
+    }),
   ],
   declarations: [
     DashboardComponent,

@@ -74,5 +74,4 @@ export class PlaceInfoComponent implements OnInit {
   closeModal() {
     this.activeModal.close('Modal Closed');
   }
-
-  
+}

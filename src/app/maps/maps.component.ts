@@ -8,6 +8,7 @@ lng: number;
 label?: string;
 draggable?: boolean;
 }
+
 @Component({
   selector: 'app-maps',
   templateUrl: './maps.component.html',
@@ -15,9 +16,16 @@ draggable?: boolean;
 })
 export class MapsComponent implements OnInit {
 
+    lat = 51.678418;
+    lon = 7.809007;
+
   constructor() { }
 
   ngOnInit() {
+
+  }
+
+  /*ngOnInit() {
 
     var myLatlng = new google.maps.LatLng(40.748817, -73.985428);
     var mapOptions = {
@@ -120,6 +128,6 @@ export class MapsComponent implements OnInit {
 
     // To add the marker to the map, call setMap();
     marker.setMap(map);
-  }
+  }*/
 
 }

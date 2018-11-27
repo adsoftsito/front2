@@ -77,9 +77,6 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
     MatDialogModule,
     MatSelectModule,
     MatDatepickerModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyA4rm9L8UDG_OdmRFzLSlzz-lCUfz_zxpQ'
-    }),
     NgbModule.forRoot()
   ],
   declarations: [

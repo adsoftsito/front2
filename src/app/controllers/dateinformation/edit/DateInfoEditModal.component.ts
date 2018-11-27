@@ -17,11 +17,21 @@ export class DateInfoEditModalComponent implements OnInit {
 
   switchToAddModal = false;
 
-  dateInterval: any;
+  dateInterval = {
+    id: -1,
+    start_date: 0,
+    end_date: 0,
+    service: false
+  };
   start_date: Date;
   end_date: Date;
 
-  hourInterval: any;
+  hourInterval = {
+    id: -1,
+    start_time: 0,
+    end_time: 0,
+    frequency: 10
+  };
   start_hour: any;
   end_hour: any;
 
@@ -39,7 +49,6 @@ export class DateInfoEditModalComponent implements OnInit {
     if (!isNumber(this.id)) {
       this.switchToAddModal = true;
       this.getHoursAndMinutes(this.start_date, this.end_date);
-      console.log('SwitchToAddModal: ' + this.switchToAddModal + ' start: ' + this.start_date);
     } else {
       this.populateById(this.id);
     }
@@ -47,7 +56,10 @@ export class DateInfoEditModalComponent implements OnInit {
 
   addDate() {
     let date_id;
-    this.service.addDate(this.start_date, this.end_date, this.dateInterval.service)
+    console.log('Date por agregar: ');
+    console.log(this.dateInterval.start_date);
+    console.log(this.dateInterval.end_date);
+    this.service.addDate(this.dateInterval.start_date, this.dateInterval.end_date, this.dateInterval.service)
     .subscribe(res => {
       date_id = res.id;
       this.addHour(date_id);
@@ -59,10 +71,23 @@ export class DateInfoEditModalComponent implements OnInit {
 
   addHour(date_id) {
     let hour_id;
-    this.hourInterval.start_time = Math.trunc(this.start_hour.getTime() / 1000);
-    this.hourInterval.end_time = Math.trunc(this.end_hour.getTime() / 1000);
+    const temp = {
+      start: new Date(),
+      end: new Date()
+    };
+    temp.start.setHours(this.start_hour.hour);
+    temp.start.setMinutes(this.start_hour.minute);
+    temp.start.setSeconds(0);
+    this.hourInterval.start_time = Math.trunc(temp.start.getTime() / 1000);
+    temp.end.setHours(this.end_hour.hour);
+    temp.end.setMinutes(this.end_hour.minute);
+    temp.end.setSeconds(0);
+    this.hourInterval.end_time = Math.trunc(temp.end.getTime() / 1000);
+    console.log('Hour por agregar: ');
+    console.log(this.hourInterval.start_time);
+    console.log(this.hourInterval.end_time);
     this.service.addHour(
-      this.hourInterval.start_time, 
+      this.hourInterval.start_time,
       this.hourInterval.end_time,
       this.hourInterval.frequency
     ).subscribe( res => {
@@ -150,13 +175,11 @@ export class DateInfoEditModalComponent implements OnInit {
   updateStartDate(event: MatDatepickerInputEvent<Date>) {
     this.start_date = new Date(event.value);
     this.dateInterval.start_date = this.start_date.getTime() / 1000.0;
-    console.log(this.start_date)
   }
 
   updateEndDate(event: MatDatepickerInputEvent<Date>) {
     this.end_date = new Date(event.value);
     this.dateInterval.end_date = this.end_date.getTime() / 1000.0;
-    console.log(this.end_date);
   }
 
 }

@@ -72,7 +72,8 @@ export class DateinformationComponent implements OnInit {
 
   deleteDate(id) {
     if (confirm('Desea eliminar el horario?')) {
-      this._dateInfoService.deleteDate(id).subscribe(data => {
+      this._dateInfoService.deleteDateInfo(id)
+      .subscribe(data => {
         this.ngOnInit();
       });
     }

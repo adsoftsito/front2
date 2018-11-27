@@ -29,7 +29,7 @@ export class DateinformationService {
     return this.http.get<IHour[]>(API_URL + '/hourinterval', AUTH);
   }
   
-  deleteDate(id: number): Observable<IDateInformation> {
+  deleteDateInfo(id: number): Observable<IDateInformation> {
     return this.http.delete<IDateInformation>(API_URL + '/dateinformation/' + id, AUTH);
   }
 

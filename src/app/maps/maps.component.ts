@@ -66,9 +66,9 @@ export class MapsComponent implements OnInit {
     })
   }
 
-  updateCurrentTour(event: EventEmitter<MatSelectChange>) {
+  updateCurrentTour(id) {
     for (const tour of this.arrayOfTours) {
-        if (tour.id === event.value) {
+        if (tour.id === id) {
             this.currentTour.places = tour.places;
             this.currentTour.id = tour.id;
         }

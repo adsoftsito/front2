@@ -11,11 +11,11 @@
                             <div class="col-md-6">
                                 <mat-form-field>
                                     <mat-select 
-                                        [(ngModel)]="currentTour.id"
-                                        (selectionChange)="updateCurrentTour($event)">
+                                        [(ngModel)]="currentTour.id">
                                         <mat-option 
                                             *ngFor="let tour of arrayOfTours" 
-                                            [value]="tour.id">
+                                            [value]="tour.id"
+                                            (click)="updateCurrentTour(tour.id)">
                                             {{ tour.name }}
                                         </mat-option>
                                     </mat-select>

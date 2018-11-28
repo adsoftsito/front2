@@ -8,9 +8,8 @@ declare const $: any;
 @Component({
     templateUrl: './PlaceAddModal.component.html',
 })
-export class NgbdModalAddPlaceComponent implements OnInit{
-    
-    placeForm: FormGroup;
+export class NgbdModalAddPlaceComponent implements OnInit {
+
     public currentPlace = {
         name: '',
         nameIsNotValid: false,
@@ -21,26 +20,24 @@ export class NgbdModalAddPlaceComponent implements OnInit{
         narrative_url: '',
         image_url: ''
     };
-    public allPlaces: any[];
-    public allTypeOfPlaces = [];
+
+    allTypeOfPlaces = [];
 
     lat = 19.04334;
     lng = -98.20193;
-    
+
     constructor(
         private _PlaceService: PlaceService,
-        public activeModal: NgbActiveModal,
-        private formBuilder: FormBuilder) {}
+        public activeModal: NgbActiveModal) {}
 
-    ngOnInit(){
-        this.getPlaces();
+    ngOnInit() {
         this.getPlaceType();
     }
-    
+
     showNotification(data, from, align){
         $.notify({
             message: data.info
-        },{
+        }, {
             type: data.color,
             timer: 1000,
             placement: {
@@ -65,7 +62,7 @@ export class NgbdModalAddPlaceComponent implements OnInit{
         this.lat = $event.coords.lat;
         this.lng = $event.coords.lng;
     }
-    
+
     addPlace() {
         if (this.fieldsAreGoodToGo()) {
             this._PlaceService.addPlace(
@@ -102,14 +99,9 @@ export class NgbdModalAddPlaceComponent implements OnInit{
         } else { this.currentPlace.place_type = true; return false; }
         return true;
     }
-    
-    getPlaces() {
-        this._PlaceService.getPlaces()
-        .subscribe(res => {this.allPlaces = res});
-    }
 
     getPlaceType() {
         this._PlaceService.getPlaceType()
-        .subscribe(res => {this.allTypeOfPlaces = res;});
+        .subscribe(res => {this.allTypeOfPlaces = res; });
     }
 }

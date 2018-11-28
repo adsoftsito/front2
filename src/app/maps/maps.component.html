@@ -36,15 +36,17 @@
                                     <agm-marker
                                         *ngFor="let marker of markersOnMap"
                                         [latitude]="marker.lat" 
-                                        [longitude]="marker.lng"
-                                        [iconUrl]="marker.image_url">
+                                        [longitude]="marker.lng">
                                         <agm-info-window
                                             [maxWidth]="150">
                                             <div class="container">
                                                 <p class="font-weight-bold">
                                                     {{marker.name}}
                                                 </p>
-                                                <img src="{{marker.image_url}}" class="img-fluid">
+                                                <img 
+                                                    src="{{marker.image_url}}" 
+                                                    class="img-thumbnail"
+                                                    *ngIf="marker.image_url.length > 5">
                                             </div>
                                         </agm-info-window>
                                     </agm-marker>

@@ -63,14 +63,15 @@ export class PlaceService {
     return this.http.get<IPlace>(API_URL + '/place/' + id, AUTH);
   }
 
-  updatePlace(name, description, latitude, longitude, narrative_url, place_type_id, id): Observable<IPlace> {
-    let obj = {
+  updatePlace(name, description, latitude, longitude, narrative_url, place_type_id, image_url, id): Observable<IPlace> {
+    const obj = {
       name: name,
       description: description,
       latitude: latitude,
       longitude: longitude,
       narrative_url: narrative_url,
-      place_type_id: place_type_id
+      place_type_id: place_type_id,
+      image_url: image_url
     };
     return this.http.put<IPlace>(API_URL + '/place/edit/' + id, obj, AUTH);
   }

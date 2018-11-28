@@ -1,69 +1,66 @@
 <div class="modal-header">
-    <h4 class="modal-title">Editar Lugar</h4>
-    <button type="button" class="close" aria-label="Close"
-    (click)="activeModal.dismiss('Cross click')">
-</button>
+        <h4 class="modal-title">Agregar nuevo lugar</h4>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+        </button>
 </div>
-<form [formGroup]="placeForm" novalidate >
-    <div class="modal-boy">
-            <div class="container" novalidate>
-                    
-                    <div class="form-group">
-                            <label for="name" [ngClass]="placeForm.controls['name'].invalid ? 'text-danger' : 'text-success'" class="text-muted">Nombre del lugar:</label>
-                            <input id="name" [(ngModel)]='currentPlace[0]' formControlName="name" type="text" class="form-control" [ngClass]="placeForm.controls['name'].invalid ? 'is-invalid' : ''" #name>
-                            <small class="form-text text-danger" *ngIf="placeForm.controls['name'].hasError('required')">
-                                    El nombre del lugar es requerido
-                            </small> 
-                    </div>
-                    
-                    <div class="form-group">
-                            <label for="description" [ngClass]="placeForm.controls['description'].invalid ? 'text-danger' : 'text-success'" class="text-muted">Descripcion del lugar:</label>
-                            <textarea id="description" outline="1px solid blue" rows="5" [(ngModel)]='currentPlace[1]' formControlName="description" type="text" class="form-control" [ngClass]="placeForm.controls['description'].invalid ? 'is-invalid' : ''" #description></textarea>
-                            <small class="form-text text-danger" *ngIf="placeForm.controls['description'].hasError('required')">
-                                    La descripcion del lugar es requerido
-                            </small> 
-                    </div>
-                    
-                    <div class="form-group">
-                            <label for="latitude" [ngClass]="placeForm.controls['latitude'].invalid ? 'text-danger' : 'text-success'" class="text-muted">Latitud del lugar:</label>
-                            <input id="latitude" [(ngModel)]='currentPlace[2]' formControlName="latitude" type="text" class="form-control" [ngClass]="placeForm.controls['latitude'].invalid ? 'is-invalid' : ''" #latitude>
-                            <small class="form-text text-danger" *ngIf="placeForm.controls['latitude'].hasError('required')">
-                                    La latitud del lugar es requerida
-                            </small> 
-                    </div>
-                    
-                    <div class="form-group">
-                            <label for="longitude" [ngClass]="placeForm.controls['longitude'].invalid ? 'text-danger' : 'text-success'" class="text-muted">Longitud del lugar:</label>
-                            <input id="longitude" [(ngModel)]='currentPlace[3]' formControlName="longitude" type="text" class="form-control" [ngClass]="placeForm.controls['longitude'].invalid ? 'is-invalid' : ''" #longitude>
-                            <small class="form-text text-danger" *ngIf="placeForm.controls['longitude'].hasError('required')">
-                                    La longitud del lugar es requerida
-                            </small> 
-                    </div>
-                    
-                    <div class="form-group">
-                            <label for="narrative_url"  class="text-muted">Narrativa del lugar (URL):</label>
-                            <input id="narrative_url" [(ngModel)]='currentPlace[4]' formControlName="narrative_url" type="text" class="form-control" [ngClass]="placeForm.controls['narrative_url'].invalid ? 'is-invalid' : ''" #narrative_url>
-                    </div>
-                    
-                    <div class="form-group">
-                            <label for="place_type_id" [ngClass]="placeForm.controls['place_type_id'].invalid ? 'text-danger' : ''">Tipo de Lugar:</label>
-                            <div class="radio" *ngFor="let type of allTypeOfPlaces">
-                                    <label>
-                                            <input id="place_type_id" type="radio" [value]="type.id" [(ngModel)]='currentPlace[5]' formControlName="place_type_id" [ngClass]="placeForm.controls['place_type_id'].invalid ? 'is-invalid' : ''" #place_type_id>
-                                            {{type.name}}
-                                    </label>
-                            </div>
-                            <label class="text-danger" *ngIf="placeForm.controls['place_type_id'].hasError('required')">
-                                    El Tipo de Lugar es requerido.
-                            </label> 
-                    </div>   
-                    
-            </div>
-    </div>
-    <div class="modal-footer">
-            <button type="button"  (click)="updatePlace(currentPlace)"  [disabled]="placeForm.pristine || placeForm.invalid"  class="btn btn-danger pull-right">Editar</button> 
-    </div>
-</form>
+        <div class="modal-boy">
+                <div class="container">
+                        <div class="form-group">
+                                <label for="name"  class="text-muted">Nombre del lugar:</label>
+                                <input [(ngModel)]='currentPlace.name' type="text" class="form-control" >
+                                <small class="form-text text-danger" *ngIf="currentPlace.nameIsNotValid">
+                                        Verfica el nombre
+                                </small> 
+                        </div>
+                        
+                        <div class="form-group">
+                                <label for="description" class="text-muted">Descripcion del lugar:</label>
+                                <textarea outline="1px solid blue" rows="3" [(ngModel)]='currentPlace.description' type="text" class="form-control" ></textarea>
+                                <small class="form-text text-danger" *ngIf="currentPlace.descriptionIsEmpty">
+                                        La descripción del lugar es requerida
+                                </small> 
+                        </div>
+
+                        <div class="form-group">
+                                <label for="image_url"  class="text-muted">Imagen (URL):</label>
+                                <input [(ngModel)]='currentPlace.image_url' type="text" class="form-control" >
+                        </div>  
+                        
+                        <div class="form-group">
+                                <label for="narrative_url"  class="text-muted">Narrativa del lugar (URL):</label>
+                                <input [(ngModel)]='currentPlace.narrative_url' type="text" class="form-control" >
+                        </div>  
+
+                        <p class="font-weight-bold text-danger">Nota: haz click sobre el mapa para mover el marcador</p>
+                        <agm-map style="height: 420px;" [latitude]="lat" [longitude]="lng" [zoom]="17" (mapClick)="changeMarkerOnMap($event)">
+                                <agm-marker [latitude]="lat" [longitude]="lng">
+                                        <agm-info-window style="height: 220px;" [isOpen]="true">
+                                                <h5 class="text-dark font-weight-bold">Tipo de lugar: </h5>
+                                                <mat-radio-group [(ngModel)]="currentPlace.place_type">
+                                                        <ul class="list-group list-group-flush">
+                                                                <li class="list-group-item" *ngFor="let type of allTypeOfPlaces">
+                                                                        <mat-radio-button [value]="type.id" >
+                                                                                {{type.name}}
+                                                                        </mat-radio-button>
+                                                                </li>
+                                                        </ul>  
+                                                </mat-radio-group>
+                                        </agm-info-window>
+                                </agm-marker>
+                        </agm-map> 
+                        <small class="form-text text-danger" *ngIf="currentPlace.noPlaceTypeSelected">
+                                Seleccione tipo de lugar
+                        </small>
+                </div>
+        </div>
+        <div class="modal-footer">
+                <button type="button" 
+                        (click)="updatePlace(currentPlace)" 
+                        class="btn btn-success">
+                        Actualizar
+                </button> 
+        </div>
 
 
 

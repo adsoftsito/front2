@@ -50,7 +50,7 @@ export class PlaceComponent implements OnInit {
   }
 
   openEditModal(id) {
-    this.modalRef = this._modalService.open(NgbdModalEditPlace);
+    this.modalRef = this._modalService.open(NgbdModalEditPlace, {size: 'lg'});
     this.modalRef.componentInstance.id = id;
 
     this.modalRef.result.then((result) => {

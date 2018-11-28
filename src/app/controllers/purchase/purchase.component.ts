@@ -52,6 +52,8 @@ export class PurchaseInfoComponent implements OnInit {
   public adultTickets = [];
   public oldTickets = [];
 
+  public money: any;
+
   @Input() purchaseId: number;
 
   constructor(
@@ -59,14 +61,20 @@ export class PurchaseInfoComponent implements OnInit {
     private activeModal: NgbActiveModal){ }
 
   ngOnInit(){
+    this.getTotals(this.purchaseId);
+
     this._purchaseService.getPurchaseById(this.purchaseId)
     .subscribe(res => {
       this.purchase = res;
-      this.getGenetalTicketInfo(this.purchase.tickets);
+      this.getGeneralTicketInfo(this.purchase.tickets);
     });
   }
 
-  getGenetalTicketInfo(tickets){
+  getTotals(id){
+    this._purchaseService.getTotal(id).subscribe(res => {this.money = res;});
+  }
+
+  getGeneralTicketInfo(tickets){
     for(let ticket of tickets){
       if(ticket.id==1)
         this.kidTickets.push(ticket);

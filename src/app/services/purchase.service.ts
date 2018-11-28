@@ -19,4 +19,8 @@ export class PurchaseService {
   getPurchaseById(id): Observable<IPurchase>{
     return this.http.get<IPurchase>(API_URL + '/purchase/' + id, AUTH);
   }
+
+  getTotal(id): any{
+    return this.http.get<IPurchase>(API_URL + '/purchase/total/' + id, AUTH);
+  }
 }

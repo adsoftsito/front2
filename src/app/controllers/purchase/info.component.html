@@ -17,7 +17,7 @@
                 <p class="font-italic"> {{ purchase.createdAt | date: 'fullDate' }} </p>
                 <p class="font-weight-bold">Boletos</p>
                 <ul class="list-group">
-                  <li class="list-group-item">Niño ({{ kidTickets.length }})</li>
+                  <li class="list-group-item" *ngIf="kidTickets.length>0">Niño ({{ kidTickets.length }})</li>
                   <li class="list-group-item" *ngIf="adultTickets.length>0">Adulto ({{ adultTickets.length }})</li>
                   <li class="list-group-item" *ngIf="oldTickets.length>0">Anciano ({{ oldTickets.length }})</li>
                 </ul>

@@ -53,7 +53,7 @@ export class CreatePlaceComponent implements OnInit {
   }
 
   addPlace(name, description,longitude,latitude,place_type_id,narrative){
-    this.service.addPlace(name,description,longitude,latitude,place_type_id,narrative).subscribe(data => {
+    this.service.addPlace(name,description,longitude,latitude,place_type_id,narrative, 1).subscribe(data => {
       this.places= data
       console.log(data);
       this.showNotification(data, "top","left");

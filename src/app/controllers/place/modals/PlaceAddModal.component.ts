@@ -39,7 +39,7 @@ export class NgbdModalAddPlaceComponent implements OnInit{
     
     showNotification(data, from, align){
         $.notify({
-            message: "Lugar agregado."
+            message: data.info
         },{
             type: data.color,
             timer: 1000,
@@ -56,13 +56,9 @@ export class NgbdModalAddPlaceComponent implements OnInit{
             </div>
             </div>`,
             onShow: () => {
-                this.closeModal();
+                this.activeModal.close('Modal Closed');
             }
         });
-    }
-    
-    closeModal() {
-        this.activeModal.close('Modal Closed');
     }
 
     changeMarkerOnMap($event) {
@@ -78,9 +74,18 @@ export class NgbdModalAddPlaceComponent implements OnInit{
                 this.lat,
                 this.lng,
                 this.currentPlace.narrative_url,
-                this.currentPlace.image_url
+                this.currentPlace.image_url,
+                this.currentPlace.place_type
             ).subscribe(res => {
-                console.log(res);
+                this.showNotification({
+                    info: 'Lugar agregado correctamente',
+                    color: 'success'
+                }, 'top', 'right');
+            }, err => {
+                this.showNotification({
+                    info: 'Ha habido un error',
+                    color: 'danger'
+                }, 'top', 'right');
             });
         }
     }
@@ -98,26 +103,13 @@ export class NgbdModalAddPlaceComponent implements OnInit{
         return true;
     }
     
-    getPlaces(){
+    getPlaces() {
         this._PlaceService.getPlaces()
-        .subscribe(res =>{this.allPlaces = res});
+        .subscribe(res => {this.allPlaces = res});
     }
 
     getPlaceType() {
         this._PlaceService.getPlaceType()
         .subscribe(res => {this.allTypeOfPlaces = res;});
-    }
-      
-    private createForm() {
-        this.placeForm = this.formBuilder.group({
-            name: [null, Validators.compose([
-                Validators.required
-            ])],
-            description: [null, Validators.compose([
-                Validators.required,
-            ])],
-            narrative_url: [null, Validators.compose([
-            ])]
-        });
     }
 }

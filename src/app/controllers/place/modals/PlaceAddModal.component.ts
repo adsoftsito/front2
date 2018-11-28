@@ -8,16 +8,24 @@ declare const $: any;
 @Component({
     templateUrl: './PlaceAddModal.component.html',
 })
-export class NgbdModalAddPlace implements OnInit{
+export class NgbdModalAddPlaceComponent implements OnInit{
     
     placeForm: FormGroup;
-    public currentPlace: any[] = [undefined];
+    public currentPlace = {
+        name: '',
+        nameIsNotValid: false,
+        description: '',
+        descriptionIsEmpty: false,
+        place_type: null,
+        noPlaceTypeSelected: true,
+        narrative_url: '',
+        image_url: ''
+    };
     public allPlaces: any[];
     public allTypeOfPlaces = [];
 
     lat = 19.04334;
     lng = -98.20193;
-    currentTypeOfPlaceId: any;
     
     constructor(
         private _PlaceService: PlaceService,
@@ -26,7 +34,6 @@ export class NgbdModalAddPlace implements OnInit{
 
     ngOnInit(){
         this.getPlaces();
-        this.createForm();
         this.getPlaceType();
     }
     
@@ -63,14 +70,34 @@ export class NgbdModalAddPlace implements OnInit{
         this.lng = $event.coords.lng;
     }
     
-    addPlace(newPlace){
-        console.log(newPlace, this.lat, this.lng, this.currentTypeOfPlaceId);
-        // this._PlaceService.addPlace(newPlace[0], this.lat, this.lng, newPlace[3], newPlace[4], this.currentTypeOfPlaceId)
-        // .subscribe(res => {
-        //     this.showNotification(res, 'top', 'right');
-        // });
-        
+    addPlace() {
+        if (this.fieldsAreGoodToGo()) {
+            this._PlaceService.addPlace(
+                this.currentPlace.name,
+                this.currentPlace.description,
+                this.lat,
+                this.lng,
+                this.currentPlace.narrative_url,
+                this.currentPlace.image_url
+            ).subscribe(res => {
+                console.log(res);
+            });
+        }
     }
+
+    fieldsAreGoodToGo() {
+        if (this.currentPlace.name.length > 5) {
+            this.currentPlace.nameIsNotValid = false;
+        } else { this.currentPlace.nameIsNotValid = true; return false; }
+        if (this.currentPlace.description.length > 10) {
+            this.currentPlace.descriptionIsEmpty = false;
+        } else { this.currentPlace.descriptionIsEmpty = true; return false; }
+        if (this.currentPlace.place_type != null) {
+            this.currentPlace.noPlaceTypeSelected = false;
+        } else { this.currentPlace.place_type = true; return false; }
+        return true;
+    }
+    
     getPlaces(){
         this._PlaceService.getPlaces()
         .subscribe(res =>{this.allPlaces = res});

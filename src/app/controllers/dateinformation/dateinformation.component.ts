@@ -16,18 +16,21 @@ export class DateinformationComponent implements OnInit {
   public dates = [];
   
   constructor(
-    private _dateInfoService: DateinformationService, 
-    private route: ActivatedRoute, 
-    private router: Router,
-    private fb: FormBuilder,
+    private _dateInfoService: DateinformationService,
     private _modalService: NgbModal) { }
 
   ngOnInit() {
+    this.getDateInfo();
+  }
+
+  getDateInfo() {
     this._dateInfoService.getInformation()
     .subscribe(data => {
       this.dates = data;
+      console.log('Datesss');
       this.convertToDates(this.dates);
       this.convertToHours(this.dates);
+      console.log(this.dates);
     });
   }
 
@@ -63,11 +66,12 @@ export class DateinformationComponent implements OnInit {
     const modalRef = this._modalService.open(DateInfoEditModalComponent, {size: 'lg'});
     modalRef.componentInstance.id = id;
 
-    modalRef.result.then(
-      res => {
-        this.ngOnInit();
+    modalRef.result.then(res => {
+        this.getDateInfo();
+      }, err => {
+        this.getDateInfo();
       }
-    )
+    );
   }
 
   deleteDate(id) {

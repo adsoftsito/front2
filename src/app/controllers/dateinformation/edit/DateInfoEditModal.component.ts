@@ -5,6 +5,7 @@ import { DateinformationService } from '../../../services/dateinformation.servic
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { isNumber } from 'util';
+import { isString } from '@ng-bootstrap/ng-bootstrap/util/util';
 
 @Component({
   selector: 'app-edit',
@@ -46,7 +47,7 @@ export class DateInfoEditModalComponent implements OnInit {
     }
 
   ngOnInit() {
-    if (!isNumber(this.id)) {
+    if (isString(this.id)) {
       this.switchToAddModal = true;
       this.getHoursAndMinutes(this.start_date, this.end_date);
     } else {

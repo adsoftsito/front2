@@ -40,7 +40,7 @@ import { PriceService } from './services/price.service';
 import { NgbdModalEditPrice } from './controllers/price/modals/PriceEditModal.component';
 import { NgbdModalAddPrice } from './controllers/price/modals/PriceAddModal.component';
 import { NgbdModalEditPlace } from './controllers/place/modals/PlaceEditModal.component';
-import { NgbdModalAddPlace } from './controllers/place/modals/PlaceAddModal.component';
+import { NgbdModalAddPlaceComponent } from './controllers/place/modals/PlaceAddModal.component';
 import { NgbdModalEditTour } from './controllers/tour/modals/TourEditModal.component';
 import { NgbdModalAddTour } from './controllers/tour/modals/TourAddModal.component';
 import { TicketTypeService } from './services/tickettype.service';
@@ -95,7 +95,7 @@ import { GetMapModalComponent } from './controllers/place/modals/GetMapModalComp
     NgbdModalEditCompany,
     NgbdModalAddPrice,
     NgbdModalEditPrice,
-    NgbdModalAddPlace,
+    NgbdModalAddPlaceComponent,
     NgbdModalEditPlace,
     NgbdModalAddBus,
     NgbdModalEditBus,
@@ -138,7 +138,7 @@ import { GetMapModalComponent } from './controllers/place/modals/GetMapModalComp
     NgbdModalEditCompany,
     NgbdModalAddPrice,
     NgbdModalEditPrice,
-    NgbdModalAddPlace,
+    NgbdModalAddPlaceComponent,
     NgbdModalEditPlace,
     NgbdModalAddTour,
     NgbdModalEditTour,

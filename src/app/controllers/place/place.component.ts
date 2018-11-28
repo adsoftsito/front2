@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PlaceService } from '../../services/place.service';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { NgbdModalAddPlace } from './modals/PlaceAddModal.component';
+import { NgbdModalAddPlaceComponent } from './modals/PlaceAddModal.component';
 import { NgbdModalEditPlace} from './modals/PlaceEditModal.component';
 import { GetMapModalComponent } from './modals/GetMapModalComponent.component';
 
@@ -38,7 +38,7 @@ export class PlaceComponent implements OnInit {
   }
 
   openAddModal() {
-    this.modalRef = this._modalService.open(NgbdModalAddPlace, {size: 'lg'});
+    this.modalRef = this._modalService.open(NgbdModalAddPlaceComponent, {size: 'lg'});
     
     this.modalRef.result.then((result) => {
       this.getPlaces();

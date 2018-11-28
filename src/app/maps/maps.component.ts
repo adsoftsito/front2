@@ -7,13 +7,14 @@ declare const google: any;
 class Marker {
     public lat: number;
     public lng: number;
-    public name?: string;
-    public draggable?: boolean;
+    public name: string;
+    public image_url: boolean;
 
-    constructor(lat: number, lng: number, name: string) {
+    constructor(lat: number, lng: number, name: string, image_url) {
         this.lat = lat;
         this.lng = lng;
         this.name = name;
+        this.image_url = image_url;
     }
 }
 
@@ -61,7 +62,8 @@ export class MapsComponent implements OnInit {
         this.markersOnMap.push(new Marker(
             Number.parseFloat(place.latitude),
             Number.parseFloat(place.longitude),
-            place.name
+            place.name,
+            place.image_url
         ));
     })
   }

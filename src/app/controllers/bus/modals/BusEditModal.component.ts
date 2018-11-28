@@ -59,6 +59,10 @@ export class NgbdModalEditBus{
         }
         
         updateBus() {
+            console.log(this.currentBus);
+            if(this.currentBus[2]){
+                this.currentBus[2] = this.currentBus[2].id;
+            }
             this._busService.updateBus(this.currentBus[0],
                 this.currentBus[1],this.currentBus[2], this.id).subscribe(res => {
                     this.showNotification(res, 'top', 'right');
@@ -73,7 +77,6 @@ export class NgbdModalEditBus{
             getTours(){
                 this._TourService.getTours().subscribe(res =>{
                     this.allTours = res;
-                    console.log(res);
                     
                 });
             }

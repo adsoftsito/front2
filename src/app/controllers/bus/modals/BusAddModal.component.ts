@@ -85,8 +85,8 @@ export class NgbdModalAddBus{
                     Validators.required,
                     Validators.minLength(3)
                 ])],  
-                availability:['', Validators.required],
-                tour_id:['',Validators.required]
+                availability:['',],
+                tour_id:['']
             });
         }
          

@@ -1,4 +1,3 @@
-
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
@@ -8,8 +7,31 @@
                         <h4 class="card-title text-white">Rutas</h4>
                       </div>
                     <div class="card-body">
-                        <agm-map [latitude]="lat" [longitude]="lng">
-                            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <mat-select 
+                                        [(ngModel)]="currentTour.id"
+                                        (selectionChange)="updateCurrentTour($event)">
+                                        <mat-option 
+                                            *ngFor="let tour of arrayOfTours" 
+                                            [value]="tour.id">
+                                            {{ tour.name }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <agm-map 
+                            [latitude]="center.lat" 
+                            [longitude]="center.lng" 
+                            [zoom]="13">
+                            <agm-marker
+                                *ngFor="let marker of markersOnMap"
+                                [latitude]="marker.lat" 
+                                [longitude]="marker.lng">
+
+                            </agm-marker>
                         </agm-map>
                     </div>
                 </div>
